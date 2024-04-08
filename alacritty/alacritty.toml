@@ -1,0 +1,128 @@
+live_config_reload = true
+
+import = [
+  #"~/.config/alacritty/themes/catppuccin-mocha.toml"
+  "~/.config/alacritty/themes/campbel.toml"
+]
+
+[[colors.indexed_colors]]
+color = "0xff9e64"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xdb4b4b"
+index = 17
+
+[colors.bright]
+black = "0x414868"
+blue = "0x7aa2f7"
+cyan = "0x5fffd7"
+green = "0x5fff5f"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xeeeeee"
+yellow = "0xffd75f"
+
+[colors.normal]
+black = "0x15161e"
+blue = "0x0087af"
+cyan = "0x00d7d7"
+green = "0x5fd700"
+magenta = "0xd75fd7"
+red = "0xff0000"
+white = "0xdddddd"
+yellow = "0xe0af68"
+
+[colors.primary]
+background = "0x000000" # default value : '0x1a1b26' 
+foreground = "0xeeeeee"
+
+[cursor.style]
+#blinking = "Off"
+shape = "Block"
+
+[font]
+size = 10.5
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "Bold Italic"
+
+[font.italic]
+family =  "JetBrains Mono" 
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_padding = true
+opacity = 0.93
+
+[env]
+TERM = "xterm-256color"
