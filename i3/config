@@ -10,10 +10,13 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+# Display Resolution
+exec_always xrandr --output eDP1 --mode 1920x1080 --rate 60.00 --brightness 1 --gamma 1
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: JetBrains Mono 10
+font pango: JetBrains Mono 10.5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -40,6 +43,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Brightness Control
+bindsym XF86MonBrightnessUp exec --no-startup-id brillo -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id brillo -U 5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -75,10 +82,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -120,7 +127,7 @@ set $ws3 "3:  Vim"
 set $ws4 "4:  Info"
 set $ws5 "5:  Media"
 set $ws6 "6:  Spotify"
-set $ws7 "7:  Coding"
+set $ws7 "7:   Coding"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
