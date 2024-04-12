@@ -13,7 +13,7 @@ configuration {
 @theme "tokyo"
 
 * {
-    font: "Iosevka Nerd Font 12";
+    font: "JetBrains Mono Nerd 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -27,7 +27,7 @@ window {
     location:       center;
     width:          480;
     y-offset:       -20;
-    border-radius:  24px;
+    border-radius:  10px;
 
     border: 1px;
     border-color: @bg3;
@@ -41,7 +41,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @bg3;
-    border-radius:  16px;
+    border-radius:  15px;
     border:         2px;
 
     padding:    8px 16px;
