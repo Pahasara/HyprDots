@@ -42,7 +42,7 @@ foreground = "0xffffff"
 shape = "Block"
 
 [font]
-size = 10.5
+size = 10
 
 [font.bold]
 family = "JetBrains Mono"
@@ -122,7 +122,7 @@ program = "/usr/bin/zsh"
 [window]
 decorations = "none"
 dynamic_padding = true
-opacity = 0.94
+opacity = 0.8
 
 [env]
 TERM = "xterm-256color"
