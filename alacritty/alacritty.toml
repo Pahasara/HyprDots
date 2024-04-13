@@ -42,7 +42,7 @@ foreground = "0xffffff"
 shape = "Block"
 
 [font]
-size = 10
+size = 11
 
 [font.bold]
 family = "JetBrains Mono"
