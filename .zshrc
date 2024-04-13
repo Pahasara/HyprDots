@@ -8,9 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-
-ZSH_THEME="robbyrussell"
-autoload -U compinit; compinit
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,14 +71,18 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(
-	git
+#######################
+#    	PLUGINS		  #
+#######################
+plugins=(git
 	zsh-autosuggestions
-	z zsh-autosuggestions
-	zsh-syntax-highlighting
-)
+	zsh-autocomplete
+	zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+#Star Ship
+eval "$(starship init zsh)"
 
 # User configuration
 
@@ -103,7 +105,24 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
+
+
+
+######################
+#   AUTO-COMPLETE    #
+######################
+compinit -d ~/.cache/zsh/.zcompchache
+
+######################
+#      ALIASES       #
+######################
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cls="clear"
+alias py="python"
+
+
+##############################
+#   MAN-PAGES HIGHLIGHTING   #
+##############################
+#export MANPAGER="vim -c ASMANPAGER -"
