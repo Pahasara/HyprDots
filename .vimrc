@@ -1,3 +1,6 @@
+" github.com/pahasara
+
+
 " REQUIRED {{{
 set nocompatible
 filetype off			" required
@@ -15,12 +18,17 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'jiangmiao/auto-pairs'   " Auto Pairs
 Plugin 'preservim/nerdtree'		" NERDTree
+Plugin 'farmergreg/vim-lastplace'	" Remember cursor place of a file
 
 " Fancy stuffs
+"Plugin 'sheerun/vim-polyglot'
+Plugin 'uiiaoo/java-syntax.vim'  " Better syntax highlighting for java
+"Plugin 'mhinz/vim-startify'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ryanoasis/vim-devicons' " Will required nerd fonts to work
 Plugin 'dracula/vim', {'name' : 'dracula'}
+Plugin 'vim-autoformat/vim-autoformat'
 
 call vundle#end()			" required
 
@@ -29,6 +37,8 @@ filetype plugin indent on	" required
 
 " BASIC CONFIGURATION {{{
 set number relativenumber
+set smartindent			" Enable sameindent as the line above it
+set mouse=a             " Enabling mouse in vim
 set path+=**
 set wildmode=longest,list,full
 set encoding=UTF-8
@@ -36,15 +46,16 @@ set cursorline
 set showmatch			" Showing matching brackets
 set ignorecase			" Do case insensitive matching
 set smartcase			" Do smart case matching
+set hlsearch			" Use highlighting when doing a search.
 set clipboard=unnamedplus  "Use system clipboard. If 'unnamedplus' doesn't work, try 'unnamed'.
 set foldenable
-"set foldmethod=syntax
-"set foldmarker={{{,}}}
+set foldmethod=marker          " Default value: syntax
+set foldmarker={{{,}}}
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set spelllang=en_us		" Default language for spell checkers.
-set fillchars+=eob:\
+set fillchars+=eob:-
 " }}}
 
 " BASIC STYLING {{{
@@ -56,8 +67,8 @@ hi Comment cterm=italic
 
 " CursorLine configuration
 hi CursorLine ctermbg=0 cterm=NONE
-hi CursorLineNr ctermbg=NONE cterm=bold ctermfg=Green
-hi LineNr ctermbg=NONE ctermfg=White
+hi CursorLineNr ctermbg=NONE cterm=None ctermfg=246   " Defaults: cterm=bold ctermfg=green"
+hi LineNr ctermbg=NONE ctermfg=245
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -71,13 +82,17 @@ hi SpellLocal cterm=Underline cterm=NONE
 " BASIC KEY BINDING {{{
 
 " Remap Esc Key
-inoremap	;;		<Esc>
+inoremap    ''     <Esc>
+
 
 " Map leader key
 let mapleader=";"
 
 " NERDTree
 nmap        <F2>      :NERDTreeToggle<CR>
+
+" Unsets the last search pattern 
+nnoremap <Esc> :noh<CR><CR> 
 
 " Swap current line with lower line.
 map <leader>x ddp
@@ -92,11 +107,6 @@ map <leader>A :setlocal noautoindent<CR>
 " Enable and disable auto comment
 map <leader>c :setlocal formatoptions-=cro<CR>
 map <leader>C :setlocal formatoptions=cro<CR>
-" }}}
-
-"  VIM AIRLINE CONFIG {{{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='dracula'
 " }}}
 
 " COC CONFIG {{{
@@ -265,6 +275,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
+"  VIM AIRLINE CONFIG {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dracula'
+" }}}
+
 " FCF CONFIG {{{
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
@@ -278,7 +293,8 @@ map <leader>f :Files<CR>
 
 noremap <Tab> gt
 noremap <S-Tab> gT
-noremap <silent> <C-n> :tabnew<CR>
+noremap <C-n> :tabnew<CR>
+nmap <silent> <A-w> :q<CR>
 noremap <silent> <C-,> :tabmove -<CR>
 noremap <silent> <C-.> :tabmove +<CR>
 nnoremap <C-h> :tabprevious<CR>
