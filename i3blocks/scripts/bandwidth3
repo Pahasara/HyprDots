@@ -57,7 +57,7 @@ check_proc_net_dev
 
 iface="${iface:-$(default_interface)}"
 while [ -z "$iface" ]; do
-    echo No default interface
+    echo Not connected
     sleep "$dt"
     iface=$(default_interface)
 done

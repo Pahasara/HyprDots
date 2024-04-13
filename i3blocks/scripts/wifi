@@ -1,0 +1,35 @@
+#!/bin/bash
+[[ $(LC_ALL=C nmcli -f wifi -t g s) == 'disabled' ]] && exit 0
+
+network_name=$(
+    LC_ALL=C nmcli -t -f name,device c s -a \
+        | grep ":$BLOCK_INSTANCE$" \
+        | cut -d':' -f1
+)
+
+if [[ -z $network_name ]]; then
+    printf 'disconnected\n\n#E41C28'
+else
+    freq=$(iwconfig | grep -q 'Frequency:2' && printf '2.4' || printf '5')
+
+    addr=$(
+        ip addr show dev "$BLOCK_INSTANCE" \
+            | grep 'inet ' \
+            | sed 's/\s\+inet \([0-9./]\+\).*/\1/'
+    )
+    [[ -n "$addr" ]] || addr="no IPv4"
+
+    link_quality=$(
+        iwconfig \
+            | grep 'Link Quality' \
+            | sed 's/\s\+Link Quality=\([0-9]\+\/[0-9]\+\).*/\1/'
+    )
+
+    if [[ $(bc <<< "scale=2; $link_quality < 0.6") == 1 ]]; then
+        color="#EEBF13"
+    else
+        color="#3C913B"
+    fi
+
+    printf '%s (%s\u2009GHz), %s\n\n%s' "$network_name" "$freq" "$addr" "$color"
+fi

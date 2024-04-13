@@ -1,13 +1,20 @@
 #!/usr/bin python3
 import psutil
 
-def get_cpu_usage():
-    return psutil.cpu_percent(interval=1)
+usage = psutil.cpu_percent(interval=1)
 
-def format_output(cpu_usage):
-    return f': {cpu_usage}%'
+def get_color(usage):
+    if(usage >= 90):
+       return "#ff5500" 
+    elif(usage >= 75):
+       return "#ffce0d"
+    elif usage >= 50:
+       return "#a7ef16"
+    elif usage >= 30:
+       return "#28cf28"
+    else:
+        return "#1dc1ee"
 
-cpu_usage = get_cpu_usage()
-output = format_output(cpu_usage)
-
-print(f'{output}')
+color = get_color(usage)
+message = "<span color='{0}'>  {1}%</span>"
+print(message.format(color, usage))
