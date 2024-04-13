@@ -1,1 +1,2 @@
-![neofetch](https://github.com/Pahasara/dotFiles/assets/46932317/3c378f69-05dc-4d80-b0a2-693cfda6ae96)
+![2024-04-14 00:39:42](https://github.com/Pahasara/dotFiles/assets/46932317/078f8314-5c16-4d72-ad94-7d84c4078e47)
+
