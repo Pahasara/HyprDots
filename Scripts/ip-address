@@ -1,0 +1,5 @@
+#!/bin/sh
+# Prints current external IP address twice
+ip="$(curl -s https://api.ipify.org)"
+echo "$ip"
+echo "$ip"
