@@ -19,6 +19,7 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'jiangmiao/auto-pairs'   " Auto Pairs
 Plugin 'preservim/nerdtree'		" NERDTree
 Plugin 'farmergreg/vim-lastplace'	" Remember cursor place of a file
+Plugin 'christoomey/vim-tmux-navigator'  " Enable tmux-<Ctrl><h-j-k-l>
 
 " Fancy stuffs
 "Plugin 'sheerun/vim-polyglot'
@@ -66,8 +67,8 @@ hi Folded cterm=bold ctermbg=NONE ctermfg=135
 hi Comment cterm=italic
 
 " CursorLine configuration
-hi CursorLine ctermbg=0 cterm=NONE
-hi CursorLineNr ctermbg=NONE cterm=None ctermfg=246   " Defaults: cterm=bold ctermfg=green"
+hi CursorLine ctermbg=None cterm=NONE
+hi CursorLineNr ctermbg=NONE cterm=None ctermfg=247  " Defaults: cterm=bold ctermfg=green"
 hi LineNr ctermbg=NONE ctermfg=245
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"

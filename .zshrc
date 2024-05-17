@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Default Terminal emulator
+export TERMINAL=/usr/bin/alacritty
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -113,6 +116,7 @@ eval "$(starship init zsh)"
 ######################
 compinit -d ~/.cache/zsh/.zcompchache
 
+
 ######################
 #      ALIASES       #
 ######################
@@ -126,3 +130,11 @@ alias py="python"
 #   MAN-PAGES HIGHLIGHTING   #
 ##############################
 #export MANPAGER="vim -c ASMANPAGER -"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
+# AUTO-RUN TMUX
+#if [ -z "$TMUX" ]
+#then
+#    tmux attach -t TMUX || tmux new -s TMUX
+#fi
