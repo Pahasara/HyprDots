@@ -28,7 +28,7 @@ window {
     location:       center;
     width:          480;
     y-offset:       -20;
-    border-radius:  16px;
+    border-radius:  4px;
 
     border: 1px;
     border-color: @bg3;
@@ -42,7 +42,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @bg3;
-    border-radius:  14px;
+    border-radius:  7px;
     border:         2px;
 
     padding:    8px 16px;
