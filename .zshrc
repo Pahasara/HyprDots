@@ -124,6 +124,7 @@ compinit -d ~/.cache/zsh/.zcompchache
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cls="clear"
 alias py="python"
+alias :q="exit"
 
 
 ##############################

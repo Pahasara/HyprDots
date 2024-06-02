@@ -1,1 +1,0 @@
-$TERMINAL=/usr/bin/alacritty

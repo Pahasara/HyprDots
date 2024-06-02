@@ -6,7 +6,7 @@ configuration {
     drun-match-fields: "name";
     display-run: "Menu:";
     display-ssh: "SSH:";
-    display-drun: " Apps:";
+    display-drun: "Apps:";
     display-window: "Windows:";
 	terminal: "/usr/bin/alacritty";
 }
@@ -75,7 +75,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      2;
+    lines:      6;
 
     fixed-height: false;
 }

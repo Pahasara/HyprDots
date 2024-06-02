@@ -1,0 +1,18 @@
+[Added Associations]
+text/plain=vim.desktop;
+
+[Default Applications]
+text/x-c++src=nvim.desktop
+text/x-c++hdr=nvim.desktop
+text/x-chdr=nvim.desktop
+text/x-java=nvim.desktop
+inode/directory=nemo.desktop
+application/x-gnome-saved-search=nemo.desktop
+text/x-tex=code.desktop
+text/x-makefile=code.desktop
+text/x-csrc=code.desktop
+text/tcl=code.desktop
+text/x-pascal=code.desktop
+text/x-moc=code.desktop
+text/plain=code.desktop
+text/html=code.desktop

@@ -67,8 +67,8 @@ hi Folded cterm=bold ctermbg=NONE ctermfg=135
 hi Comment cterm=italic
 
 " CursorLine configuration
-hi CursorLine ctermbg=None cterm=NONE
-hi CursorLineNr ctermbg=NONE cterm=None ctermfg=247  " Defaults: cterm=bold ctermfg=green"
+hi CursorLine ctermbg=NONE cterm=NONE
+hi CursorLineNr ctermbg=NONE cterm=None ctermfg=252 " Defaults: cterm=bold ctermfg=green"
 hi LineNr ctermbg=NONE ctermfg=245
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"

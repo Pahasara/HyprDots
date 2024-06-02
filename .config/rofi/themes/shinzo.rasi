@@ -1,8 +1,8 @@
 * {
-  bg0:    #121212CF;
-  bg1:    #2A2A2A00;
-  bg2:    #3D3D3D08;
-  bg3:    #00b4f0ED;
+  bg0:    #121212ef;
+  bg1:    #2A2A2A10;
+  bg2:    #000000cf;
+  bg3:    #00a4d0ED;
   fg0:    #E6E6E6;
   fg1:    #FFFFFF;
   fg2:    #969696;
@@ -12,7 +12,7 @@
   yellow  : #e0af68;
   blue    : #7aa2f7;
   magenta : #9aaecc;
-  cyan    : #4adaff;
+  cyan    : #4abaef;
 
   accent: @red;
   urgent: @yellow;

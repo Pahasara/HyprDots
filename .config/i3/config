@@ -1,24 +1,40 @@
 # github.com/pahasara
 
 # BASIC CONFIG {{{
-# set MOD key
+set $wallpaper ~/Wallpapers/9.jpg
+set $term alacritty
 set $mod Mod1
 
 # Font for window titles.
-font pango: JetBrains Mono Bold 10
-#}}}
+font pango: JetBrains Bold 10
 
-# STARTUP APPLICATIONS {{{
+# STARTUP APPLICATIONS
+
+# Set Wallpaper with feh
+exec_always feh --bg-fill $wallpaper
+
 # Display Resolution
-exec_always xrandr --output eDP1 --mode 1920x1080 --rate 60.00 --brightness 0.98 --gamma 1
+exec_always xrandr --output eDP1 --mode 1920x1080 --rate 60.00 --brightness 1 --gamma 1 --scale 1
 
 # Turn off system beep
 exec_always xset b off
 
-# Background wallpaper
-exec_always feh --bg-fill /home/shinzo/Wallpapers/10.jpg
+# Screensaver & locker with xidlehook
+exec_always --no-startup-id xidlehook \
+--detect-sleep \
+--not-when-audio \
+--not-when-fullscreen \
+--timer 300 'xset dpms force standby' '' \
+--timer 300 '/home/shinzo/Scripts/lock' '' \
+--timer 300 'systemctl suspend' ''
 
-# Transperency with picom compositor
+#exec_always xset s on
+#exec_always xset s 5 5 &
+# Signal after 5 minutes / 300 seconds of inactivity
+#exec_always xss-lock di/home/shinzo/Scripts/lock &
+#exec_always xss-lock -n /home/shinzo/Scripts/dimscreen.sh -- /home/shinzo/Scripts/lock -n 
+
+#Transperency with picom compositor
 exec_always --no-startup-id picom -b
 
 # Start Spotify on startup
@@ -28,7 +44,7 @@ exec_always --no-startup-id picom -b
 #{{{ KEY BINDINGS
 
 # set TERMINAL key
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+q kill
@@ -48,7 +64,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # Shortcut for ScreenLock
-bindsym $mod+x exec /home/$USER/Scripts/lock
+bindsym $mod+x exec ~/Scripts/lock
 
 # Brightness Control
 bindsym XF86MonBrightnessUp exec --no-startup-id brillo -A 0.5
@@ -64,7 +80,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date '+%Y-%m-%d %H-%M-%S').png"
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date '+%Y%m%d_%H%M%S').png"
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
 bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
 
@@ -155,10 +171,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 10 ppt
-        bindsym k resize grow height 5 px or 10 ppt
-        bindsym j resize shrink height 5 px or 10 ppt
-        bindsym l resize grow width 5 px or 10 ppt
+        bindsym h resize shrink width 2 px or 1 ppt
+        bindsym k resize grow height 2 px or 1 ppt
+        bindsym j resize shrink height 2 px or 1 ppt
+        bindsym l resize grow width 2 px or 1 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -183,45 +199,56 @@ set $ws3 " 3 "
 set $ws4 " 4 "
 set $ws5 " 5 "
 set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 10 "
 
 # Window customization
-#font pango:Ubuntu Bold 0
-for_window [class="^.*"] border pixel 2
-for_window [class=".*" tiling] border pixel 2
+font pango:Ubuntu Bold 0
+for_window [class="^.*"] border pixel 3
+for_window [class=".*" tiling] border pixel 3
 
 # Allocate applications to workspaces
 for_window [class="firefox"] move to workspace $ws2
-for_window [class="TelegramDesktop"] move to workspace $ws6 focus
-for_window [class="discord"] move to workspace $ws6 focsu
-for_window [class="Spotify"] move to workspace $ws4
 for_window [class="Code"] move to workspace $ws3
-for_window [class="mpv"] move to workspace $ws5
-for_window [class="okular"] move to workspace $ws4 focus
+for_window [class="mpv"] move to workspace $ws3
+for_window [class="Spotify"] move to workspace $ws4
+for_window [class="TelegramDesktop"] move to workspace $ws5 focus
+for_window [class="discord"] move to workspace $ws5 focus
+for_window [class="Pcmanfm"] move to workspace $ws9 focus
 #}}}
 
-# I3 BAR CONFIG {{{
+# COLOR CONFIG {{{
 
 # Color shemes for windows 
-set $bgcolor	#2ac6fa90
-set $in-bgcolor #6464644D
+set $bgcolor	#00ABDAAA
+set $indicator	#00ACFA80
+set $in-bgcolor #6464645D
+set $u-bgcolor	#00000000
 set $text		#AAFFFFFF
-set $u-bgcolor	#f7390f99
-set $indicator	#0faab899
-set $in-text	#969696
-set $focused-ws	#2ac6fa99
-set $in-bgcolor-ws #2ac6fa2D
-set $bar-color	#2ac6fa34
+set $in-text	#646464FF
+
+set $bar-color	  #000000CC
+set $bar-focused  #000000CC
+set $inactive-bar #000000CC
+set $text-bar	  #FFFFFFFF
+set $in-text-bar  #0099DDFF
+set $u-text-bar	  #FF5500FF
 
 #						border		background	text		indicator (a line which shows where the next window will be placed)	
 client.focused			$bgcolor	$bgcolor	$text		$indicator
 client.unfocused    	$in-bgcolor	$in-bgcolor	$in-text	$in-bgcolor
 client.focused_inactive	$in-bgcolor	$in-bgcolor	$in-text	$in-bgcolor
-client.urgent			$u-bgcolor	$u-bgcolor	$text		$u-bgcolor	
+client.urgent			$u-bgcolor	$u-bgcolor	$u-text-bar	$u-bgcolor	
+# }}}
+
+# I3 BAR CONFIG {{{
 
 # Start i3bar to display a workspace bar 
 bar {
 		status_command SCRIPT_DIR=~/Scripts i3blocks -c /home/$USER/.config/i3/i3blocks.conf
-		font pango: JetBrains Bold 9
+		font pango: JetBrains Bold 8
 		position top
 		strip_workspace_numbers yes
 		i3bar_command i3bar --transparency 
@@ -230,19 +257,19 @@ bar {
 
 		colors {
 		background $bar-color
-		separator #30ff9b0D
+		separator #00000000
 		#					border			background			text
-		focused_workspace	$focused-ws		$focused-ws			$text
-		inactive_workspace	$in-bgcolor-ws	$in-bgcolor-ws		$text
-		urgent_workspace	$u-bgcolor		$u-bgcolor			$text	
+		focused_workspace	$bar-focused	$bar-focused		$text-bar
+		inactive_workspace	$inactive-bar	$inactive-bar		$in-text-bar
+		urgent_workspace	$u-bgcolor		$u-bgcolor			$u-text-bar
 		}
 }
 # }}}
 
 # GAPS CONFIG {{{
 # default gaps
-gaps inner 12
-gaps outer 2
+gaps inner 8
+gaps outer 5
 
 # gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft

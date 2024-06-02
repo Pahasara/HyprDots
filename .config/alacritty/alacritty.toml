@@ -1,9 +1,6 @@
-live_config_reload = true
+# https://github.com/pahasara
 
-import = [
-  #"~/.config/alacritty/themes/catppuccin-mocha.toml"
-  #"~/.config/alacritty/themes/campbel.toml"
-]
+live_config_reload = true
 
 [colors.bright]
 black = "0x414868"
@@ -30,11 +27,11 @@ background = "0x000000" # default value : '0x1a1b26'
 foreground = "0xffffff"
 
 [cursor.style]
-#blinking = "Off"
+blinking = "On"
 shape = "Block"
 
 [font]
-size = 10
+size = 11
 
 [font.bold]
 family = "JetBrains Mono"
@@ -114,7 +111,7 @@ program = "/usr/bin/zsh"
 [window]
 decorations = "none"
 dynamic_padding = true
-opacity = 0.9
+opacity = 0.8
 
 [env]
 TERM = "xterm-256color"

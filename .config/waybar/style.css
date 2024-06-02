@@ -1,0 +1,125 @@
+* {
+    border: none;
+	border-radius: 12px;
+    font-family: "JetBrains Mono";
+    font-size: 11px;
+	min-height: 0px;
+	padding: 1px;
+    font-weight: bold;
+}
+
+.modules-right,.modules-left,.modules-center {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+}
+.modules-right {
+    padding: 0 10px;
+}
+
+.modules-left {
+    padding: 0 10px;
+}
+
+.modules-center {
+    padding: 0 10px;
+}
+
+
+window#waybar {
+    /* background: rgba(0, 0, 0, 0.7); */
+	background: transparent;
+	color: white;
+}
+
+#window {
+    font-family: "JetBrains";
+}
+
+#workspaces {
+	background: transparent; 
+}
+
+#workspaces button {
+    padding: 0 2px;
+    background: transparent;
+    color: #898989;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #000000;
+	background: transparent;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.active {
+    color: #FFFFFF;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #backlight {
+    padding: 0 3px;
+    margin: 0 2px;
+	/* background-color: rgba(0, 0, 0, 0.7); */
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery {
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#network {
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
+#tray {
+}
+
+
