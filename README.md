@@ -1,3 +1,4 @@
-![2024-05-21 14-00-56](https://github.com/Pahasara/dotFiles/assets/46932317/52d32b8b-1ec0-47dd-8d4a-9e5541f0c2bc)
+![20240601_184652](https://github.com/Pahasara/dotFiles/assets/46932317/452a091b-2355-420d-bcbb-1513cc286993)
+
 
 
