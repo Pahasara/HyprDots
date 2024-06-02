@@ -1,8 +1,15 @@
 * {
+<<<<<<< HEAD
   bg0:    #121212ef;
   bg1:    #2A2A2A10;
   bg2:    #000000cf;
   bg3:    #00a4d0ED;
+=======
+  bg0:    #000000CF;
+  bg1:    #2A2A2A00;
+  bg2:    #121212CF;
+  bg3:    #00b4f0ED;
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
   fg0:    #E6E6E6;
   fg1:    #FFFFFF;
   fg2:    #969696;

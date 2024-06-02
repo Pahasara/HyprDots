@@ -28,7 +28,11 @@ window {
     location:       center;
     width:          480;
     y-offset:       -20;
+<<<<<<< HEAD
     border-radius:  14px;
+=======
+    border-radius:  4px;
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 
     border: 2px;
     border-color: @bg3;
@@ -42,7 +46,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @bg3;
-    border-radius:  14px;
+    border-radius:  7px;
     border:         2px;
 
     padding:    8px 16px;

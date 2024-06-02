@@ -7,11 +7,15 @@ set $mod Mod1
 
 # Font for window titles.
 font pango: JetBrains Bold 10
+<<<<<<< HEAD
 
 # STARTUP APPLICATIONS
 
 # Set Wallpaper with feh
 exec_always feh --bg-fill $wallpaper
+=======
+#}}}
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 
 # Display Resolution
 exec_always xrandr --output eDP1 --mode 1920x1080 --rate 60.00 --brightness 1 --gamma 1 --scale 1
@@ -19,6 +23,7 @@ exec_always xrandr --output eDP1 --mode 1920x1080 --rate 60.00 --brightness 1 --
 # Turn off system beep
 exec_always xset b off
 
+<<<<<<< HEAD
 # Screensaver & locker with xidlehook
 exec_always --no-startup-id xidlehook \
 --detect-sleep \
@@ -27,6 +32,10 @@ exec_always --no-startup-id xidlehook \
 --timer 300 'xset dpms force standby' '' \
 --timer 300 '/home/shinzo/Scripts/lock' '' \
 --timer 300 'systemctl suspend' ''
+=======
+# Background wallpaper
+exec_always feh --bg-fill /home/shinzo/Wallpapers/7.jpg
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 
 #exec_always xset s on
 #exec_always xset s 5 5 &
@@ -206,6 +215,7 @@ set $ws10 " 10 "
 
 # Window customization
 font pango:Ubuntu Bold 0
+<<<<<<< HEAD
 for_window [class="^.*"] border pixel 3
 for_window [class=".*" tiling] border pixel 3
 
@@ -217,12 +227,28 @@ for_window [class="Spotify"] move to workspace $ws4
 for_window [class="TelegramDesktop"] move to workspace $ws5 focus
 for_window [class="discord"] move to workspace $ws5 focus
 for_window [class="Pcmanfm"] move to workspace $ws9 focus
+=======
+for_window [class="^.*"] border pixel 2
+for_window [class=".*" tiling] border pixel 2
+
+# Allocate applications to workspaces
+for_window [class="firefox"] move to workspace $ws2
+for_window [class="TelegramDesktop"] move to workspace $ws5 focus
+for_window [class="discord"] move to workspace $ws5 focus
+for_window [class="Spotify"] move to workspace $ws4
+for_window [class="Code"] move to workspace $ws3
+for_window [class="mpv"] move to workspace $ws3
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 #}}}
 
 # COLOR CONFIG {{{
 
 # Color shemes for windows 
+<<<<<<< HEAD
 set $bgcolor	#00ABDAAA
+=======
+set $bgcolor	#00ACFA80
+>>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 set $indicator	#00ACFA80
 set $in-bgcolor #6464645D
 set $u-bgcolor	#00000000
