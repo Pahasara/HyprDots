@@ -11,7 +11,7 @@ configuration {
 	terminal: "/usr/bin/alacritty";
 }
 
-@theme "shinzo"
+@theme "forest"
 
 * {
     font: "JetBrains Mono Nerd 12";
@@ -28,11 +28,8 @@ window {
     location:       center;
     width:          480;
     y-offset:       -20;
-<<<<<<< HEAD
     border-radius:  14px;
-=======
     border-radius:  4px;
->>>>>>> 5d9749afdc6dcec84080049a7f9e5795a3f86727
 
     border: 2px;
     border-color: @bg3;

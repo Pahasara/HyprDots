@@ -18,5 +18,5 @@ def get_icon(value):
 
 obj = dbus.SessionBus().get_object("org.freedesktop.Notifications", "/org/freedesktop/Notifications")
 obj = dbus.Interface(obj, "org.freedesktop.Notifications")
-message = get_icon(get_volume()) + " Volume: " + str(get_volume()) + "%"
+message = get_icon(get_volume()) + "   Volume: " + str(get_volume()) + "%"
 obj.Notify("", 2200, "", message, "", [], {"urgency": 1}, 1500)

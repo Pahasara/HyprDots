@@ -2,7 +2,7 @@
 # See man `man zathurarc'
 
 # Open document in fit-width mode by default
-set adjust-open "best-fit"
+set adjust-open "fit-width"
 
 # One page per row by default
 set pages-per-row 1
@@ -55,7 +55,6 @@ set recolor-keephue "true"
 
 
 set render-loading "false"
-set scroll-step 50
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen

@@ -1,0 +1,125 @@
+{
+	"margin-top" : 5,
+    /* "margin-left": 2, */
+    /* "margin-right": 2, */
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 4, // Gaps between modules (4px)
+
+
+	///////////////// ORDER //////////////////////
+
+    "modules-right": ["backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/power"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["clock", "custom/spotify"],
+
+
+	/////// MODULES ///////
+
+	"hyprland/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true
+    },
+    "hyprland/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a, %d %b. %H:%M}",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        /* "format-wifi": "{essid} ({signalStrength}%) ", */
+        "format-wifi": "{essid}  ",
+	    "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+		// "format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"on-click": "~/.scripts/rofi-wifi-menu.sh",
+    },
+	"pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon}",  // {volume}% {format_source}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+		//            "headphone": "",
+		//            "hands-free": "",
+		//            "headset": "",
+		//            "phone": "",
+		//            "portable": "",
+		//            "car": "",
+            "default": ["", " ", " "]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "foot -a pw-top pw-top"
+    },
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec-if": "pgrep spotify",
+        "escape": true
+    },
+    "custom/storage": {
+        "format": "{}  ",
+        "format-alt": "{percentage}%  ",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+	"backlight": {
+		"format": "{percent}% {icon}",
+        "format-alt": "{percent}% {icon}",
+        // "format-alt-click": "click-right",
+        /* "format-icons": ["", ""], */
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-down": "brillo -A 1",
+        "on-scroll-up": "brillo -U 1"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        },
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 18
+    },
+	    "custom/power":{
+        "format": " ",
+        "on-click": "rofi -show power-menu -modi power-menu:~/.scripts/rofi-power-menu -config ~/.config/rofi/powermenu.rasi",
+        "on-click-right": "killall rofi"
+    }
+}

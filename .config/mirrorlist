@@ -1,1 +1,0 @@
-reflector --verbose -l 200 -n 20 -p http,https --sort rate --save /etc/pacman.d/mirrorlist

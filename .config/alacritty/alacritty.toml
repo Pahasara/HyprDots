@@ -4,23 +4,23 @@ live_config_reload = true
 
 [colors.bright]
 black = "0x414868"
-blue = "0x7aa2f7"
-cyan = "0x5fffd7"
-green = "0x5fff5f"
+blue = "0x00a9ff"
+cyan = "0x5ffff7"
+green = "0x23ee45"
 magenta = "0xbb9af7"
 red = "0xf7768e"
 white = "0xffffff"
-yellow = "0xffd75f"
+yellow = "0xfdd555"
 
 [colors.normal]
 black = "0x000000"
-blue = "0x0087af"
-cyan = "0x00d7d7"
-green = "0x5fd700"
+blue = "0x0895fa"
+cyan = "0x00e7e7"
+green = "0x5ff700"
 magenta = "0xd75fd7"
 red = "0xff0000"
-white = "0xeeeeee"
-yellow = "0xe0af68"
+white = "0xefefef"
+yellow = "0xf0cd43"
 
 [colors.primary]
 background = "0x000000" # default value : '0x1a1b26' 
@@ -28,25 +28,25 @@ foreground = "0xffffff"
 
 [cursor.style]
 blinking = "On"
-shape = "Block"
+#shape = "Beam"
 
 [font]
-size = 11
+size = 11.25
 
 [font.bold]
-family = "JetBrains Mono"
+family = "JetBrains Mono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono"
+family = "JetBrains Mono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family =  "JetBrains Mono" 
+family =  "JetBrains Mono Nerd Font" 
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono"
+family = "JetBrains Mono Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -105,13 +105,16 @@ history = 10000
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
+[terminal]
+osc52 = "CopyPaste"
+
 [shell]
 program = "/usr/bin/zsh"
 
 [window]
 decorations = "none"
 dynamic_padding = true
-opacity = 0.8
+opacity = 0.7
 
 [env]
 TERM = "xterm-256color"
