@@ -1,17 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+#
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-# Default Terminal emulator
-export TERMINAL=/usr/bin/alacritty
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -29,7 +26,7 @@ ZSH_THEME=""
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -73,10 +70,6 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-
-#######################
-#    	PLUGINS		  #
-#######################
 plugins=(git
 	zsh-autosuggestions
 	zsh-autocomplete
@@ -108,23 +101,20 @@ eval "$(starship init zsh)"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-
-
-######################
-#   AUTO-COMPLETE    #
-######################
-compinit -d ~/.cache/zsh/.zcompchache
-
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
 ######################
 #      ALIASES       #
 ######################
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cls="clear"
 alias py="python"
 alias :q="exit"
+alias ff="fastfetch"
 
 
 ##############################
@@ -133,9 +123,3 @@ alias :q="exit"
 #export MANPAGER="vim -c ASMANPAGER -"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
-
-# AUTO-RUN TMUX
-#if [ -z "$TMUX" ]
-#then
-#    tmux attach -t TMUX || tmux new -s TMUX
-#fi
