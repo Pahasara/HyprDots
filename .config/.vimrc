@@ -13,7 +13,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'	" Required to work properly
 Plugin 'tpope/vim-commentary'	
-Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'jiangmiao/auto-pairs'   " Auto Pairs
@@ -22,7 +22,7 @@ Plugin 'farmergreg/vim-lastplace'	" Remember cursor place of a file
 Plugin 'christoomey/vim-tmux-navigator'  " Enable tmux-<Ctrl><h-j-k-l>
 
 " Fancy stuffs
-"Plugin 'sheerun/vim-polyglot'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'uiiaoo/java-syntax.vim'  " Better syntax highlighting for java
 "Plugin 'mhinz/vim-startify'
 Plugin 'vim-airline/vim-airline'
@@ -48,7 +48,7 @@ set showmatch			" Showing matching brackets
 set ignorecase			" Do case insensitive matching
 set smartcase			" Do smart case matching
 set hlsearch			" Use highlighting when doing a search.
-set clipboard=unnamedplus  "Use system clipboard. If 'unnamedplus' doesn't work, try 'unnamed'.
+set clipboard=unnamedplus		   "Use system clipboard. If 'unnamedplus' doesn't work, try 'unnamed'.
 set foldenable
 set foldmethod=marker          " Default value: syntax
 set foldmarker={{{,}}}
@@ -57,6 +57,7 @@ set shiftwidth=4
 set softtabstop=4
 set spelllang=en_us		" Default language for spell checkers.
 set fillchars+=eob:-
+set scrolloff=10
 " }}}
 
 " BASIC STYLING {{{
@@ -68,7 +69,7 @@ hi Comment cterm=italic
 
 " CursorLine configuration
 hi CursorLine ctermbg=NONE cterm=NONE
-hi CursorLineNr ctermbg=NONE cterm=None ctermfg=252 " Defaults: cterm=bold ctermfg=green"
+hi CursorLineNr ctermbg=NONE cterm=Bold ctermfg=252 " Defaults: cterm=bold ctermfg=green"
 hi LineNr ctermbg=NONE ctermfg=245
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -85,9 +86,11 @@ hi SpellLocal cterm=Underline cterm=NONE
 " Remap Esc Key
 inoremap    ''     <Esc>
 
-
 " Map leader key
 let mapleader=";"
+
+" Map wl-copy -wayland-clipboard support
+nnoremap <C-@> :call system("wl-copy", @")<CR>
 
 " NERDTree
 nmap        <F2>      :NERDTreeToggle<CR>

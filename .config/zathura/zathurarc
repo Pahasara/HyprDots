@@ -2,7 +2,7 @@
 # See man `man zathurarc'
 
 # Open document in fit-width mode by default
-set adjust-open "fit-width"
+set adjust-open "best-fit"
 
 # One page per row by default
 set pages-per-row 1
@@ -53,9 +53,8 @@ set recolor-darkcolor "#E0E0E0" #06
 set recolor-reverse-video "true"
 set recolor-keephue "true"
 
-
 set render-loading "false"
+
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
-#map <C-i> recolor

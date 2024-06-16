@@ -1,17 +1,17 @@
 {
-	"margin-top" : 5,
-    /* "margin-left": 2, */
-    /* "margin-right": 2, */
+	"margin-top" : 4,
+    "margin-left": 8,
+    "margin-right": 8,
     "layer": "bottom",
     "position": "top",
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 5, // Gaps between modules (4px)
 
 
 	///////////////// ORDER //////////////////////
 
-    "modules-right": ["backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/power"],
-    "modules-center": ["hyprland/workspaces"],
     "modules-left": ["clock", "custom/spotify"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["tray", "backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/notification", "custom/power"],
 
 
 	/////// MODULES ///////
@@ -25,7 +25,7 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d %b. %H:%M}",
+        "format": "{:%a, %d %b. <big>%I:%M %p</big>}",
         "tooltip": false
     },
     "battery": {
@@ -35,9 +35,9 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-full": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
@@ -46,30 +46,30 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
-        "format-wifi": "{essid}  ",
+        "format-wifi": " ",
 	    "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-		// "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "⚠",
 		"on-click": "~/.scripts/rofi-wifi-menu.sh",
     },
 	"pulseaudio": {
         "scroll-step": 5, // %, can be a float
         "format": "{icon}",  // {volume}% {format_source}",
+        "tooltip-format": "Volume: {volume}%",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
-		//            "headphone": "",
-		//            "hands-free": "",
-		//            "headset": "",
-		//            "phone": "",
-		//            "portable": "",
-		//            "car": "",
-            "default": ["", " ", " "]
+		    "headphone": "",
+		    "hands-free": "",
+		    "headset": "",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+            "default": ["", "", " "]
         },
         "on-click": "pavucontrol",
         "on-click-right": "foot -a pw-top pw-top"
@@ -88,14 +88,20 @@
         "interval": 60,
         "exec": "~/.config/waybar/modules/storage.sh"
     },
+	"custom/notification": {
+		"format": "<big> </big>",
+		"on-click": "~/.scripts/notification.sh",
+		"on-click-right": "dunstctl close-all"
+	},
 	"backlight": {
-		"format": "{percent}% {icon}",
+		"format": "{icon}",
         "format-alt": "{percent}% {icon}",
         // "format-alt-click": "click-right",
         /* "format-icons": ["", ""], */
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-scroll-down": "brillo -A 1",
-        "on-scroll-up": "brillo -U 1"
+        "on-scroll-up": "brillo -U 1",
+		"tooltip-format": "{percent}%"
     },
     "custom/weather": {
         "format": "{}",
@@ -118,8 +124,12 @@
         "icon-size": 18
     },
 	    "custom/power":{
-        "format": " ",
-        "on-click": "rofi -show power-menu -modi power-menu:~/.scripts/rofi-power-menu -config ~/.config/rofi/powermenu.rasi",
-        "on-click-right": "killall rofi"
+        "format": "<big> </big>",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "on-click-right": "killall rofi",
+		"tooltip-format": "Powermenu"
+    },
+	    "custom/bandwidth":{
+		"exec": "~/.scripts/bandwidth3"
     }
 }

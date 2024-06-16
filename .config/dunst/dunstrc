@@ -3,7 +3,7 @@
     follow = mouse
 	width = (0, 400)
     origin = top-right
-    offset = 48x48
+    offset = 12x12
 
     progress_bar = true
     progress_bar_height = 10
@@ -56,22 +56,22 @@
     per_monitor_dpi = false
 
 [urgency_low]
-	background = "#000000ea"
-	foreground = "#23ee45"
-    highlight = "#23ee45"
-    frame_color = "#23de35aa"
-    timeout = 5
+	background = "#000000af"
+	foreground = "#33ddff"
+    highlight = "#33ddff"
+    frame_color = "#00bcffaa"
+    timeout = 6
 
 [urgency_normal]
-    background = "#000000ea"
-    foreground = "#23ee45"
-    highlight = "#23ee45"
-    frame_color = "#23de35aa"
-    timeout = 10
+    background = "#000000af"
+    foreground = "#33ddff"
+    highlight = "#33ddff"
+    frame_color = "#00bcffaa"
+    timeout = 12
 
 [urgency_critical]
     background = "#940405"
-    foreground = "#23ee45"
+    foreground = "#33ddff"
     frame_color = "#f38ba8"
     timeout = 1000
 

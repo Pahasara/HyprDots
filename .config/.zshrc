@@ -107,6 +107,15 @@ eval "$(starship init zsh)"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+
+##############################
+#   MAN-PAGES HIGHLIGHTING   #
+##############################
+#export MANPAGER="vim -c ASMANPAGER -"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
+
 ######################
 #      ALIASES       #
 ######################
@@ -115,11 +124,3 @@ eval "$(starship init zsh)"
 alias py="python"
 alias :q="exit"
 alias ff="fastfetch"
-
-
-##############################
-#   MAN-PAGES HIGHLIGHTING   #
-##############################
-#export MANPAGER="vim -c ASMANPAGER -"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
