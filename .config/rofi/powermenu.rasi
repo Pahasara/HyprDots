@@ -1,20 +1,13 @@
 configuration {
-    modes: "window,run,ssh,drun";
-    sorting-method: "normal";
-    show-icons:true;
-    matching: "regex";
+	matching: "regex";
     drun-match-fields: "name";
-    display-run: "Menu:";
-    display-ssh: "SSH:";
-    display-drun: "Apps:";
-    display-window: "Windows:";
 	terminal: "/usr/bin/alacritty";
 }
 
 @theme "shinzo"
 
 * {
-    font: "JetBrains Mono Nerd 12";
+    font: "Ubuntu Nerd Font 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -25,9 +18,8 @@ configuration {
 }
 
 window {
-    location:       center;
-    width:          480;
-    y-offset:       -20;
+    location:       Northeast;
+    width:          160;
     border-radius:  14px;
 
     border: 2px;
@@ -36,44 +28,17 @@ window {
 }
 
 mainbox {
-    padding:    12px;
-}
-
-inputbar {
-    background-color:   @bg1;
-    border-color:       @bg3;
-    border-radius:  14px;
-    border:         2px;
-
-    padding:    8px 16px;
-    spacing:    8px;
-    children:   [ prompt, entry ];
+    padding:    8px;
+	
 }
 
 prompt {
-    text-color: @blue;
-}
-
-entry {
-    placeholder:        "Search";
-    placeholder-color:  @cyan;
-}
-
-message {
-    margin:             12px 0 0;
-    border-radius:      16px;
-    border-color:       @bg2;
-    background-color:   @bg2;
-}
-
-textbox {
-    padding:    8px 24px;
-    background-color:   @bg2;
+    text-color: #00000000;
 }
 
 listview {
     background-color:   transparent;
-    margin:     12px 0 0;
+    margin:     1px 0 0;
     columns:    1;
     lines:      6;
 
@@ -103,6 +68,3 @@ element-icon {
     vertical-align: 0.5;
 }
 
-element-text {
-    text-color: inherit;
-}

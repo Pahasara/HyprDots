@@ -6,15 +6,15 @@ configuration {
     drun-match-fields: "name";
     display-run: "Menu:";
     display-ssh: "SSH:";
-    display-drun: " Apps:";
+    display-drun: " ";
     display-window: "Windows:";
 	terminal: "/usr/bin/alacritty";
 }
 
-@theme "forest"
+@theme "shinzo"
 
 * {
-    font: "JetBrains Mono Nerd 12";
+    font: "Ubuntu Nerd Font 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -26,10 +26,9 @@ configuration {
 
 window {
     location:       center;
-    width:          480;
+    width:          360;
     y-offset:       -20;
-    border-radius:  14px;
-    border-radius:  4px;
+    border-radius:  10px;
 
     border: 2px;
     border-color: @bg3;
@@ -42,8 +41,8 @@ mainbox {
 
 inputbar {
     background-color:   @bg1;
-    border-color:       @bg3;
-    border-radius:  7px;
+    border-color:       @fg3;
+    border-radius:  12px;
     border:         2px;
 
     padding:    8px 16px;
@@ -52,12 +51,12 @@ inputbar {
 }
 
 prompt {
-    text-color: @blue;
+    text-color: @fg1;
 }
 
 entry {
-    placeholder:        "Search";
-    placeholder-color:  @cyan;
+    //placeholder:        "Search";
+    placeholder-color:  @fg3;
 }
 
 message {
@@ -76,7 +75,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      2;
+    lines:      6;
 
     fixed-height: false;
 }
