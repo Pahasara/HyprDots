@@ -7,10 +7,10 @@
 
 iface="${BLOCK_INSTANCE}"
 iface="${IFACE:-$iface}"
-dt="${DT:-3}"
+dt="${DT:-1}"
 unit="${UNIT:-Mb}"
-LABEL="${LABEL:-<span font='FontAwesome'>  </span>}" # down arrow up arrow
-printf_command="${PRINTF_COMMAND:-"printf \"${LABEL}%-5.1f/%5.1f %s/s\\n\", rx, wx, unit;"}"
+LABEL="${LABEL:-<span font='JetBrains Mono Nerd Font'>  </span>}" # down arrow up arrow
+printf_command="${PRINTF_COMMAND:-"printf \"${LABEL}%-1.1f%4.1f %s/s\\n\", rx, wx, unit;"}"
 
 function default_interface {
     ip route | awk '/^default via/ {print $5; exit}'
