@@ -1,5 +1,5 @@
 {
-	"margin-top" : 4,
+    "margin-top" : 2,
     "margin-left": 8,
     "margin-right": 8,
     "layer": "bottom",
@@ -11,7 +11,7 @@
 
     "modules-left": ["clock", "custom/spotify"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/notification", "custom/power"],
+    "modules-right": ["tray", "backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/notification"],
 
 
 	/////// MODULES ///////
@@ -51,7 +51,7 @@
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠",
-		"on-click": "~/.scripts/rofi-wifi-menu.sh",
+		"on-click": "~/.scripts/rofi-wifi.sh"
     },
 	"pulseaudio": {
         "scroll-step": 5, // %, can be a float
@@ -94,10 +94,8 @@
 		"on-click-right": "dunstctl close-all"
 	},
 	"backlight": {
-		"format": "{icon}",
+		"format": "<big>{icon}</big>",
         "format-alt": "{percent}% {icon}",
-        // "format-alt-click": "click-right",
-        /* "format-icons": ["", ""], */
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-scroll-down": "brillo -A 1",
         "on-scroll-up": "brillo -U 1",
@@ -121,11 +119,12 @@
         "tooltip": false
     },
     "tray": {
-        "icon-size": 18
+        "icon-size": 18,
+		"spacing": 7
     },
 	    "custom/power":{
-        "format": "<big> </big>",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "format": "<big> </big>",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu.sh -config ~/.config/rofi/powermenu.rasi",
         "on-click-right": "killall rofi",
 		"tooltip-format": "Powermenu"
     },
