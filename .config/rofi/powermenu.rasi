@@ -18,7 +18,7 @@ configuration {
 }
 
 window {
-    location:       Northeast;
+    location:       southwest;
     width:          160;
     border-radius:  14px;
 
@@ -29,11 +29,14 @@ window {
 
 mainbox {
     padding:    8px;
-	
+}
+
+inputbar {
+	enabled:false;
 }
 
 prompt {
-    text-color: #00000000;
+	enabled: false;
 }
 
 listview {
