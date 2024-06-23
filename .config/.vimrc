@@ -1,6 +1,5 @@
 " github.com/pahasara
 
-
 " REQUIRED {{{
 set nocompatible
 filetype off			" required
@@ -58,6 +57,7 @@ set softtabstop=4
 set spelllang=en_us		" Default language for spell checkers.
 set fillchars+=eob:-
 set scrolloff=10
+set scrolloff=10
 " }}}
 
 " BASIC STYLING {{{
@@ -88,9 +88,6 @@ inoremap    ''     <Esc>
 
 " Map leader key
 let mapleader=";"
-
-" Map wl-copy -wayland-clipboard support
-nnoremap <C-@> :call system("wl-copy", @")<CR>
 
 " NERDTree
 nmap        <F2>      :NERDTreeToggle<CR>

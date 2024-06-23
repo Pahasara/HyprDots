@@ -1,5 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
-wall=$(find ~/Pictures/Wallpapers/ -type f -name "*.jpg" -o -name "*.png" | shuf -n 1)
+swaybg -m fill -i ~/Pictures/Wallpapers/8.png
 
-swaybg -m fill -i $wall
+
+##########
+# RANDOM #
+#########
+
+# while true
+# do
+#     nbg=$(ls -d ~/Pictures/Wallpapers/* | shuf -n 1)
+#     killall swaybg
+#     swaybg -m fill -i "$nbg" &
+#     wal -n -i "$nbg"
+#     sleep 5
+# done

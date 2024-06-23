@@ -1,58 +1,56 @@
 * {
     font-family: "JetBrains Mono Nerd Font";
     font-size: 11px;
-	min-height: 0px;
-	padding: 1px;
+    min-height: 0px;
+    padding: 1px;
     font-weight: bold;
 }
 
 .modules-right,.modules-left,.modules-center {
-	border-radius: 10px;
+    border-radius: 10px;
 }
 .modules-right {
     padding: 0 2px;
 }
-
 .modules-left {
     padding: 0 5px;
 }
-
 .modules-center {
 }
 
 
 window#waybar {
     background-color: rgba(12, 12, 12, 0.8);
-	border: 2px solid rgba(20, 180, 255, 0.9);
-	border-radius: 10px;
-	color: #00bbff;
+    border: 2px solid rgba(20, 180, 255, 0.9);
+    border-radius: 10px;
+    color: #00bbff;
 }
 
 #window {
 }
 
 #workspaces {
-	background: transparent; 
+    background: transparent; 
 }
 
 #workspaces button {
     padding: 0 2px;
     padding: 0 3px;
     margin: 0 2px;
-	background:transparent;
+    background:transparent;
     /* border: 2px solid transparent; */
-	border-radius: 2px 12px 2px 12px;
-	color:#989898;
+    border-radius: 2px 12px 2px 12px;
+    color:#787878;
 }
 
 #workspaces button.focused {
     color: #000000;
-	background: transparent;
+    background: transparent;
     border-top: 2px solid transparent;
 }
 
 #workspaces button.active {
-	color: #00bbff;
+    color: #00bbff;
 }
 
 #mode {

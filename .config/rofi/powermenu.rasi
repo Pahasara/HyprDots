@@ -64,6 +64,7 @@ element normal active {
 
 element selected normal, element selected active {
     background-color:   @bg2;
+	text-color: @fg2;
 }
 
 element-icon {
@@ -71,3 +72,6 @@ element-icon {
     vertical-align: 0.5;
 }
 
+element-text {
+    text-color: inherit;
+}

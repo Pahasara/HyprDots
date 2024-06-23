@@ -4,7 +4,7 @@
     "margin-right": 8,
     "layer": "bottom",
     "position": "top",
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 7, // Gaps between modules (4px)
 
 
 	///////////////// ORDER //////////////////////
@@ -88,11 +88,6 @@
         "interval": 60,
         "exec": "~/.config/waybar/modules/storage.sh"
     },
-	"custom/notification": {
-		"format": "<big> </big>",
-		"on-click": "~/.scripts/notification.sh",
-		"on-click-right": "dunstctl close-all"
-	},
 	"backlight": {
 		"format": "<big>{icon}</big>",
         "format-alt": "{percent}% {icon}",
@@ -119,8 +114,7 @@
         "tooltip": false
     },
     "tray": {
-        "icon-size": 18,
-		"spacing": 7
+        "icon-size": 16
     },
 	    "custom/power":{
         "format": "<big> </big>",
@@ -128,6 +122,11 @@
         "on-click-right": "killall rofi",
 		"tooltip-format": "Powermenu"
     },
+	"custom/notification": {
+		"format": "<big> </big> ",
+		"on-click": "~/.scripts/notification.sh",
+		"on-click-right": "dunstctl close-all"
+	},
 	    "custom/bandwidth":{
 		"exec": "~/.scripts/bandwidth3"
     }
