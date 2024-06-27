@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rbg=$(ls -d ~/Pictures/Wallpapers/* | shuf -n 1)
+
+swww img $rbg --transition-step 40 --transition-type wipe --transition-angle 30
