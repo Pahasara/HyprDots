@@ -5,9 +5,10 @@
   bg3:    #00b4f0ED;
   fg0:    #DEDEDE;
   fg1:    #24aaee;
-  fg2:    #33ccff;
-  fg3:    #2088cc;
+  fg2:    #22bbff;
+  fg3:    #00aaee;
 
+  black   : #000000;
   red     : #f7768e;
   green   : #9ece6a;
   yellow  : #e0af68;

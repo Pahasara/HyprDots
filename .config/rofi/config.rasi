@@ -7,8 +7,8 @@ configuration {
     display-run: "Menu:";
     display-ssh: "SSH:";
     display-drun: " ";
-    display-window: "Windows:";
-	terminal: "/usr/bin/alacritty";
+    display-window: " ";
+    terminal: "/usr/bin/kitty";
 }
 
 @theme "shinzo"
@@ -26,9 +26,8 @@ configuration {
 
 window {
     location:       center;
-    width:          360;
-    y-offset:       -20;
-    border-radius:  10px;
+    width:          300;
+    border-radius:  14px;
 
     border: 2px;
     border-color: @bg3;
@@ -42,7 +41,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @fg3;
-    border-radius:  12px;
+    border-radius:  16px;
     border:         2px;
 
     padding:    8px 16px;
@@ -75,7 +74,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      6;
+    lines:      5;
 
     fixed-height: false;
 }
@@ -95,8 +94,8 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @bg2;
-	text-color: @fg2;
+    background-color:   @fg3;
+	text-color: @black;
 }
 
 element-icon {

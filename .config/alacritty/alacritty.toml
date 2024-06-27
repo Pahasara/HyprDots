@@ -34,19 +34,19 @@ blinking = "On"
 size = 11.25
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family =  "JetBrains Mono Nerd Font" 
+family =  "JetBrainsMono Nerd Font" 
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]

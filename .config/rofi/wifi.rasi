@@ -7,7 +7,7 @@ configuration {
 @theme "shinzo"
 
 * {
-    font: "Ubuntu Nerd Font 20";
+    font: "Ubuntu Nerd Font 14";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -18,10 +18,11 @@ configuration {
 }
 
 window {
-    location: south;
-    y-offset: -10;
-    width:          400;
-    border-radius:  16px;
+    location: northeast;
+    y-offset: -30;
+    x-offset: 0;
+    width:          220;
+    border-radius:  10px;
 
     border: 3px;
     border-color: @bg3;
@@ -33,23 +34,22 @@ mainbox {
 }
 
 inputbar {
-    enabled:false;
+	enabled:false;
 }
 
 prompt {
-    enabled: false;
+	enabled: false;
 }
 
 listview {
     background-color:   transparent;
     margin:     1px 0 0;
-    columns:    6;
-    lines:      1;
+    columns:    1;
+    lines:      8;
     fixed-height: false;
 }
 
 element {
-    orientation: horizontal;
     padding:        8px 16px;
     spacing:        8px;
     border-radius:  16px;

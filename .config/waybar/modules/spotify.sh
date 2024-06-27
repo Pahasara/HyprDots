@@ -5,12 +5,17 @@ icon=" "
 
 if [[ $class == "playing" ]]; then
   info=$(playerctl metadata --player=spotify --format '{{artist}} - {{title}}')
-  if [[ ${#info} > 40 ]]; then
-    info=$(echo $info | cut -c1-40)"..."
+  # Check if title length exceeds 28 characters
+  if [[ ${#info} -gt 28 ]]; then
+    # Trim title to 28 characters and add "..."
+    trimmed_title="${info:0:28}.."
+  else
+    # Keep full title if less than or equal to 28 characters
+    trimmed_title="$info"
   fi
-  text=$icon" "$info
+  text="$icon  $trimmed_title"
 elif [[ $class == "paused" ]]; then
-  text=$icon
+  text="$icon"
 elif [[ $class == "stopped" ]]; then
   text=""
 fi

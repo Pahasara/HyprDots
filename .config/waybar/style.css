@@ -1,56 +1,53 @@
+@import url("/home/shinzo/.config/waybar/themes/moon-ray.css");
+
 * {
-    font-family: "JetBrains Mono Nerd Font";
-    font-size: 11px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11.25px;
     min-height: 0px;
-    padding: 1px;
+    padding: 0 3px;
     font-weight: bold;
+    border-radius: 9px;
 }
 
-.modules-right,.modules-left,.modules-center {
-    border-radius: 10px;
-}
-.modules-right {
-    padding: 0 2px;
-}
-.modules-left {
-    padding: 0 5px;
-}
+.modules-right,
+.modules-left,
+.modules-center {}
+
+.modules-right {}
+
+.modules-left {}
+
 .modules-center {
+    padding: 2 0 0 0px;
+    background-color: @bg-module;
+    border: 2px solid @border;
 }
 
 
 window#waybar {
-    background-color: rgba(12, 12, 12, 0.8);
-    border: 2px solid rgba(20, 180, 255, 0.9);
-    border-radius: 10px;
-    color: #00bbff;
+    background: @background;
 }
 
-#window {
-}
+#window {}
 
-#workspaces {
-    background: transparent; 
-}
+#workspaces {}
 
 #workspaces button {
+    margin: 0 1px;
     padding: 0 2px;
-    padding: 0 3px;
-    margin: 0 2px;
-    background:transparent;
-    /* border: 2px solid transparent; */
-    border-radius: 2px 12px 2px 12px;
-    color:#787878;
+    /* border-radius: 2px 12px 2px 12px; */
+    color: @fg-module;
 }
 
+#workspaces button:hover {}
+
 #workspaces button.focused {
-    color: #000000;
-    background: transparent;
+    background-color: transparent;
     border-top: 2px solid transparent;
 }
 
 #workspaces button.active {
-    color: #00bbff;
+    color: @foreground;
 }
 
 #mode {
@@ -58,29 +55,58 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#custom-storage, #custom-weather, #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #backlight {
-    padding: 0 3px;
-    margin: 0 2px;
+#wireplumber,
+#custom-bandwidth,
+#custom-notification,
+#idle_inhibitor,
+#custom-storage,
+#custom-weather,
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode,
+#backlight {
+    padding: 2 10 0 8px;
+    background-color: @bg-module;
+    border: 2px solid @border;
+    color: @fg-module;
 }
 
 #clock {
     font-weight: bold;
 }
 
-#battery {
-}
+#battery {}
 
 #battery icon {
     color: red;
 }
 
+#battery.plugged {
+    background-color: @fg-module;
+    border: 2px solid @border-alt;
+    color: @fg-alt;
+}
+
 #battery.charging {
+    background-color: @fg-module;
+    color: @fg-alt;
+    animation-name: blink;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        background-color: @bg-blink;
+        color: @fg-alt;
     }
 }
 
@@ -93,27 +119,24 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {
-}
+#cpu {}
 
-#memory {
-}
+#memory {}
 
-#network {
-}
+#network {}
 
-#network.disconnected {
-}
+#network.disconnected {}
 
-#pulseaudio {
-}
+#pulseaudio {}
 
-#pulseaudio.muted {
-}
+#pulseaudio.muted {}
 
-#custom-spotify {
-    /* color: rgb(102, 220, 105); */
+#custom-spotify {}
+
+#custom-notification {
+    padding: 2 10 2 6px;
 }
 
 #tray {
+    padding: 3;
 }

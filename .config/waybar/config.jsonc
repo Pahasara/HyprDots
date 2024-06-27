@@ -1,78 +1,170 @@
 {
-    "margin-top" : 2,
-    "margin-left": 8,
-    "margin-right": 8,
+    //#####################
+    //### CONFIGURATION ###
+    //#####################
+    // "reload_style_on_change": true,
+    "margin-top": 5,
+    //"margin-left": 4,
+    //"margin-right": 4,
     "layer": "bottom",
     "position": "top",
-    "spacing": 7, // Gaps between modules (4px)
-
-
-	///////////////// ORDER //////////////////////
-
-    "modules-left": ["clock", "custom/spotify"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "backlight", "custom/storage", "network", "pulseaudio", "battery", "custom/notification"],
-
-
-	/////// MODULES ///////
-
-	"hyprland/workspaces": {
-        "format": "{name}",
-        "disable-scroll": true
+    "spacing": 8, // Gaps between modules (4px)
+    //##################
+    //### BAR ORDER  ###
+    //##################
+    "modules-left": [
+        "clock",
+        "memory",
+        "custom/spotify"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "backlight",
+        "network",
+        "wireplumber",
+        "pulseaudio",
+        "battery",
+        "idle_inhibitor",
+        "custom/notification"
+    ],
+    //################
+    //### MODULES  ###
+    //################
+    "hyprland/workspaces": {
+        "smooth-scrolling-threshold": 4,
+        "enable-bar-scroll": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十",
+            "active": "<big>●</big>",
+            "default": ""
+        }
     },
     "hyprland/window": {
         "max-length": 80,
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d %b. <big>%I:%M %p</big>}",
-        "tooltip": false
+        "format": "{:%H:%M  %a, %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
+        "interval": 5,
         "states": {
             // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{icon}",
-        "format-charging": "",
+        "format": "{icon} {capacity}%",
+        // "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": "",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
-        "format-wifi": " ",
-	    "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-wifi": "{icon}  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "⚠",
-		"on-click": "~/.scripts/rofi-wifi.sh"
+        "format-disconnected": "<big>⚠</big>",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "on-click": "~/.scripts/rofi-wifi"
     },
-	"pulseaudio": {
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 20,
+        "max-length": 24,
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+    },
+    "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "{icon}",  // {volume}% {format_source}",
-        "tooltip-format": "Volume: {volume}%",
+        // "format": "{icon}  {volume}%  {format_source}",
+        "format": "{format_source}",
+        // "tooltip-format": "Volume: {volume}%",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
-		    "headphone": "",
-		    "hands-free": "",
-		    "headset": "",
-		    "phone": "",
-		    "portable": "",
-		    "car": "",
-            "default": ["", "", " "]
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": [
+                "",
+                "",
+                " "
+            ]
         },
         "on-click": "pavucontrol",
-        "on-click-right": "foot -a pw-top pw-top"
+        "on-click-right": "kitty -a pw-top pw-top"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ",
+        "format-icons": [
+            "",
+            " ",
+            "<big>󰕾</big>",
+            " "
+        ],
+        "on-click": "pavucontrol",
+    },
+    "memory": {
+        "interval": 10,
+        "format": "<big>󰾆</big>  {used:0.1f}G",
+        "format-alt": "{percentage}% 󰾆",
+        "format-alt-click": "click",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+        "on-click-right": "kitty --title btop sh -c 'btop'"
     },
     "custom/spotify": {
         "interval": 1,
@@ -88,13 +180,20 @@
         "interval": 60,
         "exec": "~/.config/waybar/modules/storage.sh"
     },
-	"backlight": {
-		"format": "<big>{icon}</big>",
-        "format-alt": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-down": "brillo -A 1",
-        "on-scroll-up": "brillo -U 1",
-		"tooltip-format": "{percent}%"
+    "backlight": {
+        "format": "<big>{icon}</big> {percent}%",
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            "󰃝 ",
+            "󰃞 ",
+            "󰃟 ",
+            "󰃠 "
+        ],
+        "on-scroll-down": "brightnessctl set 1%-",
+        "on-scroll-up": "brightnessctl set +1%",
+        "tooltip-format": "Backlight: {percent}%"
     },
     "custom/weather": {
         "format": "{}",
@@ -108,26 +207,26 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": " ",
-            "deactivated": " "
+            "activated": "",
+            "deactivated": ""
         },
+        "timeout": 30.0,
         "tooltip": false
     },
-    "tray": {
-        "icon-size": 16
-    },
-	    "custom/power":{
+    "custom/power": {
         "format": "<big> </big>",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu.sh -config ~/.config/rofi/powermenu.rasi",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
         "on-click-right": "killall rofi",
-		"tooltip-format": "Powermenu"
+        "tooltip-format": "Powermenu"
     },
-	"custom/notification": {
-		"format": "<big> </big> ",
-		"on-click": "~/.scripts/notification.sh",
-		"on-click-right": "dunstctl close-all"
-	},
-	    "custom/bandwidth":{
-		"exec": "~/.scripts/bandwidth3"
+    "custom/notification": {
+        "format": "<big></big>",
+        "on-click": "~/.scripts/notify",
+        "on-click-right": "dunstctl close-all",
+        "tooltip-format": "Notifications"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 3
     }
 }

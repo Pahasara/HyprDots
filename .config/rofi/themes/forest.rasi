@@ -1,4 +1,3 @@
-
 * {
   bg0:    #000000CF;
   bg1:    #2A2A2A00;
@@ -8,6 +7,7 @@
   fg1:    #FFFFFF;
   fg2:    #969696;
   fg3:    #3D3D3D;
+
   red     : #e0af68;
   green   : #2ede6a;
   lGreen  : #2efe9a;

@@ -1,9 +1,9 @@
 [global]
     monitor = 0
     follow = mouse
-	width = (0, 400)
+    width = (0, 400)
     origin = top-right
-    offset = 12x12
+    offset = 0x-31
 
     progress_bar = true
     progress_bar_height = 10
@@ -14,7 +14,7 @@
 
     indicate_hidden = yes
     shrink = no
-	separator_height = 2
+    separator_height = 2
     separator_color = "#11111b"
     padding = 15
     horizontal_padding = 15
@@ -56,22 +56,22 @@
     per_monitor_dpi = false
 
 [urgency_low]
-	background = "#000000af"
-	foreground = "#22ccff"
+    background = "#000000af"
+    foreground = "#22ccff"
     highlight = "#22ddff"
-    frame_color = "#00abff99"
+    frame_color = "#00abffa9"
     timeout = 6
 
 [urgency_normal]
     background = "#000000af"
     foreground = "#33ccff"
     highlight = "#33ccff"
-    frame_color = "#00bcffaa"
+    frame_color = "#00bcffca"
     timeout = 12
 
 [urgency_critical]
-    background = "#940405"
-    foreground = "#ffddee"
+    background = "#940405af"
+    foreground = "#ffd0e0"
     frame_color = "#f38ba8"
     timeout = 1000
 
