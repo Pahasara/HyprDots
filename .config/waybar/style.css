@@ -89,8 +89,13 @@ window#waybar {
 
 #battery.plugged {
     background-color: @fg-module;
-    border: 2px solid @border-alt;
+    border: 2px solid @background;
     color: @fg-alt;
+    animation-name: blink;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #battery.charging {
