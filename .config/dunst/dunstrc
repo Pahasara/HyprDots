@@ -59,18 +59,18 @@
     background = "#000000af"
     foreground = "#22ccff"
     highlight = "#22ddff"
-    frame_color = "#00abffa9"
+    frame_color = "#00cbffc9"
     timeout = 6
 
 [urgency_normal]
     background = "#000000af"
     foreground = "#33ccff"
     highlight = "#33ccff"
-    frame_color = "#00bcffca"
+    frame_color = "#00ccffef"
     timeout = 12
 
 [urgency_critical]
-    background = "#940405af"
+    background = "#940405ef"
     foreground = "#ffd0e0"
     frame_color = "#f38ba8"
     timeout = 1000
