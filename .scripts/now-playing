@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Default maximum length
+default_max_length=32
+
+# Function to trim the info if it exceeds 'max_length' characters
+trim_info() {
+    local info="$1"
+    local max_length="$2"
+
+    if [ ${#info} -gt $max_length ]; then
+        info="${info:0:$max_length}.."
+    fi
+
+    echo "$info"
+}
+
+# Parse the command-line argument for max_length
+if [[ $1 =~ max_length=([0-9]+) ]]; then
+    max_length="${BASH_REMATCH[1]}"
+else
+    max_length=$default_max_length
+fi
+
+# Check if Spotify is playing
+spotify_status=$(playerctl --player=spotify status 2>/dev/null)
+
+if [ "$spotify_status" == "Playing" ]; then
+    # Get currently playing song from Spotify
+    info=$(playerctl metadata --player=spotify --format '  {{artist}} - {{title}}')
+else
+    # Get currently playing song from Musikcube
+    info=$(playerctl metadata --player=musikcube --format '  {{artist}} - {{title}}')
+fi
+
+# Trim info if necessary and display it
+trimmed_info=$(trim_info "$info" "$max_length")
+echo "$trimmed_info"

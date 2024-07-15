@@ -1,0 +1,2 @@
+#!/bin/sh
+pw-play ~/.local/share/sounds/notification.mp3
