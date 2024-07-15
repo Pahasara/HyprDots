@@ -4,7 +4,7 @@ configuration {
     terminal: "/usr/bin/kitty";
 }
 
-@theme "shinzo"
+@theme "miku"
 
 * {
     font: "Ubuntu Nerd Font 14";
@@ -19,8 +19,8 @@ configuration {
 
 window {
     location: northeast;
-    y-offset: -30;
-    x-offset: 0;
+    y-offset: 1;
+    x-offset: -1;
     width:          220;
     border-radius:  10px;
 
@@ -50,9 +50,9 @@ listview {
 }
 
 element {
-    padding:        8px 16px;
+    padding:        8px 8px;
     spacing:        8px;
-    border-radius:  16px;
+    border-radius:  12px;
 }
 
 element normal urgent {

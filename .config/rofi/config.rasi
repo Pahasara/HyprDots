@@ -1,17 +1,18 @@
 configuration {
-    modes: "window,run,ssh,drun";
+    modes: "window,run,ssh,drun,calc";
     sorting-method: "normal";
     show-icons:true;
     matching: "regex";
     drun-match-fields: "name";
     display-run: "Menu:";
     display-ssh: "SSH:";
-    display-drun: " ";
+    display-drun: " ";
     display-window: " ";
+    display-calc: " ";
     terminal: "/usr/bin/kitty";
 }
 
-@theme "shinzo"
+@theme "miku"
 
 * {
     font: "Ubuntu Nerd Font 12";
@@ -26,8 +27,8 @@ configuration {
 
 window {
     location:       center;
-    width:          300;
-    border-radius:  14px;
+    width:          320;
+    border-radius:  10px;
 
     border: 2px;
     border-color: @bg3;
@@ -41,7 +42,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @fg3;
-    border-radius:  16px;
+    border-radius:  12px;
     border:         2px;
 
     padding:    8px 16px;
@@ -50,17 +51,17 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg1;
+    text-color: @fg0;
 }
 
 entry {
-    //placeholder:        "Search";
-    placeholder-color:  @fg3;
+    placeholder:        "Search...";
+    placeholder-color:  @fg0;
 }
 
 message {
     margin:             12px 0 0;
-    border-radius:      16px;
+    border-radius:      10px;
     border-color:       @bg2;
     background-color:   @bg2;
 }
@@ -74,15 +75,15 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      5;
+    lines:      6;
 
     fixed-height: false;
 }
 
 element {
-    padding:        8px 16px;
+    padding:        8px 8px;
     spacing:        8px;
-    border-radius:  16px;
+    border-radius:  12px;
 }
 
 element normal urgent {
@@ -94,7 +95,7 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @fg3;
+    background-color:   @fg1;
 	text-color: @black;
 }
 

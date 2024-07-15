@@ -4,7 +4,7 @@ configuration {
     terminal: "/usr/bin/kitty";
 }
 
-@theme "shinzo"
+@theme "miku"
 
 * {
     font: "Ubuntu Nerd Font 20";
@@ -21,7 +21,7 @@ window {
     location: south;
     y-offset: -10;
     width:          400;
-    border-radius:  16px;
+    border-radius:  12px;
 
     border: 3px;
     border-color: @bg3;
@@ -50,9 +50,9 @@ listview {
 
 element {
     orientation: horizontal;
-    padding:        8px 16px;
+    padding:        8px 18px;
     spacing:        8px;
-    border-radius:  16px;
+    border-radius:  14px;
 }
 
 element normal urgent {
@@ -64,7 +64,7 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @fg2;
+    background-color:   @fg1;
     text-color: @black;
 }
 
