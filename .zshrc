@@ -1,6 +1,16 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #############
 #  GENERAL  #
 #############
+
+#eval "$(starship init zsh)"  # Star Ship theme
+
 export ZSH="$HOME/.oh-my-zsh"
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -27,6 +37,19 @@ ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="false"
 
+###########
+# HISTORY #
+###########
+export HISTSIZE=10000
+export HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 
 #############
 #  PLUGINS  #
@@ -39,9 +62,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-eval "$(starship init zsh)"  # Star Ship theme
-
 
 ########################
 #  User configuration  #
@@ -59,15 +79,16 @@ fi
 # export MANPAGER="nvim +Man!"
 
 # Man page highlighting with bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme default'"
+export BAT_THEME="tokyonight_night"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
-
 
 ######################
 #      ALIASES       #
 ######################
 alias :q="exit"
 alias py="python"
+alias vim="nvim"
 alias nf="neofetch"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -76,5 +97,9 @@ alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
-alias cat='bat'
 alias mk="musikcube"
+alias zero="./.local/bin/zero/Zero.CLI"
+source ~/Packages/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
