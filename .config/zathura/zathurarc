@@ -55,6 +55,7 @@ set recolor-keephue "true"
 
 set render-loading "false"
 
+map b toggle_statusbar
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
