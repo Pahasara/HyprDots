@@ -1,64 +1,89 @@
+// github.com/pahasara/dotFiles
 {
     //#####################
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 5,
-    //"margin-left": 4,
-    //"margin-right": 4,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 8, // Gaps between modules (4px)
+    "spacing": 2,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "clock",
-        "memory",
+        "custom/logo",
+        "hyprland/workspaces",
+        // "hyprland/window",
+        // "memory",
         "custom/spotify"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "clock"
     ],
     "modules-right": [
         "tray",
+        // "custom/update",
         "backlight",
         "network",
         "wireplumber",
-        "pulseaudio",
+        // "pulseaudio",
         "battery",
-        "idle_inhibitor",
-        "custom/notification"
+        "idle_inhibitor"
+        // "custom/notification"
     ],
     //################
     //### MODULES  ###
     //################
     "hyprland/workspaces": {
-        "smooth-scrolling-threshold": 4,
-        "enable-bar-scroll": true,
+        "active-only": false,
+        "all-outputs": false,
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            // "5": [],
+            // "6": [],
+            // "7": [],
+            // "8": [],
+            // "9": [],
+            // "10": []
+        },
         "format": "{icon}",
         "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "5": "五",
-            "6": "六",
-            "7": "七",
-            "8": "八",
-            "9": "九",
-            "10": "十",
-            "active": "<big>●</big>",
-            "default": ""
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "active": "<small></small>",
+            "default": "",
+            // "persistent":"󰑊"
         }
     },
     "hyprland/window": {
-        "max-length": 80,
+        "max-length": 40,
         "tooltip": false
     },
     "clock": {
-        "format": "{:%H:%M  %a, %d %b}",
+        "format": "{:%a, %d %b  %I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "custom/logo": {
+        "format": "",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "tooltip-format": "Arch Linux"
     },
     "battery": {
         "interval": 5,
@@ -71,7 +96,7 @@
         // "format-full": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": "",
-        "format-alt": "{time} {icon}",
+        // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [
@@ -120,6 +145,17 @@
             "󰤨"
         ]
     },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ",
+        "format-icons": [
+            "",
+            " ",
+            "<big>󰕾</big>",
+            " "
+        ],
+        "on-click": "easyeffects"
+    },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
         // "format": "{icon}  {volume}%  {format_source}",
@@ -129,7 +165,7 @@
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
         "format-source": " {volume}%",
-        "format-source-muted": "",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",
             "hands-free": " ",
@@ -146,17 +182,6 @@
         "on-click": "pavucontrol",
         "on-click-right": "kitty -a pw-top pw-top"
     },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-muted": " ",
-        "format-icons": [
-            "",
-            " ",
-            "<big>󰕾</big>",
-            " "
-        ],
-        "on-click": "pavucontrol",
-    },
     "memory": {
         "interval": 10,
         "format": "<big>󰾆</big>  {used:0.1f}G",
@@ -168,9 +193,9 @@
     },
     "custom/spotify": {
         "interval": 1,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh",
-        "exec-if": "pgrep spotify",
+        "exec": "~/.scripts/now-playing",
+        "on-click": "~/.scripts/play-next",
+        "on-click-right": "~/.scripts/play-previous",
         "escape": true
     },
     "custom/storage": {
@@ -181,7 +206,8 @@
         "exec": "~/.config/waybar/modules/storage.sh"
     },
     "backlight": {
-        "format": "<big>{icon}</big> {percent}%",
+        "format": "󰃝  {percent}%",
+        // "format": "<big>{icon}</big> {percent}%",
         "format-icons": [
             " ",
             " ",
@@ -213,20 +239,20 @@
         "timeout": 30.0,
         "tooltip": false
     },
-    "custom/power": {
-        "format": "<big> </big>",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
-        "on-click-right": "killall rofi",
-        "tooltip-format": "Powermenu"
-    },
     "custom/notification": {
-        "format": "<big></big>",
-        "on-click": "~/.scripts/notify",
+        "format": "",
+        "on-click": "~/.scripts/notify-history",
         "on-click-right": "dunstctl close-all",
         "tooltip-format": "Notifications"
     },
+    "custom/update": {
+        "exec": "~/.scripts/check-update",
+        "interval": 43200,
+        "on-click": "~/.scripts/check-update",
+        "tooltip-format": "Check Updates"
+    },
     "tray": {
-        "icon-size": 14,
+        "icon-size": 15,
         "spacing": 3
     }
 }

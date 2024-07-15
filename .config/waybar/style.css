@@ -1,31 +1,19 @@
-@import url("/home/shinzo/.config/waybar/themes/moon-ray.css");
+/* github.com/pahasara/dotFiles */
+
+@import url("/home/shinzo/.config/waybar/themes/miku.css");
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 11.25px;
+    font-family: "CaskaydiaMono Nerd Font";
+    font-size: 12.25px;
     min-height: 0px;
-    padding: 0 3px;
+    padding: 1 2px;
     font-weight: bold;
-    border-radius: 9px;
-}
-
-.modules-right,
-.modules-left,
-.modules-center {}
-
-.modules-right {}
-
-.modules-left {}
-
-.modules-center {
-    padding: 2 0 0 0px;
-    background-color: @bg-module;
-    border: 2px solid @border;
 }
 
 
 window#waybar {
     background: @background;
+    border: 2px solid @border;
 }
 
 #window {}
@@ -35,14 +23,12 @@ window#waybar {
 #workspaces button {
     margin: 0 1px;
     padding: 0 2px;
-    /* border-radius: 2px 12px 2px 12px; */
     color: @fg-module;
 }
 
 #workspaces button:hover {}
 
 #workspaces button.focused {
-    background-color: transparent;
     border-top: 2px solid transparent;
 }
 
@@ -58,9 +44,13 @@ window#waybar {
 #wireplumber,
 #custom-bandwidth,
 #custom-notification,
+#custom-update,
+#custom-logo,
 #idle_inhibitor,
 #custom-storage,
 #custom-weather,
+#window,
+#workspaces,
 #clock,
 #battery,
 #cpu,
@@ -68,17 +58,26 @@ window#waybar {
 #network,
 #pulseaudio,
 #custom-spotify,
-#tray,
 #mode,
 #backlight {
-    padding: 2 10 0 8px;
+    padding: 2 10 2 8px;
     background-color: @bg-module;
-    border: 2px solid @border;
+    border-radius: 12px;
+    /* border: 2px solid @border-module; */
     color: @fg-module;
 }
 
-#clock {
-    font-weight: bold;
+#tray {
+    padding: 2 10 2 8px;
+    background-color: @bg-tray;
+    border-radius: 12px;
+    /* border: 2px solid @border-module; */
+    color: @fg-module;
+}
+
+#custom-logo {
+    color: @foreground;
+    padding: 2 12 2 7px;
 }
 
 #battery {}
@@ -88,19 +87,16 @@ window#waybar {
 }
 
 #battery.plugged {
-    background-color: @fg-module;
-    border: 2px solid @background;
-    color: @fg-alt;
+    color: @foreground;
     animation-name: blink;
-    animation-duration: 1.0s;
+    animation-duration: 1.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
 #battery.charging {
-    background-color: @fg-module;
-    color: @fg-alt;
+    color: @foreground;
     animation-name: blink;
     animation-duration: 1.0s;
     animation-timing-function: linear;
@@ -110,13 +106,11 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: @bg-blink;
-        color: @fg-alt;
+        color: @fg-blink;
     }
 }
 
 #battery.warning:not(.charging) {
-    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -132,15 +126,15 @@ window#waybar {
 
 #network.disconnected {}
 
+#idle_inhibitor.activated {
+    color: @foreground;
+}
+
 #pulseaudio {}
 
 #pulseaudio.muted {}
 
 #custom-spotify {}
-
-#custom-notification {
-    padding: 2 10 2 6px;
-}
 
 #tray {
     padding: 3;
