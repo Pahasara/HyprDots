@@ -1,6 +1,7 @@
 {
-  "AppQuitKey": "Q",
+  "AppQuitKey": "q",
   "AsyncTrackListQueries": true,
+  "AuddioApiToken": "",
   "AutoHideCommandBar": false,
   "AutoUpdateCheck": true,
   "CategoryTrackListSortOrder": 0,
@@ -21,6 +22,7 @@
   "Locale": "en_US",
   "MinimizeToTray": false,
   "PiggyEnabled": false,
+  "PiggyHostname": "localhost",
   "PlaybackTrackQueryTimeoutMs": 5000,
   "RatingNegativeChar": "·",
   "RatingPositiveChar": "★",
