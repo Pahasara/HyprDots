@@ -1,4 +1,4 @@
-| ![20240720_160510](https://github.com/user-attachments/assets/6d8e8dfb-ad3f-484b-af00-487569c8017e) |
+![20240720_160510](https://github.com/user-attachments/assets/6d8e8dfb-ad3f-484b-af00-487569c8017e) <br>
 | ![20240627_222334](https://github.com/Pahasara/dotFiles/assets/46932317/9c2f2789-c803-4b6a-8327-98a1ad83b198) | ![20240627_222355](https://github.com/Pahasara/dotFiles/assets/46932317/12b53760-deab-4582-be19-b6174269192d) |
 |---|---|
 | ![20240627_224521](https://github.com/Pahasara/dotFiles/assets/46932317/843335e0-3520-4110-a015-78ab3c4d2c05) | ![20240627_222629](https://github.com/Pahasara/dotFiles/assets/46932317/5fbb8a6e-6bc5-4620-93fe-2c04bdfd711a) |
