@@ -63,6 +63,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+
 ########################
 #  User configuration  #
 ########################
@@ -98,7 +99,13 @@ alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 alias mk="musikcube"
+alias z="./.local/bin/zero/Zero.CLI"
 alias zero="./.local/bin/zero/Zero.CLI"
+
+
+#################
+# Powerlevel10k #
+#################
 source ~/Packages/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
