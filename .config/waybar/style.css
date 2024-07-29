@@ -5,8 +5,8 @@
 * {
     font-family: "CaskaydiaMono Nerd Font";
     font-size: 12.25px;
-    min-height: 0px;
-    padding: 1 2px;
+    min-height: 15px;
+    padding: 1 3px;
     font-weight: bold;
 }
 
@@ -14,6 +14,7 @@
 window#waybar {
     background: @background;
     border: 2px solid @border;
+    border-radius: 13;
 }
 
 #window {}
@@ -26,7 +27,9 @@ window#waybar {
     color: @fg-module;
 }
 
-#workspaces button:hover {}
+#workspaces button:hover {
+    background: transparent;
+}
 
 #workspaces button.focused {
     border-top: 2px solid transparent;
@@ -41,43 +44,37 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#wireplumber,
 #custom-bandwidth,
 #custom-notification,
 #custom-update,
 #custom-logo,
 #idle_inhibitor,
-#custom-storage,
-#custom-weather,
 #window,
+#memory,
+#custom-storage,
+#network,
+#wireplumber,
+#battery,
+#tray,
+#backlight,
 #workspaces,
 #clock,
-#battery,
 #cpu,
-#memory,
-#network,
-#pulseaudio,
 #custom-spotify,
-#mode,
-#backlight {
+#mode {
     padding: 2 10 2 8px;
     background-color: @bg-module;
-    border-radius: 12px;
+    border-radius: 14px;
     /* border: 2px solid @border-module; */
     color: @fg-module;
 }
 
 #tray {
-    padding: 2 10 2 8px;
     background-color: @bg-tray;
-    border-radius: 12px;
-    /* border: 2px solid @border-module; */
-    color: @fg-module;
 }
 
 #custom-logo {
     color: @foreground;
-    padding: 2 12 2 7px;
 }
 
 #battery {}
@@ -126,8 +123,13 @@ window#waybar {
 
 #network.disconnected {}
 
-#idle_inhibitor.activated {
+#idle_inhibitor {
     color: @foreground;
+    padding: 2 4 2 8px;
+}
+
+#idle_inhibitor.activated {
+    color: @fg-module;
 }
 
 #pulseaudio {}
@@ -135,6 +137,10 @@ window#waybar {
 #pulseaudio.muted {}
 
 #custom-spotify {}
+
+#custom-seperator {
+    color: @separator;
+}
 
 #tray {
     padding: 3;

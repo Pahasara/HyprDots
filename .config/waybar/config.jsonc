@@ -4,36 +4,39 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
+    "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 2,
+    "spacing": 0,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "custom/logo",
+        // "custom/logo",
+        "idle_inhibitor",
+        // "custom/seperator",
         "hyprland/workspaces",
-        // "hyprland/window",
-        // "memory",
+        // "custom/seperator",
         "custom/spotify"
     ],
     "modules-center": [
-        "clock"
+        "hyprland/window",
     ],
     "modules-right": [
-        "tray",
         // "custom/update",
+        "tray",
+        // "custom/seperator",
         "backlight",
         "network",
         "wireplumber",
-        // "pulseaudio",
         "battery",
-        "idle_inhibitor"
-        // "custom/notification"
+        // "custom/seperator",
+        // "clock#cal",
+        // "custom/seperator",
+        "clock"
     ],
     //################
     //### MODULES  ###
@@ -43,7 +46,7 @@
         "all-outputs": false,
         "format": "{icon}",
         "on-click": "activate",
-        "persistent_workspaces": {
+        "persistent-workspaces": {
             "1": [],
             "2": [],
             "3": [],
@@ -69,21 +72,19 @@
             "10": "10",
             "active": "<small></small>",
             "default": "",
-            // "persistent":"󰑊"
         }
     },
     "hyprland/window": {
         "max-length": 40,
         "tooltip": false
     },
-    "clock": {
-        "format": "{:%a, %d %b  %I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "clock#cal": {
+        "format": "{:%a, %d %b}",
+         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "custom/logo": {
-        "format": "",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
-        "tooltip-format": "Arch Linux"
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "{:%a, %d %b}",
     },
     "battery": {
         "interval": 5,
@@ -92,25 +93,25 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        // "format-full": "{icon} {capacity}%",
+        "format": "{icon}",
         "format-charging": " {capacity}%",
         "format-plugged": "",
         // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        // "format-full": "{icon} {capacity}%",
         "format-icons": [
             " ",
             " ",
             " ",
             " ",
             " "
-        ]
+        ],
+        // "tooltip-format": "{capacity}%"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
-        "format-wifi": "{icon}  {signalStrength}%",
+        "format-wifi": "{icon}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
@@ -146,14 +147,16 @@
         ]
     },
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}",
+        "format-full": "{icon} {volume}%",
         "format-muted": " ",
         "format-icons": [
             "",
-            " ",
+            "",
             "<big>󰕾</big>",
             " "
         ],
+        "tooltip-format": "{volume}%",
         "on-click": "easyeffects"
     },
     "pulseaudio": {
@@ -174,7 +177,7 @@
             "portable": "",
             "car": " ",
             "default": [
-                "",
+         //       "",
                 "",
                 " "
             ]
@@ -206,20 +209,20 @@
         "exec": "~/.config/waybar/modules/storage.sh"
     },
     "backlight": {
-        "format": "󰃝  {percent}%",
+        "format": "󰃟",
         // "format": "<big>{icon}</big> {percent}%",
         "format-icons": [
             " ",
             " ",
             " ",
-            "󰃝 ",
-            "󰃞 ",
-            "󰃟 ",
-            "󰃠 "
+            "󰃞",
+            "󰃟",
+            "󰃝",
+            "󰃠"
         ],
         "on-scroll-down": "brightnessctl set 1%-",
         "on-scroll-up": "brightnessctl set +1%",
-        "tooltip-format": "Backlight: {percent}%"
+        "tooltip-format": "{percent}%"
     },
     "custom/weather": {
         "format": "{}",
@@ -231,13 +234,18 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": " ", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
         "timeout": 30.0,
         "tooltip": false
+    },
+    "custom/logo": {
+        "format": "",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "tooltip-format": "Arch Linux"
     },
     "custom/notification": {
         "format": "",
@@ -254,5 +262,9 @@
     "tray": {
         "icon-size": 15,
         "spacing": 3
+    },
+    "custom/seperator":{
+        "format": "|",
+        "tooltip": false
     }
 }
