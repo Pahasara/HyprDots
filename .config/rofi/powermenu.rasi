@@ -21,7 +21,7 @@ window {
     location: south;
     y-offset: -10;
     width:          400;
-    border-radius:  12px;
+    border-radius:  15px;
 
     border: 3px;
     border-color: @bg3;
@@ -52,7 +52,7 @@ element {
     orientation: horizontal;
     padding:        8px 18px;
     spacing:        8px;
-    border-radius:  14px;
+    border-radius:  16px;
 }
 
 element normal urgent {

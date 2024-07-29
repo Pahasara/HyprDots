@@ -1,12 +1,12 @@
 * {
-  bg0:    #000000c6;
-  bg1:    #4A4C4F20;
-  bg2:    #0000006f;
-  bg3:    #00b4c0ED;
-  fg0:    #DEDEDE;
-  fg1:    #00aaee;
-  fg2:    #00bbff;
-  fg3:    #243236;
+  bg0:    #000000c6; //window
+  bg1:    #4A4C4F05; //input
+  bg2:    #0000000f;
+  bg3:    #00afef; //windowBorder
+  fg0:    #DEDEDE; //main
+  fg1:    #009aee;
+  fg2:    #00abef;
+  fg3:    #243238; //inputBorder
 
   black   : #000000;
   red     : #f7768e;

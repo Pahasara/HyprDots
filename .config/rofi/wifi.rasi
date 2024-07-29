@@ -19,10 +19,10 @@ configuration {
 
 window {
     location: northeast;
-    y-offset: 1;
-    x-offset: -1;
+    y-offset: -30;
+    x-offset: -3;
     width:          220;
-    border-radius:  10px;
+    border-radius:  12px;
 
     border: 3px;
     border-color: @bg3;
@@ -52,7 +52,7 @@ listview {
 element {
     padding:        8px 8px;
     spacing:        8px;
-    border-radius:  12px;
+    border-radius:  14px;
 }
 
 element normal urgent {
