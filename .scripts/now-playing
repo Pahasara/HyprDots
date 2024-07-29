@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default maximum length
-default_max_length=32
+default_max_length=26
 
 # Function to trim the info if it exceeds 'max_length' characters
 trim_info() {
@@ -9,7 +9,7 @@ trim_info() {
     local max_length="$2"
 
     if [ ${#info} -gt $max_length ]; then
-        info="${info:0:$max_length}.."
+        info="${info:0:$max_length}…"
     fi
 
     echo "$info"
@@ -27,11 +27,13 @@ spotify_status=$(playerctl --player=spotify status 2>/dev/null)
 
 if [ "$spotify_status" == "Playing" ]; then
     # Get currently playing song from Spotify
-    info=$(playerctl metadata --player=spotify --format '  {{artist}} - {{title}}')
+    info=$(playerctl metadata --player=spotify --format '  {{title}} • {{artist}}')
 else
     # Get currently playing song from Musikcube
-    info=$(playerctl metadata --player=musikcube --format '  {{artist}} - {{title}}')
+    info=$(playerctl metadata --player=musikcube --format '  {{title}} • {{artist}}')
 fi
+
+# Add seperator for waybar
 
 # Trim info if necessary and display it
 trimmed_info=$(trim_info "$info" "$max_length")
