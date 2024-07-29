@@ -7,6 +7,9 @@ set adjust-open "best-fit"
 # One page per row by default
 set pages-per-row 1
 
+# Cliboard
+set selection-clipboard clipboard
+
 #stop at page boundries
 set scroll-page-aware "true"
 set smooth-scroll "true"
