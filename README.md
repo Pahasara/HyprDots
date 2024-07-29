@@ -1,5 +1,5 @@
 <h3 align="center">
-	<img src="https://github.com/user-attachments/assets/91b46b93-99f6-4cc6-86b5-09384f73472c" width="700"/><br/>
+	<img src="https://github.com/user-attachments/assets/cd622df3-ff30-4df9-8696-2d82e443585b" width="700"/><br/>
 </h3>
 
 <p align="center">
@@ -11,11 +11,11 @@
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286&"/></a> 
 </p>
 
-| ![Fetch](https://github.com/user-attachments/assets/300635d9-f809-4fad-800b-038bf277e786) | ![Discord](https://github.com/user-attachments/assets/4e9b02f0-bcbe-4470-abe0-1fedd059dc6b) |
+| ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) | ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) |
 |---|---|
-| ![Browser](https://github.com/user-attachments/assets/8a6748d2-2746-4976-b5bf-fa5b14a6ee8f) | ![Lockscreen](https://github.com/user-attachments/assets/c0fa99dd-e164-4ded-b8e1-1041a48a2b44) |
-| ![mpv](https://github.com/user-attachments/assets/980c800d-b3c2-465a-b2dc-9c41a3908333) | ![Spotify](https://github.com/user-attachments/assets/9be771c0-5390-4cb4-8b5d-c2a1cb1104f6) | 
-| ![Launcher](https://github.com/user-attachments/assets/a572f155-8411-4ab9-bf80-e8185710a71a) | ![Musikcube](https://github.com/user-attachments/assets/a60a258b-4409-4dfc-88d5-cbf4c37fb865) |
+| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
+| ![mpv](https://github.com/user-attachments/assets/79d1bb2f-d666-4b84-bc45-92a78e6fba58) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) | 
+| ![Launcher](https://github.com/user-attachments/assets/75787c09-4e7b-4c94-a9b7-dd5346276551) | ![Musikcube](https://github.com/user-attachments/assets/10353cc2-0b6c-4504-8f55-ade647e5fb8e) |
 
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
