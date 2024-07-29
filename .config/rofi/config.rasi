@@ -28,7 +28,7 @@ configuration {
 window {
     location:       center;
     width:          320;
-    border-radius:  10px;
+    border-radius:  25px;
 
     border: 2px;
     border-color: @bg3;
@@ -42,7 +42,7 @@ mainbox {
 inputbar {
     background-color:   @bg1;
     border-color:       @fg3;
-    border-radius:  12px;
+    border-radius:  20px;
     border:         2px;
 
     padding:    8px 16px;
@@ -55,7 +55,7 @@ prompt {
 }
 
 entry {
-    placeholder:        "Search...";
+    placeholder:        "Type...";
     placeholder-color:  @fg0;
 }
 
@@ -83,7 +83,7 @@ listview {
 element {
     padding:        8px 8px;
     spacing:        8px;
-    border-radius:  12px;
+    border-radius:  16px;
 }
 
 element normal urgent {
