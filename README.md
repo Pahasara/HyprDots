@@ -65,6 +65,7 @@
 - _`Wireplumber`_ - Session Manager for Pipewire
 - _`nmcli`_ - Connection Manager
 - _`Eza`_ - Alternative to _`ls`_ command
+- _`ianny`_ - Save me from myself
 
 > [!NOTE]
 > _This setup is more focused on laptops rather than desktops,so i'm keeping it super simple but yeah you can also use it with desktops._   
