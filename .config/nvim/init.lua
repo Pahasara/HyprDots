@@ -84,6 +84,9 @@ vim.keymap.set('i', "''", '<Esc>')
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- NeoTree
+vim.keymap.set('n', '<C-s>', '<cmd>Neotree<CR>')
+
 -- Tab management
 vim.keymap.set('n', '<Tab>', 'gt')
 vim.keymap.set('n', '<S-Tab>', 'gT')
@@ -784,7 +787,7 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -819,25 +822,12 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.cmd 'hi Normal guibg=#0a0a0a00'
+vim.cmd 'hi Cursor guibg=#0a0a0a00'
+vim.cmd 'hi NeoTreeNormal guibg=#0a0a0a00'
+vim.cmd 'hi NormalNC guibg=#0a0a0a00'
+vim.cmd 'hi NC guibg=#0a0a0a00'
+vim.cmd 'hi SignColumn guibg=#0a0a0a00'
 vim.cmd 'hi CursorLineNr guifg=#bababa'
 
--- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#646464', bold = true })
--- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#646464', bold = true })
---
--- vim.api.nvim_create_autocmd('BufWritePre', {
---   buffer = vim.fn.bufnr(),
---   callback = function()
---     vim.lsp.buf.format { timeout_ms = 3000 }
---   end,
--- })
-
--- vim.api.nvim_create_augroup('AutoFormat', {})
---
--- vim.api.nvim_create_autocmd('BufWritePost', {
---   pattern = '*.py',
---   group = 'AutoFormat',
---   callback = function()
---     vim.cmd 'silent !black --quiet %'
---     vim.cmd 'edit'
---   end,
--- })
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#444450', bold = true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#444450', bold = true })
