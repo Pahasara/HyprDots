@@ -24,7 +24,7 @@
 # 📦 Packages/Programs
 
 ### 🛠️ _Basic_
-* Compositor - [hyprland](https//:hyprland.org)
+* Compositor - [hyprland](https://hyprland.org)
 * Bar - [Waybar](https://github.com/Alexays/Waybar)
 * Shell - [zsh](https://www.zsh.org/)
 * Terminal - [kitty](https://github.com/kovidgoyal/kitty)
