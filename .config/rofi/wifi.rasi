@@ -19,12 +19,12 @@ configuration {
 
 window {
     location: northeast;
-    y-offset: -30;
+    y-offset: -31;
     x-offset: -3;
     width:          220;
-    border-radius:  12px;
+    border-radius:  16px;
 
-    border: 3px;
+    border: 2px;
     border-color: @bg3;
     background-color:   @bg0;
 }
