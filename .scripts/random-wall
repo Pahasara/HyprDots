@@ -16,7 +16,6 @@ if [[ -d $wallpaper_dir && $(find_images "$wallpaper_dir") ]]; then
   # Set the wallpaper using swww with transition effects
   swww img "$random_wallpaper" --transition-step 100 --transition-type wipe --transition-angle 30
 
-  # Log the change
   echo "Wallpaper set to: $random_wallpaper"
 else
   echo "Wallpaper directory is either missing or does not contain any images."
