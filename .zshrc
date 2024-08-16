@@ -84,24 +84,6 @@ export BAT_THEME="tokyonight_night"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-######################
-#      ALIASES       #
-######################
-alias :q="exit"
-alias py="python"
-alias vim="nvim"
-alias nf="neofetch"
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='eza --icons --color=always --group-directories-first'
-alias ll='eza -alF --icons --color=always --group-directories-first'
-alias la='eza -a --icons --color=always --group-directories-first'
-alias l='eza -F --icons --color=always --group-directories-first'
-alias l.='eza -a | egrep "^\."'
-alias mk="musikcube"
-alias z="./.local/bin/zero/Zero.CLI"
-alias zero="./.local/bin/zero/Zero.CLI"
-
 
 #################
 # Powerlevel10k #
@@ -110,3 +92,26 @@ source ~/Packages/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+######################
+#      ALIASES       #
+######################
+alias :q="exit"
+alias py="python"
+alias vim="nvim"
+alias nf="neofetch"
+alias ls='eza --icons --color=always --group-directories-first'
+alias ll='eza -alF --icons --color=always --group-directories-first'
+alias la='eza -a --icons --color=always --group-directories-first'
+alias l='eza -F --icons --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
+alias mk="musikcube"
+alias z="./.local/bin/zero/Zero.CLI"
+alias zero="./.local/bin/zero/Zero.CLI"
+alias tmt="./.local/bin/timecanvas/TimeCanvas"
+alias dr="dotnet run"
+alias dpl="dotnet publish -r linux-x64 --sc"
+alias dpw="dotnet publish -r win-x64 --sc"
+
+

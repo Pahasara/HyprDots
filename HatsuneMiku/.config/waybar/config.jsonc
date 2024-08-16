@@ -4,7 +4,7 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 5,
+    "margin-top": 3,
     "margin-left": 10,
     "margin-right": 10,
     "margin-bottom": 0,
@@ -239,7 +239,7 @@
             "activated": "",
             "deactivated": ""
         },
-        "timeout": 30.0,
+        "timeout": 60.0,
         "tooltip": false
     },
     "custom/logo": {
