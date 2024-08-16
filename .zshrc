@@ -9,8 +9,6 @@ fi
 #  GENERAL  #
 #############
 
-#eval "$(starship init zsh)"  # Star Ship theme
-
 export ZSH="$HOME/.oh-my-zsh"
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
