@@ -13,13 +13,12 @@ set -e
 set -u
 
 # All supported choices
-all=(suspend reboot shutdown hibernate logout lockscreen)
+all=(suspend hibernate reboot shutdown logout lockscreen)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
 
-declare -A texts
-texts[lockscreen]="lock screen"
+declare -A texts texts[lockscreen]="lock screen"
 texts[switchuser]="switch user"
 texts[logout]="log out"
 texts[suspend]="suspend"
@@ -32,7 +31,7 @@ icons[lockscreen]="\Uf033e"
 icons[switchuser]="\Uf0019"
 icons[logout]="\Uf0343"
 icons[suspend]="\Uf04b2"
-icons[hibernate]="\Uf02ca"
+icons[hibernate]="\Uf186"
 icons[reboot]="\Uf0709"
 icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
