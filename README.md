@@ -40,7 +40,7 @@
 * Browser - [Firefox](https://www.mozilla.org/en-US/firefox/linux/)
 * Media Player - [mpv](https://github.com/mpv-player/mpv)
 * Music Player _(CLI)_ - [musikcube](https://github.com/clangen/musikcube)
-* Download Manager _(CLI)_ - [Aria2](https://github.com/aria2/aria2)
+* Download Manager _(CLI)_ - [aria2](https://github.com/aria2/aria2)
 
 ### 🌟 _Useful_
 * Calculator - [rofi-calc](https://github.com/svenstaro/rofi-calc)
@@ -52,7 +52,7 @@
 
 ### ⚙️ _Other Components_
 
-- _`Fonts`_ - Caskaydia Mono Nerd Fonts, JetBrains Mono Nerd Fonts, Awesome Fonts, and Nerd Font Symbols
+- _`Fonts`_ - Caskaydia Mono Nerd Fonts, JetBrains Mono Nerd Fonts, Ubuntu Nerd Fonts, and Awesome Fonts
 - _`vesktop`_ - Discord Client
 - _`spicetify`_ - Spotify Customizer
 - _`LibreOffice`_ - Alternative to MSOffice package
