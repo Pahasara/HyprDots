@@ -11,6 +11,11 @@
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286&"/></a> 
 </p>
 
+## Nocturne
+| ![Fetch](https://github.com/user-attachments/assets/3ec2125c-e5ef-442e-aee6-688edebbaf66) | ![Hyprlock](https://github.com/user-attachments/assets/16399b55-1fef-459e-ade5-3a38f898f3a7) |
+|---|---|
+
+## HatsuneMiku
 | ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) | ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) |
 |---|---|
 | ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
