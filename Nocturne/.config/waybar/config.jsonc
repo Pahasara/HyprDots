@@ -1,0 +1,264 @@
+// github.com/pahasara/dotFiles
+{
+    //#####################
+    //### CONFIGURATION ###
+    //#####################
+    // "reload_style_on_change": true,
+    "margin-top": 5,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 9,
+    //##################
+    //### BAR ORDER  ###
+    //##################
+    "modules-left": [
+        // "custom/logo",
+        "idle_inhibitor",
+        // "custom/seperator",
+        "hyprland/workspaces",
+        // "custom/seperator",
+        "custom/spotify"
+    ],
+    "modules-center": [
+        // "hyprland/window",
+        "clock",
+    ],
+    "modules-right": [
+        "tray",
+        // "custom/seperator",
+         "custom/update",
+        // "backlight",
+        "network",
+        "wireplumber",
+        "battery"
+    ],
+    //################
+    //### MODULES  ###
+    //################
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            // "5": [],
+            // "6": [],
+            // "7": [],
+            // "8": [],
+            // "9": [],
+            // "10": []
+        },
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "active": "<small></small>",
+            "default": "",
+        }
+    },
+    "hyprland/window": {
+        "max-length": 40,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a, %d %b  %I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "battery": {
+        "interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": " {capacity}%",
+        "format-plugged": "",
+        // "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "{icon} {capacity}%",
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        // "tooltip-format": "{capacity}%"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        /* "format-wifi": "{essid} ({signalStrength}%) ", */
+        "format": "",
+        "format-wifi": "{icon} {essid}",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "on-click": "~/.scripts/rofi-wifi"
+    },
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 20,
+        "max-length": 24,
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-full": "{icon} {volume}%",
+        "format-muted": " ",
+        "format-icons": [
+            "",
+            "",
+            "<big>󰕾</big>",
+            " "
+        ],
+        "tooltip-format": "{volume}%",
+        "on-click": "easyeffects"
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        // "format": "{icon}  {volume}%  {format_source}",
+        "format": "{format_source}",
+        // "tooltip-format": "Volume: {volume}%",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": [
+         //       "",
+                "",
+                " "
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "kitty -a pw-top pw-top"
+    },
+    "memory": {
+        "interval": 10,
+        "format": "<big>󰾆</big>  {used:0.1f}G",
+        "format-alt": "{percentage}% 󰾆",
+        "format-alt-click": "click",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+        "on-click-right": "kitty --title btop sh -c 'btop'"
+    },
+    "custom/spotify": {
+        "interval": 1,
+        "exec": "~/.scripts/now-playing",
+        "on-click": "~/.scripts/play-next",
+        "on-click-right": "~/.scripts/play-previous",
+        "escape": true
+    },
+    "custom/storage": {
+        "format": "{}  ",
+        "format-alt": "{percentage}%  ",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    "backlight": {
+        "format": "󰃟 {percent}%",
+        // "format": "<big>{icon}</big> {percent}%",
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            "󰃞",
+            "󰃟",
+            "󰃝",
+            "󰃠"
+        ],
+        "on-scroll-down": "brightnessctl set 1%-",
+        "on-scroll-up": "brightnessctl set +1%",
+        "tooltip-format": "Backlight: {percent}%"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+    "idle_inhibitor": {
+        "format": " ", //{icon}
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "timeout": 60.0,
+        "tooltip": false
+    },
+    "custom/logo": {
+        "format": "",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "tooltip-format": "Arch Linux"
+    },
+    "custom/notification": {
+        "format": "",
+        "on-click": "~/.scripts/notify-history",
+        "on-click-right": "dunstctl close-all",
+        "tooltip-format": "Notifications"
+    },
+    "custom/update": {
+        "exec": "~/.scripts/check-update",
+        "interval": 43200,
+        "on-click": "~/.scripts/check-update",
+        "tooltip-format": "Check Updates"
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 0
+    },
+    "custom/seperator":{
+        "format": "|",
+        "tooltip": false
+    }
+}
