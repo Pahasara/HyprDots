@@ -2,7 +2,7 @@
 # Can parse 'max_length=SOME_INTEGER' as argument 
 # (example: ./now-playing max_lentgh=40)
 
-default_max_length=26
+default_max_length=25
 
 # Function to trim the info if it exceeds 'max_length' characters
 trim_info() {
