@@ -40,6 +40,7 @@
 
 ### 🔧 _Necessary_
 * Editor _(CLI)_ - [neovim](https://github.com/neovim/neovim)
+* Clipboard Manager - [cliphist](https://github.com/sentriz/cliphist)
 * File Manager _(CLI)_ - [ranger](https://github.com/ranger/ranger)
 * PDF Reader - [zathura](https://github.com/pwmt/zathura)
 * Browser - [Firefox](https://www.mozilla.org/en-US/firefox/linux/)
