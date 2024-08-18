@@ -1,0 +1,17 @@
+/* github.com/pahasara/dotFiles */
+
+@define-color background rgba(0, 0, 0, 0.0);
+@define-color bg-module rgba(0, 0, 0, 0.7);
+@define-color bg-tray rgba(0, 0, 0, 0.8);
+
+@define-color foreground rgba(49, 163, 200, 1.0);
+@define-color fg-module rgba(245, 250, 255, 1.0);
+@define-color fg-alt rgba(0, 0, 0, 1.0);
+@define-color fg-blink rgba(75, 230, 255, 1.0);
+@define-color fg-persist rgba(135, 145, 165, 1.0);
+
+@define-color border rgba(0, 175, 250, 1);
+@define-color border-module rgba(60, 158, 224, 1.0);
+@define-color border-alt rgba(2, 10, 20, 1.0);
+
+@define-color separator rgba(56, 70, 84, 1.0);
