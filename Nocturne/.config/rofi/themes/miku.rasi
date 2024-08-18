@@ -1,0 +1,21 @@
+* {
+  bg0:    #000000c6; //window
+  bg1:    #4A4C4F05; //input
+  bg2:    #0000000f;
+  bg3:    #00afef; //windowBorder
+  fg0:    #DEDEDE; //main
+  fg1:    #009aee;
+  fg2:    #00abef;
+  fg3:    #243238; //inputBorder
+
+  black   : #000000;
+  red     : #f7768e;
+  green   : #9ece6a;
+  yellow  : #e0af68;
+  blue    : #7aa2f7;
+  magenta : #9aaecc;
+  cyan    : #4abaef;
+
+  accent: @cyan;
+  urgent: @yellow;
+}
