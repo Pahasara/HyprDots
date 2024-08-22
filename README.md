@@ -27,7 +27,7 @@
 > _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
 
 > [!CAUTION]
-> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/Nocturne/.config/hypr/keybinds.conf) file._
+> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/Nocturne/.config/hypr/keybinds.conf) file._
 
 # 📦 Packages/Programs
 
