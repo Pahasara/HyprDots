@@ -45,7 +45,7 @@
 ### 🔧 _Necessary_
 * Editor _(CLI)_ - [neovim](https://github.com/neovim/neovim)
 * Clipboard Manager - [cliphist](https://github.com/sentriz/cliphist)
-* File Manager _(CLI)_ - [ranger](https://github.com/ranger/ranger)
+* File Manager _(CLI)_ - [yazi](https://github.com/sxyazi/yazi)
 * PDF Reader - [zathura](https://github.com/pwmt/zathura)
 * Browser - [Firefox](https://www.mozilla.org/en-US/firefox/linux/)
 * Media Player - [mpv](https://github.com/mpv-player/mpv)
