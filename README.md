@@ -11,18 +11,22 @@
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286&"/></a> 
 </p>
 
+> [!CAUTION]
+> _Please read the instructions in the sections below carefully._
+
 ## Nocturne
-| ![Fetch](https://github.com/user-attachments/assets/3ec2125c-e5ef-442e-aee6-688edebbaf66) | ![Hyprlock](https://github.com/user-attachments/assets/16399b55-1fef-459e-ade5-3a38f898f3a7) |
-|---|---|
+![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
+![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355)
+
+| ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb) | ![Launcher](https://github.com/user-attachments/assets/187af624-7659-40ca-9137-57cb85ffb3c5) | ![Musikcube](https://github.com/user-attachments/assets/a56164f7-c6cf-4265-8d73-535f8b0f8920) |
+|---|---|---|
 
 ## HatsuneMiku
-| ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) |  ![Launcher](https://github.com/user-attachments/assets/75787c09-4e7b-4c94-a9b7-dd5346276551)|
+![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
+
+| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
 |---|---|
-
-| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
-|---|---|---|
-| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![mpv](https://github.com/user-attachments/assets/79d1bb2f-d666-4b84-bc45-92a78e6fba58) |  ![Musikcube](https://github.com/user-attachments/assets/10353cc2-0b6c-4504-8f55-ade647e5fb8e) |
-
+| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) |
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
 > _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
@@ -76,6 +80,44 @@
 - _`nmcli`_ - Connection Manager
 - _`Eza`_ - Alternative to _`ls`_ command
 - _`ianny`_ - Save me from myself
+
+
+# **Install Instructions**
+
+> [!CAUTION] 
+> DO BACKUP YOUR CURRENT CONFIGS BEFORE PROCEEDING FURTHER . I WILL NOT BE HELD RESPONSIBLE IF YOU LOSE YOUR OLD CONFIGS .
+
+```
+git clone https://github.com/Pahasara/HyprDots.git
+```
+
+```
+cd HyprDots
+```
+
+```
+cp -r .scripts $HOME
+```
+
+```
+cd Nocturne
+```
+or (only choose desired theme directory [Nocturne or HatsuneMiku])
+```
+cd HatsuneMiku
+```
+
+```
+cp -r .config/* $HOME/.config
+```
+
+```
+mkdir -p $HOME/Pictures/Wallpapers
+```
+
+```
+cp -r .walls/* $HOME/Pictures/Wallpapers
+```
 
 > [!NOTE]
 > _This setup is more focused on laptops rather than desktops,so i'm keeping it super simple but yeah you can also use it with desktops._   
