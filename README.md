@@ -16,15 +16,19 @@
 |---|---|
 
 ## HatsuneMiku
-| ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) | ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) |
+| ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) |  ![Launcher](https://github.com/user-attachments/assets/75787c09-4e7b-4c94-a9b7-dd5346276551)|
 |---|---|
-| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
-| ![mpv](https://github.com/user-attachments/assets/79d1bb2f-d666-4b84-bc45-92a78e6fba58) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) | 
-| ![Launcher](https://github.com/user-attachments/assets/75787c09-4e7b-4c94-a9b7-dd5346276551) | ![Musikcube](https://github.com/user-attachments/assets/10353cc2-0b6c-4504-8f55-ade647e5fb8e) |
+
+| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
+|---|---|---|
+| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![mpv](https://github.com/user-attachments/assets/79d1bb2f-d666-4b84-bc45-92a78e6fba58) |  ![Musikcube](https://github.com/user-attachments/assets/10353cc2-0b6c-4504-8f55-ade647e5fb8e) |
 
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
 > _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
+
+> [!CAUTION]
+> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/Nocturne/.config/hypr/keybinds.conf) file._
 
 # 📦 Packages/Programs
 
@@ -41,7 +45,7 @@
 ### 🔧 _Necessary_
 * Editor _(CLI)_ - [neovim](https://github.com/neovim/neovim)
 * Clipboard Manager - [cliphist](https://github.com/sentriz/cliphist)
-* File Manager _(CLI)_ - [ranger](https://github.com/ranger/ranger)
+* File Manager _(CLI)_ - [yazi](https://github.com/sxyazi/yazi)
 * PDF Reader - [zathura](https://github.com/pwmt/zathura)
 * Browser - [Firefox](https://www.mozilla.org/en-US/firefox/linux/)
 * Media Player - [mpv](https://github.com/mpv-player/mpv)
