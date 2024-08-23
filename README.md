@@ -12,17 +12,18 @@
 </p>
 
 ## Nocturne
-| ![Fetch](https://github.com/user-attachments/assets/3ec2125c-e5ef-442e-aee6-688edebbaf66) | ![Hyprlock](https://github.com/user-attachments/assets/16399b55-1fef-459e-ade5-3a38f898f3a7) |
-|---|---|
+![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
+![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355)
+
+| ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb) | ![Launcher](https://github.com/user-attachments/assets/187af624-7659-40ca-9137-57cb85ffb3c5) | ![Musikcube](https://github.com/user-attachments/assets/a56164f7-c6cf-4265-8d73-535f8b0f8920) |
+|---|---|---|
 
 ## HatsuneMiku
-| ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b) |  ![Launcher](https://github.com/user-attachments/assets/75787c09-4e7b-4c94-a9b7-dd5346276551)|
+![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
+
+| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
 |---|---|
-
-| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
-|---|---|---|
-| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![mpv](https://github.com/user-attachments/assets/79d1bb2f-d666-4b84-bc45-92a78e6fba58) |  ![Musikcube](https://github.com/user-attachments/assets/10353cc2-0b6c-4504-8f55-ade647e5fb8e) |
-
+| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) |
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
 > _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
