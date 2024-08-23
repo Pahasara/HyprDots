@@ -16,7 +16,7 @@
 
 ## Nocturne
 ![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
-![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355) | ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb) |
+| ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb) | ![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355) |
 |---|---|
 | ![Launcher](https://github.com/user-attachments/assets/187af624-7659-40ca-9137-57cb85ffb3c5) | ![Musikcube](https://github.com/user-attachments/assets/a56164f7-c6cf-4265-8d73-535f8b0f8920) |
 
