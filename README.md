@@ -102,7 +102,7 @@ cp -r .scripts $HOME
 ```
 cd Nocturne
 ```
-or
+or (only choose desired theme directory [Nocturne or HatsuneMiku])
 ```
 cd HatsuneMiku
 ```
