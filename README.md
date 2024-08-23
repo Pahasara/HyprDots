@@ -11,6 +11,9 @@
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286&"/></a> 
 </p>
 
+> [!CAUTION]
+> _Please read the instructions in the sections below carefully._
+
 ## Nocturne
 ![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
 ![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355)
@@ -77,6 +80,40 @@
 - _`nmcli`_ - Connection Manager
 - _`Eza`_ - Alternative to _`ls`_ command
 - _`ianny`_ - Save me from myself
+
+
+# **Install Instructions**
+
+> [!CAUTION] 
+> DO BACKUP YOUR CURRENT CONFIGS BEFORE PROCEEDING FURTHER . I WILL NOT BE HELD RESPONSIBLE IF YOU LOSE YOUR OLD CONFIGS .
+
+```
+git clone https://github.com/Pahasara/HyprDots.git
+```
+
+```
+cd HyprDots
+```
+
+```
+cp -r .scripts $HOME
+```
+
+```
+cd Nocturne
+```
+or
+```
+cd HatsuneMiku
+```
+
+```
+cp -r .config/* $HOME/.config
+```
+
+```
+cp -r .walls $HOME
+```
 
 > [!NOTE]
 > _This setup is more focused on laptops rather than desktops,so i'm keeping it super simple but yeah you can also use it with desktops._   
