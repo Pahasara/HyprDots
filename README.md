@@ -112,7 +112,11 @@ cp -r .config/* $HOME/.config
 ```
 
 ```
-cp -r .walls $HOME
+mkdir -p $HOME/Pictures/Wallpapers
+```
+
+```
+cp -r .walls/* $HOME/Pictures/Wallpapers
 ```
 
 > [!NOTE]
