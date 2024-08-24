@@ -1,5 +1,5 @@
 configuration {
-    modes: "window,run,ssh,drun,calc";
+    modes: "window,run,ssh,drun,calc,emoji";
     sorting-method: "normal";
     show-icons:true;
     matching: "regex";
@@ -9,6 +9,7 @@ configuration {
     display-drun: " ";
     display-window: " ";
     display-calc: " ";
+    display-emoji: "☺";
     terminal: "/usr/bin/kitty";
 }
 
