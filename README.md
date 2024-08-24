@@ -13,6 +13,7 @@
 
 > [!CAUTION]
 > _Please read the instructions in the sections below carefully._
+> _Also, be aware that the author has an incurable obsession with `black and blue` themes._
 
 ## Nocturne
 ![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
