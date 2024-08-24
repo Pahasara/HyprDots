@@ -13,6 +13,7 @@
 
 > [!CAUTION]
 > _Please read the instructions in the sections below carefully._
+> _Also, be aware that the author has an incurable obsession with `black and blue`._
 
 ## Nocturne
 ![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
@@ -27,6 +28,7 @@
 | ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
 |---|---|
 | ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) |
+
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
 > _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
@@ -50,15 +52,15 @@
 * Editor _(CLI)_ - [neovim](https://github.com/neovim/neovim)
 * Clipboard Manager - [cliphist](https://github.com/sentriz/cliphist)
 * File Manager _(CLI)_ - [yazi](https://github.com/sxyazi/yazi)
+* Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 * PDF Reader - [zathura](https://github.com/pwmt/zathura)
 * Browser - [Firefox](https://www.mozilla.org/en-US/firefox/linux/)
 * Media Player - [mpv](https://github.com/mpv-player/mpv)
 * Music Player _(CLI)_ - [musikcube](https://github.com/clangen/musikcube)
-* Download Manager _(CLI)_ - [aria2](https://github.com/aria2/aria2)
 
 ### 🌟 _Useful_
+* Download Manager _(CLI)_ - [aria2](https://github.com/aria2/aria2)
 * Calculator - [rofi-calc](https://github.com/svenstaro/rofi-calc)
-* Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 * GUI File Manager - [nemo](https://github.com/linuxmint/nemo)
 * GUI Torrent Client - [qBittorrent](https://github.com/qbittorrent/qBittorrent)
 * TV Show Manager _(CLI)_ - [ZeroV3](https://github.com/Pahasara/ZeroV3)
@@ -83,7 +85,7 @@
 - _`ianny`_ - Save me from myself
 
 
-# **Install Instructions**
+# 📥 Install Instructions
 
 > [!CAUTION] 
 > DO BACKUP YOUR CURRENT CONFIGS BEFORE PROCEEDING FURTHER . I WILL NOT BE HELD RESPONSIBLE IF YOU LOSE YOUR OLD CONFIGS .
