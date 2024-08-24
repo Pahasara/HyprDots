@@ -79,6 +79,7 @@
 - _`Wireplumber`_ - Session Manager for Pipewire
 - _`nmcli`_ - Connection Manager
 - _`Eza`_ - Alternative to _`ls`_ command
+- _`rofi-emoji-git`_ - Emoji selector
 - _`ianny`_ - Save me from myself
 
 
