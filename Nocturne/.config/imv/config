@@ -1,0 +1,29 @@
+[options]
+# Suppress built-in key bindings, and specify them explicitly in this config file.
+suppress_default_binds = true
+
+[binds]
+q = quit
+
+# Image navigation
+k = prev
+j = next
+gg = goto 1
+<Shift+G> = goto -1
+
+# Zooming
+<Shift+plus> = zoom 1
+i = zoom 1
+<minus> = zoom -1
+o = zoom -1
+
+# Rotate Clockwise by 90 degrees
+<Ctrl+r> = rotate by 90
+
+# Other commands
+c = center
+s = scaling next
+f = fullscreen
+<Shift+S> = upscaling next
+a = zoom actual
+r = reset

@@ -83,8 +83,8 @@ suppress_preload = false
 
 [plugin]
 prepend_previewers = [
-    { name = "*.csv", run = "bat" },
-    { name = "*.md", run = "bat" },
+    { mime = "{audio,video}/*", run = "mediainfo"},
+    { mime = "application/x-subrip", run = "mediainfo"},
 ]
 preloaders = [
 	# Image
