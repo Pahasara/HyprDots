@@ -1,6 +1,6 @@
 /* github.com/pahasara/dotFiles */
 
-@import url("/home/shinzo/.config/waybar/themes/nocturne.css");
+@import url("themes/nocturne.css");
 
 * {
     font-family: "CaskaydiaMono Nerd Font";
