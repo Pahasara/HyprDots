@@ -1,6 +1,6 @@
 /* github.com/pahasara/dotFiles */
 
-@import url("/home/shinzo/.config/waybar/themes/miku.css");
+@import url("themes/miku.css");
 
 * {
     font-family: "CaskaydiaMono Nerd Font";

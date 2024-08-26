@@ -86,7 +86,7 @@ export MANROFFOPT="-c"
 #################
 # Powerlevel10k #
 #################
-source ~/Packages/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.packages/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -111,5 +111,6 @@ alias tmt="./.local/bin/timecanvas/TimeCanvas"
 alias dr="dotnet run"
 alias dpl="dotnet publish -r linux-x64 --sc"
 alias dpw="dotnet publish -r win-x64 --sc"
+alias wall="swww img"
 
 
