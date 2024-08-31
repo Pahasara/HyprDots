@@ -1,4 +1,4 @@
-/* github.com/pahasara/dotFiles */
+/* github.com/pahasara/HyprDots */
 
 @import url("themes/nocturne.css");
 
@@ -6,7 +6,7 @@
     font-family: "CaskaydiaMono Nerd Font";
     font-size: 12px;
     min-height: 20px;
-    padding: 0 3px;
+    padding: 0px 3px;
     font-weight: bold;
 }
 
@@ -14,7 +14,7 @@
 window#waybar {
     background: @background;
     border: 0px solid @border;
-    border-radius: 10;
+    border-radius: 10px;
 }
 
 #window {}
@@ -22,8 +22,8 @@ window#waybar {
 #workspaces {}
 
 #workspaces button {
-    margin: 0 1px;
-    padding: 0 2px;
+    margin: 0px 1px;
+    padding: 0px 2px;
     color: @fg-module;
 }
 
@@ -62,7 +62,7 @@ window#waybar {
 #cpu,
 #custom-spotify,
 #mode {
-    padding: 2 10 2 8px;
+    padding: 2px 10px 2px 8px;
     background-color: @bg-module;
     border-radius: 14px;
     border: 2px solid @border-module;
@@ -120,18 +120,18 @@ window#waybar {
 #memory {}
 
 #network {
-    padding: 2 13 2 8px;
+    padding: 2px 13px 2px 8px;
 }
 
 #network.disconnected {}
 
 #idle_inhibitor {
     color: @foreground;
-    padding: 2 5 2 8px;
+    padding: 2px 5px 2px 8px;
 }
 
 #custom-update {
-    padding: 2 13 2 8px;
+    padding: 2px 13px 2px 8px;
 }
 
 #idle_inhibitor.activated {
@@ -149,5 +149,5 @@ window#waybar {
 }
 
 #tray {
-    padding: 3;
+    padding: 3px;
 }
