@@ -1,0 +1,9 @@
+#!/bin/bash
+
+update_count=$(paru -Qu | wc -l)
+
+if [ $update_count -eq 0 ]; then
+    echo ""
+else
+    echo "  $update_count"
+fi

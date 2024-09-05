@@ -1,0 +1,23 @@
+// gtihub.com/pahasara/HyprDots
+
+* {
+  bg0:    #00000099; //window
+  bg1:    #2A2C2F99; //input
+  bg2:    #0000000f;
+  bg3:    #0099dd; //windowBorder
+  fg0:    #DEDEDE; //main
+  fg1:    #009aee; //selected
+  fg2:    #00aafe;
+  fg3:    #243238; //inputBorder
+
+  black   : #000000;
+  red     : #f7768e;
+  green   : #9ece6a;
+  yellow  : #e0af68;
+  blue    : #7aa2f7;
+  magenta : #9aaecc;
+  cyan    : #4abaef;
+
+  accent: @cyan;
+  urgent: @yellow;
+}

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+wallpaper_dir=~/Pictures/Wallpapers
+
+find_images() {
+  find "$1" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \)
+}
+
+if [[ -d $wallpaper_dir && $(find_images "$wallpaper_dir") ]]; then
+  random_wallpaper=$(find_images "$wallpaper_dir" | shuf -n 1)
+
+  swww img "$random_wallpaper" --transition-type outer --transition-pos 0.854,0.977 --transition-step 90
+
+  echo "Wallpaper set to: $random_wallpaper"
+else
+  echo "Wallpaper directory is either missing or does not contain any images."
+fi

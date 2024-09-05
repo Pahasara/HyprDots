@@ -1,0 +1,10 @@
+[timer]
+idle_timeout = 300
+short_break_timeout = 1800
+long_break_timeout = 5400
+short_break_duration = 120
+long_break_duration = 300
+
+[notification]
+show_progress_bar = true
+minimum_update_delay = 1
