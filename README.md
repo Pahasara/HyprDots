@@ -22,7 +22,7 @@
 |--|--|
 
 > [!IMPORTANT]
-> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/.config/hypr/keybinds.conf) file._
+> **_This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/.config/hypr/keybinds.conf) file._**
 <br>
 
 # 📦 Packages/Programs
@@ -41,7 +41,7 @@
 | **Fonts**                   | [Caskaydia Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-cascadia-mono-nerd), [JetBrains Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd), [Ubuntu Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-ubuntu-nerd), [Awesome Fonts](https://archlinux.org/packages/extra/any/ttf-font-awesome/) |
 <br>
 
-### 🔧 _Necessary Software_
+### 🔧 _Necessary_
 
 | **Category**                | **Package**                                                                                                                                                                     |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -53,17 +53,17 @@
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
 | **Browser**                  | [Firefox](https://www.mozilla.org/en-US/firefox/linux)                                                                                                                          |
-| **Music Player (CLI)**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
+| **Music Player**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
 <br>
 
 ### 🌟 _Useful Tools_
 
 | **Category**                | **Package**                                                                                                                                                                     |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Download Manager (CLI)**   | [aria2](https://github.com/aria2/aria2)                                                                                                                                         |
+| **Download Manager**   | [aria2](https://github.com/aria2/aria2)                                                                                                                                         |
 | **Calculator**               | [rofi-calc](https://github.com/svenstaro/rofi-calc)                                                                                                                             |
-| **Torrent Client (GUI)**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent)                                                                                                                       |
-| **TV Show Manager (CLI)**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
+| **Torrent Client**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent) (GUI)                                                                                                                       |
+| **TV Show Manager**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
 | **System Info**              | [neofetch](https://github.com/dylanaraps/neofetch) (deprecated)                                                                                                                              |
 <br>
 
@@ -91,7 +91,7 @@
 # 📥 Install Instructions
 
 > [!CAUTION] 
-> DO BACKUP YOUR CURRENT CONFIGS BEFORE PROCEEDING FURTHER . I WILL NOT BE HELD RESPONSIBLE IF YOU LOSE YOUR OLD CONFIGS .
+> **Do backup ur current configs before proceeding further. I WILL NOT BE HELD RESPONSIBLE IF U LOSE UR OLD CONFIGS.**
 
 ```
 git clone https://github.com/Pahasara/HyprDots.git
