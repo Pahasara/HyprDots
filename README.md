@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-    <a href="https://github.com/Pahasara/HyprDots/stargazers"><img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=ee5025&style=for-the-badge"></a>
+    <a href="https://github.com/Pahasara/HyprDots/stargazers"><img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=7244b3&style=for-the-badge"></a>
     <a = href="https://hyprland.org">
             <img src="https://img.shields.io/badge/Arch-Hyprland-blue.svg?style=for-the-badge&labelColor=32302f&logo=&logoColor=black&color=258598"></a> 
     <a href="https://github.com/Pahasara/HyprDots/issues"><img src="https://img.shields.io/github/issues/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
