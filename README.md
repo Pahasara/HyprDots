@@ -70,7 +70,6 @@
 ### ⚙️ _Other Components_
 
 - _`Flat Remix GTK Blue Darkest`_ - GTK Theme
-- _`vesktop`_ - Discord
 - _`vesktop`_ - Discord Client
 - _`spicetify`_ - Spotify Customizer
 - _`LibreOffice`_ - Alternative to MSOffice package
