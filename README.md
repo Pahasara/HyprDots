@@ -22,6 +22,7 @@
 
 > [!IMPORTANT]
 > _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/.config/hypr/keybinds.conf) file._
+<br>
 
 # 📦 Packages/Programs
 
@@ -37,6 +38,7 @@
 | **Screen Locker**           | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                                                                  |
 | **Idle Daemon**             | [hypridle](https://github.com/hyprwm/hypridle)                                                                                                                                  |
 | **Fonts**                   | [Caskaydia Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-cascadia-mono-nerd), [JetBrains Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd), [Ubuntu Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-ubuntu-nerd), [Awesome Fonts](https://archlinux.org/packages/extra/any/ttf-font-awesome/) |
+<br>
 
 ### 🔧 _Necessary Software_
 
@@ -51,6 +53,7 @@
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
 | **Browser**                  | [Firefox](https://www.mozilla.org/en-US/firefox/linux)                                                                                                                          |
 | **Music Player (CLI)**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
+<br>
 
 ### 🌟 _Useful Tools_
 
@@ -61,6 +64,7 @@
 | **Torrent Client (GUI)**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent)                                                                                                                       |
 | **TV Show Manager (CLI)**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
 | **System Info**              | [neofetch](https://github.com/dylanaraps/neofetch) (deprecated)                                                                                                                              |
+<br>
 
 ### ⚙️ _Other Components_
 
@@ -81,7 +85,7 @@
 - _`rofi-emoji-git`_ - Emoji selector
 - _`udiskie`_ - Storage Device Manager
 - _`ianny`_ - Save me from myself
-
+<br>
 
 # 📥 Install Instructions
 
@@ -111,6 +115,7 @@ mkdir $HOME/Pictures
 ```
 cp -r .walls/* $HOME/Pictures
 ```
+<br>
 
 ## Nocturne
 ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb)
@@ -130,6 +135,7 @@ cp -r .config/* $HOME/.config
 ```
 cp -r .walls/* $HOME/Pictures
 ```
+<br>
 
 # ❤️ Thanks for Visiting !!
 I Hope You Like my project, if yes then don't forget to give it a `star` as it means a lot.
