@@ -14,6 +14,7 @@
 > [!NOTE]
 > _Please read the instructions in the sections below carefully._
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
+<br>
 
 ## Azure
 ![Hyprlock](https://github.com/user-attachments/assets/bfec38cb-6b7e-442e-b269-6d9a0d015f0d)
