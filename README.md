@@ -11,30 +11,21 @@
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286&"/></a> 
 </p>
 
-> [!CAUTION]
+> [!NOTE]
 > _Please read the instructions in the sections below carefully._
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
 
-## Nocturne
-![Hyprlock](https://github.com/user-attachments/assets/6ebf0368-49b1-4fee-a2de-6e00811dcbe8)
-| ![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb) | ![yazi](https://github.com/user-attachments/assets/c151fd97-adab-4a42-8474-a1f1d1ce7355) |
-|---|---|
-| ![Launcher](https://github.com/user-attachments/assets/187af624-7659-40ca-9137-57cb85ffb3c5) | ![Musikcube](https://github.com/user-attachments/assets/a56164f7-c6cf-4265-8d73-535f8b0f8920) |
-
-
-## HatsuneMiku
-![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
-
-| ![Browser](https://github.com/user-attachments/assets/eadb2480-f8fe-4592-879e-a41542f7d296) | ![LockScreen](https://github.com/user-attachments/assets/cf798ec6-f306-4dc8-8c96-54d0c2acaa2d) |
-|---|---|
-| ![Vesktop](https://github.com/user-attachments/assets/7f9b83c6-1c03-47da-b5a6-4eeb230c1e8f) | ![Spotify](https://github.com/user-attachments/assets/d564219c-3574-4674-b51f-1f78747d4ca4) |
+## Azure
+![Hyprlock](https://github.com/user-attachments/assets/bfec38cb-6b7e-442e-b269-6d9a0d015f0d)
+| ![Multitask](https://github.com/user-attachments/assets/d411f77f-120a-4104-b9e3-51c0ac847706) | ![Yazi](https://github.com/user-attachments/assets/9b235f55-8732-4241-b912-6c420691778a) |
+|--|--|
 
 > [!IMPORTANT]
 > _This repository also includes custom scripts that I use for various tasks, such as checking updates, displaying the current playing song, changing the playing song, and switching wallpapers in Hyprland using keyboard shortcuts._  
-> _To ensure the setup works as intended, make sure to copy the `.scripts` directory to `$HOME/.scripts`._
+> _To ensure the setup works as intended, make sure to copy the `.local/bin` directory to `$HOME/.local/bin`._
 
-> [!CAUTION]
-> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/Nocturne/.config/hypr/keybinds.conf) file._
+> [!NOTE]
+> _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/.config/hypr/keybinds.conf) file._
 
 # 📦 Packages/Programs
 
@@ -99,15 +90,7 @@ cd HyprDots
 ```
 
 ```
-cp -r .scripts $HOME
-```
-
-```
-cd Nocturne
-```
-or (only choose desired theme directory [Nocturne or HatsuneMiku])
-```
-cd HatsuneMiku
+cp -r .local/* $HOME/.local
 ```
 
 ```
@@ -115,15 +98,31 @@ cp -r .config/* $HOME/.config
 ```
 
 ```
-mkdir -p $HOME/Pictures/Wallpapers
+mkdir $HOME/Pictures
 ```
 
 ```
-cp -r .walls/* $HOME/Pictures/Wallpapers
+cp -r .walls/* $HOME/Pictures
 ```
+
+## Nocturne
+![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb)
+
+## HatsuneMiku
+![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
 
 > [!NOTE]
-> _This setup is more focused on laptops rather than desktops,so i'm keeping it super simple but yeah you can also use it with desktops._   
+> _If u like to use other than Azure (theme), follow these steps. Replace 'theme_name' with ur desired theme (Nocturne or HatsuneMiku)_   
+
+```
+cd theme_name
+```
+```
+cp -r .config/* $HOME/.config
+```
+```
+cp -r .walls/* $HOME/Pictures
+```
 
 # ❤️ Thanks for Visiting !!
 I Hope You Like my project, if yes then don't forget to give it a `star` as it means a lot.
