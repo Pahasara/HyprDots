@@ -1,0 +1,11 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+image/png=imv.desktop
+image/gif=imv.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+image/jpeg=imv.desktop
+
+[Added Associations]
+image/png=imv.desktop;
+image/gif=imv.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;

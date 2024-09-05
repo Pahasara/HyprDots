@@ -9,13 +9,12 @@
 #    stack_tag
 #    summary
 
-
 [global]
     monitor = 0
     follow = mouse
     width = (0, 400)
-    origin = top-right
-    offset = 8x7
+    origin = bottom-right
+    offset = 5x5
 
     progress_bar = true
     progress_bar_height = 10
@@ -31,7 +30,7 @@
     padding = 15
     horizontal_padding = 15
     frame_width = 2
-    corner_radius = 16
+    corner_radius = 7
     sort = yes
     idle_threshold = 120
 
@@ -68,21 +67,21 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#051015af"
+    background = "#051015bf"
     foreground = "#e2f4ff"
     highlight = "#22bcff"
-    frame_color = "#11aaff"
+    frame_color = "#3c9ee0"
     timeout = 5
 
 [urgency_normal]
-    background = "#02060faf"
+    background = "#02060fbf"
     foreground = "#effaff"
     highlight = "#33cdff"
-    frame_color = "#32bbff"
+    frame_color = "#3c9eef"
     timeout = 15
 
 [urgency_critical]
-    background = "#940405af"
+    background = "#940405bf"
     foreground = "#ffd0e0"
     frame_color = "#f38ba8"
     timeout = 1000

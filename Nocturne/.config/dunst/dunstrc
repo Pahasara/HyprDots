@@ -97,4 +97,4 @@
 
 [play_sound]
     msg_urgency = "normal"
-    script = /home/shinzo/.scripts/play-notify-sound
+    script = $HOME/.local/bin/play-notify-sound

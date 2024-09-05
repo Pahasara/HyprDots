@@ -1,0 +1,2 @@
+#!/bin/sh
+pw-play --volume=5.0 ~/.local/share/sounds/notification.wav

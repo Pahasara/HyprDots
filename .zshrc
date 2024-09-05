@@ -5,6 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+###########
+# ENVIRON #
+###########
+#export PATH="$PATH:$HOME/.local/bin"
+
 #############
 #  GENERAL  #
 #############
@@ -112,5 +117,9 @@ alias dr="dotnet run"
 alias dpl="dotnet publish -r linux-x64 --sc"
 alias dpw="dotnet publish -r win-x64 --sc"
 alias wall="swww img"
-
+alias vz="vim .zshrc"
+alias ns="notify-send 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' --urgency=normal"
+alias uu="./.local/bin/check-update"
+alias jr="java"
+alias jc="javac"
 

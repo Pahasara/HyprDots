@@ -1,0 +1,157 @@
+/* github.com/pahasara/HyprDots */
+
+@import url("themes/azure.css");
+
+* {
+    font-family: "CaskaydiaMono Nerd Font";
+    font-size: 12px;
+    min-height: 20px;
+    padding: 0px 3px;
+    font-weight: bold;
+}
+
+
+window#waybar {
+    background: @background;
+    border: 0px solid @border;
+    border-radius: 10px;
+}
+
+#window {}
+
+#workspaces {}
+
+#workspaces button {
+    margin: 0px 1px;
+    padding: 0px 2px;
+    color: @fg-module;
+}
+
+#workspaces button:hover {
+    background: transparent;
+}
+
+#workspaces button.focused {
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.active {
+    color: @foreground;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#custom-bandwidth,
+#custom-notification,
+#custom-update,
+#custom-logo,
+#idle_inhibitor,
+#window,
+#memory,
+#custom-storage,
+#network,
+#wireplumber,
+#battery,
+#tray,
+#backlight,
+#workspaces,
+#clock,
+#cpu,
+#custom-spotify,
+#mode {
+    padding: 2px 10px 2px 8px;
+    background-color: @bg-module;
+    border-radius: 14px 5px 15px 8px;
+    border: 2px solid @border-module;
+    color: @fg-module;
+}
+
+#tray {
+    background-color: @bg-tray;
+}
+
+#custom-logo {
+    color: @foreground;
+}
+
+#battery {}
+
+#battery icon {
+    color: red;
+}
+
+#battery.plugged {
+    color: @foreground;
+    animation-name: blink;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging {
+    color: @foreground;
+    animation-name: blink;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: @fg-blink;
+    }
+}
+
+#battery.warning:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {}
+
+#memory {}
+
+#network {
+    padding: 2px 13px 2px 8px;
+}
+
+#network.disconnected {}
+
+#idle_inhibitor {
+    color: @foreground;
+    padding: 2px 5px 2px 8px;
+}
+
+#custom-update {
+    padding: 2px 13px 2px 8px;
+}
+
+#idle_inhibitor.activated {
+    color: @fg-module;
+}
+
+#idle_inhibitor.deactivated {
+    color: @fg-alt;
+}
+
+#pulseaudio {}
+
+#pulseaudio.muted {}
+
+#custom-spotify {}
+
+#custom-seperator {
+    color: @separator;
+}
+
+#tray {
+    padding: 3px;
+}

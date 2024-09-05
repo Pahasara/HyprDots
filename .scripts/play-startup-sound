@@ -1,2 +1,0 @@
-#!/bin/sh
-pw-play --volume=1.5 ~/.local/share/sounds/startup.wav
