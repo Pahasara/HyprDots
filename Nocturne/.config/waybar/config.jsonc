@@ -1,16 +1,16 @@
-// github.com/pahasara/dotFiles
+// github.com/pahasara/HyprDots
 {
     //#####################
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 5,
-    "margin-left": 0,
-    "margin-right": 0,
+    "margin-top": 7,
+    "margin-left": 7,
+    "margin-right": 7,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 9,
+    "spacing": 2, // default: 9
     //##################
     //### BAR ORDER  ###
     //##################
@@ -29,7 +29,7 @@
     "modules-right": [
         "tray",
         // "custom/seperator",
-         "custom/update",
+        // "custom/update",
         // "backlight",
         "network",
         "wireplumber",
@@ -117,7 +117,7 @@
             "󰤥",
             "󰤨"
         ],
-        "on-click": "~/.scripts/rofi-wifi"
+        "on-click": "~/.local/bin/rofi-wifi"
     },
     "network#speed": {
         "interval": 1,
@@ -190,9 +190,9 @@
     },
     "custom/spotify": {
         "interval": 1,
-        "exec": "~/.scripts/now-playing",
-        "on-click": "~/.scripts/play-next",
-        "on-click-right": "~/.scripts/play-previous",
+        "exec": "~/.local/bin/now-playing",
+        "on-click": "~/.local/bin/play-next",
+        "on-click-right": "~/.local/bin/play-previous",
         "escape": true
     },
     "custom/storage": {
@@ -238,19 +238,19 @@
     },
     "custom/logo": {
         "format": "",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.scripts/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
+        "on-click": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
         "tooltip-format": "Arch Linux"
     },
     "custom/notification": {
         "format": "",
-        "on-click": "~/.scripts/notify-history",
+        "on-click": "~/.local/bin/notify-history",
         "on-click-right": "dunstctl close-all",
         "tooltip-format": "Notifications"
     },
     "custom/update": {
-        "exec": "~/.scripts/check-update",
+        "exec": "~/.local/bin/check-update",
         "interval": 43200,
-        "on-click": "~/.scripts/check-update",
+        "on-click": "~/.local/bin/check-update",
         "tooltip-format": "Check Updates"
     },
     "tray": {

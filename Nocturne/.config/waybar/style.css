@@ -5,7 +5,7 @@
 * {
     font-family: "CaskaydiaMono Nerd Font";
     font-size: 12px;
-    min-height: 20px;
+    min-height: 16px;
     padding: 0px 3px;
     font-weight: bold;
 }
@@ -16,10 +16,6 @@ window#waybar {
     border: 0px solid @border;
     border-radius: 10px;
 }
-
-#window {}
-
-#workspaces {}
 
 #workspaces button {
     margin: 0px 1px;
@@ -44,27 +40,21 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#custom-bandwidth,
-#custom-notification,
-#custom-update,
-#custom-logo,
 #idle_inhibitor,
-#window,
-#memory,
-#custom-storage,
+#workspaces,
+#custom-spotify,
+#clock,
+#tray,
 #network,
 #wireplumber,
-#battery,
-#tray,
-#backlight,
-#workspaces,
-#clock,
-#cpu,
-#custom-spotify,
-#mode {
-    padding: 2px 10px 2px 8px;
+#battery {}
+
+.modules-left,
+.modules-right,
+.modules-center {
+    padding: 2px 4px 2px 4px;
     background-color: @bg-module;
-    border-radius: 14px;
+    border-radius: 14px 5px 15px 8px;
     border: 2px solid @border-module;
     color: @fg-module;
 }
@@ -76,8 +66,6 @@ window#waybar {
 #custom-logo {
     color: @foreground;
 }
-
-#battery {}
 
 #battery icon {
     color: red;
@@ -115,13 +103,14 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {}
-
-#memory {}
-
 #network {
     padding: 2px 13px 2px 8px;
 }
+
+#battery {
+    padding: 2px 8px 2px 8px;
+}
+
 
 #network.disconnected {}
 
@@ -138,11 +127,13 @@ window#waybar {
     color: @fg-module;
 }
 
+#idle_inhibitor.deactivated {
+    color: @fg-alt;
+}
+
 #pulseaudio {}
 
 #pulseaudio.muted {}
-
-#custom-spotify {}
 
 #custom-seperator {
     color: @separator;
