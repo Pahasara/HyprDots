@@ -118,7 +118,8 @@ cp -r .walls/* $HOME/Pictures
 <br>
 
 ## Nocturne
-![Fetch](https://github.com/user-attachments/assets/6190c118-322b-4264-89cd-427958286beb)
+![Fetch](https://github.com/user-attachments/assets/d3be6ed4-6089-4a9f-ae6a-30df5de10384)
+
 
 ## HatsuneMiku
 ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
