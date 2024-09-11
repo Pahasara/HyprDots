@@ -2,7 +2,7 @@
 # See man `man zathurarc'
 
 # Open document in fit-width mode by default
-set adjust-open "best-fit"
+set adjust-open "width"
 
 # One page per row by default
 set pages-per-row 1
