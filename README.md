@@ -5,8 +5,8 @@
 <p align="center">
     <a href="https://github.com/Pahasara/HyprDots/stargazers"><img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=7244b3&style=for-the-badge"></a>
     <a href="https://hyprland.org"><img src="https://img.shields.io/badge/Arch-Hyprland-blue.svg?style=for-the-badge&labelColor=32302f&color=258598"></a> 
-    <a href="https://github.com/Pahasara/HyprDots/issues"><img src="https://img.shields.io/github/issues/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
-    <a href="https://github.com/Pahasara/HyprDots/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=32302f&colorB=b16286&logo=unlicense&logoColor=b16286"></a> 
+    <a href="https://github.com/Pahasara/HyprDots/last-commit"><img src="https://img.shields.io/github/last-commit/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
+    <a href="https://github.com/Pahasara/HyprDots/repo-size"><img src="https://img.shields.io/github/repo-size/Pahasara/HyprDots?colorA=32302f&colorB=b16286&style=for-the-badge"></a> 
 </p>
 
 > [!NOTE]
