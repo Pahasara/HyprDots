@@ -5,11 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-###########
-# ENVIRON #
-###########
-#export PATH="$PATH:$HOME/.local/bin"
-
 #############
 #  GENERAL  #
 #############
@@ -67,9 +62,19 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 
-########################
-#  User configuration  #
-########################
+#################
+# Powerlevel10k #
+#################
+source ~/.packages/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+###########
+# ENVIRON #
+###########
+
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -87,39 +92,36 @@ export BAT_THEME="tokyonight_night"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-
-#################
-# Powerlevel10k #
-#################
-source ~/.packages/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
 ######################
 #      ALIASES       #
 ######################
 alias :q="exit"
-alias py="python"
-alias vim="nvim"
-alias nf="neofetch"
 alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -alF --icons --color=always --group-directories-first'
 alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
+
 alias mk="musikcube"
 alias z="./.local/bin/zero/Zero.CLI"
 alias zero="./.local/bin/zero/Zero.CLI"
 alias tmt="./.local/bin/timecanvas/TimeCanvas"
+alias uu="./.local/bin/check-update"
+alias py="python"
+alias vim="nvim"
+alias nf="neofetch"
 alias dr="dotnet run"
 alias dpl="dotnet publish -r linux-x64 --sc"
 alias dpw="dotnet publish -r win-x64 --sc"
-alias wall="swww img"
-alias vz="vim .zshrc"
-alias ns="notify-send 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' --urgency=normal"
-alias uu="./.local/bin/check-update"
 alias jr="java"
 alias jc="javac"
+alias ac="aria2c"
+
+alias wall="swww img"
+alias vz="vim ~/.zshrc"
+alias vk="vim ~/.config/kitty/kitty.conf"
+alias ns="notify-send 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' --urgency=normal"
+alias xzz="XZ_OPT='-9' tar -cJf"
+alias gzz="tar -czf"
+alias zst="tar -I 'zstd --ultra -22' -cf"
 
