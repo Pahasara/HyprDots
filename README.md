@@ -16,7 +16,7 @@
 
 ## Azure
 ![Hyprlock](https://github.com/user-attachments/assets/bfec38cb-6b7e-442e-b269-6d9a0d015f0d)
-| ![Multitask](https://github.com/user-attachments/assets/d411f77f-120a-4104-b9e3-51c0ac847706) | ![Yazi](https://github.com/user-attachments/assets/9b235f55-8732-4241-b912-6c420691778a) |
+| ![Multitask](https://github.com/user-attachments/assets/a04569b2-3353-4c30-8e15-8cdcc5f21a52) | ![Yazi](https://github.com/user-attachments/assets/9b235f55-8732-4241-b912-6c420691778a) |
 |--|--|
 
 > [!IMPORTANT]
@@ -62,7 +62,7 @@
 | **Calculator**               | [rofi-calc](https://github.com/svenstaro/rofi-calc)                                                                                                                             |
 | **Torrent Client**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent) (GUI)                                                                                                                       |
 | **TV Show Manager**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
-| **System Info**              | [neofetch](https://github.com/dylanaraps/neofetch) (deprecated)                                                                                                                              |
+| **System Info**              | [fastfetch](https://github.com/fastfetch-cli/fastfetch)                                                                                                                              |
 <br>
 
 ### ⚙️ _Other Components_
