@@ -62,7 +62,7 @@
 | **Calculator**               | [rofi-calc](https://github.com/svenstaro/rofi-calc)                                                                                                                             |
 | **Torrent Client**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent) (GUI)                                                                                                                       |
 | **TV Show Manager**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
-| **System Info**              | [neofetch](https://github.com/dylanaraps/neofetch) (deprecated)                                                                                                                              |
+| **System Info**              | [fastfetch](https://github.com/fastfetch-cli/fastfetch)                                                                                                                              |
 <br>
 
 ### ⚙️ _Other Components_
