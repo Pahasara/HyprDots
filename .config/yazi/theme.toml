@@ -17,8 +17,8 @@ marker_cut      = { fg = "#f38ba8", bg = "#f38ba8" }
 marker_selected = { fg = "#4caef0", bg = "#89b4fa" }
 
 # Tab
-tab_active   = { fg = "#1e1e2e", bg = "#adb6d4" }
-tab_inactive = { fg = "#adb6d4", bg = "#242432" }
+tab_active   = { fg = "#1e1e2e", bg = "#2cb6fe" }
+tab_inactive = { fg = "#2cb6fe", bg = "#000000" }
 tab_width    = 1
 
 # Count
@@ -33,7 +33,7 @@ border_style  = { fg = "#6f748c" }
 [status]
 separator_open  = ""
 separator_close = ""
-separator_style = { fg = "#242432", bg = "#242432" }
+separator_style = { fg = "#000000", bg = "#000000" }
 
 # Mode
 mode_normal = { fg = "#1e1e2e", bg = "#4caef0", bold = true }
@@ -42,8 +42,8 @@ mode_unset  = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
 
 # Progress
 progress_label  = { fg = "#ffffff", bold = true }
-progress_normal = { fg = "#4caef0", bg = "#242432" }
-progress_error  = { fg = "#f38ba8", bg = "#242432" }
+progress_normal = { fg = "#4caef0", bg = "#000000" }
+progress_error  = { fg = "#f38ba8", bg = "#000000" }
 
 # Permissions
 permissions_t = { fg = "#4caef0" }
@@ -81,7 +81,7 @@ on      = { fg = "#f5c2e7" }
 exec    = { fg = "#33ccff" }
 desc    = { fg = "#9399b2" }
 hovered = { bg = "#585b70", bold = true }
-footer  = { fg = "#242432", bg = "#adb6d4" }
+footer  = { fg = "#000000", bg = "#2cb6fe" }
 
 [filetype]
 
@@ -103,6 +103,6 @@ rules = [
 	{ mime = "application/x-rar",           fg = "#f5c2e7" },
 
 	# Fallback
-	{ name = "*", fg = "#adb6d4" },
+	{ name = "*", fg = "#2cb6fe" },
 	{ name = "*/", fg = "#4caef0" }
 ]
