@@ -8,16 +8,20 @@ suppress_default_binds = true
 q = quit
 
 # Image navigation
-k = prev
-j = next
+<Shift+K> = prev
+<Shift+J> = next
+k = pan 0, 30
+j = pan 0, -30
+h = pan -30, 0
+l = pan 30, 0
 gg = goto 1
 <Shift+G> = goto -1
 
 # Zooming
-<Shift+plus> = zoom 1
-i = zoom 1
-<minus> = zoom -1
-o = zoom -1
+<Shift+plus> = zoom 2
+i = zoom 2
+<minus> = zoom -2
+o = zoom -2
 
 # Rotate Clockwise by 90 degrees
 <Ctrl+r> = rotate by 90
