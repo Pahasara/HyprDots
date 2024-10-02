@@ -8,8 +8,10 @@ suppress_default_binds = true
 q = quit
 
 # Image navigation
-<Shift+K> = prev
-<Shift+J> = next
+<Left> = prev
+<Right> = next
+b = prev
+n = next
 k = pan 0, 30
 j = pan 0, -30
 h = pan -30, 0
