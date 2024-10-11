@@ -4,9 +4,9 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 7,
-    "margin-left": 7,
-    "margin-right": 7,
+    "margin-top": 6,
+    "margin-left": 5,
+    "margin-right": 5,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
@@ -142,22 +142,6 @@
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
-        "format-full": "{icon} {volume}%",
-        "format-muted": " ",
-        "format-icons": [
-            "",
-            "",
-            "<big>󰕾</big>",
-            " "
-        ],
-        "tooltip-format": "{volume}%",
-        "on-click": "easyeffects"
-    },
-    "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        // "format": "{icon}  {volume}%  {format_source}",
-        "format": "{format_source}",
-        // "tooltip-format": "Volume: {volume}%",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
@@ -171,13 +155,13 @@
             "portable": "",
             "car": " ",
             "default": [
-         //       "",
+               "",
                 "",
                 " "
-            ]
+            ],
         },
-        "on-click": "pavucontrol",
-        "on-click-right": "kitty -a pw-top pw-top"
+        "tooltip-format": "{volume}%",
+        "on-click": "easyeffects"
     },
     "memory": {
         "interval": 10,
