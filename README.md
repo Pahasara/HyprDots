@@ -32,7 +32,7 @@
 | **Compositor**              | [Hyprland](https://hyprland.org)                                                                                                                                                |
 | **Status Bar**              | [Waybar](https://github.com/Alexays/Waybar)                                                                                                                                     |
 | **Terminal**                | [Kitty](https://github.com/kovidgoyal/kitty)                                                                                                                                    |
-| **Launcher/Wifi-menu/Powermenu** | [rofi (wayland-fork)](https://archlinux.org/packages/extra/x86_64/rofi-wayland/)                                                                                                 |
+| **Launcher & Menus** | [rofi (wayland-fork)](https://archlinux.org/packages/extra/x86_64/rofi-wayland/)                                                                                                 |
 | **Notifications**           | [dunst](https://github.com/dunst-project/dunst)                                                                                                                                 |
 | **Screen Locker**           | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                                                                  |
 | **Idle Daemon**             | [hypridle](https://github.com/hyprwm/hypridle)                                                                                                                                  |
@@ -50,7 +50,7 @@
 | **Wallpaper Daemon**         | [swww](https://github.com/LGFae/swww)                                                                                                                                           |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
-| **Browser**                  | [Firefox](https://www.mozilla.org/en-US/firefox/linux)                                                                                                                          |
+| **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
 | **Music Player**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
 <br>
 
@@ -77,7 +77,6 @@
 - _`Wireplumber`_ - Session Manager for Pipewire
 - _`nmcli`_ - Connection Manager
 - _`vesktop`_ - Discord Client
-- _`spicetify`_ - Spotify Customizer
 - _`LibreOffice`_ - Alternative to MSOffice package
 - _`Grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
 - _`rofi-emoji-git`_ - Emoji selector
@@ -116,10 +115,11 @@ cp -r .walls/* $HOME/Pictures
 <br>
 
 ## Nocturne
-![Fetch](https://github.com/user-attachments/assets/d3be6ed4-6089-4a9f-ae6a-30df5de10384)
+![Fetch](https://github.com/user-attachments/assets/ee131759-0892-43e3-975d-aa15f51d4ce2)
 
 
-## HatsuneMiku
+
+## Miku
 ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
 
 > [!NOTE]
