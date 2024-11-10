@@ -15,9 +15,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 zstyle ':omz:update' frequency 13   # how often to auto-update (in days).
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-
 CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -39,9 +36,10 @@ COMPLETION_WAITING_DOTS="false"
 # HISTORY #
 ###########
 export HISTSIZE=10000
+export SAVEHIST=10000
 export HISTDUP=erase
 setopt appendhistory
-setopt sharehistory
+setopt SHARE_HISTORY
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -83,9 +81,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-
-# Man page highlighting with nvim
-# export MANPAGER="nvim +Man!"
+export VISUAL='nvim'
 
 # Man page highlighting with bat
 export BAT_THEME="tokyonight_night"
@@ -102,22 +98,8 @@ alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-alias mk="musikcube"
 alias z="./.local/bin/zero/Zero.CLI"
 alias zero="./.local/bin/zero/Zero.CLI"
-alias tmt="./.local/bin/timecanvas/TimeCanvas"
-alias uu="./.local/bin/check-update 2>/dev/null"
-alias py="python"
-alias vim="nvim"
-alias ff="fastfetch"
-alias dr="dotnet run"
-alias dpl="dotnet publish -r linux-x64 --sc"
-alias dpw="dotnet publish -r win-x64 --sc"
-alias jr="java"
-alias jc="javac"
-alias ac="aria2c"
-alias mg="mega-get"
-
 alias wall="swww img"
 alias vz="vim ~/.zshrc"
 alias vk="vim ~/.config/kitty/kitty.conf"
@@ -125,4 +107,26 @@ alias ns="notify-send 'Arch Linux' 'DAMN! You have not riced me since last month
 alias xzz="XZ_OPT='-9' tar -cJf"
 alias gzz="tar -czf"
 alias zst="tar -I 'zstd -19 -T4' -cf"
+alias cdc="cd && cd Code"
 
+alias vi="nvim"
+alias vim="nvim"
+alias ac="aria2c"
+alias ff="fastfetch"
+alias mk="musikcube"
+alias mg="mega-get"
+alias y="yazi"
+
+alias jr="java"
+alias jc="javac"
+alias py="python"
+alias dr="dotnet run"
+alias dpl="dotnet publish -r linux-x64 --sc"
+alias dpw="dotnet publish -r win-x64 --sc"
+alias gcc="gcc -Wall"
+alias g++="g++ -Wall"
+alias clang="clang -std=c23 -Wall"
+alias clang++="clang++ -std=c++23 -Wall"
+
+### PATH ###
+export PATH=$HOME/.local/bin:$PATH
