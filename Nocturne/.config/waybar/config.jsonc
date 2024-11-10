@@ -4,13 +4,13 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 7,
-    "margin-left": 7,
-    "margin-right": 7,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 2, // default: 9
+    "spacing": 5,
     //##################
     //### BAR ORDER  ###
     //##################
@@ -20,7 +20,7 @@
         // "custom/seperator",
         "hyprland/workspaces",
         // "custom/seperator",
-        "custom/spotify"
+        "custom/song"
     ],
     "modules-center": [
         // "hyprland/window",
@@ -76,7 +76,7 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d %b  %I:%M %p}",
+        "format": "{:%a %d %b | %I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -142,22 +142,6 @@
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
-        "format-full": "{icon} {volume}%",
-        "format-muted": " ",
-        "format-icons": [
-            "",
-            "",
-            "<big>󰕾</big>",
-            " "
-        ],
-        "tooltip-format": "{volume}%",
-        "on-click": "easyeffects"
-    },
-    "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        // "format": "{icon}  {volume}%  {format_source}",
-        "format": "{format_source}",
-        // "tooltip-format": "Volume: {volume}%",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
@@ -171,13 +155,13 @@
             "portable": "",
             "car": " ",
             "default": [
-         //       "",
+               "",
                 "",
                 " "
-            ]
+            ],
         },
-        "on-click": "pavucontrol",
-        "on-click-right": "kitty -a pw-top pw-top"
+        "tooltip-format": "{volume}%",
+        "on-click": "easyeffects"
     },
     "memory": {
         "interval": 10,
@@ -188,7 +172,7 @@
         "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
-    "custom/spotify": {
+    "custom/song": {
         "interval": 1,
         "exec": "~/.local/bin/now-playing",
         "on-click": "~/.local/bin/play-next",
