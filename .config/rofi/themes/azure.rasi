@@ -1,22 +1,23 @@
-// gtihub.com/pahasara/HyprDots
+// github.com/pahasara/HyprDots
 
 * {
-  bg0:    #000000bb; //window
-  bg1:    #1A1C1F99; //input
-  bg2:    #0000000f;
-  bg3:    #0099dd; //windowBorder
-  fg0:    #DEDEDE; //main
-  fg1:    #0088cc; //selected
-  fg2:    #00aafe;
-  fg3:    #203033; //inputBorder
+  bg0:    #0000008F; //window
+  bg1:    #2A2C2F99; //input
+  bg2:    #0000001F; //selected
+  bg3:    #323234EE; //windowBorder
+  bg4:    #000000DF; //window
+  fg0:    #DEDEDE;   //main
+  fg1:    #0000000F;
+  fg2:    #33BBFF;   //selected
+  fg3:    #282830;   //inputBorder
 
   black   : #000000;
-  red     : #f7768e;
-  green   : #9ece6a;
-  yellow  : #e0af68;
-  blue    : #7aa2f7;
-  magenta : #9aaecc;
-  cyan    : #4abaef;
+  red     : #F7768E;
+  green   : #9ECE6A;
+  yellow  : #E0AF68;
+  blue    : #7AA2F7;
+  magenta : #9AAECC;
+  cyan    : #4ABAEF;
 
   accent: @cyan;
   urgent: @yellow;

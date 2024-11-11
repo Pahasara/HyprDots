@@ -4,10 +4,10 @@ configuration {
     terminal: "/usr/bin/kitty";
 }
 
-@theme "azuremist"
+@theme "azure"
 
 * {
-    font: "Ubuntu Nerd Font 13";
+    font: "Ubuntu Nerd Font 11";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -18,11 +18,11 @@ configuration {
 }
 
 window {
-    location: northeast;
-    y-offset: -32;
-    x-offset: -4;
-    width:          500;
-    border-radius:  7px;
+    location: southeast;
+    y-offset: -2;
+    x-offset: -2;
+    width:          300;
+    border-radius:  9px;
 
     border: 2px;
     border-color: @bg3;
@@ -64,8 +64,8 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @fg2;
-    text-color: @black;
+    background-color:   @bg2;
+    text-color: @fg2;
 }
 
 element-icon {
