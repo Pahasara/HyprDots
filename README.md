@@ -15,8 +15,12 @@
 <br>
 
 ## Azure
-![Hyprlock](https://github.com/user-attachments/assets/bfec38cb-6b7e-442e-b269-6d9a0d015f0d)
-| ![Multitask](https://github.com/user-attachments/assets/a04569b2-3353-4c30-8e15-8cdcc5f21a52) | ![Yazi](https://github.com/user-attachments/assets/9b235f55-8732-4241-b912-6c420691778a) |
+![Fetch](https://github.com/user-attachments/assets/8a2bc99e-28f0-4b5d-ae7c-d9785037abe8)
+
+| ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
+|--|--|
+
+| ![Yazi](https://github.com/user-attachments/assets/6cfa71af-3bae-48f7-a3b7-3ec4768d538d) | ![Hyprlock](https://github.com/user-attachments/assets/bfec38cb-6b7e-442e-b269-6d9a0d015f0d) |
 |--|--|
 
 > [!IMPORTANT]
@@ -45,12 +49,12 @@
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Shell**                   | [zsh](https://www.zsh.org/)                                                                                                                                                     |
 | **Editor**                  | [neovim](https://github.com/neovim/neovim)                                                                                                                                      |
+| **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
 | **Clipboard Manager**        | [cliphist](https://github.com/sentriz/cliphist)                                                                                                                                 |
 | **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [nemo](https://github.com/linuxmint/nemo) (GUI)                                                                                         |
 | **Wallpaper Daemon**         | [swww](https://github.com/LGFae/swww)                                                                                                                                           |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
-| **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
 | **Music Player**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
 <br>
 
@@ -123,7 +127,7 @@ cp -r .walls/* $HOME/Pictures
 ![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
 
 > [!NOTE]
-> _If u would like to use a theme other than Azure, follow these steps. Replace 'theme_name' with ur desired theme (Nocturne or HatsuneMiku)._   
+> _If u would like to use a theme other than Azure, follow these steps. Replace 'theme_name' with ur desired theme (Nocturne or Miku)._   
 
 ```
 cd theme_name
