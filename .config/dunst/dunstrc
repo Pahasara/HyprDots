@@ -1,4 +1,4 @@
-# Messages can be matched by
+#    NOTE: Messages can be matched by
 #    appname (discouraged, see desktop_entry)
 #    body
 #    category
@@ -14,7 +14,7 @@
     follow = mouse
     width = (0, 400)
     origin = bottom-right
-    offset = 5x5
+    offset = 4x4
 
     progress_bar = true
     progress_bar_height = 10
@@ -26,11 +26,11 @@
     indicate_hidden = yes
     shrink = no
     separator_height = 2
-    separator_color = "#11111b"
+    separator_color = "#11111B"
     padding = 15
     horizontal_padding = 15
     frame_width = 2
-    corner_radius = 7
+    corner_radius = 9
     sort = yes
     idle_threshold = 120
 
@@ -67,33 +67,35 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#051015bf"
-    foreground = "#e2f4ff"
-    highlight = "#22bcff"
-    frame_color = "#3c9ee0"
+    background = "#010408AF"
+    foreground = "#E2F4FF"
+    highlight = "#22BCFF"
+    frame_color = "#3399DD"
     timeout = 5
 
 [urgency_normal]
-    background = "#02060fbf"
-    foreground = "#effaff"
-    highlight = "#33cdff"
-    frame_color = "#3c9eef"
+    background = "#010306BF"
+    foreground = "#EFFAFF"
+    highlight = "#33CDFF"
+    frame_color = "#33AAEF"
     timeout = 15
 
 [urgency_critical]
-    background = "#940405bf"
-    foreground = "#ffd0e0"
-    frame_color = "#f38ba8"
+    background = "#010306EF"
+    foreground = "#FF8800"
+    highlight = "#FF4422"
+    frame_color = "#FF4422"
     timeout = 1000
-
-[volume]
-    appname = "Volume"
-    highlight = "#cba6f7"
-
-[backlight]
-    appname = "Backlight"
-    highlight = "#eba0ac"
 
 [play_sound]
     msg_urgency = "normal"
-    script = $HOME/.local/bin/play-notify-sound
+    script = ~/.local/bin/notify-sound
+
+# [volume]
+#     appname = "Volume"
+#     highlight = "#CBA6F7"
+#
+# [backlight]
+#     appname = "Backlight"
+#     highlight = "#EBA0AC"
+
