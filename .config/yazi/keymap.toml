@@ -69,6 +69,7 @@ keymap = [
 	{ on = [ "D" ],         run = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
 	{ on = [ "r" ],         run = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
 	{ on = [ "a" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
+	{ on = [ "<C-2>" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ "A" ],         run = "rename",                           desc = "Rename a file or directory" },
 	{ on = [ ";" ],         run = "shell --interactive",                                                desc = "Run a shell command" },
 	{ on = [ ":" ],         run = "shell --block --interactive",                                        desc = "Run a shell command (block the UI until the command finishes)" },
