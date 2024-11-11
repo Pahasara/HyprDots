@@ -51,7 +51,7 @@
 | **Editor**                  | [neovim](https://github.com/neovim/neovim)                                                                                                                                      |
 | **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
 | **Clipboard Manager**        | [cliphist](https://github.com/sentriz/cliphist)                                                                                                                                 |
-| **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [nemo](https://github.com/linuxmint/nemo) (GUI)                                                                                         |
+| **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [nautilus](https://github.com/GNOME/nautilus) (GUI)                                                                                         |
 | **Wallpaper Daemon**         | [swww](https://github.com/LGFae/swww)                                                                                                                                           |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
 | **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
