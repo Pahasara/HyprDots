@@ -42,18 +42,35 @@ window#waybar {
 
 #idle_inhibitor,
 #workspaces,
-#custom-spotify,
+#custom-song,
 #clock,
 #tray,
 #network,
 #wireplumber,
 #battery {
-    padding: 2px 10px 2px 8px;
+    padding: 0px 10px 0px 8px;
     background-color: @bg-module;
-    border-radius: 14px 5px 15px 8px;
     border: 2px solid @border-module;
     color: @fg-module;
 }
+
+#idle_inhibitor,
+#workspaces,
+#custom-song {
+    border-radius: 14px 4px 15px 6px;
+}
+
+#clock {
+    border-radius: 14px 9px 14px 9px;
+}
+
+#tray,
+#network,
+#wireplumber,
+#battery {
+    border-radius: 4px 14px 6px 15px;
+}
+
 
 .modules-left,
 .modules-right,
@@ -104,14 +121,14 @@ window#waybar {
 }
 
 #network {
-    padding: 2px 13px 2px 8px;
+    padding: 0px 13px 0px 8px;
 }
 
 #network.disconnected {}
 
 #idle_inhibitor {
     color: @foreground;
-    padding: 2px 5px 2px 8px;
+    padding: 0px 5px 0px 8px;
 }
 
 #idle_inhibitor.activated {
