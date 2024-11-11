@@ -20,7 +20,7 @@
         // "custom/seperator",
         "hyprland/workspaces",
         // "custom/seperator",
-        "custom/spotify"
+        "custom/song"
     ],
     "modules-center": [
         // "hyprland/window",
@@ -76,7 +76,8 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d %b  %I:%M %p}",
+        // "format": "{:%H:%M | %a %d}",
+        "format": "{:%a %d %b | %I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -87,7 +88,8 @@
             "critical": 15
         },
         "format": "{icon}",
-        "format-charging": " {capacity}%",
+        "format-charging": "",
+        // "format-charging": " {capacity}%",
         "format-plugged": "",
         // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -172,7 +174,7 @@
         "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
-    "custom/spotify": {
+    "custom/song": {
         "interval": 1,
         "exec": "~/.local/bin/now-playing",
         "on-click": "~/.local/bin/play-next",
