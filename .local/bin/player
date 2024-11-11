@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Function to toggle play/pause for Musikcube
+toggle_musikcube() {
+    player_status=$(playerctl --player=musikcube status 2>/dev/null)
+    if [ "$player_status" == "Playing" ]; then
+        playerctl --player=musikcube pause
+    else
+        playerctl --player=musikcube play
+    fi
+}
+
+# Function to play the previous track
+previous_track() {
+    spotify_status=$(playerctl --player=spotify status 2>/dev/null)
+    if [ "$spotify_status" == "Playing" ]; then
+        playerctl --player=spotify previous
+    else
+        playerctl --player=musikcube previous
+    fi
+}
+
+# Function to play the next track
+next_track() {
+    spotify_status=$(playerctl --player=spotify status 2>/dev/null)
+    if [ "$spotify_status" == "Playing" ]; then
+        playerctl --player=spotify next
+    else
+        playerctl --player=musikcube next
+    fi
+}
+
+# Function to toggle play/pause for Spotify
+toggle_spotify() {
+    spotify_status=$(playerctl --player=spotify status 2>/dev/null)
+    if [ "$spotify_status" == "Playing" ]; then
+        playerctl --player=spotify pause
+    else
+        playerctl --player=spotify play
+    fi
+}
+
+# Function to toggle play/pause for both Musikcube and Spotify
+toggle_play() {
+    toggle_musikcube
+    toggle_spotify
+}
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 {toggle_musikcube|previous_track|next_track|toggle_spotify|toggle_play}"
+}
+
+# Check if the script received an argument, call the appropriate function
+if [ $# -eq 0 ]; then
+    usage
+else
+    case "$1" in
+        toggle_musikcube) toggle_musikcube ;;
+        previous_track) previous_track ;;
+        next_track) next_track ;;
+        toggle_spotify) toggle_spotify ;;
+        toggle_play) toggle_play ;; # Run both toggle_musikcube and toggle_spotify
+        *) usage ;;
+    esac
+fi

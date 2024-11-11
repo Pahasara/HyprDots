@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Function to play notification sound
+play_notification_sound() {
+    pw-play --volume=4.0 ~/.local/share/sounds/notification.wav
+}
+
+# Function to play startup sound
+play_startup_sound() {
+    pw-play --volume=2.5 ~/.local/share/sounds/startup.wav
+}
+
+# Function to display usage information
+usage() {
+    echo "Usage: $0 [--notify|--startup]"
+}
+
+# Check if the script received an argument and call the appropriate function
+case "$1" in
+    --notify|"") play_notification_sound ;; # Default to play notification sound if no argument is provided
+    --startup) play_startup_sound ;;        # Play the startup sound
+    *) usage ;;
+esac
