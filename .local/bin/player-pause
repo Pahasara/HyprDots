@@ -1,9 +1,0 @@
-#!/bin/bash
-
-player_status=$(playerctl --player=musikcube status 2>/dev/null)
-
-if [ "$player_status" == "Playing" ]; then
-    playerctl --player=musikcube pause
-else
-    playerctl --player=musikcube play
-fi
