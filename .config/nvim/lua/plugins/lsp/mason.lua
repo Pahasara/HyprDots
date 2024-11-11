@@ -43,7 +43,7 @@ return {
       ensure_installed = {
         -- list of formatters for mason to install
         'clang-format', -- c/c++ formatter
-        -- "prettier",  -- css/html formatter
+        'prettier', -- css/html formatter
         'black', -- python formatter
         'isort', -- python formatter
         'stylua', -- lua formatter

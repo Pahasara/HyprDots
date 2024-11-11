@@ -8,8 +8,8 @@ return {
       formatters_by_ft = {
         c = { 'clang-format' },
         cpp = { 'clang-format' },
-        -- css = { "prettier" },
-        -- html = { "prettier" },
+        css = { 'prettier' },
+        html = { 'prettier' },
         lua = { 'stylua' },
         -- markdown = { "prettier" },
         python = { 'isort', 'black' },
