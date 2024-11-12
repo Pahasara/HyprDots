@@ -1,6 +1,4 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -8,7 +6,6 @@ fi
 #############
 #  GENERAL  #
 #############
-
 export ZSH="$HOME/.oh-my-zsh"
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -31,6 +28,7 @@ DISABLE_AUTO_TITLE="false"
 ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="false"
+
 
 ###########
 # HISTORY #
@@ -72,7 +70,6 @@ source ~/.packages/powerlevel10k/powerlevel10k.zsh-theme
 ###########
 # ENVIRON #
 ###########
-
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -87,6 +84,10 @@ export VISUAL='nvim'
 export BAT_THEME="tokyonight_night"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
+
+# Add path for .local/bin/* scripts
+export PATH=$HOME/.local/bin:$PATH
+
 
 ######################
 #      ALIASES       #
@@ -125,8 +126,5 @@ alias dpl="dotnet publish -r linux-x64 --sc"
 alias dpw="dotnet publish -r win-x64 --sc"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
-alias clang="clang -std=c23 -Wall"
-alias clang++="clang++ -std=c++23 -Wall"
-
-### PATH ###
-export PATH=$HOME/.local/bin:$PATH
+alias cl="clang -std=c23 -Wall"
+alias cl++="clang++ -std=c++23 -Wall"
