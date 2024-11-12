@@ -64,19 +64,19 @@ return {
       --
       -- NOTE: lua_ls
       ['lua_ls'] = function()
-        local config = require 'plugins.lsp.config.lua_ls'
+        local config = require 'lsp_config.lua_ls'
         lspconfig['lua_ls'].setup(config)
       end,
       --
       -- NOTE: clangd
       ['clangd'] = function()
-        local config = require 'plugins.lsp.config.clangd'
+        local config = require 'lsp_config.clangd'
         lspconfig['clangd'].setup(config)
       end,
       --
       -- NOTE: jdtls
       ['jdtls'] = function()
-        local config = require 'plugins.lsp.config.jdtls'
+        local config = require 'lsp_config.jdtls'
         lspconfig['jdtls'].setup(config)
       end,
     }
