@@ -75,10 +75,9 @@ return {
       vim.cmd 'hi CursorLineNr guifg=#AAAAAA'
       vim.cmd 'hi LineNrAbove guifg=#757575'
       vim.cmd 'hi LineNrBelow guifg=#757575'
-      -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#494949', bold = true })
-      -- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#494949', bold = true })
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#667686' })
       vim.cmd 'hi Search guibg=#194B68'
+
+      vim.api.nvim_set_hl(0, 'Comment', { fg = '#667686' })
     end,
   },
 }

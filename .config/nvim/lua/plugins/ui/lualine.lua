@@ -87,6 +87,8 @@ return {
           {
             'filename',
             icon = ' ',
+            path = 1, -- set to relative path
+            shorting_target = 100, -- leave 100 spaces in the windows
             symbols = {
               readonly = '[🔒]',
             },

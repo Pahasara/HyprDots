@@ -28,6 +28,7 @@ return {
     mason_lspconfig.setup {
       -- list of servers for mason to install
       ensure_installed = {
+        'basedpyright',
         'bashls',
         'clangd',
         'csharp_ls',
@@ -35,7 +36,6 @@ return {
         'html',
         'jdtls',
         'lua_ls',
-        'basedpyright',
       },
     }
 
