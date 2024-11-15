@@ -1,5 +1,5 @@
-# Zathura configuration file
 # See man `man zathurarc'
+set font "inconsolata 15"
 
 # Open document in fit-width mode by default
 set adjust-open "width"
@@ -10,27 +10,22 @@ set pages-per-row 1
 # Cliboard
 set selection-clipboard clipboard
 
-#stop at page boundries
+# Stop at page boundries
 set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
-#zoom settings
+# Zoom settings
 set zoom-min 10
 set guioptions "none"
 
-# zathurarc-dark
-
-set font "inconsolata 15"
+# Zathurarc-dark
 set default-bg "#000000" #00
 set default-fg "#FFFFFF" #01
 
 set statusbar-fg "#B0B0B0" #04
 set statusbar-bg "#202020" #01
-
-set inputbar-bg "#151515" #00 currently not used
-set inputbar-fg "#FFFFFF" #02
 
 set notification-error-bg "#AC4142" #08
 set notification-error-fg "#151515" #00
@@ -47,8 +42,8 @@ set completion-highlight-bg "#0099c9" #0C
 set completion-bg "#303030" #02
 set completion-fg "#E0E0E0" #0C
 
-set notification-bg "#0079A9" #0B
-set notification-fg "#101010" #00
+set notification-bg "#161616" #0B
+set notification-fg "#DFDFDF" #00
 
 set recolor "true"
 set recolor-lightcolor "#000000" #00
@@ -58,7 +53,9 @@ set recolor-keephue "true"
 
 set render-loading "false"
 
+# Keybindings
 map b toggle_statusbar
+map [fullscreen] b toggle_statusbar
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
