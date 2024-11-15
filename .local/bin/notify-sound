@@ -2,6 +2,6 @@
 
 if [[ "$1" -eq "" ]]; then
     pw-play --volume=4.0 ~/.local/share/sounds/notification.wav
-elif [[ "$1" -eq "--startup" ]]; then
+elif [[ "$1" == "--startup" ]]; then
     pw-play --volume=1.5 ~/.local/share/sounds/startup.wav
 fi
