@@ -8,7 +8,7 @@ return {
   opts = {
     handlers = {},
     ensure_installed = {
-      'codelldb', -- c++ debugger
+      -- 'codelldb', -- c++ debugger
     },
   },
 }
