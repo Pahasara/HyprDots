@@ -47,13 +47,14 @@ return {
         'black', -- python formatter
         'isort', -- python formatter
         'stylua', -- lua formatter
+        'xmlformatter', -- xml formatter
+
+        -- list of debuggers for mason to install
+        'codelldb', -- c++ debugger
 
         -- list of linters for mason to install
         -- 'cpplint', -- c++ linter
         -- 'pylint', -- python linter
-
-        -- list of debuggers for mason to install
-        -- 'codelldb', -- c++ debugger
       },
     }
   end,

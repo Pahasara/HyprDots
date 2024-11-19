@@ -8,8 +8,6 @@ return {
       'L3MON4D3/LuaSnip',
       -- follow latest release.
       version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
-      build = 'make install_jsregexp',
     },
     'saadparwaiz1/cmp_luasnip', -- for autocompletion
     'rafamadriz/friendly-snippets', -- useful snippets
@@ -45,8 +43,8 @@ return {
       },
       -- sources for autocompletion
       sources = cmp.config.sources {
-        { name = 'nvim_lsp' }, -- LSP
         { name = 'luasnip' }, -- snippets
+        { name = 'nvim_lsp' }, -- LSP
         { name = 'buffer' }, -- text within current buffer
         { name = 'path' }, -- file system paths
       },
@@ -54,8 +52,13 @@ return {
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         format = lspkind.cmp_format {
-          -- maxwidth = 50,
-          ellipsis_char = '...',
+          mode = 'symbol', -- show only symbol annotations
+          maxwidth = {
+            menu = 50, -- leading text (labelDetails)
+            abbr = 50, -- actual suggestion item
+          },
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          show_labelDetails = true, -- show labelDetails in menu
         },
       },
     }

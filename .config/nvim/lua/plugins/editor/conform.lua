@@ -11,6 +11,7 @@ return {
         css = { 'prettier' },
         html = { 'prettier' },
         lua = { 'stylua' },
+        xml = { 'xmlformatter' },
         -- markdown = { "prettier" },
         python = { 'isort', 'black' },
       },

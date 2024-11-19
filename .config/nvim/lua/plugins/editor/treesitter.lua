@@ -29,6 +29,7 @@ return {
         'cpp',
         'css',
         'html',
+        'hyprlang',
         'java',
         'lua',
         'make',
