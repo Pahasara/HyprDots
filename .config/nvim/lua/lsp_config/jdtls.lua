@@ -1,35 +1,46 @@
 return {
   cmd = {
-    --
-    'java', -- Or the absolute path '/path/to/java21_or_newer/bin/java'
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.protocol=true',
-    '-Dlog.level=ALL',
-    '-Xms1g',
-    '--add-modules=ALL-SYSTEM',
-    '--add-opens',
-    'java.base/java.util=ALL-UNNAMED',
-    '--add-opens',
-    'java.base/java.lang=ALL-UNNAMED',
-    --
-    '-jar',
-    '/home/shinzo/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
-    '-configuration',
-    '/home/shinzo/.local/share/nvim/mason/packages/jdtls/config_linux',
-    '-data',
-    '/home/shinzo/.local/share/nvim/java',
+    vim.fn.expand '$HOME/.local/share/nvim/mason/bin/jdtls',
+    ('--jvm-arg=-javaagent:%s'):format(vim.fn.expand '$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar'),
   },
   settings = {
     java = {
+      format = {
+        enabled = true,
+        -- settings = {
+        --   url = '$HOME/.config/intellij-java-google-style.xml',
+        --   profile = 'GoogleStyle',
+        -- },
+      },
+
       signatureHelp = { enabled = true },
-      import = { enabled = true },
-      rename = { enabled = true },
+      contentProvider = { preferred = 'fernflower' }, -- Use fernflower to decompile library code
+      saveActions = {
+        organizeImports = true,
+      },
+
+      -- Specify any options for organizing imports
+      sources = {
+        organizeImports = {
+          starThreshold = 9999,
+          staticStarThreshold = 9999,
+        },
+      },
+
+      -- How code generation should act
+      codeGeneration = {
+        toString = {
+          template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+        },
+        hashCodeEquals = {
+          useJava7Objects = true,
+        },
+        useBlocks = true,
+      },
     },
-  },
-  init_options = {
-    bundles = {},
+    init_options = {
+      bundles = {},
+    },
   },
 }
 
