@@ -61,6 +61,7 @@
             {
                 "scope": [
                     "variable.other.object.cs",
+                    "entity.name.type.cs",
                     "entity.name.type.class",
                     "string.quoted.double.c",
                     "string.quoted.double.include.c",
@@ -112,9 +113,16 @@
             },
             {
                 "scope": [
+                    "keyword.operator",
+                ],
+                "settings": {
+                    "foreground": "#e8e8e8"
+                }
+            },
+            {
+                "scope": [
                     "variable",
                     "variable.parameter",
-                    "keyword.operator",
                     "entity.name.variable.local",
                     "support.type.property-name"
                 ],
