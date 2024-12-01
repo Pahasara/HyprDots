@@ -1,8 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 #############
 #  GENERAL  #
 #############
@@ -58,15 +53,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 
-#################
-# Powerlevel10k #
-#################
-source ~/.packages/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
 ###########
 # ENVIRON #
 ###########
@@ -87,6 +73,9 @@ export MANROFFOPT="-c"
 
 # Add path for .local/bin/* scripts
 export PATH=$HOME/.local/bin:$PATH
+
+# Add path for javafx
+export JAVA_FX_PATH=$HOME/.local/lib/javafx-sdk-21.0.5/lib
 
 
 ######################
@@ -109,6 +98,7 @@ alias xzz="XZ_OPT='-9' tar -cJf"
 alias gzz="tar -czf"
 alias zst="tar -I 'zstd -19 -T4' -cf"
 alias cdc="cd && cd Code"
+alias qpdf="qpdf --empty --pages"
 
 alias vi="nvim"
 alias vim="nvim"
@@ -118,9 +108,10 @@ alias mk="musikcube"
 alias mg="mega-get"
 alias y="yazi"
 
+alias py="python"
 alias jr="java"
 alias jc="javac"
-alias py="python"
+alias db="dotnet build"
 alias dr="dotnet run"
 alias dpl="dotnet publish -r linux-x64 --sc"
 alias dpw="dotnet publish -r win-x64 --sc"
@@ -128,3 +119,8 @@ alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 alias cl="clang -std=c23 -Wall"
 alias cl++="clang++ -std=c++23 -Wall"
+
+######################
+#     STARSHIP       #
+######################
+eval "$(starship init zsh)"
