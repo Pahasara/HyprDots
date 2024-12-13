@@ -51,10 +51,10 @@
 | **Editor**                  | [neovim](https://github.com/neovim/neovim)                                                                                                                                      |
 | **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
 | **Clipboard Manager**        | [cliphist](https://github.com/sentriz/cliphist)                                                                                                                                 |
-| **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [nautilus](https://github.com/GNOME/nautilus) (GUI)                                                                                         |
+| **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [dolphin](https://github.com/KDE/dolphin) (GUI)                                                                                         |
 | **Wallpaper Daemon**         | [swww](https://github.com/LGFae/swww)                                                                                                                                           |
 | **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
-| **PDF Reader**               | [zathura](https://github.com/pwmt/zathura)                                                                                                                                      |
+| **PDF Reader**               | [zathura](https://github.com/pwmt/zathura), [okular](https://github.com/KDE/okular) (GUI)                                                                                                                                     |
 | **Music Player**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
 <br>
 
@@ -71,18 +71,18 @@
 
 ### ⚙️ _Other Components_
 
-- _`Flat Remix GTK Blue Darkest`_ - GTK Theme
-- _`papirus-dark`_ - Icon Theme
-- _`Eza`_ - Alternative to _`ls`_ command
+- _`Mojave-Dark`_ - GTK Theme
+- _`Fluent-dark`_ - Icon Theme
+- _`eza`_ - Alternative to _`ls`_ command
 - _`xdg-desktop-portal-hyprland`_ - For Better Functionality and Compatibility
-- _`Polkit-Gnome`_ - Authentication Agent
-- _`Brightnessctl`_ - Monitor and Keyboard Brightness Control
-- _`Pipewire`_ - Audio Playback (pipewire, pipewire-pulse, pipewire-alsa)
-- _`Wireplumber`_ - Session Manager for Pipewire
+- _`polkit-kde`_ - Authentication Agent
+- _`brightnessctl`_ - Monitor and Keyboard Brightness Control
+- _`pipewire`_ - Audio Playback (pipewire, pipewire-pulse, pipewire-alsa)
+- _`wireplumber`_ - Session Manager for Pipewire
 - _`nmcli`_ - Connection Manager
 - _`vesktop`_ - Discord Client
-- _`LibreOffice`_ - Alternative to MSOffice package
-- _`Grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
+- _`libreOffice-fresh`_ - Alternative to MSOffice package
+- _`grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
 - _`rofi-emoji-git`_ - Emoji selector
 - _`udiskie`_ - USB Device Manager
 - _`ianny`_ - Save me from myself
