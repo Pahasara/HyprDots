@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Mojave-Dark
+Comment=An Stylish Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Mojave-Dark
+MetacityTheme=Mojave-Dark
+IconTheme=McMojave-circleMojave-Dark
+CursorTheme=McMojave Cursors
+ButtonLayout=close,minimize,maximize:menu
