@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# update_count=$(paru -Qu | wc -l)
 update_count=$(yay -Qu | wc -l)
 
 if [ $update_count -eq 0 ]; then

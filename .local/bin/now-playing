@@ -2,7 +2,7 @@
 # Can parse 'max_length=SOME_INTEGER' as argument 
 # (example: ./now-playing max_lentgh=40)
 
-default_max_length=24
+default_max_length=32
 
 trim_info() {
     local info="$1"

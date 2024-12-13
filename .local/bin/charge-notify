@@ -1,0 +1,34 @@
+#!/bin/bash
+
+BATTERY_PATH="/sys/class/power_supply/BAT0"
+STATUS_FILE="${BATTERY_PATH}/status"
+ICON_PATH_CONNECTED="$HOME/.local/share/icons/dunst/plugged.png"
+ICON_PATH_DISCONNECTED="$HOME/.local/share/icons/dunst/unplugged.png"
+SOUND_PATH_CONNECTED="$HOME/.local/bin/notify-sound --plugged"
+SOUND_PATH_DISCONNECTED="$HOME/.local/bin/notify-sound --unplugged"
+
+LAST_STATUS=$(cat "$STATUS_FILE")
+
+send_notification() {
+    local message=$1
+    local icon=$2
+    local sound=$3
+    dunstify -t 2000 -u low -i "$icon" "$message"
+}
+
+while true; do
+    CURRENT_STATUS=$(cat "$STATUS_FILE")
+
+    if [[ "$CURRENT_STATUS" != "$LAST_STATUS" ]]; then
+        if [[ "$CURRENT_STATUS" != "Discharging" ]]; then
+            send_notification "Charger Connected" "$ICON_PATH_CONNECTED" 
+            $SOUND_PATH_CONNECTED
+        else
+            send_notification "Charger Disconnected" "$ICON_PATH_DISCONNECTED" 
+            $SOUND_PATH_DISCONNECTED
+        fi
+        LAST_STATUS="$CURRENT_STATUS"
+    fi
+
+    sleep 5
+done

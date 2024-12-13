@@ -1,0 +1,121 @@
+/* github.com/pahasara/HyprDots */
+
+/* INSTRUCTIONS TO APPLY THIS THEME TO WORK PROPERLY */
+/* Set below config in config.jsonc */
+/*  "margin-top": 8,
+    "margin-left": 15,
+    "margin-right": 15,
+    "margin-bottom": 0,
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 8,
+*/
+
+@import url("../themes/fluent.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  min-height: 32px;
+  padding: 0px 3px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background: @background;
+  border: 1px solid @border;
+  border-radius: 13px;
+}
+
+#workspaces button {
+  margin: 0px 1px;
+  padding: 0px 2px;
+  color: @fg-persist;
+}
+
+#workspaces button:hover {
+  background: transparent;
+  border: 0px solid transparent;
+}
+
+#workspaces button.focused {
+  border-top: 2px solid transparent;
+}
+
+#workspaces button.active {
+  color: @foreground;
+}
+
+#tray {
+  background-color: @bg-tray;
+}
+
+#clock {
+  padding: 0px 9px;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.plugged {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.charging {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @fg-blink;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#idle_inhibitor {
+  color: @foreground;
+  padding: 0px 0px 0px 9px;
+}
+
+#idle_inhibitor.activated {
+  color: @fg-module;
+}
+
+#idle_inhibitor.deactivated {
+  color: @fg-alt;
+}
+
+#custom-seperator {
+  color: @separator;
+}
+
+#tray {
+}
