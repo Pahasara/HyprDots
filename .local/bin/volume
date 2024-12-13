@@ -1,0 +1,62 @@
+#!/bin/bash
+
+msgTag="volume"
+icon_path="$HOME/.local/share/icons/dunst"
+
+case "$1" in
+    up)
+        wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+
+        ;;
+    down)
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+        ;;
+    mute)
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || echo "no")
+        if [[ "$mute" == "yes" ]]; then
+            dunstify -t 600 \
+                     -a "Volume" -u low -i "$icon_path/mute.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Volume Muted"
+        else
+            dunstify -t 600 \
+                     -a "Volume" -u low -i "$icon_path/volume.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Volume Unmuted"
+        fi
+        exit 0
+        ;;
+    mic)
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+        mic_mute=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo "yes" || echo "no")
+        if [[ "$mic_mute" == "yes" ]]; then
+            dunstify -t 600 \
+                     -a "Volume" -u low -i "$icon_path/mic-off.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Microphone Muted"
+        else
+            dunstify -t 600 \
+                     -a "Volume" -u low -i "$icon_path/mic-on.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Microphone Unmuted"
+        fi
+        exit 0
+        ;;
+    *)
+        echo "Usage: $0 [up/down/mute/mic]"
+        exit 1
+        ;;
+esac
+
+volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
+mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || echo "no")
+
+if [[ "$mute" == "yes" ]]; then
+    dunstify -t 600 \
+             -a "Volume" -u low -i "$icon_path/mute.png" \
+             -h string:x-dunst-stack-tag:$msgTag \
+             -h int:value:"0" \
+             "Volume Muted"
+else
+    dunstify -t 600 \
+             -a "Volume" -u low -i "$icon_path/volume.png" \
+             -h string:x-dunst-stack-tag:$msgTag \
+             -h int:value:"$volume" \
+             "Volume: $volume%"
+fi

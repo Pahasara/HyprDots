@@ -1,0 +1,74 @@
+configuration {
+    matching: "regex";
+    drun-match-fields: "name";
+    terminal: "/usr/bin/kitty";
+}
+
+@theme "theme"
+
+* {
+    font: "Ubuntu Nerd Font 20";
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+}
+
+window {
+    location: north;
+    y-offset: -34;
+    width:          400;
+    border-radius:  13px;
+
+    border: 2px;
+    border-color: @bg3;
+    background-color:   @bg0;
+}
+
+mainbox {
+    padding:    8px;
+}
+
+inputbar {
+    enabled:false;
+}
+
+prompt {
+    enabled: false;
+}
+
+listview {
+    background-color:   transparent;
+    margin:     1px 0 0;
+    columns:    6;
+    lines:      1;
+    fixed-height: false;
+}
+
+element {
+    orientation: horizontal;
+    padding:        6px 0px 6px 0px;
+    spacing:        8px;
+    border-radius:  14px;
+}
+
+element normal urgent {
+    text-color: @urgent;
+}
+
+element normal active {
+    text-color: @accent;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg2;
+    text-color: @fg2;
+}
+
+element-text {
+    text-color: inherit;
+    horizontal-align: 0.5;
+}

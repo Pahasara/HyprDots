@@ -1,0 +1,10 @@
+[Unit]
+Description=Charger notify service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 30
+ExecStart=/home/%u/.local/bin/charge-notify
+
+[Install]
+WantedBy=default.target

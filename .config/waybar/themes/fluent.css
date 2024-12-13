@@ -1,0 +1,19 @@
+/* github.com/pahasara/HyprDots */
+
+@define-color background rgba(34, 34, 36, 0.8);
+@define-color bg-module rgba(0, 0, 0, 0.0);
+@define-color bg-tray rgba(0, 0, 0, 0.0);
+
+@define-color foreground rgba(20, 180, 220, 1.0);
+@define-color fg-module rgba(250, 253, 255, 1.0);
+@define-color fg-alt rgba(0, 200, 255, 1.0);
+@define-color fg-blink rgba(220, 240, 255, 1.0);
+@define-color fg-persist rgba(110, 112, 116, 1.0);
+
+@define-color border rgba(56, 57, 59, 1.0);
+@define-color border-module rgba(33, 180, 240, 0.0);
+@define-color border-alt rgba(24, 25, 27, 1.0);
+
+@define-color separator rgba(56, 70, 84, 1.0);
+@define-color warning rgba(230, 150, 50, 1.0);
+@define-color critical rgba(255, 30, 20, 1.0);

@@ -1,0 +1,54 @@
+#!/usr/bin/bash
+
+INTERFACE="${INTERFACE:-wlp0s20f0u1}"
+
+declare -A WIFI_ICONS=(
+    [0]=" "     # No signal
+    [1]="󰤯 "     # Very weak signal
+    [2]="󰤟 "     # Weak signal
+    [3]="󰤢 "     # Medium signal
+    [4]="󰤥 "     # Strong signal
+    [5]="󰤨 "     # Excellent signal
+)
+
+if [[ ! -d /sys/class/net/${INTERFACE}/wireless ]]; then
+    echo "Interface ${INTERFACE} not found."
+    exit 1
+fi
+
+if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
+    # echo " "
+    exit 0
+fi
+
+SIGNAL=$(iw dev "$INTERFACE" link | awk '/signal:/ {print $2}')
+if [[ -z "$SIGNAL" ]]; then
+    echo " No signal"
+    exit 0
+fi
+
+SIGNAL_PERCENT=$(awk -v sig="$SIGNAL" 'BEGIN { 
+    if (sig >= -50) print 100; 
+    else if (sig <= -100) print 0; 
+    else print (sig + 100) * 2 
+}')
+
+SSID=$(iw dev "$INTERFACE" link | awk -F': ' '/SSID/ {print $2}')
+SSID=${SSID:-"Unknown"}
+
+if [[ $SIGNAL_PERCENT -ge 80 ]]; then
+    ICON="${WIFI_ICONS[5]}"
+elif [[ $SIGNAL_PERCENT -ge 60 ]]; then
+    ICON="${WIFI_ICONS[4]}"
+elif [[ $SIGNAL_PERCENT -ge 40 ]]; then
+    ICON="${WIFI_ICONS[3]}"
+elif [[ $SIGNAL_PERCENT -ge 20 ]]; then
+    ICON="${WIFI_ICONS[2]}"
+elif [[ $SIGNAL_PERCENT -ge 10 ]]; then
+    ICON="${WIFI_ICONS[1]}"
+else
+    ICON="${WIFI_ICONS[0]}"
+fi
+
+# echo "${ICON} ${SSID} (${SIGNAL_PERCENT}%)"
+echo "${ICON} ${SSID} "
