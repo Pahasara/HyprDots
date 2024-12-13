@@ -1,7 +1,7 @@
 # github.com/pahasara/HyprDots
 
 [manager]
-cwd = { fg = "#33CCFF" }
+cwd = { fg = "#3FAAFA" }
 
 # Hovered
 hovered         = { fg = "#1E1E2E", bg = "#3FAAFA" }
@@ -9,7 +9,7 @@ preview_hovered = { underline = false }
 
 # Find
 find_keyword  = { fg = "#F9E2AF", italic = true }
-find_position = { fg = "#F5C2E7", bg = "reset", italic = true }
+find_position = { fg = "#89DDFF", bg = "reset", italic = true }
 
 # Marker
 marker_copied   = { fg = "#A6E3A1", bg = "#A6E3A1" }
@@ -60,7 +60,7 @@ selected = { reversed = true }
 
 [select]
 border   = { fg = "#3FAAFA" }
-active   = { fg = "#F5C2E7" }
+active   = { fg = "#89DDFF" }
 inactive = {}
 
 [tasks]
@@ -69,16 +69,16 @@ title   = {}
 hovered = { underline = true }
 
 [which]
-mask            = { bg = "#313244" }
-cand            = { fg = "#33CCFF" }
+mask            = { bg = "#080808" }
+cand            = { fg = "#3FAAFA" }
 rest            = { fg = "#9399B2" }
-desc            = { fg = "#F5C2E7" }
+desc            = { fg = "#89DDFF" }
 separator       = "  "
 separator_style = { fg = "#585B70" }
 
 [help]
-on      = { fg = "#F5C2E7" }
-exec    = { fg = "#33CCFF" }
+on      = { fg = "#89DDFF" }
+exec    = { fg = "#3FAAFA" }
 desc    = { fg = "#9399B2" }
 hovered = { bg = "#585B70", bold = true }
 footer  = { fg = "#000000", bg = "#2CB6FE" }
@@ -87,20 +87,20 @@ footer  = { fg = "#000000", bg = "#2CB6FE" }
 
 rules = [
 	# Images
-	{ mime = "image/*", fg = "#33CCFF" },
+	{ mime = "image/*", fg = "#3FAAFA" },
 
 	# Videos
 	{ mime = "video/*", fg = "#F9E2AF" },
 	{ mime = "audio/*", fg = "#F9E2AF" },
 
 	# Archives
-	{ mime = "application/zip",             fg = "#F5C2E7" },
-	{ mime = "application/gzip",            fg = "#F5C2E7" },
-	{ mime = "application/x-tar",           fg = "#F5C2E7" },
-	{ mime = "application/x-bzip",          fg = "#F5C2E7" },
-	{ mime = "application/x-bzip2",         fg = "#F5C2E7" },
-	{ mime = "application/x-7z-compressed", fg = "#F5C2E7" },
-	{ mime = "application/x-rar",           fg = "#F5C2E7" },
+	{ mime = "application/zip",             fg = "#89DDFF" },
+	{ mime = "application/gzip",            fg = "#89DDFF" },
+	{ mime = "application/x-tar",           fg = "#89DDFF" },
+	{ mime = "application/x-bzip",          fg = "#89DDFF" },
+	{ mime = "application/x-bzip2",         fg = "#89DDFF" },
+	{ mime = "application/x-7z-compressed", fg = "#89DDFF" },
+	{ mime = "application/x-rar",           fg = "#89DDFF" },
 
 	# Fallback
 	{ name = "*", fg = "#2CB6FE" },

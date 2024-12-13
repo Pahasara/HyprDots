@@ -4,36 +4,36 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
-    "margin-top": 6,
-    "margin-left": 5,
-    "margin-right": 5,
+    "margin-top": 7,
+    "margin-left": 15,
+    "margin-right": 15,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 9,
+    "spacing": 10,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        // "custom/logo",
         "idle_inhibitor",
-        // "custom/seperator",
         "hyprland/workspaces",
-        // "custom/seperator",
-        "custom/song"
+        "custom/storage",
+        "cpu",
+        "memory",
     ],
-    "modules-center": [
+    "modules-center":[
         // "hyprland/window",
-        "clock",
+        // "custom/weather",
+        "custom/song",
     ],
     "modules-right": [
         "tray",
-        // "custom/seperator",
         // "custom/update",
-        // "backlight",
         "network",
+        // "backlight",
         "wireplumber",
-        "battery"
+        "battery",
+        "clock",
     ],
     //################
     //### MODULES  ###
@@ -55,19 +55,19 @@
             // "9": [],
             // "10": []
         },
-        "format": "{icon}",
+        "format": "<small>{icon}</small>",
         "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "10",
-            "active": "<small></small>",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            // "active": "<small></small>",
             "default": "",
         }
     },
@@ -77,19 +77,18 @@
     },
     "clock": {
         // "format": "{:%H:%M | %a %d}",
-        "format": "{:%a %d %b | %I:%M %p}",
+        "format": "{:%a <big>%d</big> %b  %I:<big>%M</big> %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
         "interval": 5,
         "states": {
             // "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 35,
+            "critical": 20,
         },
-        "format": "{icon}",
-        "format-charging": "",
-        // "format-charging": " {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": "",
         // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -119,10 +118,11 @@
             "󰤥",
             "󰤨"
         ],
-        "on-click": "~/.local/bin/rofi-wifi"
+        "on-click": "~/.local/bin/rofi-wifi",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
     },
     "network#speed": {
-        "interval": 1,
+        "interval": 2,
         "format": "{ifname}",
         "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
         "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
@@ -143,7 +143,7 @@
         ]
     },
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
@@ -162,34 +162,38 @@
                 " "
             ],
         },
-        "tooltip-format": "{volume}%",
+        "tooltip-format": "Volume: {volume}%",
         "on-click": "easyeffects"
     },
+    "cpu": {
+        "interval": 2,
+        "format": " {usage}%",
+        "tooltip": true,
+    },
     "memory": {
-        "interval": 10,
-        "format": "<big>󰾆</big>  {used:0.1f}G",
+        "interval": 5,
+        "format": " {used:0.1f}G",
         "format-alt": "{percentage}% 󰾆",
-        "format-alt-click": "click",
         "tooltip": true,
         "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
-    "custom/song": {
-        "interval": 1,
-        "exec": "~/.local/bin/now-playing",
-        "on-click": "~/.local/bin/play-next",
-        "on-click-right": "~/.local/bin/play-previous",
-        "escape": true
-    },
     "custom/storage": {
-        "format": "{}  ",
+        "interval": 300,
+        "format": " {}",
         "format-alt": "{percentage}%  ",
         "return-type": "json",
-        "interval": 60,
         "exec": "~/.config/waybar/modules/storage.sh"
     },
+    "custom/song": {
+        "interval": 5,
+        "exec": "~/.local/bin/now-playing",
+        "on-click": "~/.local/bin/player next_track",
+        "on-click-right": "~/.local/bin/player previous_track",
+        "escape": true
+    },
     "backlight": {
-        "format": "󰃟 {percent}%",
+        "format": "󰃟 ",
         // "format": "<big>{icon}</big> {percent}%",
         "format-icons": [
             " ",
@@ -210,22 +214,17 @@
         "format-alt-click": "click-right",
         "interval": 1800,
         "return-type": "json",
-        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec":"~/.config/waybar/modules/weather.sh",
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": " ", //{icon}
+        "format": "<big> </big>", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
         "timeout": 60.0,
         "tooltip": false
-    },
-    "custom/logo": {
-        "format": "",
-        "on-click": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/powermenu.rasi",
-        "tooltip-format": "Arch Linux"
     },
     "custom/notification": {
         "format": "",
@@ -240,8 +239,8 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 15,
-        "spacing": 0
+        "icon-size": 17,
+        "spacing": 3
     },
     "custom/seperator":{
         "format": "|",

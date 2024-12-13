@@ -7,20 +7,18 @@ scan_timeout = 10
 add_newline = true
 
 # Use custom format
-# format = '''
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) '''
-
 format = """
-$username\
-$hostname\
-$directory\
+[$username@$hostname](bg:#323437 fg:#CDCDCD)\
+[ ](bg:#0099BB fg:#323437)\
+[$directory](bg:#0099BB fg:#000000)\
+[ ](fg:#0099BB)\
 $git_branch\
 $git_state\
 $git_status\
+
 $line_break\
-$character"""
+$character
+"""
 
 right_format = """
 $symbol\
@@ -28,14 +26,36 @@ $python\
 $cmd_duration\
 """
 
-[directory]
-style = "blue"
-home_symbol = "~"
-
 [character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[λ](blue)"
+error_symbol = "[λ](red)" # ❯
+vimcmd_symbol = "[λ](blue)" # ❮
+
+[username]
+show_always = true
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user]($style)'
+
+[hostname]
+ssh_only = false
+format = '[$hostname ]($style)'
+style = 'bold gray'
+
+[directory]
+format = '[$path ]($style)'
+home_symbol = "~"
+truncation_length = 3
+truncation_symbol = "…/"
+style = 'bold gray'
+
+[directory.substitutions]
+"Desktop" = " "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Code" = " "
+"Pictures" = " "
 
 [cmd_duration]
 format = "took [$duration]($style) "
@@ -48,7 +68,10 @@ style = "bright-blue"
 
 [git_branch]
 symbol = ""
-format = 'on[[ $symbol $branch ](fg:#1ED42D)]($style)'
+style = "fg:#1ED42D"
+format = 'on [ $symbol $branch ]($style)'
 
 [git_status]
-format = '[[($all_status$ahead_behind )](fg:#1ED42D)]($style)'
+style = "fg:#E63838"
+format = '[$all_status$ahead_behind ]($style)'
+
