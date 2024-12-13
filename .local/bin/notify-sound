@@ -4,4 +4,8 @@ if [[ "$1" -eq "" ]]; then
     pw-play --volume=4.0 ~/.local/share/sounds/notification.wav
 elif [[ "$1" == "--startup" ]]; then
     pw-play --volume=1.5 ~/.local/share/sounds/startup.wav
+elif [[ "$1" == "--plugged" ]]; then
+    pw-play --volume=3.0 ~/.local/share/sounds/plugged.wav
+elif [[ "$1" == "--unplugged" ]]; then
+    pw-play --volume=5.0 ~/.local/share/sounds/unplugged.wav
 fi

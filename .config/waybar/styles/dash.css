@@ -1,0 +1,178 @@
+/* github.com/pahasara/HyprDots */
+
+/* INSTRUCTIONS TO APPLY THIS THEME TO WORK PROPERLY */
+/* Set below config in config.jsonc */
+/*  "margin-top": 6,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-bottom": 0,
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 0,
+*/
+
+@import url("../themes/azure.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12.75px;
+  min-height: 20px;
+  padding: 0px 3px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background: @background;
+  border: 0px solid @border;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  margin: 0px 1px;
+  padding: 0px 2px;
+  color: @fg-module;
+}
+
+#workspaces button:hover {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+#workspaces button.focused {
+  border-top: 2px solid transparent;
+}
+
+#workspaces button.active {
+  color: @foreground;
+}
+
+#mode {
+  background: #64727d;
+  border-bottom: 3px solid white;
+}
+
+#idle_inhibitor,
+#workspaces,
+#custom-song,
+#clock,
+#tray,
+#network,
+#backlight,
+#wireplumber,
+#battery {
+  padding: 0px 10px 0px 8px;
+  background-color: @bg-module;
+  border: 2px solid @border-module;
+  color: @fg-module;
+}
+
+#idle_inhibitor,
+#workspaces,
+#custom-song {
+  border-radius: 14px 4px 15px 6px;
+}
+
+#clock {
+  border-radius: 14px 9px 14px 9px;
+}
+
+#tray,
+#network,
+#backlight,
+#wireplumber,
+#battery {
+  border-radius: 4px 14px 6px 15px;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+}
+
+#tray {
+  background-color: @bg-tray;
+}
+
+#custom-logo {
+  color: @foreground;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.plugged {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.charging {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @fg-blink;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network {
+  padding: 0px 13px 0px 8px;
+}
+
+#network.disconnected {
+}
+
+#idle_inhibitor {
+  color: @foreground;
+  padding: 0px 5px 0px 8px;
+}
+
+#idle_inhibitor.activated {
+  color: @fg-module;
+}
+
+#idle_inhibitor.deactivated {
+  color: @fg-alt;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-seperator {
+  color: @separator;
+}
+
+#tray {
+  padding: 3px;
+}

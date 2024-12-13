@@ -249,7 +249,7 @@ if [ "$ACTION" = "copy" ]; then
   notifyOk "$WHAT copied to buffer"
 elif [ "$ACTION" = "save" ]; then
   if takeScreenshot "$FILE" "$GEOM" "$OUTPUT"; then
-    TITLE="Screenshot of $SUBJECT"
+    TITLE="Snapshot saved"
     MESSAGE=$(basename "$FILE")
     notifyOk "$TITLE" "$MESSAGE" -i "$FILE"
     echo "$FILE"
@@ -259,7 +259,7 @@ elif [ "$ACTION" = "save" ]; then
 elif [ "$ACTION" = "edit" ]; then
   env_editor_confirm
   if takeScreenshot "$FILE_EDITOR" "$GEOM" "$OUTPUT"; then
-    TITLE="Screenshot of $SUBJECT"
+    TITLE="Snapshot saved"
     MESSAGE="Open screenshot in image editor"
     notifyOk "$TITLE" "$MESSAGE" -i "$FILE_EDITOR"
     $GRIMBLAST_EDITOR "$FILE_EDITOR"
