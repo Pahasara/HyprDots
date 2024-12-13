@@ -39,13 +39,13 @@ return {
     'folke/tokyonight.nvim',
     priority = 1000,
     config = function()
-      local bg = '#020202' -- #0F0F0F
-      local bg_dark = '#121212' -- #161616
-      local bg_highlight = '#1A1D1F'
+      local bg = '#1A1A1B' -- #080808
+      local bg_dark = '#252627' -- #121212
+      local bg_highlight = '#1D2022'
       local bg_search = '#3DDBD9'
-      local bg_visual = '#262932'
-      local fg = '#C5C5C5'
-      local fg_dark = '#E2E2E2'
+      local bg_visual = '#324867'
+      local fg = '#D5D5D5'
+      local fg_dark = '#EFEFEF'
       local fg_gutter = '#424242'
       local border = '#161616'
 
@@ -77,7 +77,7 @@ return {
       vim.cmd 'hi LineNrBelow guifg=#757575'
       vim.cmd 'hi Search guibg=#194B68'
 
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#667686' })
+      vim.api.nvim_set_hl(0, 'Comment', { fg = '#768696' })
     end,
   },
 }
