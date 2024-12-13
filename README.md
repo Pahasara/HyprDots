@@ -14,7 +14,7 @@
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
 <br>
 
-## Azure
+## Main
 ![fetch](https://github.com/user-attachments/assets/e2103712-b7e2-40a2-8da2-67992d238567)
 
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
