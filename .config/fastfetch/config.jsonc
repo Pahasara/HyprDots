@@ -4,7 +4,7 @@
     	"source": "~/Pictures/Assets/fetch.png",
     	"type": "kitty-direct",
     	"padding": {
-    		"top": 2,
+    		"top": 1,
                 "left": 2
     	}
     },
@@ -73,6 +73,11 @@
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         // {
+        //     "type": "host",
+        //     "key": "󰌢 ",
+        //     "keyColor": "blue"
+        // },
+        // {
         //     "type": "datetime",
         //     "format": "{1}-{3}-{11}",
         //     "key": " ",
@@ -92,7 +97,7 @@
         },
         {
             "type": "display",
-            "key": "󰌢 ",
+            "key": " ",
             "keyColor": "blue"
         },
         {

@@ -15,3 +15,5 @@
 @define-color border-alt rgba(2, 10, 20, 1.0);
 
 @define-color separator rgba(56, 70, 84, 1.0);
+@define-color warning rgba(230, 150, 50, 1.0);
+@define-color critical rgba(255, 30, 20, 1.0);

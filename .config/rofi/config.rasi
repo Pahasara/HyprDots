@@ -13,10 +13,10 @@ configuration {
     terminal: "/usr/bin/kitty";
 }
 
-@theme "azure"
+@theme "theme"
 
 * {
-    font: "Ubuntu Nerd Font 12";
+    font: "Ubuntu Nerd Font 13";
 
     background-color:   transparent;
     text-color:         @fg0;

@@ -45,7 +45,7 @@ keymap = [
 
 	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
 	{ on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
-
+    
 	# Selection
 	{ on = [ "<Space>" ], run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
 	{ on = [ "v" ],       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
@@ -61,13 +61,14 @@ keymap = [
 	{ on = [ "y", "y"],         run = [ "yank", "escape --visual --select" ],                 desc = "Copy the selected files" },
 	{ on = [ "Y" ],         run = [ "unyank", "escape --visual --select" ],               desc = "Cancel the yank status of files" },
 	{ on = [ "x" ],         run = [ "yank --cut", "escape --visual --select" ],           desc = "Cut the selected files" },
+	{ on = [ "X" ],         run = [ "unyank", "escape --visual --select" ],               desc = "Cancel the yank status of files" },
 	{ on = [ "p" ],         run = "paste",                                                desc = "Paste the files" },
 	{ on = [ "P" ],         run = "paste --force",                                        desc = "Paste the files (overwrite if the destination exists)" },
 	{ on = [ "-" ],         run = "link",                                                 desc = "Symlink the absolute path of files" },
 	{ on = [ "_" ],         run = "link --relative",                                      desc = "Symlink the relative path of files" },
 	{ on = [ "d" ],         run = [ "remove", "escape --visual --select" ],               desc = "Move the files to the trash" },
 	{ on = [ "D" ],         run = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
-	{ on = [ "r" ],         run = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
+	{ on = [ "c" ],         run = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
 	{ on = [ "a" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ "<C-2>" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ "A" ],         run = "rename",                           desc = "Rename a file or directory" },
@@ -139,8 +140,11 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
+	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
+	{ on = [ "g", "p" ],       run = "cd ~/Pictures",   desc = "Go to the pictures directory" },
+	{ on = [ "g", "n" ],       run = "cd ~/MEGASync/Notes",   desc = "Go to the pictures directory" },
+	{ on = [ "g", "c" ],       run = "cd ~/Code",   desc = "Go to the code directory" },
 	{ on = [ "g", "t" ],       run = "cd /tmp",          desc = "Go to the temporary directory" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
 

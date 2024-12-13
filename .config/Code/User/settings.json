@@ -11,29 +11,29 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "fluent-icons",
     "editor.fontFamily": "CaskaydiaMono Nerd Font",
-    "editor.fontSize": 15.5,
+    "editor.fontSize": 17,
     "editor.cursorSurroundingLines": 10,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.integrated.fontSize": 14,
     // Custom Colors
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#181818",
-        "breadcrumb.background": "#181818",
-        "activityBar.background": "#181818",
-        "sideBar.background": "#181818",
-        "sideBarSectionHeader.background": "#222222",
-        "editor.background": "#0A0A0A",
+        "titleBar.activeBackground": "#28282A",
+        "breadcrumb.background": "#28282A",
+        "activityBar.background": "#28282A",
+        "sideBar.background": "#28282A",
+        "sideBarSectionHeader.background": "#181818",
+        "editor.background": "#1B1E20",
         "editorLineNumber.foreground": "#9A9A9A",
         "editorLineNumber.activeForeground": "#DADADA",
-        "editor.lineHighlightBackground": "#121314",
-        "editor.lineHighlightBorder": "#141516",
+        "editor.lineHighlightBackground": "#323232",
+        "editor.lineHighlightBorder": "#363636",
         "editor.selectionBackground": "#00c3ff1a",
         "editor.selectionHighlightBackground": "#00ccff22",
-        "editorGroupHeader.tabsBackground": "#181818",
+        "editorGroupHeader.tabsBackground": "#28282A",
         "list.activeSelectionBackground": "#00ccff2a",
         "list.inactiveSelectionBackground": "#212122",
-        "tab.activeBackground": "#00ccff24",
-        "tab.inactiveBackground": "#181818",
+        "tab.activeBackground": "#1F485E",
+        "tab.inactiveBackground": "#28282A",
         "statusBar.background": "#00ccff22",
         "statusBar.foreground": "#efefef",
         "statusBar.border": "#00ccff22",
@@ -55,7 +55,7 @@
                     "storage.type.built-in.primitive.c",
                 ],
                 "settings": {
-                    "foreground": "#ff453f"
+                    "foreground": "#ff5853"
                 }
             },
             {
@@ -108,15 +108,16 @@
                     "entity.name.function.preprocessor",
                 ],
                 "settings": {
-                    "foreground": "#ed6ac1"
+                    "foreground": "#ff71d0"
                 }
             },
             {
                 "scope": [
                     "keyword.operator",
+                    "variable.other.readwrite",
                 ],
                 "settings": {
-                    "foreground": "#e8e8e8"
+                    "foreground": "#cfcfcf"
                 }
             },
             {
@@ -164,7 +165,7 @@
                 "'"
             ],
             "after": [
-                "<Esc>"
+                "<ESC>"
             ]
         }
     ],
@@ -209,17 +210,13 @@
     "workbench.settings.applyToAllProfiles": [],
     "editor.semanticTokenColorCustomizations": {},
     "editor.formatOnType": true,
-    // C/C++ Settings
-    "C_Cpp.default.compilerPath": "/usr/bin/clang++",
     "C_Cpp.legacyCompilerArgsBehavior": true,
-    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
     "C_Cpp.default.cStandard": "c17",
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.codeAnalysis.clangTidy.enabled": true,
     "extensions.ignoreRecommendations": true,
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
-    "C_Cpp.codeAnalysis.clangTidy.path": "/usr/bin/clang-tidy",
     "C_Cpp.intelliSenseEngine": "default",
     "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
         "bugprone-*",
