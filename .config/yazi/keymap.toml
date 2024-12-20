@@ -47,11 +47,11 @@ keymap = [
 	{ on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
     
 	# Selection
-	{ on = [ "<Space>" ], run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
+	{ on = [ "<Space>" ], run = [ "toggle --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
 	{ on = [ "v" ],       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
 	{ on = [ "V" ],       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = [ "<C-a>" ],   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = [ "<C-r>" ],   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = [ "<C-a>" ],   run = "toggle_all --state=true",            desc = "Select all files" },
+	{ on = [ "<C-r>" ],   run = "toggle_all --state=none",            desc = "Inverse selection of all files" },
 
 	# Operation
 	{ on = [ "o" ],         run = "open",                                                 desc = "Open the selected files" },
@@ -69,6 +69,7 @@ keymap = [
 	{ on = [ "d" ],         run = [ "remove", "escape --visual --select" ],               desc = "Move the files to the trash" },
 	{ on = [ "D" ],         run = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
 	{ on = [ "c" ],         run = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
+	{ on = [ "C" ],         run = "create --dir",                                               desc = "Create directory" },
 	{ on = [ "a" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ "<C-2>" ],         run = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ "A" ],         run = "rename",                           desc = "Rename a file or directory" },
@@ -103,10 +104,10 @@ keymap = [
 	{ on = [ "N" ], run = "find_arrow --previous",   desc = "Go to previous found file" },
 
 	# Sorting
-	{ on = [ ",", "m" ], run = "sort modified --dir-first",               desc = "Sort by modified time" },
-	{ on = [ ",", "M" ], run = "sort modified --reverse --dir-first",     desc = "Sort by modified time (reverse)" },
-	{ on = [ ",", "c" ], run = "sort created --dir-first",                desc = "Sort by created time" },
-	{ on = [ ",", "C" ], run = "sort created --reverse --dir-first",      desc = "Sort by created time (reverse)" },
+	{ on = [ ",", "m" ], run = "sort mtime --dir-first",               desc = "Sort by modified time" },
+	{ on = [ ",", "M" ], run = "sort mtime --reverse --dir-first",     desc = "Sort by modified time (reverse)" },
+	{ on = [ ",", "c" ], run = "sort btime --dir-first",                desc = "Sort by created time" },
+	{ on = [ ",", "C" ], run = "sort btime --reverse --dir-first",      desc = "Sort by created time (reverse)" },
 	{ on = [ ",", "e" ], run = "sort extension --dir-first",         	   desc = "Sort by extension" },
 	{ on = [ ",", "E" ], run = "sort extension --reverse --dir-first",    desc = "Sort by extension (reverse)" },
 	{ on = [ ",", "a" ], run = "sort alphabetical --dir-first",           desc = "Sort alphabetically" },
@@ -142,9 +143,10 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
 	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
-	{ on = [ "g", "p" ],       run = "cd ~/Pictures",   desc = "Go to the pictures directory" },
+	{ on = [ "g", "p" ],       run = "cd ~/Pictures",    desc = "Go to the pictures directory" },
 	{ on = [ "g", "n" ],       run = "cd ~/MEGASync/Notes",   desc = "Go to the pictures directory" },
-	{ on = [ "g", "c" ],       run = "cd ~/Code",   desc = "Go to the code directory" },
+	{ on = [ "g", "c" ],       run = "cd ~/Code",        desc = "Go to the code directory" },
+	{ on = [ "g", "u" ],       run = "cd ~/USB",        desc = "Go to the code directory" },
 	{ on = [ "g", "t" ],       run = "cd /tmp",          desc = "Go to the temporary directory" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
 
@@ -171,7 +173,7 @@ keymap = [
 	{ on = [ "~" ], run = "help", desc = "Open help" }
 ]
 
-[select]
+[pick]
 
 keymap = [
 	{ on = [ "<C-q>" ],   run = "close",          desc = "Cancel selection" },

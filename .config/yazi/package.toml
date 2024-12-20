@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "Ape/mediainfo", rev = "c69314e" }]
+deps = [{ use = "boydaihungst/mediainfo", rev = "ddfd5ec" }]
 
 [flavor]
 deps = []

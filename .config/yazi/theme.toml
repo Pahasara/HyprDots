@@ -35,10 +35,14 @@ separator_open  = ""
 separator_close = ""
 separator_style = { fg = "#232323", bg = "#232323" }
 
+[mode]
 # Mode
-mode_normal = { fg = "#1E1E2E", bg = "#3FAAFA", bold = true }
-mode_select = { fg = "#1E1E2E", bg = "#A6E3A1", bold = true }
-mode_unset  = { fg = "#1E1E2E", bg = "#F2CDCD", bold = true }
+normal_main = { fg = "#1E1E2E", bg = "#3FAAFA", bold = true }
+normal_alt = { fg = "#3FAAFA", bg = "#1E1E2E", bold = true }
+select_main = { fg = "#1E1E2E", bg = "#A6E3A1", bold = true }
+select_alt = { fg = "#A6E3A1", bg = "#1E1E2E", bold = true }
+unset_main  = { fg = "#1E1E2E", bg = "#F2CDCD", bold = true }
+unset_alt = { fg = "#F2CDCD", bg = "#1E1E2E", bold = true }
 
 # Progress
 progress_label  = { fg = "#FFFFFF", bold = true }
@@ -58,7 +62,7 @@ title    = {}
 value    = {}
 selected = { reversed = true }
 
-[select]
+[pick]
 border   = { fg = "#3FAAFA" }
 active   = { fg = "#89DDFF" }
 inactive = {}
