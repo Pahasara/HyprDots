@@ -1,57 +1,102 @@
 /* github.com/pahasara/HyprDots */
 
-/* INSTRUCTIONS TO APPLY THIS THEME TO WORK PROPERLY */
-/* Set below config in config.jsonc */
-/*  "margin-top": 8,
-    "margin-left": 15,
-    "margin-right": 15,
-    "margin-bottom": 0,
-    "layer": "bottom",
-    "position": "top",
-    "spacing": 8,
-*/
-
-@import url("../themes/fluent.css");
+@import url("themes/azure.css");
 
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-size: 13px;
-  min-height: 32px;
   padding: 0px 3px;
   font-weight: bold;
 }
 
 window#waybar {
-  background: @background;
-  border: 1px solid @border;
-  border-radius: 13px;
+  background: @transparent;
+  border: 0px solid @border;
+  border-radius: 10px;
 }
 
 #workspaces button {
-  margin: 0px 1px;
-  padding: 0px 2px;
+  padding: 0px;
+  margin: 8px 10px 8px 0px;
+  min-height: 5px;
+  border-radius: 15px;
+  border: 1px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
   color: @fg-persist;
+  background-color: @fg-persist;
 }
 
 #workspaces button:hover {
-  background: transparent;
-  border: 0px solid transparent;
-}
-
-#workspaces button.focused {
-  border-top: 2px solid transparent;
+  color: @foreground;
+  background: @foreground;
+  border-radius: 15px;
+  opacity: 0.5;
 }
 
 #workspaces button.active {
   color: @foreground;
+  background: @foreground;
+  min-width: 30px;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+#mode {
+  background: #64727d;
+  border-bottom: 3px solid white;
+}
+
+#idle_inhibitor,
+#workspaces,
+#custom-song,
+#custom-storage,
+#memory,
+#cpu,
+#clock,
+#tray,
+#network,
+#backlight,
+#wireplumber,
+#battery {
+  padding: 0px 10px 0px 8px;
+  background-color: @bg-module;
+  border: 2px solid @border-module;
+  color: @fg-module;
+}
+
+#idle_inhibitor,
+#workspaces,
+#custom-storage,
+#memory,
+#cpu {
+  border-radius: 14px 4px 15px 6px;
+}
+
+#custom-song {
+  border-radius: 14px 9px 14px 9px;
+}
+
+#tray,
+#network,
+#clock,
+#backlight,
+#wireplumber,
+#battery {
+  border-radius: 4px 14px 6px 15px;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
 }
 
 #tray {
   background-color: @bg-tray;
 }
 
-#clock {
-  padding: 0px 9px;
+#custom-logo {
+  color: @foreground;
 }
 
 #battery icon {
@@ -100,9 +145,16 @@ window#waybar {
   animation-direction: alternate;
 }
 
+#network {
+  padding: 0px 13px 0px 8px;
+}
+
+#network.disconnected {
+}
+
 #idle_inhibitor {
-  color: @foreground;
-  padding: 0px 0px 0px 9px;
+  font-size: 14px;
+  padding: 0px 5px 0px 8px;
 }
 
 #idle_inhibitor.activated {
@@ -110,7 +162,13 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
-  color: @fg-alt;
+  color: @foreground;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
 }
 
 #custom-seperator {
@@ -118,4 +176,5 @@ window#waybar {
 }
 
 #tray {
+  padding: 3px;
 }

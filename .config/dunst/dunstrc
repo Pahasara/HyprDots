@@ -5,6 +5,7 @@
     follow = mouse                  # Follow mouse position
     origin = bottom-right           # Notification placement
     offset = 8x8                    # Offset from screen edge
+    layer = top
 
     # Notification Size and Dimensions
     width = (0, 500)                # Min and max width

@@ -4,32 +4,33 @@
     //### CONFIGURATION ###
     //#####################
     // "reload_style_on_change": true,
+    "margin-top": 10,
+    "margin-left": 5,
+    "margin-right": 0,
+    "margin-bottom": 10,
     "layer": "top",
-    "position": "top",
-    "spacing": 15,
+    "position": "left",
+    "mod": "dock",
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces",
-        "custom/storage",
-        "cpu",
-        "memory",
+        "clock#time",
+        "clock#id",
+        // "cpu",
+        // "memory",
+        // "custom/storage",
     ],
     "modules-center":[
-        // "hyprland/window",
-        // "custom/weather",
-        "custom/song",
+        "hyprland/workspaces",
     ],
     "modules-right": [
         "tray",
-        // "custom/update",
+        "network",
+        // "backlight",
         "wireplumber",
         "battery",
-        "network",
-        "clock#date",
-        "clock#time",
     ],
     //################
     //### MODULES  ###
@@ -48,26 +49,37 @@
             // "6": [],
             // "7": [],
             // "8": [],
-            "9": [],
-            "10": []
+            // "9": [],
+            // "10": []
         },
         "format": "<small>{icon}</small>",
         "format-icons": {
-            // "active": "",
-            "default": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            // "active": "<small></small>",
+            "default": "",
         }
     },
     "hyprland/window": {
-        "max-length": 60,
-        "tooltip": true
+        "max-length": 40,
+        "tooltip": false
     },
     "clock#time": {
-        "format": "{:%I:%M <small>%p</small>}",
+        "format": "{:%I%n%M}",
+        "format-alt": "{:%m%n%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "clock#date": {
-        "format": "{:%a <big>%d</big> %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "clock#id": {
+        "format": "{:%p}",
+        "tooltip": false
     },
     "battery": {
         "interval": 5,
@@ -94,7 +106,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
         "format": " ",
-        "format-wifi": "{icon} ",
+        "format-wifi": "{icon}",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
@@ -131,7 +143,7 @@
         ]
     },
     "wireplumber": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
@@ -147,7 +159,7 @@
             "default": [
                "",
                 "",
-                ""
+                " "
             ],
         },
         "tooltip-format": "Volume: {volume}%",
@@ -160,16 +172,16 @@
     },
     "memory": {
         "interval": 5,
-        "format": " {used:0.1f}G",
-        "format-alt": "{percentage}% 󰾆",
+        "format": " {percentage}%",
+        "format-alt": " {used:0.1f}G",
         "tooltip": true,
         "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
     "custom/storage": {
-        "interval": 30,
-        "format": " {}",
-        "format-alt": "{percentage}%  ",
+        "interval": 300,
+        "format": " {percentage}%",
+        "format-alt": " {}",
         "return-type": "json",
         "exec": "~/.config/waybar/modules/storage.sh"
     },
@@ -178,11 +190,10 @@
         "exec": "~/.local/bin/now-playing",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
-        "escape": true,
-        "tooltip": false
+        "escape": true
     },
     "backlight": {
-        "format": "󰃟 ",
+        "format": "󰃟",
         // "format": "<big>{icon}</big> {percent}%",
         "format-icons": [
             " ",
@@ -207,20 +218,13 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "  ", //{icon}
+        "format": "<big></big>", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
         "timeout": 60.0,
         "tooltip": false
-    },
-    "custom/clipboard":{
-        "format": " ",
-        "on-click": "cliphist list | rofi -dmenu -display-columns 2 -config ~/.config/rofi/presets/clipboard.rasi | cliphist decode | wl-copy",
-        "on-click-right": "pkill rofi",
-        "tooltip-format": "Clipboard"
-
     },
     "custom/notification": {
         "format": "",
@@ -235,7 +239,11 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 12
+        "icon-size": 17,
+        "spacing":15 
     },
+    "custom/seperator":{
+        "format": "|",
+        "tooltip": false
+    }
 }

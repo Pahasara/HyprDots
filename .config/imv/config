@@ -11,6 +11,7 @@ suppress_default_binds = true
 
 [binds]
 q = quit
+<Escape> = quit
 
 # Image navigation
 <Left> = prev
