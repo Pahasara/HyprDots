@@ -1,6 +1,7 @@
 configuration {
     matching: "regex";
     drun-match-fields: "name";
+    display-emoji: "☺";
     terminal: "/usr/bin/kitty";
 }
 
@@ -18,11 +19,11 @@ configuration {
 }
 
 window {
-    location: northeast;
-    y-offset: 1; //-38
-    x-offset: -2;
-    width:          200;
-    border-radius:  13px;
+    location: southeast;
+    y-offset: -1;
+    x-offset: -1;
+    width:          400;
+    border-radius:  15px;
 
     border: 2px;
     border-color: @bg3;
@@ -30,33 +31,58 @@ window {
 }
 
 mainbox {
-    padding:    8px;
+    padding:    12px;
 }
 
 inputbar {
-	enabled:false;
+    background-color:   @bg1;
+    border-color:       @fg3;
+    border-radius:  12px;
+    border:         2px;
+
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
 }
 
 prompt {
-	enabled: false;
+    text-color: @fg0;
+}
+
+entry {
+    placeholder:        "Type...";
+    placeholder-color:  @fg0;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      10px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    8px 24px;
+    background-color:   @bg2;
 }
 
 listview {
     background-color:   transparent;
-    margin:     1px 0 0;
+    margin:     12px 0 0;
     columns:    1;
     lines:      8;
+
     fixed-height: false;
 }
 
 element {
     padding:        8px 8px;
     spacing:        8px;
-    border-radius:  7px;
+    border-radius:  8px;
 }
 
 element normal urgent {
-    text-color: @urgent;
+  text-color: @urgent;
 }
 
 element normal active {
@@ -65,7 +91,7 @@ element normal active {
 
 element selected normal, element selected active {
     background-color:   @bg2;
-    text-color: @fg2;
+	text-color: @fg2;
 }
 
 element-icon {
@@ -75,5 +101,4 @@ element-icon {
 
 element-text {
     text-color: inherit;
-    horizontal-align: 0.5;
 }

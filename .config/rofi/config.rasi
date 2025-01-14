@@ -9,7 +9,6 @@ configuration {
     display-drun: " ";
     display-window: " ";
     display-calc: " ";
-    display-emoji: "☺";
     terminal: "/usr/bin/kitty";
 }
 
@@ -28,8 +27,8 @@ configuration {
 
 window {
     location:       center;
-    width:          260;
-    border-radius:  12px;
+    width:          265;
+    border-radius:  15px;
 
     border: 2px;
     border-color: @bg3;
@@ -76,7 +75,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      5;
+    lines:      6;
 
     fixed-height: false;
 }
@@ -84,7 +83,7 @@ listview {
 element {
     padding:        8px 8px;
     spacing:        8px;
-    border-radius:  5px;
+    border-radius:  8px;
 }
 
 element normal urgent {

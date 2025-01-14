@@ -4,17 +4,17 @@
     	"source": "~/Pictures/Assets/fetch.png",
     	"type": "kitty-direct",
     	"padding": {
-    		"top": 1,
-                "left": 2
+    		"top": 0,
+                "left": 0
     	}
     },
     "display": {
         "separator": " "
     },
     "modules": [
-	"break",
+	    // "break",
         "break",
-        "break",
+        // "break",
 	{
             "type": "title",
             "keyWidth": 10
@@ -36,10 +36,10 @@
             "key": " ",
             "keyColor": "34",  
         },
-        // {
-        //     "type": "shell",
-        //     "key": " ",
-        //     "keyColor": "34", },
+        {
+            "type": "shell",
+            "key": " ",
+            "keyColor": "34", },
         "break",
         // {
         //     "type": "terminal",
@@ -95,11 +95,11 @@
             "key": " ",
             "keyColor": "blue"
         },
-        {
-            "type": "display",
-            "key": " ",
-            "keyColor": "blue"
-        },
+        // {
+        //     "type": "display",
+        //     "key": " ",
+        //     "keyColor": "blue"
+        // },
         {
             "type": "gpu",
             "key": " ",
@@ -115,7 +115,7 @@
             "type": "custom",
             "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
         },
-        "break",
-        "break",
+        // "break",
+        // "break",
     ]
 }

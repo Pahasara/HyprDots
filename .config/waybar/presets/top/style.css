@@ -3,7 +3,7 @@
 @import url("themes/azure.css");
 
 * {
-  font-family: "CaskaydiaMOno Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
   font-weight: bold;
 }
@@ -20,9 +20,10 @@ window#waybar {
   padding: 0px;
   margin: 8px 8px 8px 0px;
   min-height: 2px;
-  border: 0;
   border-radius: 15px;
+  border: 0px;
   transition: all 0.3s ease-in-out;
+  opacity: 0.9;
   color: @fg-persist;
   background-color: @fg-persist;
 }
@@ -36,11 +37,11 @@ window#waybar {
 
 #workspaces button.selected,
 #workspaces button.active {
-  color: @fg-alt;
-  background: @fg-alt;
+  color: @fg-blink;
+  background: @fg-blink;
   min-width: 28px;
   transition: all 0.3s ease-in-out;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 #workspaces button.empty {
@@ -113,7 +114,7 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
   border-radius: 25px;
   padding-top: 0px;
@@ -138,13 +139,6 @@ window#waybar {
 #window {
   color: @fg-blink;
   opacity: 0.8;
-}
-
-#custom-storage,
-#clock.date,
-#memory,
-#cpu {
-  color: @fg-alt;
 }
 
 #custom-song {

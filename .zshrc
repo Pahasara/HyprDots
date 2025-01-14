@@ -1,7 +1,6 @@
 #############
 #  GENERAL  #
 #############
-
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 21
 
@@ -36,8 +35,8 @@ plugins=(
 	zsh-autocomplete
 	zsh-syntax-highlighting
 )
-
 source $ZSH/oh-my-zsh.sh
+
 
 ######################
 #      ALIASES       #
@@ -49,8 +48,8 @@ alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-alias z="./.local/bin/zero/Zero.CLI"
-alias zero="./.local/bin/zero/Zero.CLI"
+alias z="./.local/opt/zero/Zero.CLI"
+alias zero="./.local/opt/zero/Zero.CLI"
 alias wall="swww img"
 alias vz="vim ~/.zshrc"
 alias ve="vim ~/.zshenv"
@@ -60,14 +59,27 @@ alias xzz="XZ_OPT='-9' tar -cJf"
 alias gzz="tar -czf"
 alias zst="tar -I 'zstd -19 -T4' -cf"
 alias cdc="cd && cd Code"
+alias cdd="cd && cd Downloads"
+alias cdg="cd && cd Github"
 alias tp="trash-put"
+
+alias rwa="random-wall ~/Pictures/Wallpapers/Anime"
+alias rwc="random-wall ~/Pictures/Wallpapers/Cute"
+alias rwm="random-wall ~/Pictures/Wallpapers/ML"
+alias rwg="random-wall ~/Pictures/Wallpapers/Old-G"
+alias rwo="random-wall ~/Pictures/Wallpapers/Other"
+alias rwl="random-wall ~/Pictures/Wallpapers/League"
+alias rww="random-wall ~/Pictures/Wallpapers/WD"
 
 alias vi="nvim"
 alias vim="nvim"
 alias ac="aria2c"
 alias ff="fastfetch"
 alias mk="musikcube"
-alias mg="mega-get" alias y="yazi"
+alias mg="mega-get" 
+alias y="yazi"
+alias yd="yt-dlp -f 'bestvideo[height=1080]+bestaudio'"
+alias yd720="yt-dlp -f 'bestvideo[height=720]+bestaudio'"
 
 alias jr="java"
 alias jc="javac"
@@ -88,5 +100,9 @@ alias sctlr="systemctl restart"
 alias pm="pacman"
 alias se="sudoedit"
 
-echo "Welocome, $USER!"
+###########
+#  START  #
+###########
+cat ~/.arch | lolcat
+echo "Welocome, $USER!" | lolcat
 eval "$(starship init zsh)"

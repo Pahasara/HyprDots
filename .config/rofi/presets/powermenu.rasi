@@ -19,9 +19,9 @@ configuration {
 
 window {
     location: north;
-    y-offset: -34;
+    y-offset: -14; // -34
     width:          400;
-    border-radius:  13px;
+    border-radius:  16px;
 
     border: 2px;
     border-color: @bg3;

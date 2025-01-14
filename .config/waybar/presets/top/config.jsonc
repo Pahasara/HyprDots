@@ -18,7 +18,7 @@
         "memory",
     ],
     "modules-center":[
-        // "hyprland/window",
+        "hyprland/window",
         // "custom/weather",
         "custom/song",
     ],
