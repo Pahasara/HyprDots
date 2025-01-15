@@ -1,6 +1,6 @@
 #!/bin/bash
 # Can parse 'max_length=SOME_INTEGER' as argument 
-# (example: ./now-playing max_lentgh=40)
+# (example: ./now-playing max_length=40)
 
 default_max_length=32
 
@@ -25,14 +25,17 @@ fi
 spotify_status=$(playerctl --player=spotify status 2>/dev/null)
 
 if [ "$spotify_status" == "Playing" ]; then
-    info=$(playerctl metadata --player=spotify --format '  {{title}} • {{artist}}')
+    info=$(playerctl metadata --player=spotify --format '{{title}} • {{artist}}')
+    trimmed_info=$(trim_info "$info" "$max_length")
+    output="  $trimmed_info"
 else
     musik_status=$(playerctl --player=musikcube status 2>/dev/null)
 
     if [ "$musik_status" == "Playing" ]; then
-        info=$(playerctl metadata --player=musikcube --format '  {{title}} • {{artist}}')
+        info=$(playerctl metadata --player=musikcube --format '{{title}} • {{artist}}')
+        trimmed_info=$(trim_info "$info" "$max_length")
+        output="  $trimmed_info"
     fi
 fi
 
-trimmed_info=$(trim_info "$info" "$max_length")
-echo "$trimmed_info"
+echo "$output"
