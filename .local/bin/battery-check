@@ -4,7 +4,7 @@ BATTERY_PATH="/sys/class/power_supply/BAT0"
 BATTERY_LEVEL=$(cat "${BATTERY_PATH}/capacity")
 STATUS=$(cat "${BATTERY_PATH}/status")
 
-if [[ "$STATUS" != "Charging" ]] && [[ "$BATTERY_LEVEL" -le 35 ]]; then
+if [[ "$STATUS" != "Charging" ]] && [[ "$BATTERY_LEVEL" -le 25 ]]; then
     dunstify -u critical "Battery Low" "Battery level is ${BATTERY_LEVEL}%. Connect to the charger." -i "$HOME/.local/share/icons/dunst/warning.png"
     $HOME/.local/bin/notify-sound
 fi

@@ -12,7 +12,7 @@ declare -A WIFI_ICONS=(
 )
 
 if [[ ! -d /sys/class/net/${INTERFACE}/wireless ]]; then
-    echo "Interface ${INTERFACE} not found."
+    # echo "Interface ${INTERFACE} not found."
     exit 1
 fi
 
