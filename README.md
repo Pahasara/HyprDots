@@ -118,29 +118,6 @@ cp -r .walls/* $HOME/Pictures
 ```
 <br>
 
-## Nocturne
-![Fetch](https://github.com/user-attachments/assets/ee131759-0892-43e3-975d-aa15f51d4ce2)
-
-
-
-## Miku
-![Fetch](https://github.com/user-attachments/assets/47311a00-beec-4445-802c-d22e7455f03b)
-
-> [!NOTE]
-> _If u would like to use a theme other than Azure, follow these steps. Replace 'theme_name' with ur desired theme (Nocturne or Miku)._   
-
-```
-cd theme_name
-```
-
-```
-cp -r .config/* $HOME/.config
-```
-
-```
-cp -r .walls/* $HOME/Pictures
-```
-<br>
 
 # ❤️ Thanks for Visiting!
 I hope u like my project! If so, don't forget to give it a `star`, as it means a lot.
