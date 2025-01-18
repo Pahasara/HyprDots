@@ -85,7 +85,7 @@
 - _`grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
 - _`rofi-emoji-git`_ - Emoji selector
 - _`udiskie`_ - USB Device Manager
-- _[`ianny`](https://github.com/zefr0x/ianny/commits?author=zefr0x)_ - Save me from myself
+- _[`ianny`](https://github.com/zefr0x/ianny)_ - Save me from myself
 <br>
 
 # 📥 Install Instructions
