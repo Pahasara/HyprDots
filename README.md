@@ -71,11 +71,11 @@
 
 ### ⚙️ _Other Components_
 
-- _`Mojave-Dark`_ - GTK Theme
-- _`Fluent-dark`_ - Icon Theme
+- _`WhiteSur-Dark`_ - GTK Theme
+- _`Vortex-Dark-Icons`_ - Icon Theme
 - _`eza`_ - Alternative to _`ls`_ command
 - _`xdg-desktop-portal-hyprland`_ - For Better Functionality and Compatibility
-- _`polkit-kde`_ - Authentication Agent
+- _`polkit-kde-agent`_ - Authentication Agent
 - _`brightnessctl`_ - Monitor and Keyboard Brightness Control
 - _`pipewire`_ - Audio Playback (pipewire, pipewire-pulse, pipewire-alsa)
 - _`wireplumber`_ - Session Manager for Pipewire
@@ -85,7 +85,7 @@
 - _`grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
 - _`rofi-emoji-git`_ - Emoji selector
 - _`udiskie`_ - USB Device Manager
-- _`ianny`_ - Save me from myself
+- _[`ianny`](https://github.com/zefr0x/ianny/commits?author=zefr0x)_ - Save me from myself
 <br>
 
 # 📥 Install Instructions
