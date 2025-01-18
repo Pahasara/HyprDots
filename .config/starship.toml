@@ -8,16 +8,19 @@ add_newline = true
 
 # Use custom format
 #[$username@$hostname](bg:#323437 fg:#CDCDCD)\
+# [](fg:#323437)\
+# [   ](bg:#323437 fg:#CDCDCD)\
+# [](bg:#0099BB fg:#323437)\
+# [ $directory ](bg:#0099BB fg:#000000)\
+# [ ](fg:#0099BB)\
+# $line_break\
+
 format = """
 [](fg:#323437)\
 [   ](bg:#323437 fg:#CDCDCD)\
-[ ](bg:#0099BB fg:#323437)\
-[$directory](bg:#0099BB fg:#000000)\
+[](bg:#0099BB fg:#323437)\
+[ $directory ](bg:#0099BB fg:#000000)\
 [ ](fg:#0099BB)\
-$git_branch\
-$git_state\
-$git_status\
-
 $line_break\
 """
 
@@ -25,6 +28,9 @@ right_format = """
 $character\
 $symbol\
 $python\
+$git_branch\
+$git_state\
+$git_status\
 $cmd_duration\
 """
 
@@ -45,9 +51,9 @@ format = '[$hostname ]($style)'
 style = 'bold gray'
 
 [directory]
-format = '[$path ]($style)'
+format = '[$path]($style)'
 home_symbol = "~"
-truncation_length = 3
+truncation_length = 4
 truncation_symbol = "…/"
 style = 'bold gray'
 
@@ -64,16 +70,16 @@ format = "took [$duration]($style) "
 style = "yellow"
 
 [python]
-format = "[$symbol [$virtualenv](fg:#00C8FF)]($style) "
-symbol = ' '
-style = "bright-blue"
+symbol = ''
+style = "fg:#000000 bg:#18C429"
+format = ' [](fg:#18C429)[ $symbol $virtualenv ]($style)[](fg:#18C429)'
 
 [git_branch]
 symbol = ""
-style = "fg:#1ED42D"
-format = 'on [ $symbol $branch ]($style)'
+style = "fg:#000000 bg:#18C429"
+format = ' [](fg:#18C429)[ $symbol $branch ]($style)[](fg:#18C429 bg:#FF3F3F)'
 
 [git_status]
-style = "fg:#E63838"
-format = '[$all_status$ahead_behind ]($style)'
+style = "fg:#000000 bg:#EF3838"
+format = '[$all_status$ahead_behind ]($style)[](fg:#EF3838)'
 

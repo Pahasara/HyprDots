@@ -36,6 +36,7 @@ return {
         'html',
         'jdtls',
         'lua_ls',
+        'ts_ls',
       },
     }
 
@@ -43,7 +44,7 @@ return {
       ensure_installed = {
         -- list of formatters for mason to install
         'clang-format', -- c/c++ formatter
-        'prettier', -- css/html formatter
+        'prettier', -- css/html/js formatter
         'black', -- python formatter
         'isort', -- python formatter
         'stylua', -- lua formatter

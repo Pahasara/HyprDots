@@ -81,12 +81,12 @@ rules = [
 	{ mime = "application/x-bzip2",         use = [ "extract", "reveal" ] },
 	{ mime = "application/x-7z-compressed", use = [ "extract", "reveal" ] },
 	{ mime = "application/x-rar",           use = [ "extract", "reveal" ] },
-	{ mime = "application/xz",              use = [ "extract", "reveal" ] },
-	{ mime = "application/x-tar",            use = [ "tarxf", "reveal" ] },
+	{ mime = "application/xz",              use = [ "tarxf", "reveal" ] },
+	{ mime = "application/x-tar",           use = [ "tarxf", "reveal" ] },
 	{ mime = "application/gzip",            use = [ "tarxf", "reveal" ] },
 	{ mime = "application/x-xz",            use = [ "tarxf", "reveal" ] },
 	{ mime = "application/zstd",            use = [ "tarxf", "reveal" ] },
-	{ mime = "application/vnd.rar",            use = [ "unrar", "reveal" ] },
+	{ mime = "application/vnd.rar",         use = [ "unrar", "reveal" ] },
 
 	{ mime = "*", use = [ "open", "reveal" ] },
 ]

@@ -9,6 +9,7 @@
 }
 
 window#waybar {
+  color: @fg-module;
   background: @background;
   border: 1px solid @border;
   border-radius: 15px;
@@ -53,7 +54,7 @@ window#waybar {
 #workspaces button.empty {
   color: @fg-persist;
   background-color: @fg-persist;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 #workspaces button.urgent {
@@ -66,21 +67,12 @@ window#waybar {
   background-color: @bg-tray;
 }
 
-#clock.time {
-  font-size: 14px;
-  font-weight: 900;
-}
-
-#custom-song {
-  font-family: "NeuroPolitical";
-  font-style: italic;
-}
-
 #battery icon {
   color: red;
 }
 
 #battery.plugged {
+  color: #66df69;
 }
 
 #battery.charging {
@@ -117,11 +109,15 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 25px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #idle_inhibitor.activated {
-  color: @fg-module;
+  color: @fg-blink;
 }
 
 #idle_inhibitor.deactivated {
@@ -138,4 +134,35 @@ window#waybar {
   padding-left: 10px;
   padding-right: 10px;
   margin: 5px;
+}
+
+#window {
+  color: @fg-blink;
+  opacity: 0.8;
+}
+
+#custom-storage,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#clock.time {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
+#custom-song {
+  font-family: "NeuroPolitical";
+  font-style: italic;
+  font-weight: 700;
+  color: #5fcf5f;
 }

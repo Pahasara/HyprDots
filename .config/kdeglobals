@@ -1,8 +1,32 @@
+[Colors:Button]
+BackgroundNormal=36,39,54
+ForegroundNormal=255,255,255
+
+[Colors:Header]
+BackgroundNormal=56,64,85
+ForegroundNormal=255,255,255
+
+[Colors:Selection]
+BackgroundNormal=141,158,194
+ForegroundNormal=255,255,255
+
+[Colors:Tooltip]
+BackgroundNormal=145,166,208
+ForegroundNormal=255,255,255
+
+[Colors:View]
+BackgroundNormal=38,42,56
+ForegroundNormal=255,255,255
+
+[Colors:Window]
+BackgroundNormal=56,64,85
+ForegroundNormal=255,255,255
+
 [General]
 TerminalApplication=kitty
 
 [Icons]
-Theme=Fluent-dark
+Theme=breeze-dark
 
 [KDE]
 ShowDeleteCommand=false
@@ -12,7 +36,7 @@ widgetStyle=qt6ct-style
 Allow Expansion=false
 Automatically select filename extension=true
 Breadcrumb Navigation=true
-Decoration position=2
+Decoration position=0
 LocationCombo Completionmode=5
 PathCombo Completionmode=5
 Show Bookmarks=false
@@ -26,7 +50,7 @@ Sort directories first=true
 Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=144
-View Style=DetailTree
+View Style=Simple
 
 [PreviewSettings]
 EnableRemoteFolderThumbnail=false

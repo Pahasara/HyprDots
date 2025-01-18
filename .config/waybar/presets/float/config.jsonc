@@ -16,10 +16,10 @@
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces",
-        "custom/storage",
-        "cpu",
-        "memory",
+        "hyprland/workspaces"
+        // "custom/storage",
+        // "cpu",
+        // "memory",
     ],
     "modules-center":[
         // "hyprland/window",
@@ -67,7 +67,8 @@
         "tooltip": false
     },
     "clock#time": {
-        "format": "{:%I:%M %p}",
+        "format": "{:%I:%M <small>%p</small>}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "clock#date": {
         "format": "{:%a <big>%d</big> %b}",
@@ -98,7 +99,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
         "format": " ",
-        "format-wifi": "{icon} {essid}",
+        "format-wifi": "{icon} ",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
@@ -210,7 +211,7 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "<big> </big>", //{icon}
+        "format": "", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -231,11 +232,7 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 17,
-        "spacing": 7
-    },
-    "custom/seperator":{
-        "format": "|",
-        "tooltip": false
+        "icon-size": 16,
+        "spacing": 12
     }
 }
