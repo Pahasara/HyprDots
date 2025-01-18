@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-# Get currently connected SSID using the working command from your system
+# Get currently connected SSID
 current_connection=$(nmcli -t -f active,ssid dev wifi | awk -F: '/^yes:/ {print $2}')
 
-# Get a list of available wifi connections and morph it into a nice-looking list
+# Get a list of available wifi connections
 wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA*.?\S/ /g" | sed "s/^--/ /g" | sed "s/  //g" | sed "/--/d" | while read -r line; do
-    # Extract SSID exactly as it appears
-    ssid="${line#* }"  # This removes everything before and including the first space
+    ssid="${line#* }"
     if [ "$ssid" = "$current_connection" ]; then
-        echo "  $ssid"  # Unlocked symbol for connected network
+        echo "  $ssid"
     else
-        echo "  $ssid"  # Locked symbol for other networks
+        echo "  $ssid"
     fi
 done)
 
+# Check WiFi status for toggle option
 connected=$(nmcli -fields WIFI g)
 if [[ "$connected" =~ "enabled" ]]; then
     toggle="󰖪  Disable Wi-Fi"
@@ -24,8 +24,13 @@ fi
 # Use rofi to select wifi network
 chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 0 -p "Wi-Fi SSID: " -config ~/.config/rofi/presets/wifi.rasi)
 
-# Get name of connection (now accounting for the lock/unlock symbols)
-read -r chosen_id <<< "${chosen_network:4}"
+# Get name of connection - handling both icon cases
+if [[ "$chosen_network" == "󰖩  Enable Wi-Fi" ]] || [[ "$chosen_network" == "󰖪  Disable Wi-Fi" ]]; then
+    chosen_id="$chosen_network"
+else
+    # Remove the first 3 characters (1 symbol + 2 spaces)
+    chosen_id="${chosen_network:3}"
+fi
 
 if [ "$chosen_network" = "" ]; then
     exit
@@ -34,17 +39,31 @@ elif [ "$chosen_network" = "󰖩  Enable Wi-Fi" ]; then
 elif [ "$chosen_network" = "󰖪  Disable Wi-Fi" ]; then
     nmcli radio wifi off
 else
-    # Message to show when connection is activated successfully
     success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
     
     # Get saved connections
     saved_connections=$(nmcli -g NAME connection)
     if [[ $(echo "$saved_connections" | grep -w "$chosen_id") = "$chosen_id" ]]; then
-        nmcli connection up id "$chosen_id" | grep "successfully" && notify-send "Connection Established" "$success_message"
+        if nmcli connection up id "$chosen_id"; then
+            notify-send "Connection Established" "$success_message"
+        else
+            notify-send "Connection Failed" "Failed to connect to $chosen_id"
+        fi
     else
         if [[ "$chosen_network" =~ "" ]]; then
-            wifi_password=$(rofi -dmenu -p "Password: " )
+            # Use password prompt with hidden input
+            wifi_password=$(rofi -dmenu -p "Password: " -password)
+            
+            # Rescan available networks before attempting connection
+            nmcli device wifi rescan
+            sleep 1  # Give time for the scan to complete
+            
+            # Attempt connection with error handling
+            if nmcli device wifi connect "$chosen_id" password "$wifi_password"; then
+                notify-send "Connection Established" "$success_message"
+            else
+                notify-send "Connection Failed" "Failed to connect to $chosen_id. Please check your password."
+            fi
         fi
-        nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$success_message"
     fi
 fi
