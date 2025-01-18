@@ -15,6 +15,10 @@ window#waybar {
   border-radius: 10px;
 }
 
+#workspaces {
+  min-width: 185px;
+}
+
 #workspaces button {
   padding: 0px;
   margin: 8px 10px 8px 0px;
@@ -60,7 +64,7 @@ window#waybar {
 #wireplumber,
 #battery {
   padding: 0px 10px 0px 8px;
-  background-color: @bg-module;
+  background-color: @background;
   border: 2px solid @border-module;
   color: @fg-module;
 }
@@ -89,10 +93,6 @@ window#waybar {
 .modules-left,
 .modules-right,
 .modules-center {
-}
-
-#tray {
-  background-color: @bg-tray;
 }
 
 #custom-logo {
@@ -177,4 +177,11 @@ window#waybar {
 
 #tray {
   padding: 3px;
+}
+
+#custom-song {
+  font-family: "NeuroPolitical";
+  font-style: italic;
+  font-weight: 700;
+  color: #5fcf5f;
 }

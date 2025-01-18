@@ -10,6 +10,7 @@ return {
         cpp = { 'clang-format' },
         css = { 'prettier' },
         html = { 'prettier' },
+        javascript = { 'prettier' },
         lua = { 'stylua' },
         xml = { 'xmlformatter' },
         -- markdown = { "prettier" },

@@ -1,19 +1,22 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/azure.css");
+@import url("themes/fluent.css");
 
 * {
-  font-family: "CaskaydiaMOno Nerd Font";
+  font-family: "CaskaydiaMono Nerd Font";
   font-size: 12px;
   font-weight: bold;
 }
 
 window#waybar {
+  color: @fg-module;
   background: @background;
 }
 
 #workspaces {
   min-width: 165px;
+  background: @bg-module;
+  border-radius: 15px;
 }
 
 #workspaces button {
@@ -59,24 +62,12 @@ window#waybar {
   background-color: @bg-tray;
 }
 
-#clock.time {
-  font-size: 14px;
-  font-weight: 900;
-}
-
-#wireplumber,
-#custom-clipboard,
-#network {
-  font-size: 13px;
-  font-style: normal;
-}
-
 #battery icon {
   color: red;
 }
 
 #battery.plugged {
-  color: #66dc69;
+  color: #66df69;
 }
 
 #battery.charging {
@@ -113,43 +104,53 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 16px;
-  font-weight: 900;
+  font-family: "Zebulon Condensed";
+  font-size: 13px;
+  font-weight: 100;
   border-radius: 25px;
-  padding-top: 0px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #idle_inhibitor.activated {
-  color: @fg-blink;
+  color: #00ccff;
 }
 
 #idle_inhibitor.deactivated {
-  color: @foreground;
-}
-
-.modules-right {
-  background: @bg-module;
-  border-radius: 13px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 5px;
-}
-
-#window {
   color: @fg-blink;
-  opacity: 0.8;
 }
 
 #custom-storage,
+#window,
 #clock.date,
 #memory,
 #cpu {
   color: @fg-alt;
 }
 
+#clock.time {
+  font-size: 13.75px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
 #custom-song {
   font-family: "NeuroPolitical";
   font-style: italic;
   font-weight: 700;
-  color: #56cc59;
+  color: #5fcf5f;
+}
+
+.modules-right {
+  background: @bg-module;
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 0px;
+  margin: 5px;
 }

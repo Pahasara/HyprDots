@@ -17,7 +17,7 @@ tooltip_shadow_depth=10
 scroll_width=12
 scroll_arrows=true
 scroll_min_extent=50
-scrollbar_in_view=true
+scrollbar_in_view=false
 transient_scrollbar=true
 slider_width=4
 slider_handle_width=20
@@ -64,8 +64,17 @@ submenu_overlap=0
 tooltip_delay=-1
 transient_groove=true
 tree_branch_line=false
-saturation=1.5
-contrast=0.9
+saturation=1.50
+contrast=0.90
+click_behavior=0
+dialog_button_layout=0
+drag_from_buttons=false
+intensity=1.00
+menu_blur_radius=0
+no_inactiveness=false
+reduce_menu_opacity=0
+shadowless_popup=false
+tooltip_blur_radius=0
 
 [Focus]
 inherits=PanelButtonCommand
@@ -105,10 +114,10 @@ min_height=35
 
 [Hacks]
 transparent_ktitle_label=true
-transparent_dolphin_view=false
+transparent_dolphin_view=true
 transparent_pcmanfm_sidepane=true
-blur_translucent=true
-transparent_menutitle=true
+blur_translucent=false
+transparent_menutitle=false
 respect_darkness=false
 kcapacitybar_as_progressbar=true
 force_size_grip=true
@@ -122,6 +131,11 @@ normal_default_pushbutton=true
 single_top_toolbar=true
 tint_on_mouseover=0
 transparent_pcmanfm_view=false
+blur_only_active_window=false
+centered_forms=true
+kinetic_scrolling=false
+noninteger_translucency=false
+style_vertical_toolbars=false
 
 [PanelButtonCommand]
 frame=true

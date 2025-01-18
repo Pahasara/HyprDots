@@ -1,8 +1,8 @@
 // github.com/pahasara/HyprDots
 
 * {
-  bg0:    #0000008F; //window
-  bg1:    #2A2C2F99; //input
+  bg0:    #12121288; //window
+  bg1:    #00000066; //input
   bg2:    #0000000F; //selected
   bg3:    #424547; //windowBorder
   bg4:    #0000009F; //window

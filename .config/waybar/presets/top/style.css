@@ -1,6 +1,6 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/azure.css");
+@import url("themes/fluent.css");
 
 * {
   font-family: "JetBrainsMono Nerd Font";
@@ -9,21 +9,23 @@
 }
 
 window#waybar {
+  color: @fg-module;
   background: @background;
 }
 
 #workspaces {
   min-width: 165px;
+  background: @bg-module;
+  border-radius: 15px;
 }
 
 #workspaces button {
   padding: 0px;
   margin: 8px 8px 8px 0px;
   min-height: 2px;
+  border: 0;
   border-radius: 15px;
-  border: 0px;
   transition: all 0.3s ease-in-out;
-  opacity: 0.9;
   color: @fg-persist;
   background-color: @fg-persist;
 }
@@ -37,11 +39,11 @@ window#waybar {
 
 #workspaces button.selected,
 #workspaces button.active {
-  color: @fg-blink;
-  background: @fg-blink;
+  color: @fg-alt;
+  background: @fg-alt;
   min-width: 28px;
   transition: all 0.3s ease-in-out;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 #workspaces button.empty {
@@ -60,24 +62,12 @@ window#waybar {
   background-color: @bg-tray;
 }
 
-#clock.time {
-  font-size: 14px;
-  font-weight: 900;
-}
-
-#wireplumber,
-#custom-clipboard,
-#network {
-  font-size: 13px;
-  font-style: normal;
-}
-
 #battery icon {
   color: red;
 }
 
 #battery.plugged {
-  color: #66dc69;
+  color: #66df69;
 }
 
 #battery.charging {
@@ -114,10 +104,11 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   border-radius: 25px;
-  padding-top: 0px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 #idle_inhibitor.activated {
@@ -132,7 +123,7 @@ window#waybar {
   background: @bg-module;
   border-radius: 13px;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 0px;
   margin: 5px;
 }
 
@@ -141,9 +132,28 @@ window#waybar {
   opacity: 0.8;
 }
 
+#custom-storage,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#clock.time {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
 #custom-song {
   font-family: "NeuroPolitical";
   font-style: italic;
   font-weight: 700;
-  color: #56cc59;
+  color: #5fcf5f;
 }
