@@ -20,7 +20,7 @@
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
 |--|--|
 
-| ![Yazi](https://github.com/user-attachments/assets/6cfa71af-3bae-48f7-a3b7-3ec4768d538d) | ![Hyprlock](https://github.com/user-attachments/assets/34994c89-ab17-41ac-b6f1-79de2d3ced82) |
+| ![Yazi](https://github.com/user-attachments/assets/6cfa71af-3bae-48f7-a3b7-3ec4768d538d) | ![Hyprlock](https://github.com/user-attachments/assets/96c451da-1ced-466d-8cea-3d11af68be8c) |
 |--|--|
 
 > [!IMPORTANT]
