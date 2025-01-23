@@ -14,7 +14,7 @@
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
 <br>
 
-## Main
+## Screenshots
 ![fetch](https://github.com/user-attachments/assets/e2103712-b7e2-40a2-8da2-67992d238567)
 
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
@@ -40,7 +40,7 @@
 | **Notifications**           | [dunst](https://github.com/dunst-project/dunst)                                                                                                                                 |
 | **Screen Locker**           | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                                                                  |
 | **Idle Daemon**             | [hypridle](https://github.com/hyprwm/hypridle)                                                                                                                                  |
-| **Fonts**                   | [Caskaydia Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-cascadia-mono-nerd), [JetBrains Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd), [Ubuntu Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-ubuntu-nerd), [Awesome Fonts](https://archlinux.org/packages/extra/any/ttf-font-awesome/) |
+| **Fonts**                   | [Caskaydia Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-cascadia-mono-nerd), [JetBrains Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd), [Ubuntu Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-ubuntu-nerd), [Neuropolitical Font](https://www.dafont.com/neuropolitical.font), [Awesome Fonts](https://archlinux.org/packages/extra/any/ttf-font-awesome/) |
 <br>
 
 ### 🔧 _Necessary_
@@ -71,8 +71,9 @@
 
 ### ⚙️ _Other Components_
 
-- _`WhiteSur-Dark`_ - GTK Theme
-- _`Vortex-Dark-Icons`_ - Icon Theme
+- _`WhiteSur-Dark`_ - QT/GTK Theme
+- _`BugSur`_ - QT Icon Theme
+- _`Vortex-Dark-Icons`_ - GTK/Icon Theme
 - _`eza`_ - Alternative to _`ls`_ command
 - _`xdg-desktop-portal-hyprland`_ - For Better Functionality and Compatibility
 - _`polkit-kde-agent`_ - Authentication Agent
