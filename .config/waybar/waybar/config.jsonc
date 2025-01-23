@@ -18,10 +18,10 @@
         // "cpu",
         // "memory",
     ],
-    "modules-center":[
-        "hyprland/window"
+    // "modules-center":[
+    //     "hyprland/window"
         // "custom/weather",
-    ],
+    // ],
     "modules-right": [
         "tray",
         // "custom/update",
@@ -208,7 +208,7 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "asus", // {icon}
+        "format": "", // {icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""

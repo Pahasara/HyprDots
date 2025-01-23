@@ -13,15 +13,15 @@
     "modules-left": [
         "idle_inhibitor",
         "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
-        "cpu"
+        // "cpu"
         // "memory"
     ],
-    "modules-center":[
+    // "modules-center":[
         // "hyprland/window",
         // "custom/weather",
-        "custom/song",
-    ],
+    // ],
     "modules-right": [
         "tray",
         // "custom/update",
@@ -29,7 +29,7 @@
         "battery",
         "network",
         "clock#date",
-        "clock#time",
+        "clock#time"
     ],
     //################
     //### MODULES  ###

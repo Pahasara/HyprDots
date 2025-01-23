@@ -3,7 +3,7 @@
 @import url("themes/fluent.css");
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "Neuropolitical";
   font-size: 12px;
   font-weight: bold;
 }
@@ -14,8 +14,8 @@ window#waybar {
 }
 
 #workspaces {
-  padding-top: 2px;
-  min-width: 165px;
+  margin-top: 1px;
+  min-width: 170px;
   background: @bg-module;
   border-radius: 15px;
 }
@@ -105,62 +105,56 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 100;
   border-radius: 25px;
-  padding-top: 0px;
+  padding-right: 2px;
 }
 
 #idle_inhibitor.activated {
-  color: @fg-blink;
+  color: @fg-module;
 }
 
 #idle_inhibitor.deactivated {
-  color: @foreground;
-}
-
-.modules-right {
-  background: @bg-module;
-  border-radius: 13px;
-  padding-left: 10px;
-  padding-right: 5px;
-  margin: 5px;
-}
-
-#window {
-  color: @fg-blink;
-  opacity: 0.8;
-}
-
-#clock.time {
-  font-size: 13px;
-  font-weight: 800;
-}
-
-#wireplumber,
-#custom-clipboard,
-#network {
-  font-size: 13px;
-  font-style: normal;
+  color: #00c0ff;
 }
 
 #custom-storage,
-#cpu,
-#tray,
-#memory {
-  padding-top: 3px;
-}
-
-#custom-storage,
+#window,
 #clock.date,
 #memory,
 #cpu {
   color: @fg-alt;
 }
 
+#clock {
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+#clock.time {
+  font-size: 13.75px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#battery,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
 #custom-song {
-  font-family: "NeuroPolitical";
+  font-family: "Neuropolitical";
   font-style: italic;
   font-weight: 700;
-  color: #5fcf5f;
+  color: #4fcf50;
+}
+
+.modules-right {
+  background: @bg-module;
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 0px;
+  margin: 5px;
 }

@@ -3,7 +3,7 @@
 @import url("themes/fluent.css");
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "Neuropolitical";
   font-size: 12px;
   font-weight: bold;
 }
@@ -14,7 +14,7 @@ window#waybar {
 }
 
 #workspaces {
-  min-width: 165px;
+  min-width: 170px;
   background: @bg-module;
   border-radius: 15px;
 }
@@ -41,7 +41,7 @@ window#waybar {
 #workspaces button.active {
   color: @fg-alt;
   background: @fg-alt;
-  min-width: 28px;
+  min-width: 30px;
   transition: all 0.3s ease-in-out;
   opacity: 0.8;
 }
@@ -104,19 +104,51 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 100;
   border-radius: 25px;
   padding-left: 7px;
-  padding-right: 7px;
+  padding-right: 9px;
 }
 
 #idle_inhibitor.activated {
-  color: @fg-blink;
+  color: @fg-module;
 }
 
 #idle_inhibitor.deactivated {
-  color: @foreground;
+  color: #00c0ff;
+}
+
+#custom-storage,
+#window,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#clock {
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+#clock.time {
+  font-size: 13.75px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#battery,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
+#custom-song {
+  font-family: "Neuropolitical";
+  font-style: italic;
+  font-weight: 700;
+  color: #4fcf50;
 }
 
 .modules-right {
@@ -125,35 +157,4 @@ window#waybar {
   padding-left: 10px;
   padding-right: 0px;
   margin: 5px;
-}
-
-#window {
-  color: @fg-blink;
-  opacity: 0.8;
-}
-
-#custom-storage,
-#clock.date,
-#memory,
-#cpu {
-  color: @fg-alt;
-}
-
-#clock.time {
-  font-size: 13px;
-  font-weight: 900;
-}
-
-#wireplumber,
-#custom-clipboard,
-#network {
-  font-size: 13px;
-  font-style: normal;
-}
-
-#custom-song {
-  font-family: "NeuroPolitical";
-  font-style: italic;
-  font-weight: 700;
-  color: #5fcf5f;
 }

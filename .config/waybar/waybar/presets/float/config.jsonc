@@ -16,15 +16,15 @@
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
         // "cpu",
         // "memory",
     ],
     "modules-center":[
-        // "hyprland/window",
+        "hyprland/window"
         // "custom/weather",
-        "custom/song",
     ],
     "modules-right": [
         "tray",
@@ -63,7 +63,7 @@
         }
     },
     "hyprland/window": {
-        "max-length": 40,
+        "max-length": 30,
         "tooltip": false
     },
     "clock#time": {
