@@ -11,13 +11,14 @@
     "layer": "top",
     "position": "left",
     "mod": "dock",
+    "spacing": 15,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
         "idle_inhibitor",
         "clock#time",
-        "clock#id",
+        "clock#id"
         // "cpu",
         // "memory",
         // "custom/storage",

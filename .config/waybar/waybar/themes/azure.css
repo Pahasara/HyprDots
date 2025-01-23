@@ -6,7 +6,7 @@
 
 @define-color foreground rgba(20, 160, 220, 1.0);
 @define-color fg-module rgba(245, 250, 255, 1.0);
-@define-color fg-alt rgba(185, 195, 200, 1.0);
+@define-color fg-alt rgba(185, 190, 205, 1.0);
 @define-color fg-blink rgba(230, 245, 255, 1.0);
 @define-color fg-persist rgba(80, 85, 90, 1.0);
 
