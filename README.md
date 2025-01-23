@@ -115,7 +115,7 @@ mkdir $HOME/Pictures
 ```
 
 ```
-cp -r .walls/* $HOME/Pictures
+cp -r .wall/* $HOME/Pictures
 ```
 <br>
 
