@@ -10,7 +10,6 @@ DISABLE_AUTO_TITLE="false"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="false"
 
-
 ###########
 # HISTORY #
 ###########
