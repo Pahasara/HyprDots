@@ -1,0 +1,166 @@
+/* github.com/pahasara/HyprDots */
+
+@import url("themes/fluent.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+window#waybar {
+  color: @fg-module;
+  background: @background;
+}
+
+#workspaces {
+  padding-top: 2px;
+  min-width: 165px;
+  background: @bg-module;
+  border-radius: 15px;
+}
+
+#workspaces button {
+  padding: 0px;
+  margin: 8px 8px 8px 0px;
+  min-height: 2px;
+  border: 0;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  color: @fg-persist;
+  background-color: @fg-persist;
+}
+
+#workspaces button:hover {
+  color: @fg-blink;
+  background: @fg-blink;
+  border-radius: 15px;
+  opacity: 0.5;
+}
+
+#workspaces button.selected,
+#workspaces button.active {
+  color: @fg-alt;
+  background: @fg-alt;
+  min-width: 28px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.8;
+}
+
+#workspaces button.empty {
+  color: @fg-persist;
+  background-color: @fg-persist;
+  opacity: 0.3;
+}
+
+#workspaces button.urgent {
+  color: @warning;
+  background-color: @warning;
+  animation: workspace_urgent 1s ease-in-out infinite;
+}
+
+#tray {
+  background-color: @bg-tray;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.plugged {
+  color: #66df69;
+}
+
+#battery.charging {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @fg-blink;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#idle_inhibitor {
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 25px;
+  padding-top: 0px;
+}
+
+#idle_inhibitor.activated {
+  color: @fg-blink;
+}
+
+#idle_inhibitor.deactivated {
+  color: @foreground;
+}
+
+.modules-right {
+  background: @bg-module;
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 5px;
+  margin: 5px;
+}
+
+#window {
+  color: @fg-blink;
+  opacity: 0.8;
+}
+
+#clock.time {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+#wireplumber,
+#custom-clipboard,
+#network {
+  font-size: 13px;
+  font-style: normal;
+}
+
+#custom-storage,
+#cpu,
+#tray,
+#memory {
+  padding-top: 3px;
+}
+
+#custom-storage,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#custom-song {
+  font-family: "NeuroPolitical";
+  font-style: italic;
+  font-weight: 700;
+  color: #5fcf5f;
+}
