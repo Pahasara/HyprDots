@@ -9,6 +9,7 @@
 }
 
 window#waybar {
+  color: @fg-module;
   background: @background;
   border: 1px solid @border;
   border-radius: 20px;
@@ -49,7 +50,7 @@ window#waybar {
 #custom-storage,
 #memory,
 #clock {
-  background: @fg-alt;
+  background: @background;
   padding: 9px;
   margin: 5px;
   font-size: 16px;
@@ -68,17 +69,12 @@ window#waybar {
 
 #battery.plugged {
   color: @foreground;
-  animation-name: blink;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 #battery.charging {
   color: @foreground;
   animation-name: blink;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -111,7 +107,7 @@ window#waybar {
 #idle_inhibitor {
   margin: 5px;
   border-radius: 16px;
-  background: @fg-module;
+  background: @foreground;
   color: @fg-alt;
   padding: 5px;
   padding-right: 12px;
@@ -122,21 +118,14 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
-  color: @fg-alt;
-}
-
-#tray,
-#network,
-#backlight,
-#wireplumber,
-#battery {
-  padding-bottom: 15px;
+  color: @background;
 }
 
 .modules-right {
   background: @bg-module;
   border-radius: 15px;
   padding-top: 7px;
+  padding-bottom: 10px;
 }
 
 .modules-center {

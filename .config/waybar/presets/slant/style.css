@@ -105,17 +105,12 @@ window#waybar {
 
 #battery.plugged {
   color: @foreground;
-  animation-name: blink;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 #battery.charging {
   color: @foreground;
   animation-name: blink;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -183,5 +178,5 @@ window#waybar {
   font-family: "NeuroPolitical";
   font-style: italic;
   font-weight: 700;
-  color: #5fcf5f;
+  color: @foreground;
 }

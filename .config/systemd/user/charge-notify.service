@@ -3,7 +3,7 @@ Description=Charger notify service
 
 [Service]
 Type=simple
-ExecStartPre=/bin/sleep 30
+ExecStartPre=/bin/sleep 5
 ExecStart=/home/%u/.local/bin/charge-notify
 
 [Install]

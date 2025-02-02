@@ -13,19 +13,21 @@
     "modules-left": [
         "idle_inhibitor",
         "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
-        "cpu",
-        "memory",
+        // "cpu",
+        // "memory",
     ],
-    "modules-center":[
-        // "hyprland/window",
+    // "modules-center":[
+    //     "hyprland/window"
         // "custom/weather",
-        "custom/song",
-    ],
+    // ],
     "modules-right": [
         "tray",
         // "custom/update",
-        "wireplumber",
+        "pulseaudio",
+        // "wireplumber",
+        // "pulseaudio#microphone",
         "battery",
         "network",
         "clock#date",
@@ -44,11 +46,11 @@
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            // "5": [],
             // "6": [],
             // "7": [],
             // "8": [],
-            // "9": [],
+            "9": [],
             "10": []
         },
         "format": "<small>{icon}</small>",
@@ -58,8 +60,8 @@
         }
     },
     "hyprland/window": {
-        "max-length": 60,
-        "tooltip": true
+        "max-length": 40,
+        "tooltip": false
     },
     "clock#time": {
         "format": "{:%I:%M <small>%p</small>}",
@@ -131,28 +133,69 @@
             "󰤨"
         ]
     },
+    "bluetooth": {
+	    "format": " ",
+	    "format-disabled": "󰂳",
+	    "format-connected": "󰂱 {num_connections}",
+	    "tooltip-format": " {device_alias}",
+	    "tooltip-format-connected": "{device_enumerate}",
+	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	    "tooltip": true,
+	    "on-click": "blueman-manager",
+    },
     "wireplumber": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
+        "format-muted": "",
         "format-source": " {volume}%",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
+            "hands-free": "🎧 ",
+            "headset": " ",
             "phone": "",
             "portable": "",
             "car": " ",
             "default": [
                "",
-                "",
-                ""
+                " ",
+                " "
             ],
         },
         "tooltip-format": "Volume: {volume}%",
         "on-click": "easyeffects"
+    },
+    "pulseaudio": {
+	    "format": "{icon} ",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": "",
+	    "format-icons": {
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "easyeffects",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
+    },
+    "pulseaudio#microphone": {
+	    "format": "{format_source} ",
+    	"format-source": "",
+	    "format-source-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
+	    "tooltip-format": "{source_desc} | {source_volume}%",
     },
     "cpu": {
         "interval": 2,
@@ -208,7 +251,7 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "", //{icon}
+        "format": "", // {icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -234,6 +277,9 @@
         "interval": 43200,
         "on-click": "~/.local/bin/check-update",
         "tooltip-format": "Check Updates"
+    },
+    "custom/separator" : {
+        "format": " ",
     },
     "tray": {
         "icon-size": 16,

@@ -59,3 +59,9 @@ map [fullscreen] b toggle_statusbar
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
+# unmap j
+# map j navigate next
+# map [fullscreen] j navigate next
+# unmap k
+# map k navigate previous
+# map [fullscreen] k navigate previous

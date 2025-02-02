@@ -11,13 +11,14 @@
     "layer": "top",
     "position": "left",
     "mod": "dock",
+    "spacing": 15,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
         "idle_inhibitor",
         "clock#time",
-        "clock#id",
+        "clock#id"
         // "cpu",
         // "memory",
         // "custom/storage",
@@ -141,6 +142,16 @@
             "󰤥",
             "󰤨"
         ]
+    },
+    "bluetooth": {
+	    "format": " ",
+	    "format-disabled": "󰂳",
+	    "format-connected": "󰂱 {num_connections}",
+	    "tooltip-format": " {device_alias}",
+	    "tooltip-format-connected": "{device_enumerate}",
+	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	    "tooltip": true,
+	    "on-click": "blueman-manager",
     },
     "wireplumber": {
         "format": "{icon}",

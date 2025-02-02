@@ -3,7 +3,7 @@
 @import url("themes/fluent.css");
 
 * {
-  font-family: "CaskaydiaMono Nerd Font";
+  font-family: "Neuropolitical";
   font-size: 12px;
   font-weight: bold;
 }
@@ -14,7 +14,7 @@ window#waybar {
 }
 
 #workspaces {
-  min-width: 165px;
+  min-width: 170px;
   background: @bg-module;
   border-radius: 15px;
 }
@@ -41,7 +41,7 @@ window#waybar {
 #workspaces button.active {
   color: @fg-alt;
   background: @fg-alt;
-  min-width: 28px;
+  min-width: 30px;
   transition: all 0.3s ease-in-out;
   opacity: 0.8;
 }
@@ -67,7 +67,7 @@ window#waybar {
 }
 
 #battery.plugged {
-  color: #66df69;
+  color: @foreground;
 }
 
 #battery.charging {
@@ -104,20 +104,19 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-family: "Zebulon Condensed";
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 100;
   border-radius: 25px;
   padding-left: 7px;
-  padding-right: 7px;
+  padding-right: 9px;
 }
 
 #idle_inhibitor.activated {
-  color: #00ccff;
+  color: @fg-module;
 }
 
 #idle_inhibitor.deactivated {
-  color: @fg-blink;
+  color: #00c0ff;
 }
 
 #custom-storage,
@@ -128,12 +127,17 @@ window#waybar {
   color: @fg-alt;
 }
 
+#clock {
+  font-family: "JetBrainsMono Nerd Font";
+}
+
 #clock.time {
   font-size: 13.75px;
   font-weight: 900;
 }
 
 #wireplumber,
+#battery,
 #custom-clipboard,
 #network {
   font-size: 13px;
@@ -141,10 +145,10 @@ window#waybar {
 }
 
 #custom-song {
-  font-family: "NeuroPolitical";
+  font-family: "Neuropolitical";
   font-style: italic;
   font-weight: 700;
-  color: #5fcf5f;
+  color: @foreground;
 }
 
 .modules-right {

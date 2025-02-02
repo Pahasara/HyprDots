@@ -10,17 +10,17 @@ add_newline = true
 #[$username@$hostname](bg:#323437 fg:#CDCDCD)\
 # [](fg:#323437)\
 # [   ](bg:#323437 fg:#CDCDCD)\
-# [](bg:#0099BB fg:#323437)\
-# [ $directory ](bg:#0099BB fg:#000000)\
-# [ ](fg:#0099BB)\
+# [](bg:#0099CC fg:#323437)\
+# [ $directory ](bg:#0099CC fg:#000000)\
+# [ ](fg:#0099CC)\
 # $line_break\
 
 format = """
 [](fg:#323437)\
 [   ](bg:#323437 fg:#CDCDCD)\
-[](bg:#0099BB fg:#323437)\
-[ $directory ](bg:#0099BB fg:#000000)\
-[ ](fg:#0099BB)\
+[](bg:#0099CC fg:#323437)\
+[ $directory ](bg:#0099CC fg:#000000)\
+[ ](fg:#0099CC)\
 $line_break\
 """
 
