@@ -13,23 +13,24 @@
     "modules-left": [
         "idle_inhibitor",
         "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
-        "cpu"
+        // "cpu"
         // "memory"
     ],
-    "modules-center":[
+    // "modules-center":[
         // "hyprland/window",
         // "custom/weather",
-        "custom/song",
-    ],
+    // ],
     "modules-right": [
         "tray",
         // "custom/update",
-        "wireplumber",
+        "pulseaudio",
+        // "wireplumber",
         "battery",
         "network",
         "clock#date",
-        "clock#time",
+        "clock#time"
     ],
     //################
     //### MODULES  ###
@@ -131,6 +132,16 @@
             "󰤨"
         ]
     },
+    "bluetooth": {
+	    "format": " ",
+	    "format-disabled": "󰂳",
+	    "format-connected": "󰂱 {num_connections}",
+	    "tooltip-format": " {device_alias}",
+	    "tooltip-format-connected": "{device_enumerate}",
+	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	    "tooltip": true,
+	    "on-click": "blueman-manager",
+    },
     "wireplumber": {
         "format": "{icon} ",
         "format-bluetooth": " {icon} {volume}% {format_source}",
@@ -153,6 +164,37 @@
         },
         "tooltip-format": "Volume: {volume}%",
         "on-click": "easyeffects"
+    },
+    "pulseaudio": {
+	    "format": "{icon} ",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": "",
+	    "format-icons": {
+		    "headphone": "",
+		    "hands-free": "",
+		    "headset": "🎧",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "easyeffects",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
+    },
+    "pulseaudio#microphone": {
+	    "format": "{format_source} ",
+    	"format-source": "",
+	    "format-source-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
+	    "tooltip-format": "{source_desc} | {source_volume}%",
     },
     "cpu": {
         "interval": 2,

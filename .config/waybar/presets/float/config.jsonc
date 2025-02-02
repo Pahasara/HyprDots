@@ -16,15 +16,15 @@
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
         // "cpu",
         // "memory",
     ],
     "modules-center":[
-        // "hyprland/window",
+        "hyprland/window"
         // "custom/weather",
-        "custom/song",
     ],
     "modules-right": [
         "tray",
@@ -63,7 +63,7 @@
         }
     },
     "hyprland/window": {
-        "max-length": 40,
+        "max-length": 30,
         "tooltip": false
     },
     "clock#time": {
@@ -134,6 +134,16 @@
             "󰤥",
             "󰤨"
         ]
+    },
+    "bluetooth": {
+	    "format": " ",
+	    "format-disabled": "󰂳",
+	    "format-connected": "󰂱 {num_connections}",
+	    "tooltip-format": " {device_alias}",
+	    "tooltip-format-connected": "{device_enumerate}",
+	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	    "tooltip": true,
+	    "on-click": "blueman-manager",
     },
     "wireplumber": {
         "format": "{icon}",

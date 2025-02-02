@@ -10,7 +10,7 @@
     # Notification Size and Dimensions
     width = (0, 500)                # Min and max width
     progress_bar = true             # Enable progress bars
-    progress_bar_height = 10        # Progress bar height
+    progress_bar_height = 5         # Progress bar height
     progress_bar_min_width = 100    # Minimum progress bar width
     progress_bar_max_width = 250    # Maximum progress bar width
     progress_bar_corner_radius = 4  # Progress bar corner roundness
@@ -63,28 +63,28 @@
 
 # Urgency Levels
 [urgency_low]
-    background = "#211F1D6F"
+    background = "#211F1DAF"
     foreground = "#F5F5F5"
-    highlight = "#DFEFFE"
-    frame_color = "#474851"
+    highlight = "#64B5F6"
+    frame_color = "#4748519F"
     max_icon_size = 72
     timeout = 7
 
 [urgency_normal]
     default_icon = "$HOME/.local/share/icons/dunst/info.png"
-    background = "#222325AA"
+    background = "#222325C6"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
-    frame_color = "#474851"
+    frame_color = "#4748519F"
     max_icon_size = 48
     timeout = 20
 
 [urgency_critical]
     default_icon = "$HOME/.local/share/icons/dunst/caution.png"
-    background = "#222325CC"
+    background = "#222325DD"
     foreground = "#FFBB44"
     highlight = "#FF6633"
-    frame_color = "#FF6633"
+    frame_color = "#FF663348"
     max_icon_size = 64
     timeout = 1000
 
@@ -98,3 +98,7 @@
     default_icon = "$HOME/.local/share/icons/dunst/arch.png"
     timeout = 5
 
+[gamemode]
+    appname = "gamemode"
+    default_icon = "$HOME/.local/share/icons/dunst/gamemode.png"
+    timeout = 5
