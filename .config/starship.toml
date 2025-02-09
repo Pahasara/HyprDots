@@ -7,20 +7,20 @@ scan_timeout = 10
 add_newline = true
 
 # Use custom format
-#[$username@$hostname](bg:#323437 fg:#CDCDCD)\
+#[$username@$hostname](bg:#323437 fg:#AFAFAF)\
 # [](fg:#323437)\
-# [   ](bg:#323437 fg:#CDCDCD)\
-# [](bg:#0099CC fg:#323437)\
-# [ $directory ](bg:#0099CC fg:#000000)\
-# [ ](fg:#0099CC)\
+# [   ](bg:#323437 fg:#AFAFAF)\
+# [](bg:#0077AA fg:#323437)\
+# [ $directory ](bg:#0077AA fg:#000000)\
+# [ ](fg:#0077AA)\
 # $line_break\
 
 format = """
 [](fg:#323437)\
-[   ](bg:#323437 fg:#CDCDCD)\
-[](bg:#0099CC fg:#323437)\
-[ $directory ](bg:#0099CC fg:#000000)\
-[ ](fg:#0099CC)\
+[   ](bg:#323437 fg:#AFAFAF)\
+[](bg:#0077AA fg:#323437)\
+[ $directory ](bg:#0077AA fg:#000000)\
+[ ](fg:#0077AA)\
 $line_break\
 """
 
@@ -80,6 +80,6 @@ style = "fg:#000000 bg:#18C429"
 format = ' [](fg:#18C429)[ $symbol $branch ]($style)[](fg:#18C429 bg:#FF3F3F)'
 
 [git_status]
-style = "fg:#000000 bg:#EF3838"
-format = '[$all_status$ahead_behind ]($style)[](fg:#EF3838)'
+style = "fg:#000000 bg:#FF3F3F"
+format = '[$all_status$ahead_behind ]($style)[](fg:#FF3F3F)'
 
