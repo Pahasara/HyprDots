@@ -10,7 +10,7 @@ set pages-per-row 1
 # Cliboard
 set selection-clipboard clipboard
 
-# Stop at page boundries
+# Stop at page boundries 
 set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-full-overlap 0.01
@@ -59,9 +59,11 @@ map [fullscreen] b toggle_statusbar
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
-# unmap j
-# map j navigate next
-# map [fullscreen] j navigate next
-# unmap k
-# map k navigate previous
-# map [fullscreen] k navigate previous
+map <Up> navigate previous
+map [fullscreen] <Up> navigate previous
+map <Down> navigate next
+map [fullscreen] <Down> navigate next
+map <Button3> navigate next
+map [fullscreen] <Button3> navigate next
+map <Button4> navigate next
+map [fullscreen] <Button4> navigate next
