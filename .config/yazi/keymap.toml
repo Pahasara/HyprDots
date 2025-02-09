@@ -43,8 +43,8 @@ keymap = [
 	{ on = [ "<Left>" ],  run = "leave",    desc = "Go back to the parent directory" },
 	{ on = [ "<Right>" ], run = "enter",    desc = "Enter the child directory" },
 
-	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
+	{ on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+	{ on = [ "G" ],      run = "arrow bot",  desc = "Move cursor to the bottom" },
     
 	# Selection
 	{ on = [ "<Space>" ], run = [ "toggle --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
@@ -141,6 +141,8 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
+	{ on = [ "g", "a" ],       run = "cd ~/MEGAsync/Assignments", desc = "Go to the assignment directory" },
+	{ on = [ "g", "m" ],       run = "cd ~/MEGAsync",    desc = "Go to the MEGAsync directory" },
 	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "p" ],       run = "cd ~/Pictures",    desc = "Go to the pictures directory" },

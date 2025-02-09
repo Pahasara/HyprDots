@@ -1,5 +1,17 @@
-[plugin]
-deps = [{ use = "boydaihungst/mediainfo", rev = "ddfd5ec" }]
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "50a3785"
+hash = "5842243b6fc64b4d3bc3cf8bf15fb9d5"
+
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "5ce76dc"
+hash = "52e5f5c602962e7cbf874da28f52ba45"
+
+[[plugin.deps]]
+use = "AnirudhG07/rich-preview"
+rev = "6752254"
+hash = "c9a3d0731e7d7340e2c6d6126b1f3aa3"
 
 [flavor]
 deps = []
