@@ -34,7 +34,7 @@ else
     if [ "$musik_status" == "Playing" ]; then
         info=$(playerctl metadata --player=musikcube --format '{{title}} • {{artist}}')
         trimmed_info=$(trim_info "$info" "$max_length")
-        output="  $trimmed_info"
+        output="  $trimmed_info"
     fi
 fi
 

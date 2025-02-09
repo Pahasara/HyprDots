@@ -1,7 +1,21 @@
 #!/bin/bash
-
 msgTag="volume"
 icon_path="$HOME/.local/share/icons/dunst"
+TIME=1000
+
+# Function to get the appropriate volume icon based on level
+get_volume_icon() {
+    local vol=$1
+    if [ $vol -eq 0 ]; then
+        echo "$icon_path/mute.png"
+    elif [ $vol -ge 65 ]; then
+        echo "$icon_path/volume-high.png"
+    elif [ $vol -ge 15 ]; then
+        echo "$icon_path/volume-mid.png"
+    else
+        echo "$icon_path/volume.png"
+    fi
+}
 
 case "$1" in
     up)
@@ -13,14 +27,15 @@ case "$1" in
     mute)
         wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
         mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || echo "no")
+        volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
         if [[ "$mute" == "yes" ]]; then
-            dunstify -t 600 \
+            dunstify -t $TIME \
                      -a "Volume" -u low -i "$icon_path/mute.png" \
-                     -h string:x-dunst-stack-tag:$msgTag "Volume Muted"
+                     -h string:x-dunst-stack-tag:$msgTag "Muted"
         else
-            dunstify -t 600 \
-                     -a "Volume" -u low -i "$icon_path/volume.png" \
-                     -h string:x-dunst-stack-tag:$msgTag "Volume Unmuted"
+            dunstify -t $TIME \
+                     -a "Volume" -u low -i "$(get_volume_icon $volume)" \
+                     -h string:x-dunst-stack-tag:$msgTag "Unmuted"
         fi
         exit 0
         ;;
@@ -28,13 +43,13 @@ case "$1" in
         wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
         mic_mute=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo "yes" || echo "no")
         if [[ "$mic_mute" == "yes" ]]; then
-            dunstify -t 600 \
+            dunstify -t $TIME \
                      -a "Volume" -u low -i "$icon_path/mic-off.png" \
-                     -h string:x-dunst-stack-tag:$msgTag "Microphone Muted"
+                     -h string:x-dunst-stack-tag:$msgTag "Muted"
         else
-            dunstify -t 600 \
+            dunstify -t $TIME \
                      -a "Volume" -u low -i "$icon_path/mic-on.png" \
-                     -h string:x-dunst-stack-tag:$msgTag "Microphone Unmuted"
+                     -h string:x-dunst-stack-tag:$msgTag "Unmuted"
         fi
         exit 0
         ;;
@@ -46,16 +61,9 @@ esac
 
 volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
 mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || echo "no")
-
-if [[ "$mute" == "yes" ]]; then
-    dunstify -t 600 \
-             -a "Volume" -u low -i "$icon_path/mute.png" \
-             -h string:x-dunst-stack-tag:$msgTag \
-             -h int:value:"0" \
-             "Volume Muted"
-else
-    dunstify -t 600 \
-             -a "Volume" -u low -i "$icon_path/volume.png" \
+if [[ "$mute" != "yes" ]]; then
+    dunstify -t $TIME \
+             -a "Volume" -u low -i "$(get_volume_icon $volume)" \
              -h string:x-dunst-stack-tag:$msgTag \
              -h int:value:"$volume" \
              "Volume: $volume%"

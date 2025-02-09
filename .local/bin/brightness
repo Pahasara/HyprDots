@@ -17,8 +17,8 @@ current=$(brightnessctl get)
 max=$(brightnessctl max)
 percentage=$((current * 100 / max))
 
-dunstify -t 600 \
-         -a "Brightness" -u low -i "$HOME/.local/share/icons/dunst/moon.png" \
+dunstify -t 2000 \
+         -a "Brightness" -u low -i "$HOME/.local/share/icons/dunst/brightness.png" \
          -h string:x-dunst-stack-tag:$msgTag \
          -h int:value:"$percentage" \
          "Brightness: ${percentage}%"

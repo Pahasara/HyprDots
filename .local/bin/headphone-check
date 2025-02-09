@@ -1,0 +1,44 @@
+#!/bin/bash
+
+ICON_PATH_CONNECTED="$HOME/.local/share/icons/dunst/headphone-con.png"
+ICON_PATH_DISCONNECTED="$HOME/.local/share/icons/dunst/headphone-dis.png"
+SOUND_PATH_CONNECTED="$HOME/.local/bin/notify-sound --plugged"
+SOUND_PATH_DISCONNECTED="$HOME/.local/bin/notify-sound --unplugged"
+
+LAST_STATE="disconnected"
+
+send_notification() {
+    local message=$1
+    local icon=$2
+    local sound=$3
+    dunstify -t 2000 -u low -i "$icon" "$message"
+    $sound
+}
+
+check_headphone_status() {
+    local CURRENT_STATE=""
+    if [[ $(pactl list sinks | grep "analog-output-speaker" | grep -c "not available") == "1" ]]; then
+        CURRENT_STATE="connected"
+    else
+        CURRENT_STATE="disconnected"
+    fi
+
+    if [ "$CURRENT_STATE" != "$LAST_STATE" ]; then
+        if [ "$CURRENT_STATE" = "disconnected" ]; then
+            send_notification "Headphones Disconnected" "$ICON_PATH_DISCONNECTED" 
+            $SOUND_PATH_DISCONNECTED
+        else
+            send_notification "Headphones Connected" "$ICON_PATH_CONNECTED"
+            $SOUND_PATH_CONNECTED
+        fi
+        LAST_STATE="$CURRENT_STATE"
+    fi
+}
+
+# Monitor audio changes in real-time
+pactl subscribe | while read -r line; do
+    if echo "$line" | grep -q "change"; then
+        check_headphone_status
+    fi
+    sleep 2
+done
