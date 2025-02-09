@@ -2,13 +2,13 @@
 
 <!--toc:start-->
 
-- [mediainfo.yazi](#mediainfoyazi)
+- [mediainfo.yazi](#mediainfo-yazi)
   - [Installation](#installation)
   <!--toc:end-->
 
 This is a Yazi plugin for previewing media files. The preview shows thumbnail
 using `ffmpeg` if available and media metadata using `mediainfo`.
-Only for yazi >= 0.4
+Only for yazi stable.
 
 ## Installation
 
