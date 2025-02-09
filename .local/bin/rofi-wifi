@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
+
+ICON_WIFI="$HOME/.local/share/icons/dunst/wifi.png"
+ICON_CAUTION="$HOME/.local/share/icons/dunst/caution.png"
+SOUND_NOTIFY="$HOME/.local/bin/notify-sound"
+SOUND_ERROR="$HOME/.local/bin/notify-sound --error"
+TIME_DURATION=4000
 
 # Get currently connected SSID
 current_connection=$(nmcli -t -f active,ssid dev wifi | awk -F: '/^yes:/ {print $2}')
@@ -45,9 +51,11 @@ else
     saved_connections=$(nmcli -g NAME connection)
     if [[ $(echo "$saved_connections" | grep -w "$chosen_id") = "$chosen_id" ]]; then
         if nmcli connection up id "$chosen_id"; then
-            notify-send "Connection Established" "$success_message"
+            dunstify -t $TIME_DURATION -u low -i "$ICON_WIFI" "$success_message"
+            $SOUND_NOTIFY
         else
-            notify-send "Connection Failed" "Failed to connect to $chosen_id"
+            dunstify -u low -i "$ICON_CAUTION" "Failed to connect to $chosen_id"
+            $SOUND_ERROR
         fi
     else
         if [[ "$chosen_network" =~ "" ]]; then
@@ -60,9 +68,11 @@ else
             
             # Attempt connection with error handling
             if nmcli device wifi connect "$chosen_id" password "$wifi_password"; then
-                notify-send "Connection Established" "$success_message"
+                dunstify -t $TIME_DURATION -u low -i "$ICON_WIFI" "$success_message"
+                $SOUND_NOTIFY
             else
-                notify-send "Connection Failed" "Failed to connect to $chosen_id. Please check your password."
+                dunstify -u low -i "$ICON_CAUTION" "Failed to connect to $chosen_id. Please check your password."
+                $SOUND_ERROR
             fi
         fi
     fi

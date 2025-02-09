@@ -21,10 +21,10 @@ while true; do
 
     if [[ "$CURRENT_STATUS" != "$LAST_STATUS" ]]; then
         if [[ "$CURRENT_STATUS" != "Discharging" ]]; then
-            send_notification "Charger Connected" "$ICON_PATH_CONNECTED" 
+            send_notification "Plugged in" "$ICON_PATH_CONNECTED" 
             $SOUND_PATH_CONNECTED
         else
-            send_notification "Charger Disconnected" "$ICON_PATH_DISCONNECTED" 
+            send_notification "Unplugged" "$ICON_PATH_DISCONNECTED" 
             $SOUND_PATH_DISCONNECTED
         fi
         LAST_STATUS="$CURRENT_STATUS"

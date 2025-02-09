@@ -8,4 +8,6 @@ elif [[ "$1" == "--plugged" ]]; then
     pw-play --volume=3.0 ~/.local/share/sounds/plugged.wav
 elif [[ "$1" == "--unplugged" ]]; then
     pw-play --volume=5.0 ~/.local/share/sounds/unplugged.wav
+elif [[ "$1" == "--error" ]]; then
+    pw-play --volume=7.0 ~/.local/share/sounds/unplugged.wav
 fi
