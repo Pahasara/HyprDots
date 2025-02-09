@@ -54,6 +54,7 @@ return {
         'codelldb', -- c++ debugger
 
         -- list of linters for mason to install
+        'eslint-lsp', -- js/ts linter
         -- 'cpplint', -- c++ linter
         -- 'pylint', -- python linter
       },

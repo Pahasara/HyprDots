@@ -56,6 +56,7 @@ x-scheme-handler/https=zen.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 x-scheme-handler/unknown=zen-beta.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Removed Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;

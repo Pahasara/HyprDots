@@ -10,36 +10,44 @@
     "workbench.colorTheme": "Material Night Eighties",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "fluent-icons",
+    // Editor Settings
     "editor.fontFamily": "CaskaydiaMono Nerd Font",
-    "editor.fontSize": 17,
+    "editor.fontSize": 16,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+    },
     "editor.cursorSurroundingLines": 10,
-    "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
+    "terminal.integrated.fontSize": 15,
     // Custom Colors
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#28282A",
-        "breadcrumb.background": "#28282A",
-        "activityBar.background": "#28282A",
-        "sideBar.background": "#28282A",
+        "titleBar.activeBackground": "#1A1A1A",
+        "breadcrumb.background": "#1A1A1A",
+        "sideBar.background": "#1A1A1A",
         "sideBarSectionHeader.background": "#181818",
-        "editor.background": "#1B1E20",
-        "editorLineNumber.foreground": "#9A9A9A",
-        "editorLineNumber.activeForeground": "#DADADA",
-        "editor.lineHighlightBackground": "#323232",
-        "editor.lineHighlightBorder": "#363636",
+        "editor.background": "#1F1F1F",
+        "editorLineNumber.foreground": "#888",
+        "editorLineNumber.activeForeground": "#BBB",
+        "editor.lineHighlightBackground": "#262628",
+        "editor.lineHighlightBorder": "#303032",
         "editor.selectionBackground": "#00c3ff1a",
-        "editor.selectionHighlightBackground": "#00ccff22",
-        "editorGroupHeader.tabsBackground": "#28282A",
+        "editor.selectionHighlightBackground": "#0099DD42",
+        "editorGroupHeader.tabsBackground": "#1A1A1A",
         "list.activeSelectionBackground": "#00ccff2a",
         "list.inactiveSelectionBackground": "#212122",
-        "tab.activeBackground": "#1F485E",
-        "tab.inactiveBackground": "#28282A",
-        "statusBar.background": "#00ccff22",
-        "statusBar.foreground": "#efefef",
-        "statusBar.border": "#00ccff22",
-        "badge.background": "#00ccff22",
-        "activityBarBadge.background": "#00ccff22",
-        "activityBarBadge.foreground": "#ffffff"
+        "tab.activeBackground": "#203A52",
+        "tab.inactiveBackground": "#1A1A1A",
+        "statusBar.background": "#000",
+        "statusBar.foreground": "#fff",
+        "statusBar.border": "#112",
+        "badge.background": "#000",
+        "badge.foreground": "#0099DD",
+        "activityBar.background": "#1A1A1A",
+        // "activityBarBadge.background": "#0AE",
+        // "activityBarBadge.foreground": "#000"
     },
     // Token Colors
     "editor.tokenColorCustomizations": {
@@ -68,6 +76,10 @@
                     "punctuation.definition.string.begin.c",
                     "punctuation.definition.string.end.c",
                     "string.quoted.other.lt-gt.include.c",
+                    "punctuation.definition.string.begin.js.jsx",
+                    "punctuation.definition.string.end.js.jsx",
+                    "string.quoted.single.js",
+                    "string.quoted.double.js",
                 ],
                 "settings": {
                     "foreground": "#2dc42d"
@@ -96,6 +108,7 @@
             {
                 "scope": [
                     "keyword.control.directive",
+                    "keyword.control.flow",
                     "entity.name.variable.parameter",
                     "constant",
                 ],
@@ -158,6 +171,9 @@
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 200,
+    "vim.highlightedyank.color": "#D04C08",
     "vim.insertModeKeyBindings": [
         {
             "before": [
