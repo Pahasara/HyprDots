@@ -19,11 +19,11 @@ configuration {
 
 window {
     location: north;
-    y-offset: -14; // -34
+    y-offset: -18; //-34
     width:          400;
     border-radius:  16px;
 
-    border: 2px;
+    border: 1px;
     border-color: @bg3;
     background-color:   @bg0;
 }

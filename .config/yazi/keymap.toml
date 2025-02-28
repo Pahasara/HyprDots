@@ -146,7 +146,7 @@ keymap = [
 	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "p" ],       run = "cd ~/Pictures",    desc = "Go to the pictures directory" },
-	{ on = [ "g", "n" ],       run = "cd ~/MEGASync/Notes",   desc = "Go to the pictures directory" },
+	{ on = [ "g", "n" ],       run = "cd ~/MEGAsync/Notes",   desc = "Go to the notes directory" },
 	{ on = [ "g", "c" ],       run = "cd ~/Code",        desc = "Go to the code directory" },
 	{ on = [ "g", "u" ],       run = "cd ~/Desktop/USB",        desc = "Go to the code directory" },
 	{ on = [ "g", "t" ],       run = "cd /tmp",          desc = "Go to the temporary directory" },

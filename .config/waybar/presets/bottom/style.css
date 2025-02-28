@@ -14,7 +14,6 @@ window#waybar {
 }
 
 #workspaces {
-  margin-top: 1px;
   min-width: 170px;
   background: @bg-module;
   border-radius: 15px;
@@ -24,7 +23,7 @@ window#waybar {
   padding: 0px;
   margin: 8px 8px 8px 0px;
   min-height: 2px;
-  border: 0;
+  border: 1;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
   color: @fg-persist;
@@ -42,7 +41,7 @@ window#waybar {
 #workspaces button.active {
   color: @fg-alt;
   background: @fg-alt;
-  min-width: 28px;
+  min-width: 30px;
   transition: all 0.3s ease-in-out;
   opacity: 0.8;
 }
@@ -108,7 +107,8 @@ window#waybar {
   font-size: 18px;
   font-weight: 100;
   border-radius: 25px;
-  padding-right: 2px;
+  padding-left: 7px;
+  padding-right: 9px;
 }
 
 #idle_inhibitor.activated {

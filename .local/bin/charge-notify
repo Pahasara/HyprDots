@@ -13,7 +13,7 @@ send_notification() {
     local message=$1
     local icon=$2
     local sound=$3
-    dunstify -t 2000 -u low -i "$icon" "$message"
+    dunstify -t 2000 -u low -I "$icon" "$message"
 }
 
 while true; do

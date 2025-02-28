@@ -43,7 +43,6 @@ window#waybar {
 
 #tray {
   background-color: @bg-tray;
-  padding: 9px 0px 0px 5px;
 }
 
 #cpu,
@@ -119,6 +118,10 @@ window#waybar {
 
 #idle_inhibitor.deactivated {
   color: @background;
+}
+
+#pulseaudio {
+  font-size: 13px;
 }
 
 .modules-right {

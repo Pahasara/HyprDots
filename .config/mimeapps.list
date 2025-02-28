@@ -1,5 +1,5 @@
 [Added Associations]
-application/pdf=okularApplication_pdf.desktop;org.pwmt.zathura.desktop;firefox.desktop;zen-alpha.desktop;
+application/pdf=zen.desktop;org.pwmt.zathura.desktop;firefox.desktop;libreoffice-draw.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
 application/x-executable=userapp-kitty-IRIMW2.desktop;nemo-autorun-software.desktop;kitty-open.desktop;
 application/x-extension-htm=zen-alpha.desktop;zen.desktop;
@@ -18,7 +18,7 @@ text/html=zen-alpha.desktop;zen.desktop;
 text/markdown=nvim.desktop;vim.desktop;okularApplication_txt.desktop;
 text/x-csrc=nvim.desktop;vim.desktop;nemo.desktop;
 text/x-lua=nvim.desktop;
-video/mp4=mpv-2.desktop;
+video/mp4=mpv.desktop;vlc.desktop;
 video/x-matroska=mpv.desktop;vlc.desktop;
 x-scheme-handler/chrome=zen-alpha.desktop;zen.desktop;
 x-scheme-handler/http=zen-alpha.desktop;zen.desktop;
@@ -27,7 +27,7 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 
 [Default Applications]
 application/cbz=org.pwmt.zathura.desktop
-application/pdf=okularApplication_pdf.desktop;
+application/pdf=zen.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
 application/x-executable=nemo-autorun-software.desktop
 application/x-extension-htm=zen.desktop
@@ -47,16 +47,17 @@ text/markdown=nvim.desktop;
 text/plain=nvim.desktop
 text/x-csrc=nvim.desktop
 text/x-lua=nvim.desktop
-video/mp4=mpv-2.desktop;
+video/mp4=mpv.desktop;
 video/x-matroska=mpv.desktop;
 x-scheme-handler/about=zen-beta.desktop
 x-scheme-handler/chrome=zen.desktop
+x-scheme-handler/discord=vesktop.desktop
 x-scheme-handler/http=zen.desktop
 x-scheme-handler/https=zen.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 x-scheme-handler/unknown=zen-beta.desktop
-x-scheme-handler/discord=vesktop.desktop
 
 [Removed Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;

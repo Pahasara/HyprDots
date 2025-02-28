@@ -53,8 +53,8 @@ env_editor_confirm() {
   fi
 }
 
-NOTIFY=no
-CURSOR=
+NOTIFY=yes
+CURSOR=yes
 FREEZE=
 WAIT=no
 SCALE=
@@ -129,7 +129,7 @@ if [ "$ACTION" != "save" ] && [ "$ACTION" != "copy" ] && [ "$ACTION" != "edit" ]
 fi
 
 notify() {
-  notify-send -t 3000 -a grimblast "$@"
+  notify-send -t 4000 -a grimblast "$@"
 }
 
 notifyOk() {

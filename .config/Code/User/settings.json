@@ -1,250 +1,236 @@
 {
-    // General Settings
-    "telemetry.telemetryLevel": "off",
-    "extensions.autoUpdate": false,
-    "explorer.confirmDragAndDrop": false,
-    "editor.formatOnSave": true,
-    "workbench.sideBar.location": "right",
-    "window.titleBarStyle": "custom",
-    // Appearance Settings
-    "workbench.colorTheme": "Material Night Eighties",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.productIconTheme": "fluent-icons",
-    // Editor Settings
-    "editor.fontFamily": "CaskaydiaMono Nerd Font",
-    "editor.fontSize": 16,
-    "editor.tabSize": 4,
-    "editor.detectIndentation": false,
-    "[javascriptreact]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-    },
-    "editor.cursorSurroundingLines": 10,
-    "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
-    "terminal.integrated.fontSize": 15,
-    // Custom Colors
-    "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#1A1A1A",
-        "breadcrumb.background": "#1A1A1A",
-        "sideBar.background": "#1A1A1A",
-        "sideBarSectionHeader.background": "#181818",
-        "editor.background": "#1F1F1F",
-        "editorLineNumber.foreground": "#888",
-        "editorLineNumber.activeForeground": "#BBB",
-        "editor.lineHighlightBackground": "#262628",
-        "editor.lineHighlightBorder": "#303032",
-        "editor.selectionBackground": "#00c3ff1a",
-        "editor.selectionHighlightBackground": "#0099DD42",
-        "editorGroupHeader.tabsBackground": "#1A1A1A",
-        "list.activeSelectionBackground": "#00ccff2a",
-        "list.inactiveSelectionBackground": "#212122",
-        "tab.activeBackground": "#203A52",
-        "tab.inactiveBackground": "#1A1A1A",
-        "statusBar.background": "#000",
-        "statusBar.foreground": "#fff",
-        "statusBar.border": "#112",
-        "badge.background": "#000",
-        "badge.foreground": "#0099DD",
-        "activityBar.background": "#1A1A1A",
-        // "activityBarBadge.background": "#0AE",
-        // "activityBarBadge.foreground": "#000"
-    },
-    // Token Colors
-    "editor.tokenColorCustomizations": {
-        "comments": "#8d8d8d",
-        "textMateRules": [
-            {
-                "scope": [
-                    "string.quoted.double",
-                    "punctuation.definition.string",
-                    "string.quoted.other.lt-gt.include",
-                    "keyword.control.c",
-                    "storage.type.built-in.c",
-                    "storage.type.built-in.primitive.c",
-                ],
-                "settings": {
-                    "foreground": "#ff5853"
-                }
-            },
-            {
-                "scope": [
-                    "variable.other.object.cs",
-                    "entity.name.type.cs",
-                    "entity.name.type.class",
-                    "string.quoted.double.c",
-                    "string.quoted.double.include.c",
-                    "punctuation.definition.string.begin.c",
-                    "punctuation.definition.string.end.c",
-                    "string.quoted.other.lt-gt.include.c",
-                    "punctuation.definition.string.begin.js.jsx",
-                    "punctuation.definition.string.end.js.jsx",
-                    "string.quoted.single.js",
-                    "string.quoted.double.js",
-                ],
-                "settings": {
-                    "foreground": "#2dc42d"
-                }
-            },
-            {
-                "scope": [
-                    "keyword",
-                    "keyword.operator.expression",
-                    "storage.modifier",
-                    "storage.type",
-                    "entity.name.function.c",
-                ],
-                "settings": {
-                    "foreground": "#00b7ff"
-                }
-            },
-            {
-                "scope": [
-                    "entity.name.function",
-                ],
-                "settings": {
-                    "foreground": "#e2b820"
-                }
-            },
-            {
-                "scope": [
-                    "keyword.control.directive",
-                    "keyword.control.flow",
-                    "entity.name.variable.parameter",
-                    "constant",
-                ],
-                "settings": {
-                    "foreground": "#c758ff"
-                }
-            },
-            {
-                "scope": [
-                    "entity.name.function.preprocessor",
-                ],
-                "settings": {
-                    "foreground": "#ff71d0"
-                }
-            },
-            {
-                "scope": [
-                    "keyword.operator",
-                    "variable.other.readwrite",
-                ],
-                "settings": {
-                    "foreground": "#cfcfcf"
-                }
-            },
-            {
-                "scope": [
-                    "variable",
-                    "variable.parameter",
-                    "entity.name.variable.local",
-                    "support.type.property-name"
-                ],
-                "settings": {
-                    "foreground": "#99daff"
-                }
-            },
-            {
-                "scope": [
-                    "constant.numeric",
-                    "constant.other.placeholder",
-                    "constant.character.escape",
-                ],
-                "settings": {
-                    "foreground": "#ff7c25"
-                }
-            },
-            {
-                "scope": [
-                    "entity.other.inherited-class"
-                ],
-                "settings": {
-                    "foreground": "#ff5f72"
-                }
-            }
-        ]
-    },
-    // VIM Configuration
-    "vim.smartRelativeLine": true,
-    "vim.easymotion": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.highlightedyank.enable": true,
-    "vim.highlightedyank.duration": 200,
-    "vim.highlightedyank.color": "#D04C08",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "'",
-                "'"
-            ],
-            "after": [
-                "<ESC>"
-            ]
+  // General Settings
+  "telemetry.telemetryLevel": "off",
+  "extensions.autoUpdate": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.formatOnSave": true,
+  "workbench.sideBar.location": "right",
+  "window.titleBarStyle": "custom",
+  // Appearance Settings
+  "workbench.colorTheme": "Material Night Eighties",
+  "workbench.productIconTheme": "fluent-icons",
+  // Editor Settings
+  "editor.fontFamily": "CaskaydiaMono Nerd Font",
+  "editor.fontSize": 16,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": false,
+  // File Type Specific
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.cursorSurroundingLines": 10,
+  // Terminal Settings
+  "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
+  "terminal.integrated.fontSize": 15,
+  "terminal.external.linuxExec": "kitty",
+  // Custom Colors
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#1A1A1A",
+    "breadcrumb.background": "#1A1A1A",
+    "sideBar.background": "#1A1A1A",
+    "sideBarSectionHeader.background": "#181818",
+    "editor.background": "#1F1F1F",
+    "editorLineNumber.foreground": "#88888F",
+    "editorLineNumber.activeForeground": "#BFBFCB",
+    "editor.lineHighlightBackground": "#262628",
+    "editor.lineHighlightBorder": "#303032",
+    "editor.selectionBackground": "#00c3ff1a",
+    "editor.selectionHighlightBackground": "#0099DD42",
+    "editorGroupHeader.tabsBackground": "#1A1A1A",
+    "list.activeSelectionBackground": "#00ccff2a",
+    "list.inactiveSelectionBackground": "#212122",
+    "tab.activeBackground": "#203A52",
+    "tab.inactiveBackground": "#1A1A1A",
+    "statusBar.background": "#000",
+    "statusBar.foreground": "#fff",
+    "statusBar.border": "#112",
+    "badge.background": "#000",
+    "badge.foreground": "#0099DD",
+    "activityBar.background": "#1A1A1A"
+    // "activityBarBadge.background": "#0AE",
+    // "activityBarBadge.foreground": "#000"
+  },
+  // Token Colors
+  "editor.tokenColorCustomizations": {
+    "comments": "#88888F",
+    "textMateRules": [
+      {
+        "scope": [
+          "string.quoted.double",
+          "punctuation.definition.string",
+          "string.quoted.other.lt-gt.include",
+          "keyword.control.c",
+          "storage.type.built-in.c",
+          "storage.type.built-in.primitive.c",
+          "string.template.js",
+          "string.template.js.jsx"
+        ],
+        "settings": {
+          "foreground": "#ff5853"
         }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "d",
-                "d"
-            ]
-        },
-        {
-            "before": [
-                "Esc"
-            ],
-            "commands": [
-                ":nohl"
-            ]
-        },
-        {
-            "before": [
-                "K"
-            ],
-            "commands": [
-                "lineBreakInsert"
-            ],
-            "silent": true
+      },
+      {
+        "scope": [
+          "variable.other.object.cs",
+          "entity.name.type.cs",
+          "entity.name.type.class",
+          "string.quoted.double.c",
+          "string.quoted.double.include.c",
+          "punctuation.definition.string.begin.c",
+          "punctuation.definition.string.end.c",
+          "string.quoted.other.lt-gt.include.c",
+          "punctuation.definition.string.begin.js.jsx",
+          "punctuation.definition.string.end.js.jsx",
+          "punctuation.definition.string.begin.js",
+          "punctuation.definition.string.end.js",
+          "string.quoted.single.js",
+          "string.quoted.double.js"
+        ],
+        "settings": {
+          "foreground": "#2dbe2d"
         }
-    ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
+      },
+      {
+        "scope": [
+          "keyword",
+          "keyword.operator.expression",
+          "storage.modifier",
+          "storage.type",
+          "entity.name.function.c"
+        ],
+        "settings": {
+          "foreground": "#00b7ff"
+        }
+      },
+      {
+        "scope": ["entity.name.function"],
+        "settings": {
+          "foreground": "#e2b820"
+        }
+      },
+      {
+        "scope": [
+          "keyword.control.directive",
+          "keyword.control.flow",
+          "entity.name.variable.parameter",
+          "entity.other.attribute-name.js.jsx",
+          "constant"
+        ],
+        "settings": {
+          "foreground": "#c758ff"
+        }
+      },
+      {
+        "scope": ["entity.name.function.preprocessor"],
+        "settings": {
+          "foreground": "#ff71d0"
+        }
+      },
+      {
+        "scope": ["keyword.operator", "variable.other.readwrite"],
+        "settings": {
+          "foreground": "#cfcfcf"
+        }
+      },
+      {
+        "scope": [
+          "variable",
+          "variable.parameter",
+          "entity.name.variable.local",
+          "support.type.property-name"
+        ],
+        "settings": {
+          "foreground": "#99daff"
+        }
+      },
+      {
+        "scope": [
+          "constant.numeric",
+          "constant.other.placeholder",
+          "constant.character.escape"
+        ],
+        "settings": {
+          "foreground": "#ff7c25"
+        }
+      },
+      {
+        "scope": ["entity.other.inherited-class"],
+        "settings": {
+          "foreground": "#ff5f72"
+        }
+      }
+    ]
+  },
+  // VIM Configuration
+  "vim.smartRelativeLine": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  "vim.highlightedyank.color": "#D04C08",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["'", "'"],
+      "after": ["<ESC>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
     },
-    "extensions.experimental.affinity": {
-        "vscodevim.vim": 1
+    {
+      "before": ["Esc"],
+      "commands": [":nohl"]
     },
-    // Miscellaneous
-    "workbench.settings.applyToAllProfiles": [],
-    "editor.semanticTokenColorCustomizations": {},
-    "editor.formatOnType": true,
-    "C_Cpp.legacyCompilerArgsBehavior": true,
-    "C_Cpp.default.cStandard": "c17",
-    "C_Cpp.default.cppStandard": "c++23",
-    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-    "extensions.ignoreRecommendations": true,
-    "C_Cpp.autocompleteAddParentheses": true,
-    "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
-    "C_Cpp.intelliSenseEngine": "default",
-    "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
-        "bugprone-*",
-        "cert-*",
-        "performance-*",
-        "misc-*",
-        "portability-*",
-        "clang-analyzer-*",
-        "cppcoreguidelines-*"
-    ],
-    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
-        "cppcoreguidelines-avoid-magic-numbers",
-        "misc-include-cleaner"
-    ],
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  // Miscellaneous
+  "workbench.settings.applyToAllProfiles": [],
+  "editor.semanticTokenColorCustomizations": {},
+  "editor.formatOnType": true,
+  "C_Cpp.legacyCompilerArgsBehavior": true,
+  "C_Cpp.default.cStandard": "c17",
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "extensions.ignoreRecommendations": true,
+  "C_Cpp.autocompleteAddParentheses": true,
+  "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
+    "bugprone-*",
+    "cert-*",
+    "performance-*",
+    "misc-*",
+    "portability-*",
+    "clang-analyzer-*",
+    "cppcoreguidelines-*"
+  ],
+  "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+    "cppcoreguidelines-avoid-magic-numbers",
+    "misc-include-cleaner"
+  ],
+  "workbench.iconTheme": "material-icon-theme"
 }

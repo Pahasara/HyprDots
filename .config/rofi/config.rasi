@@ -15,7 +15,7 @@ configuration {
 @theme "theme"
 
 * {
-    font: "Ubuntu Nerd Font 13";
+    font: "Ubuntu Nerd Font 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -27,7 +27,7 @@ configuration {
 
 window {
     location:       center;
-    width:          265;
+    width:          250;
     border-radius:  15px;
 
     border: 2px;
