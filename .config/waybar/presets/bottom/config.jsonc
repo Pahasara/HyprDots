@@ -15,11 +15,11 @@
         "hyprland/workspaces",
         "custom/song"
         // "custom/storage",
-        // "cpu"
-        // "memory"
+        // "cpu",
+        // "memory",
     ],
     // "modules-center":[
-        // "hyprland/window",
+    //     "hyprland/window"
         // "custom/weather",
     // ],
     "modules-right": [
@@ -27,10 +27,11 @@
         // "custom/update",
         "pulseaudio",
         // "wireplumber",
+        // "pulseaudio#microphone",
         "battery",
         "network",
         "clock#date",
-        "clock#time"
+        "clock#time",
     ],
     //################
     //### MODULES  ###
@@ -45,11 +46,11 @@
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            // "5": [],
             // "6": [],
             // "7": [],
             // "8": [],
-            // "9": [],
+            "9": [],
             "10": []
         },
         "format": "<small>{icon}</small>",
@@ -59,8 +60,8 @@
         }
     },
     "hyprland/window": {
-        "max-length": 60,
-        "tooltip": true
+        "max-length": 40,
+        "tooltip": false
     },
     "clock#time": {
         "format": "{:%I:%M <small>%p</small>}",
@@ -143,36 +144,38 @@
 	    "on-click": "blueman-manager",
     },
     "wireplumber": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
+        "format-muted": "",
         "format-source": " {volume}%",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
+            "hands-free": "🎧 ",
+            "headset": " ",
             "phone": "",
             "portable": "",
             "car": " ",
             "default": [
                "",
-                "",
-                ""
+                " ",
+                " "
             ],
         },
         "tooltip-format": "Volume: {volume}%",
         "on-click": "easyeffects"
     },
     "pulseaudio": {
-	    "format": "{icon} ",
+	    "format": "{format_source}{icon} ",
 	    "format-bluetooth": "{icon} 󰂰 {volume}%",
 	    "format-muted": "",
+    	"format-source": "  ",
+	    "format-source-muted": "",
 	    "format-icons": {
-		    "headphone": "",
-		    "hands-free": "",
-		    "headset": "🎧",
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
 		    "phone": "",
 		    "portable": "",
 		    "car": "",
@@ -250,11 +253,12 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "  ", //{icon}
+        "format": "", // {icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
+        "on-click-right": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/presets/powermenu.rasi",
         "timeout": 60.0,
         "tooltip": false
     },
@@ -276,6 +280,9 @@
         "interval": 43200,
         "on-click": "~/.local/bin/check-update",
         "tooltip-format": "Check Updates"
+    },
+    "custom/separator" : {
+        "format": " ",
     },
     "tray": {
         "icon-size": 16,

@@ -167,9 +167,11 @@
         "on-click": "easyeffects"
     },
     "pulseaudio": {
-	    "format": "{icon} ",
+	    "format": "{format_source}{icon} ",
 	    "format-bluetooth": "{icon} 󰂰 {volume}%",
 	    "format-muted": "",
+    	"format-source": "  ",
+	    "format-source-muted": "",
 	    "format-icons": {
 		    "headphone": "<big></big>",
 		    "hands-free": "<big></big>",

@@ -30,7 +30,8 @@
         "tray",
         "network",
         // "backlight",
-        "wireplumber",
+        "pulseaudio",
+        // "wireplumber",
         "battery",
     ],
     //################
@@ -152,6 +153,31 @@
 	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
 	    "tooltip": true,
 	    "on-click": "blueman-manager",
+    },
+    "pulseaudio": {
+	    "format": "{format_source}{icon} ",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": "",
+    	"format-source": "<big></big>   ",
+	    "format-source-muted": "",
+	    "format-icons": {
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "easyeffects",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
     },
     "wireplumber": {
         "format": "{icon}",

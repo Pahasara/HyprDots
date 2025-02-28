@@ -72,9 +72,9 @@ return {
 
       vim.cmd 'colorscheme tokyonight'
 
-      vim.cmd 'hi CursorLineNr guifg=#AAAAAA'
-      vim.cmd 'hi LineNrAbove guifg=#757575'
-      vim.cmd 'hi LineNrBelow guifg=#757575'
+      vim.cmd 'hi CursorLineNr guifg=#BCBCBF'
+      vim.cmd 'hi LineNrAbove guifg=#888899'
+      vim.cmd 'hi LineNrBelow guifg=#888899'
       vim.cmd 'hi Search guibg=#194B68'
 
       vim.api.nvim_set_hl(0, 'Comment', { fg = '#768696' })
