@@ -36,6 +36,7 @@
 | **Compositor**              | [Hyprland](https://hyprland.org)                                                                                                                                                |
 | **Status Bar**              | [Waybar](https://github.com/Alexays/Waybar)                                                                                                                                     |
 | **Terminal**                | [Kitty](https://github.com/kovidgoyal/kitty)                                                                                                                                    |
+| **Systemd Startup**         | [UWSM](https://github.com/Vladimir-csp/uwsm)                                                                                                                                     |
 | **Launcher & Menus** | [rofi (wayland-fork)](https://archlinux.org/packages/extra/x86_64/rofi-wayland/)                                                                                                 |
 | **Notifications**           | [dunst](https://github.com/dunst-project/dunst)                                                                                                                                 |
 | **Screen Locker**           | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                                                                  |
