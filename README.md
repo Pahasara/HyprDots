@@ -14,7 +14,7 @@
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
 <br>
 
-[See wiki for more details](https://github.com/Pahasara/HyprDots/Wiki).
+<h4> <a href="https://github.com/Pahasara/HyprDots/wiki">See wiki for more details</a>. </h4>
 
 ## Screenshots
 ![fetch](https://github.com/user-attachments/assets/cb00d708-48db-4ad3-b2c2-0252422c225a)
