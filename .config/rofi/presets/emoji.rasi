@@ -19,9 +19,9 @@ configuration {
 }
 
 window {
-    location: southeast;
-    y-offset: -1;
-    x-offset: -1;
+    location: northwest;
+    y-offset: 1;
+    x-offset: 1;
     width:          400;
     border-radius:  15px;
 
