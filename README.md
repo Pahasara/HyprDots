@@ -12,9 +12,10 @@
 > [!NOTE]
 > _Please read the instructions in the sections below carefully._  
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
-<br>
+
 
 <h4> <a href="https://github.com/Pahasara/HyprDots/wiki">See wiki for more details</a>. </h4>
+<br>
 
 ## Screenshots
 ![fetch](https://github.com/user-attachments/assets/cb00d708-48db-4ad3-b2c2-0252422c225a)
