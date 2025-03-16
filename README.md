@@ -14,11 +14,12 @@
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
 
 
-<h4> <a href="https://github.com/Pahasara/HyprDots/wiki">See wiki for more details</a>. </h4>
+<h4> 👉 <a href="https://github.com/Pahasara/HyprDots/wiki">See wiki for more details</a>. </h4>
 <br>
 
 ## Screenshots
-![fetch](https://github.com/user-attachments/assets/cb00d708-48db-4ad3-b2c2-0252422c225a)
+![fetch](https://github.com/user-attachments/assets/ba4ce6e4-1dc6-4d0c-a8fc-95a6a1a68cda)
+
 
 
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
