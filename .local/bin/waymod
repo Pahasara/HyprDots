@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Change waybar config
+if [ "$1" = "top" ]; then
+    cp /home/$USER/.config/waybar/presets/top/config.jsonc /home/$USER/.config/waybar/config.jsonc
+    cp /home/$USER/.config/waybar/presets/top/style.css /home/$USER/.config/waybar/style.css
+
+elif [ "$1" = "bottom" ]; then
+    cp /home/$USER/.config/waybar/presets/bottom/config.jsonc /home/$USER/.config/waybar/config.jsonc
+    cp /home/$USER/.config/waybar/presets/bottom/style.css /home/$USER/.config/waybar/style.css
+
+elif [ "$1" = "float" ]; then
+    cp /home/$USER/.config/waybar/presets/float/config.jsonc /home/$USER/.config/waybar/config.jsonc
+    cp /home/$USER/.config/waybar/presets/float/style.css /home/$USER/.config/waybar/style.css
+
+elif [ "$1" = "slant" ]; then
+    cp /home/$USER/.config/waybar/presets/slant/config.jsonc /home/$USER/.config/waybar/config.jsonc
+    cp /home/$USER/.config/waybar/presets/slant/style.css /home/$USER/.config/waybar/style.css
+
+elif [ "$1" = "side" ]; then
+    cp /home/$USER/.config/waybar/presets/side/config.jsonc /home/$USER/.config/waybar/config.jsonc
+    cp /home/$USER/.config/waybar/presets/side/style.css /home/$USER/.config/waybar/style.css
+fi
+
+echo "Config switched to: $1"
+
+# Change waybar theme
+THEME=$2
+
+if [ -n "$THEME" ]; then
+    sed -i "s|@import url(\"themes/.*\.css\");|@import url(\"themes/$THEME.css\");|" /home/$USER/.config/waybar/style.css
+    echo "Theme switched to: $THEME"
+fi
+
+/home/$USER/.config/waybar/waybar.sh &
