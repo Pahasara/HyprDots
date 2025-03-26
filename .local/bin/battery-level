@@ -1,5 +1,14 @@
 #!/bin/bash
 
+## This script retrieves the battery percentage and charging status,
+## displaying an appropriate icon based on the battery level.
+## Primarily used for status bars and lock screens (e.g., Hyprlock).
+
+## Requirements:
+## - Font with battery icons (e.g., Nerd Fonts, FontAwesome).
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
 
 battery_status=$(cat /sys/class/power_supply/BAT0/status)

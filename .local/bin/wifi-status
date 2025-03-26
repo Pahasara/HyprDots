@@ -1,6 +1,24 @@
 #!/usr/bin/bash
 
-INTERFACE="${INTERFACE:-wlp0s20f0u1}"
+## This script retrieves Wi-Fi connection details and signal strength
+## for use in Hyprlock or other status bars.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
+# Function to find the wireless interface
+get_wireless_interface() {
+    # Find wireless interfaces using /sys/class/net
+    for interface in /sys/class/net/w*; do
+        if [[ -d "$interface/wireless" ]]; then
+            basename "$interface"
+            return 0
+        fi
+    done
+}
+
+
+# Detect wireless interface
+INTERFACE=$(get_wireless_interface)
 
 declare -A WIFI_ICONS=(
     [0]=" "     # No signal
@@ -11,8 +29,9 @@ declare -A WIFI_ICONS=(
     [5]="󰤨 "     # Excellent signal
 )
 
-if [[ ! -d /sys/class/net/${INTERFACE}/wireless ]]; then
-    # echo "Interface ${INTERFACE} not found."
+# Check if interface was found
+if [[ -z "$INTERFACE" ]]; then
+    # echo "No wireless interface found."
     exit 1
 fi
 

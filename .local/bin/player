@@ -1,11 +1,24 @@
 #!/bin/bash
 
-toggle_musikcube() {
-    player_status=$(playerctl --player=musikcube status 2>/dev/null)
+## This script controls media playback for multiple players, including Spotify.
+## It allows toggling playback, skipping tracks, and controlling specific players.
+
+## Features:
+## - Toggle playback for any active media player.
+## - Skip to the next or previous track.
+## - Control Spotify playback separately.
+
+## Requirements:
+## - `playerctl`: Used for media player control.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
+toggle_music() {
+    player_status=$(playerctl status 2>/dev/null)
     if [ "$player_status" == "Playing" ]; then
-        playerctl --player=musikcube pause
+        playerctl pause
     else
-        playerctl --player=musikcube play
+        playerctl play
     fi
 }
 
@@ -14,7 +27,7 @@ previous_track() {
     if [ "$spotify_status" == "Playing" ]; then
         playerctl --player=spotify previous
     else
-        playerctl --player=musikcube previous
+        playerctl previous
     fi
 }
 
@@ -23,7 +36,7 @@ next_track() {
     if [ "$spotify_status" == "Playing" ]; then
         playerctl --player=spotify next
     else
-        playerctl --player=musikcube next
+        playerctl next
     fi
 }
 
@@ -37,7 +50,7 @@ toggle_spotify() {
 }
 
 toggle_play() {
-    toggle_musikcube
+    toggle_music
     toggle_spotify
 }
 

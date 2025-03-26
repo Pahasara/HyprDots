@@ -1,9 +1,27 @@
 #!/usr/bin/bash
 
+## This script provides a Rofi-based Wi-Fi manager for selecting and connecting to available networks.
+## It allows enabling/disabling Wi-Fi, listing available networks, and handling secure connections.
+
+## Features:
+## - Enables or disables Wi-Fi via `nmcli`.
+## - Lists available Wi-Fi networks with secure networks marked.
+## - Automatically detects the currently connected network.
+## - Prompts for a password when connecting to new networks.
+## - Sends notifications via `dunstify` and plays sounds on success or failure.
+
+## Requirements:
+## - `nmcli`: Used for network management.
+## - `rofi`: Provides a selection menu.
+## - `dunstify`: Displays notifications.
+## - `sound-alert`: Custom notification sound script (HyprDots).
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 ICON_WIFI="$HOME/.local/share/icons/dunst/wifi.png"
 ICON_CAUTION="$HOME/.local/share/icons/dunst/caution.png"
-SOUND_NOTIFY="$HOME/.local/bin/notify-sound"
-SOUND_ERROR="$HOME/.local/bin/notify-sound --error"
+SOUND_NOTIFY="$HOME/.local/bin/sound-alert"
+SOUND_ERROR="$HOME/.local/bin/sound-alert --error"
 TIME_DURATION=4000
 
 # Check if required commands exist

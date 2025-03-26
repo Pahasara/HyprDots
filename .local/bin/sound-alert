@@ -1,0 +1,29 @@
+#!/bin/bash
+
+## This script plays different sound notifications based on the given argument.
+
+## Requirements:
+## - `pipewire`: Uses `pw-play` for playing sound files.
+## - Sound files located in `~/.local/share/sounds/`.
+
+## Usage:
+## - Run without arguments for a default notification sound.
+## - Use the following flags for specific sounds:
+##   - `--startup`    : Plays the startup sound.
+##   - `--plugged`    : Plays the plugged-in sound.
+##   - `--unplugged`  : Plays the unplugged sound.
+##   - `--error`      : Plays an error notification.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
+if [[ "$1" -eq "" ]]; then
+    pw-play --volume=4.0 ~/.local/share/sounds/notification.wav
+elif [[ "$1" == "--startup" ]]; then
+    pw-play --volume=1.0 ~/.local/share/sounds/startup.wav
+elif [[ "$1" == "--plugged" ]]; then
+    pw-play --volume=3.0 ~/.local/share/sounds/plugged.wav
+elif [[ "$1" == "--unplugged" ]]; then
+    pw-play --volume=5.0 ~/.local/share/sounds/unplugged.wav
+elif [[ "$1" == "--error" ]]; then
+    pw-play --volume=7.0 ~/.local/share/sounds/unplugged.wav
+fi
