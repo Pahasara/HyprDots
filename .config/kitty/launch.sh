@@ -1,3 +1,3 @@
 #!/bin/bash
-~/.local/bin/notify-sound --startup
+~/.local/bin/sound-alert --startup
 kitty

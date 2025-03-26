@@ -1,8 +1,8 @@
 # See man `man zathurarc'
 set font "inconsolata 15"
 
-# Open document in fit-width mode by default
-set adjust-open "width"
+# Open document in best-fit mode by default
+set adjust-open "best-fit"
 
 # One page per row by default
 set pages-per-row 1

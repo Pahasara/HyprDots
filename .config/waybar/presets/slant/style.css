@@ -23,10 +23,11 @@ window#waybar {
   padding: 0px;
   margin: 8px 10px 8px 0px;
   min-height: 5px;
+  min-width: 18px;
   border-radius: 15px;
-  border: 1px;
+  border: 0px;
   transition: all 0.3s ease-in-out;
-  opacity: 0.5;
+  opacity: 0.9;
   color: @fg-persist;
   background-color: @fg-persist;
 }
@@ -35,15 +36,32 @@ window#waybar {
   color: @foreground;
   background: @foreground;
   border-radius: 15px;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 #workspaces button.active {
-  color: @foreground;
-  background: @foreground;
+  color: @fg-blink;
+  background: @fg-blink;
   min-width: 30px;
   transition: all 0.3s ease-in-out;
-  opacity: 1;
+  opacity: 0.7;
+}
+
+#workspaces button.occupied {
+  color: @foreground;
+  background-color: @fg-persist;
+}
+
+#workspaces button.empty {
+  color: @fg-persist;
+  background-color: @fg-persist;
+  opacity: 0.3;
+}
+
+#workspaces button.urgent {
+  color: @warning;
+  background-color: @warning;
+  animation: workspace_urgent 1s ease-in-out infinite;
 }
 
 #mode {

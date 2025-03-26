@@ -1,6 +1,6 @@
 /* github.com/pahasara/HyprDots */
 
-@define-color background rgba(12, 12, 12, 0.8);
+@define-color background rgba(12, 12, 12, 0.7);
 @define-color bg-module rgba(12, 12, 12, 0.1);
 @define-color bg-tray rgba(67, 67, 69, 0.0);
 
@@ -11,7 +11,7 @@
 @define-color fg-persist rgba(80, 85, 90, 1.0);
 
 @define-color border rgba(56, 57, 59, 1.0);
-@define-color border-module rgba(33, 180, 240, 0.0);
+@define-color border-module rgba(33, 150, 220, 0.8);
 @define-color border-alt rgba(24, 25, 27, 1.0);
 
 @define-color separator rgba(102, 223, 105, 1.0);

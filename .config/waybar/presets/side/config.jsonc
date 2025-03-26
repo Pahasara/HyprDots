@@ -224,7 +224,7 @@
     },
     "custom/song": {
         "interval": 5,
-        "exec": "~/.local/bin/now-playing",
+        "exec": "~/.local/bin/media-info",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
         "escape": true
@@ -270,9 +270,9 @@
         "tooltip-format": "Notifications"
     },
     "custom/update": {
-        "exec": "~/.local/bin/check-update",
+        "exec": "~/.local/bin/update-status",
         "interval": 43200,
-        "on-click": "~/.local/bin/check-update",
+        "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
     "tray": {

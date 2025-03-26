@@ -23,6 +23,7 @@ window#waybar {
   padding: 0px;
   margin: 8px 8px 8px 0px;
   min-height: 2px;
+  min-width: 18px;
   border: 1;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
