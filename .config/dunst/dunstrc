@@ -10,7 +10,7 @@
     # Notification Size and Dimensions
     width = (0, 500)                # Min and max width
     progress_bar = true             # Enable progress bars
-    progress_bar_height = 5         # Progress bar height
+    progress_bar_height = 6         # Progress bar height
     progress_bar_min_width = 100    # Minimum progress bar width
     progress_bar_max_width = 250    # Maximum progress bar width
     progress_bar_corner_radius = 4  # Progress bar corner roundness
@@ -63,7 +63,7 @@
 
 # Urgency Levels
 [urgency_low]
-    background = "#211F1DAF"
+    background = "#020A0FAF"
     foreground = "#F5F5F5"
     highlight = "#64B5F6"
     frame_color = "#4748519F"
@@ -72,7 +72,7 @@
 
 [urgency_normal]
     default_icon = "$HOME/.local/share/icons/dunst/info.png"
-    background = "#222325C6"
+    background = "#121315C6"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
     frame_color = "#4748519F"
@@ -81,10 +81,10 @@
 
 [urgency_critical]
     default_icon = "$HOME/.local/share/icons/dunst/caution.png"
-    background = "#222325DD"
+    background = "#121315DD"
     foreground = "#FFBB44"
     highlight = "#FF6633"
-    frame_color = "#FF663348"
+    frame_color = "#FF663358"
     max_icon_size = 64
     timeout = 1000
 
@@ -102,3 +102,20 @@
     appname = "gamemode"
     default_icon = "$HOME/.local/share/icons/dunst/gamemode.png"
     timeout = 5
+
+[mic_low]
+    appname = "Mic"
+    msg_urgency = "low"
+    max_icon_size = 72
+    default_icon = "$HOME/.local/share/icons/dunst/mic-off.png"
+
+[mic_high]
+    appname = "Mic"
+    msg_urgency = "normal"
+    max_icon_size = 72
+    default_icon = "$HOME/.local/share/icons/dunst/mic-on.png"
+
+[volume]
+    appname = "Volume"
+    max_icon_size = 72
+

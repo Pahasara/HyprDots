@@ -1,5 +1,6 @@
 [Added Associations]
 application/pdf=zen.desktop;org.pwmt.zathura.desktop;firefox.desktop;libreoffice-draw.desktop;
+application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
 application/x-executable=userapp-kitty-IRIMW2.desktop;nemo-autorun-software.desktop;kitty-open.desktop;
 application/x-extension-htm=zen-alpha.desktop;zen.desktop;
@@ -28,6 +29,7 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 [Default Applications]
 application/cbz=org.pwmt.zathura.desktop
 application/pdf=zen.desktop;
+application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
 application/x-executable=nemo-autorun-software.desktop
 application/x-extension-htm=zen.desktop

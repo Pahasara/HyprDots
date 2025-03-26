@@ -4,7 +4,7 @@ Description=Charger notify service
 [Service]
 Type=simple
 ExecStartPre=/bin/sleep 5
-ExecStart=/home/%u/.local/bin/charge-notify
+ExecStart=/home/%u/.local/bin/battery-status
 
 [Install]
 WantedBy=default.target

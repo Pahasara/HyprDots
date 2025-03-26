@@ -232,5 +232,8 @@
     "cppcoreguidelines-avoid-magic-numbers",
     "misc-include-cleaner"
   ],
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  }
 }

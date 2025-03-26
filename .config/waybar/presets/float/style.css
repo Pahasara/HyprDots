@@ -1,6 +1,6 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/fluent.css");
+@import url("themes/azure.css");
 
 * {
   font-family: "Neuropolitical";
@@ -23,6 +23,7 @@ window#waybar {
   padding: 0px;
   margin: 8px 10px 8px 0px;
   min-height: 5px;
+  min-width: 18px;
   border-radius: 15px;
   border: 0px;
   transition: all 0.3s ease-in-out;
