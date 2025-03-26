@@ -1,5 +1,22 @@
 #!/bin/bash
 
+## This script selects a random wallpaper from a specified directory and sets it using `swww`.
+## If no directory is provided as an argument, it defaults to `~/Pictures/Wallpapers`.
+
+## Features:
+## - Supports multiple image formats (`.jpg`, `.jpeg`, `.png`, `.gif`).
+## - Allows specifying a custom wallpaper directory as an argument.
+## - Applies a smooth transition effect via `swww`.
+
+## Requirements:
+## - `swww`: Required for setting wallpapers.
+
+## Usage:
+## - Run without arguments to use the default wallpaper directory.
+## - Run with a directory path as an argument to use a custom wallpaper folder.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 default_wallpaper_dir=~/Pictures/Wallpapers
 
 find_images() {

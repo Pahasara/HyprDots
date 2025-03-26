@@ -1,10 +1,17 @@
 #!/bin/bash
 
+## This script checks the battery level and sends a critical notification if it drops below 25% while not charging.
+
+## Usage:
+## - Run this script periodically using a cron job or systemd service.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 BATTERY_PATH="/sys/class/power_supply/BAT0"
 BATTERY_LEVEL=$(cat "${BATTERY_PATH}/capacity")
 STATUS=$(cat "${BATTERY_PATH}/status")
 
 if [[ "$STATUS" != "Charging" ]] && [[ "$BATTERY_LEVEL" -le 25 ]]; then
     dunstify -u critical "Battery Low" "Battery level is ${BATTERY_LEVEL}%. Connect to the charger." -I "$HOME/.local/share/icons/dunst/low-battery.png"
-    $HOME/.local/bin/notify-sound
+    $HOME/.local/bin/sound-alert
 fi

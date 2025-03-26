@@ -1,0 +1,58 @@
+#!/bin/bash
+
+## This script checks for available system updates and provides different output formats based on arguments.
+ 
+## Requirements:
+## - `yay`: Pacman wrapper and AUR helper.
+
+## Usage:
+## - No argument  : Shows total update count (Pacman + AUR).
+## - `all`        : Lists both Pacman & AUR updates with current & next version.
+## - `pacman`     : Shows only Pacman update count.
+## - `aur`        : Shows only AUR update count.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
+# Count updates
+pacman_updates=$(yay -Qu 2>/dev/null | wc -l)       # Official repo updates
+aur_updates=$(yay -Qum 2>/dev/null | wc -l)         # AUR updates
+total_updates=$((pacman_updates + aur_updates))     # Total updates
+
+# Display update count if no arguments
+if [[ $# -eq 0 ]]; then
+    if [[ $total_updates -eq 0 ]]; then
+        echo ""
+    else
+        echo "  $total_updates"
+    fi
+    exit 0
+fi
+
+# Handle different arguments
+case "$1" in
+    all)
+        echo "Pacman Updates:"
+        checkupdates 2>/dev/null || echo "No Pacman updates available."
+        echo
+        echo "AUR Updates:"
+        yay -Qum 2>/dev/null || echo "No AUR updates available."
+        ;;
+    pacman)
+        if [[ $pacman_updates -eq 0 ]]; then
+            echo "No Pacman updates available."
+        else
+            echo "  $pacman_updates Pacman updates available."
+        fi
+        ;;
+    aur)
+        if [[ $aur_updates -eq 0 ]]; then
+            echo "No AUR updates available."
+        else
+            echo "  $aur_updates AUR updates available."
+        fi
+        ;;
+    *)
+        echo "Usage: $0 [all|pacman|aur]"
+        exit 1
+        ;;
+esac

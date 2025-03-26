@@ -1,6 +1,15 @@
 #!/bin/bash
-# Can parse 'max_length=SOME_INTEGER' as argument 
-# (example: ./now-playing max_length=40)
+
+## This script allows getting currently playing track information
+
+## Features:
+## - Trims track information to a specified maximum length
+## - Supports optional max_length argument for customizing display length
+
+## Requirements:
+## - `playerctl`: For retrieving media player track information
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 default_max_length=32
 
@@ -29,10 +38,10 @@ if [ "$spotify_status" == "Playing" ]; then
     trimmed_info=$(trim_info "$info" "$max_length")
     output="  $trimmed_info "
 else
-    musik_status=$(playerctl --player=musikcube status 2>/dev/null)
+    music_status=$(playerctl status 2>/dev/null)
 
-    if [ "$musik_status" == "Playing" ]; then
-        info=$(playerctl metadata --player=musikcube --format '{{title}} • {{artist}}')
+    if [ "$music_status" == "Playing" ]; then
+        info=$(playerctl metadata --format '{{title}} • {{artist}}')
         trimmed_info=$(trim_info "$info" "$max_length")
         output="  $trimmed_info "
     fi

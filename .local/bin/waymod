@@ -1,42 +1,41 @@
 #!/bin/bash
 set -e
 
-# Change waybar config
-if [ "$1" = "top" ]; then
-    cp "$HOME/.config/waybar/presets/top/config.jsonc" "$HOME/.config/waybar/config.jsonc"
-    cp "$HOME/.config/waybar/presets/top/style.css" "$HOME/.config/waybar/style.css"
+## This script allows switching Waybar layouts and themes dynamically.
 
-elif [ "$1" = "bottom" ]; then
-    cp "$HOME/.config/waybar/presets/bottom/config.jsonc" "$HOME/.config/waybar/config.jsonc"
-    cp "$HOME/.config/waybar/presets/bottom/style.css" "$HOME/.config/waybar/style.css"
+## Usage:
+## - Run with one of the following layouts:
+##   - `top`, `bottom`, `float`, `slant`, `side`
+## - Optionally, specify a theme as the second argument.
+##   Example: `./waymod bottom fluent`
 
-elif [ "$1" = "float" ]; then
-    cp "$HOME/.config/waybar/presets/float/config.jsonc" "$HOME/.config/waybar/config.jsonc"
-    cp "$HOME/.config/waybar/presets/float/style.css" "$HOME/.config/waybar/style.css"
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
-elif [ "$1" = "slant" ]; then
-    cp "$HOME/.config/waybar/presets/slant/config.jsonc" "$HOME/.config/waybar/config.jsonc"
-    cp "$HOME/.config/waybar/presets/slant/style.css" "$HOME/.config/waybar/style.css"
+PRESET_DIR="$HOME/.config/waybar/presets"
+WAYBAR_CONFIG="$HOME/.config/waybar/config.jsonc"
+WAYBAR_STYLE="$HOME/.config/waybar/style.css"
+WAYBAR_SCRIPT="$HOME/.config/waybar/waybar.sh"
 
-elif [ "$1" = "side" ]; then
-    cp "$HOME/.config/waybar/presets/side/config.jsonc" "$HOME/.config/waybar/config.jsonc"
-    cp "$HOME/.config/waybar/presets/side/style.css" "$HOME/.config/waybar/style.css"
+# Define valid presets
+VALID_PRESETS=("top" "bottom" "float" "slant" "side")
 
-else
-    echo "Invalid option: $1"
+# Check if the given preset is valid
+if [[ ! " ${VALID_PRESETS[*]} " =~ " $1 " ]]; then
+    echo "Invalid preset: $1"
     echo "Usage: $0 {top|bottom|float|slant|side} [theme]"
     exit 1
 fi
 
+# Apply the selected preset
+cp "$PRESET_DIR/$1/config.jsonc" "$WAYBAR_CONFIG"
+cp "$PRESET_DIR/$1/style.css" "$WAYBAR_STYLE"
 echo "Config switched to: $1"
 
-# Change waybar theme
-THEME=$2
-
-if [ -n "$THEME" ]; then
-    sed -i "s|@import url(\"themes/.*\.css\");|@import url(\"themes/$THEME.css\");|" "$HOME/.config/waybar/style.css"
-    echo "Theme switched to: $THEME"
+# Apply theme if provided
+if [[ -n "$2" ]]; then
+    sed -i "s|@import url(\"themes/.*\.css\");|@import url(\"themes/$2.css\");|" "$WAYBAR_STYLE"
+    echo "Theme switched to: $2"
 fi
 
-# Restart waybar
-$HOME/.config/waybar/waybar.sh &
+# Restart Waybar
+$WAYBAR_SCRIPT &

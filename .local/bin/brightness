@@ -1,5 +1,18 @@
 #!/bin/bash
 
+## This script adjusts the screen brightness using `brightnessctl`
+## and displays a notification with the updated brightness level.
+
+## Requirements:
+## - `brightnessctl`: Controls screen brightness.
+## - `dunst`: Sends notifications.
+
+## Usage:
+## - Run with `up` to increase brightness.
+## - Run with `down` to decrease brightness.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 msgTag="brightness"
 
 if [[ $# -ne 1 ]] || [[ "$1" != "up" && "$1" != "down" ]]; then

@@ -1,11 +1,29 @@
 #!/bin/bash
 
+## This script monitors the laptop's charging status and sends notifications when the power state changes.
+## It detects when the charger is plugged in or unplugged and provides both visual and audio alerts.
+
+## Features:
+## - Monitors battery status in real-time.
+## - Sends notifications via `dunstify` when power state changes.
+## - Plays a custom sound alert using `sound-alert`.
+
+## Requirements:
+## - `dunst`: For desktop notifications.
+## - `sound-alert`: Custom sound notification script.
+## - Access to `/sys/class/power_supply/BAT0/status` for battery monitoring.
+
+## Usage:
+## - Run the script in the background to continuously monitor power state changes.
+
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 BATTERY_PATH="/sys/class/power_supply/BAT0"
 STATUS_FILE="${BATTERY_PATH}/status"
 ICON_PATH_CONNECTED="$HOME/.local/share/icons/dunst/plugged.png"
 ICON_PATH_DISCONNECTED="$HOME/.local/share/icons/dunst/unplugged.png"
-SOUND_PATH_CONNECTED="$HOME/.local/bin/notify-sound --plugged"
-SOUND_PATH_DISCONNECTED="$HOME/.local/bin/notify-sound --unplugged"
+SOUND_PATH_CONNECTED="$HOME/.local/bin/sound-alert --plugged"
+SOUND_PATH_DISCONNECTED="$HOME/.local/bin/sound-alert --unplugged"
 
 LAST_STATUS=$(cat "$STATUS_FILE")
 
