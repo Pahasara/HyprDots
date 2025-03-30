@@ -35,15 +35,15 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/ba4ce6e4-1dc6-4d0c-a8fc-95a6a1a68cda" alt="System Info"></td>
+      <td><img src="https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6" alt="Yazi"></td>
       <td><img src="https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76" alt="Neovim"></td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6" alt="Yazi File Manager"></td>
+	<td><img src="https://github.com/user-attachments/assets/a550d33c-bd16-4a7f-babb-eeac57a48f25" alt="Zen Browser"></td>
       <td><img src="https://github.com/user-attachments/assets/96c451da-1ced-466d-8cea-3d11af68be8c" alt="Hyprlock"></td>
     </tr>
     <tr>
-      <td colspan="2"><img src="https://github.com/user-attachments/assets/a550d33c-bd16-4a7f-babb-eeac57a48f25" alt="Zen Browser"></td>
+      <td colspan="2"><img src="https://github.com/user-attachments/assets/ba4ce6e4-1dc6-4d0c-a8fc-95a6a1a68cda" alt="Fetch"></td>
     </tr>
   </table>
 </div>
