@@ -2,8 +2,6 @@
 	<img src="https://github.com/user-attachments/assets/8c6f77b5-5421-4e92-b02c-bca0fd098b94" width="700"/><br/>
 </h3>
 
-<p align="center">A meticulously crafted dotfiles collection for Hyprland, designed with both aesthetics and performance in mind.</p>
-
 <div align="center">
 <p align="center">
     <a href="https://github.com/Pahasara/HyprDots/stargazers"><img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=7244b3&style=for-the-badge"></a>
@@ -12,7 +10,8 @@
     <a href="https://github.com/Pahasara/HyprDots/repo-size"><img src="https://img.shields.io/github/repo-size/Pahasara/HyprDots?colorA=32302f&colorB=b16286&style=for-the-badge"></a> 
 </p>
 
----
+> [!NOTE]
+> Read the sections below carefully.
 
 <div align="center">
   <a href="https://github.com/Pahasara/HyprDots/wiki/Installation">
