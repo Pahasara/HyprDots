@@ -9,6 +9,7 @@
     <a href="https://github.com/Pahasara/HyprDots/last-commit"><img src="https://img.shields.io/github/last-commit/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
     <a href="https://github.com/Pahasara/HyprDots/repo-size"><img src="https://img.shields.io/github/repo-size/Pahasara/HyprDots?colorA=32302f&colorB=b16286&style=for-the-badge"></a> 
 </p>
+</div>
 
 > [!NOTE]
 > Read the sections below carefully.
@@ -26,7 +27,6 @@
   <a href="https://github.com/Pahasara/HyprDots/wiki/FAQ">
     <img src="https://img.shields.io/badge/❓ FAQ-32302f?style=for-the-badge&logoColor=white&labelColor=8ec07c&color=fabd2f" alt="FAQ"/>
   </a>
-</div>
 </div>
 
 ## ✨ Showcase
