@@ -12,7 +12,7 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. [12MB +]
+> Read the sections below carefully, and use this command to clone the repo. **(12MB+)**
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
