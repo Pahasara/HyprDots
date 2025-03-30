@@ -156,6 +156,6 @@ window#waybar {
   background: @bg-module;
   border-radius: 13px;
   padding-left: 10px;
-  padding-right: 0px;
+  padding-right: 5px;
   margin: 5px;
 }

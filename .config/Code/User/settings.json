@@ -11,7 +11,7 @@
   "workbench.productIconTheme": "fluent-icons",
   // Editor Settings
   "editor.fontFamily": "CaskaydiaMono Nerd Font",
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "editor.tabSize": 4,
   "editor.detectIndentation": false,
   // File Type Specific
@@ -28,7 +28,7 @@
   "editor.cursorSurroundingLines": 10,
   // Terminal Settings
   "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
-  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontSize": 14,
   "terminal.external.linuxExec": "kitty",
   // Custom Colors
   "workbench.colorCustomizations": {

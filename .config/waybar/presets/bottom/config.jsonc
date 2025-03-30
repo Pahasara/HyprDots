@@ -193,7 +193,7 @@
     },
     "pulseaudio#microphone": {
 	    "format": "{format_source} ",
-    	"format-source": "",
+    	"format-source": "<big></big>",
 	    "format-source-muted": "",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
         "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
