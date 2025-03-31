@@ -1,15 +1,15 @@
 // github.com/pahasara/HyprDots
 
+/* Azure Theme */
 * {
-  bg0:    #12121288; //window
-  bg1:    #00000066; //input
-  bg2:    #0000000F; //selected
-  bg3:    #424547; //windowBorder
-  bg4:    #0000009F; //window
-  fg0:    #DEDEDE;   //main
-  fg1:    #0000000F;
-  fg2:    #33CCFF;   //selected
-  fg3:    #242428;   //inputBorder
+  bg:         #0000008F; // window
+  main-bg:    #121212A8; // main
+  main-br:    #424547;   // windowBorder
+  main-fg:    #DEDEDE;   // main
+  input-bg:   #00000066; // input
+  input-br:   #242428;   // inputBorder
+  select-fg:  #33CCFF;   // selected
+  select-bg:  #0000000F; // selected
 
   black   : #000000;
   red     : #F7768E;

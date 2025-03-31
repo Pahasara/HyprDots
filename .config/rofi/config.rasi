@@ -1,5 +1,5 @@
 configuration {
-    modes: "window,run,ssh,drun,calc,emoji";
+    modes: "window,run,ssh,drun,emoji";
     sorting-method: "normal";
     show-icons:true;
     matching: "regex";
@@ -8,7 +8,6 @@ configuration {
     display-ssh: "SSH:";
     display-drun: " ";
     display-window: " ";
-    display-calc: " ";
     terminal: "/usr/bin/kitty";
 }
 
@@ -18,7 +17,7 @@ configuration {
     font: "Ubuntu Nerd Font 12";
 
     background-color:   transparent;
-    text-color:         @fg0;
+    text-color:         @main-fg;
 
     margin:     0px;
     padding:    0px;
@@ -31,8 +30,8 @@ window {
     border-radius:  15px;
 
     border: 2px;
-    border-color: @bg3;
-    background-color:   @bg4;
+    border-color: @main-br;
+    background-color:   @bg;
 }
 
 mainbox {
@@ -40,8 +39,8 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg1;
-    border-color:       @fg3;
+    background-color:   @input-bg;
+    border-color:       @input-br;
     border-radius:  12px;
     border:         2px;
 
@@ -51,24 +50,24 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg0;
+    text-color: @main-fg;
 }
 
 entry {
     placeholder:        "Type...";
-    placeholder-color:  @fg0;
+    placeholder-color:  @main-fg;
 }
 
 message {
     margin:             12px 0 0;
     border-radius:      10px;
-    border-color:       @bg2;
-    background-color:   @bg2;
+    border-color:       @main-bg;
+    background-color:   @main-bg;
 }
 
 textbox {
     padding:    8px 24px;
-    background-color:   @bg2;
+    background-color:   @main-bg;
 }
 
 listview {
@@ -83,7 +82,7 @@ listview {
 element {
     padding:        8px 8px;
     spacing:        8px;
-    border-radius:  8px;
+    border-radius:  10px;
 }
 
 element normal urgent {
@@ -95,8 +94,8 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @bg2;
-	text-color: @fg2;
+    background-color:   @select-bg;
+	text-color: @select-fg;
 }
 
 element-icon {
@@ -106,4 +105,5 @@ element-icon {
 
 element-text {
     text-color: inherit;
+    background-color:         transparent;
 }

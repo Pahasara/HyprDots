@@ -7,6 +7,7 @@
     "layer": "top",
     "position": "bottom",
     "spacing": 15,
+    "reload_style_on_change": true,
     //##################
     //### BAR ORDER  ###
     //##################
@@ -53,10 +54,10 @@
             "9": [],
             "10": []
         },
-        "format": "<small>{icon}</small>",
+        // "format": "<small>{icon}</small>",
         "format-icons": {
             // "active": "",
-            "default": "",
+            // "default": "",
         }
     },
     "hyprland/window": {
@@ -79,8 +80,8 @@
             "critical": 15,
         },
         "format": "<big>{icon}</big>",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "<big>󰂄</big>",
+        "format-plugged": "<big>󰂄</big>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
@@ -170,7 +171,7 @@
 	    "format": "{format_source}{icon} ",
 	    "format-bluetooth": "{icon} 󰂰 {volume}%",
 	    "format-muted": "",
-    	"format-source": "  ",
+    	"format-source": "<big></big>   ",
 	    "format-source-muted": "",
 	    "format-icons": {
 		    "headphone": "<big></big>",
@@ -193,7 +194,7 @@
     },
     "pulseaudio#microphone": {
 	    "format": "{format_source} ",
-    	"format-source": "<big></big>",
+    	"format-source": "",
 	    "format-source-muted": "",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
         "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",

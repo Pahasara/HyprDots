@@ -235,5 +235,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
-  }
+  },
+  "workbench.activityBar.location": "hidden"
 }

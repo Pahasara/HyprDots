@@ -1,15 +1,15 @@
 // github.com/pahasara/HyprDots
 
+/* Breeze Theme */
 * {
-  bg0:    #0000008F; //window
-  bg1:    #2A2C2F99; //input
-  bg2:    #0000001F; //selected
-  bg3:    #2B4C5DFF; //windowBorder
-  bg4:    #000000DF; //window
-  fg0:    #DEDEDE;   //main
-  fg1:    #0000000F;
-  fg2:    #33BBFF;   //selected
-  fg3:    #282830;   //inputBorder
+  bg:         #000000DF; // window
+  main-bg:    #0000008F; // main
+  main-br:    #2B4C5DFF; // windowBorder
+  main-fg:    #DEDEDE;   // main
+  input-bg:   #2A2C2F99; // input
+  input-br:   #282830;   // inputBorder
+  select-fg:  #33BBFF;   // selected
+  select-bg:  #0000001F; // selected
 
   black   : #000000;
   red     : #F7768E;

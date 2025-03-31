@@ -7,6 +7,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 15,
+    "reload_style_on_change": true,
     //##################
     //### BAR ORDER  ###
     //##################
@@ -53,10 +54,10 @@
             "9": [],
             "10": []
         },
-        "format": "<small>{icon}</small>",
+        // "format": "<small>{icon}</small>",
         "format-icons": {
             // "active": "",
-            "default": "",
+            // "default": "",
         }
     },
     "hyprland/window": {
@@ -79,8 +80,8 @@
             "critical": 15,
         },
         "format": "<big>{icon}</big>",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "<big>󰂄</big>",
+        "format-plugged": "<big>󰂄</big>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
