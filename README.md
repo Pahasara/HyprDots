@@ -4,10 +4,14 @@
 
 <div align="center">
 <p align="center">
-    <a href="https://github.com/Pahasara/HyprDots/stargazers"><img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=7244b3&style=for-the-badge"></a>
-    <a href="https://hyprland.org"><img src="https://img.shields.io/badge/Arch-Hyprland-blue.svg?style=for-the-badge&labelColor=32302f&color=258598"></a> 
-    <a href="https://github.com/Pahasara/HyprDots/last-commit"><img src="https://img.shields.io/github/last-commit/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
-    <a href="https://github.com/Pahasara/HyprDots/repo-size"><img src="https://img.shields.io/github/repo-size/Pahasara/HyprDots?colorA=32302f&colorB=b16286&style=for-the-badge"></a> 
+    <a href="https://github.com/Pahasara/HyprDots/stargazers">
+	    <img src="https://img.shields.io/github/stars/Pahasara/HyprDots?colorA=32302f&colorB=7244b3&style=for-the-badge"></a>
+    <a href="https://hyprland.org">
+	    <img src="https://img.shields.io/badge/Arch-Hyprland-blue.svg?style=for-the-badge&labelColor=32302f&color=258598"></a> 
+    <a href="https://github.com/Pahasara/HyprDots/last-commit">
+	    <img src="https://img.shields.io/github/last-commit/Pahasara/HyprDots?colorA=32302f&colorB=05aa57&style=for-the-badge"></a>
+    <a href="https://github.com/Pahasara/HyprDots/blob/main/LICENSE">
+    	    <img src="https://img.shields.io/github/license/Pahasara/HyprDots?colorA=32302f&colorB=b16286&style=for-the-badge"></a>
 </p>
 </div>
 
@@ -36,7 +40,7 @@
 
 <div align="center">
 	
-![fetch](https://github.com/user-attachments/assets/ba4ce6e4-1dc6-4d0c-a8fc-95a6a1a68cda)
+![fetch](https://github.com/user-attachments/assets/449bd691-6116-4ce4-8789-2f08bb289d88)
 
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/a550d33c-bd16-4a7f-babb-eeac57a48f25) |
 |--|--|
@@ -48,10 +52,9 @@
 
 ## 🚀 Features
 
-- **Full Hyprland Integration** - Optimized for the latest Hyprland features
+- **Hyprland Integration** - Optimized for the latest Hyprland features
 - **Efficient Workflows** - Designed for productivity and ease of use
-- **Multiple Themes** - Switch between different color schemes
-- **Customizable Waybar** - Various presets and positions
+- **Customizable** - Various presets and color schemes
 - **Arch-Optimized** - Specially tuned for Arch Linux and its derivatives
 
 > [!IMPORTANT]
@@ -64,6 +67,7 @@ Comprehensive documentation is available in the [Wiki](https://github.com/Pahasa
 - [**Installation Guide**](https://github.com/Pahasara/HyprDots/wiki/Installation) - Step-by-step setup instructions
 - [**Customization**](https://github.com/Pahasara/HyprDots/wiki/Customization) - Learn how to personalize your setup
 - [**Keybindings**](https://github.com/Pahasara/HyprDots/wiki/Keybindings) - Complete keyboard shortcut reference
+- [**Components**](https://github.com/Pahasara/HyprDots/wiki/Components) - Core software and tools inlcuded
 - [**Troubleshooting**](https://github.com/Pahasara/HyprDots/wiki/Troubleshooting) - Solutions to common issues
 - [**FAQ**](https://github.com/Pahasara/HyprDots/wiki/FAQ) - Answers to frequently asked questions
 
