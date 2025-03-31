@@ -70,6 +70,14 @@ AUR_PACKAGES=(
     "zen-browser-bin"
 )
 
+# List of archive files to extract after copying
+THEME_ARCHIVES=(
+    "$HOME/.themes/Colloid-Dark.tar.xz"
+    "$HOME/.icons/McMojave-hyprcursor.tar.xz"
+    "$HOME/.icons/McMojave-cursors.tar.xz"
+    "$HOME/.local/share/icons/BigSur.tar.xz"
+)
+
 # Check if script is run by root
 check_permissions() {
     if [[ $EUID -eq 0 ]]; then
@@ -220,6 +228,9 @@ install_dotfiles() {
     mkdir -p "$HOME/.local/bin"
     mkdir -p "$HOME/.local/share"
     mkdir -p "$HOME/Pictures/Wallpapers"
+    mkdir -p "$HOME/.themes"
+    mkdir -p "$HOME/.icons"
+    mkdir -p "$HOME/.local/share/icons"
     
     # Copy configuration files
     if [ -d ".config" ]; then
@@ -236,6 +247,18 @@ install_dotfiles() {
         log_info "Copied local files to ~/.local/"
     fi
     
+    # Copy theme files
+    if [ -d ".themes" ]; then
+        cp -r ".themes/"* "$HOME/.themes/" || log_warning "Error copying theme files"
+        log_info "Copied theme files to ~/.themes/"
+    fi
+    
+    # Copy icon files
+    if [ -d ".icons" ]; then
+        cp -r ".icons/"* "$HOME/.icons/" || log_warning "Error copying icon files"
+        log_info "Copied icon files to ~/.icons/"
+    fi
+    
     # Copy wallpapers if they exist
     if [ -d ".walls" ]; then
         cp -r ".walls/"* "$HOME/Pictures/Wallpapers/" 2>/dev/null || log_warning "Error copying wallpapers"
@@ -243,6 +266,39 @@ install_dotfiles() {
     fi
     
     log_success "HyprDots files installed successfully."
+}
+
+# Extract compressed theme/icon archives
+extract_theme_archives() {
+    log_step "Extracting theme and icon archives"
+    
+    local extracted_count=0
+    
+    for archive in "${THEME_ARCHIVES[@]}"; do
+        if [ -f "$archive" ]; then
+            log_info "Extracting $(basename "$archive")"
+            
+            # Get the directory where the archive is located
+            local extract_dir=$(dirname "$archive")
+            
+            # Extract the archive
+            tar -xf "$archive" -C "$extract_dir" && {
+                # Remove the archive after successful extraction
+                rm "$archive" && log_info "Removed archive after extraction"
+                ((extracted_count++))
+            } || {
+                log_warning "Failed to extract: $archive"
+            }
+        else
+            log_warning "Archive not found: $archive"
+        fi
+    done
+    
+    if [ $extracted_count -eq ${#THEME_ARCHIVES[@]} ]; then
+        log_success "All theme and icon archives extracted successfully"
+    else
+        log_warning "Extracted $extracted_count out of ${#THEME_ARCHIVES[@]} archives"
+    fi
 }
 
 # Install Oh My Zsh and plugins
@@ -376,6 +432,7 @@ EOF
     install_yay
     install_aur_packages
     install_dotfiles
+    extract_theme_archives
     install_omz
     configure_services
     
