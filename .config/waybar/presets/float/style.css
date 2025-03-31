@@ -163,7 +163,6 @@ window#waybar {
 }
 
 .modules-right {
-  background: @bg-module;
   border-radius: 13px;
   padding-left: 10px;
   padding-right: 10px;
