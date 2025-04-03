@@ -17,6 +17,7 @@
   yellow  : #E0AF68;
   blue    : #7AA2F7;
   magenta : #9AAECC;
+  grey    : #ABABAC;
   cyan    : #4ABAEF;
 
   accent: @cyan;

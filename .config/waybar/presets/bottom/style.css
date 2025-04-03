@@ -114,7 +114,7 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
-  color: #00c0ff;
+  color: @active;
 }
 
 #custom-storage,

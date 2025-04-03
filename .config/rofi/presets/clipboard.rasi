@@ -1,5 +1,5 @@
-//  Source: https://github.com/sejjy/hyprrice
-//  Modified: https://github.com/pahasara/hyprdots
+//  Source:     https://github.com/sejjy/hyprrice
+//  Modified:   https://github.com/pahasara/hyprdots
 
 configuration {
     font:  "Ubuntu Nerd Font 11";
@@ -37,7 +37,6 @@ textbox-custom {
     border-color:             @input-br;
     horizontal-align:         0.5;
     padding:                  8px 0;
-    expand:                   false;
     background-color:         @main-bg;
     text-color:               @main-fg;
     expand:                   false;
@@ -50,8 +49,17 @@ inputbar {
     border-radius:            6px;
     spacing:                  inherit;
     background-color:         @main-bg;
-    text-color:               inherit;
-    children:                 [ prompt, entry ];
+    text-color:               @grey;
+    children:                 [ textbox-custom2, entry ];
+}
+
+textbox-custom2 {
+    font:                     "Ubuntu Nerd Font Bold 11";
+    padding:                  6px 6px 6px 10px;
+    expand:                   false;
+    background-color:         inherit;
+    text-color:               @main-fg;
+    content:                  "󰅍  ";
 }
 
 prompt {

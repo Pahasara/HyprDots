@@ -175,7 +175,7 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
-  color: @foreground;
+  color: @active;
 }
 
 #pulseaudio {

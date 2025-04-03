@@ -50,7 +50,7 @@ inputbar {
 }
 
 prompt {
-    text-color: @main-fg;
+    text-color: @grey;
 }
 
 entry {

@@ -1,5 +1,5 @@
-//  Source: https://github.com/sejjy/hyprrice
-//  Modified: https://github.com/pahasara/hyprdots
+//  Source:     https://github.com/sejjy/hyprrice
+//  Modified:   https://github.com/pahasara/hyprdots
 
 configuration {
     font:  "Ubuntu Nerd Font 11";
@@ -41,7 +41,7 @@ textbox-custom {
     background-color:         @main-bg;
     text-color:               @main-fg;
     expand:                   false;
-    content:                  "  Wifi";
+    content:                  "  Wi-Fi";
 }
 
 /* Input */
@@ -50,7 +50,7 @@ inputbar {
     border-radius:            6px;
     spacing:                  inherit;
     background-color:         @main-bg;
-    text-color:               inherit;
+    text-color:               @grey;
     children:                 [ prompt, entry ];
 }
 
