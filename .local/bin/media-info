@@ -34,14 +34,14 @@ fi
 spotify_status=$(playerctl --player=spotify status 2>/dev/null)
 
 if [ "$spotify_status" == "Playing" ]; then
-    info=$(playerctl metadata --player=spotify --format '{{title}} • {{artist}}')
+    info=$(playerctl metadata --player=spotify --format '{{title}} ✦ {{artist}}')
     trimmed_info=$(trim_info "$info" "$max_length")
     output="  $trimmed_info "
 else
     music_status=$(playerctl status 2>/dev/null)
 
     if [ "$music_status" == "Playing" ]; then
-        info=$(playerctl metadata --format '{{title}} • {{artist}}')
+        info=$(playerctl metadata --format '{{title}} ✦ {{artist}}')
         trimmed_info=$(trim_info "$info" "$max_length")
         output="  $trimmed_info "
     fi

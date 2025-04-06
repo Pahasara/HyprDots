@@ -38,4 +38,4 @@ if [[ -n "$2" ]]; then
 fi
 
 # Restart Waybar
-$WAYBAR_SCRIPT &
+$WAYBAR_SCRIPT 1>/dev/null 2>/dev/null &
