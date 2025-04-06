@@ -3,7 +3,6 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    // "reload_style_on_change": true,
     "layer": "top",
     "position": "bottom",
     "spacing": 15,

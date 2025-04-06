@@ -85,6 +85,11 @@ window#waybar {
   background-color: @background;
   border: 2px solid @border-module;
   color: @fg-module;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#workspaces {
+  text-shadow: none;
 }
 
 #idle_inhibitor,

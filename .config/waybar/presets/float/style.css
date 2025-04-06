@@ -109,6 +109,31 @@ window#waybar {
   animation-direction: alternate;
 }
 
+#custom-storage,
+#window,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#clock.time {
+  font-size: 13.75px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray,
+#pulseaudio,
+#network {
+  font-size: 12px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
 #idle_inhibitor {
   font-size: 18px;
   font-weight: 100;
@@ -125,36 +150,12 @@ window#waybar {
   color: @active;
 }
 
-#custom-storage,
-#window,
-#clock.date,
-#memory,
-#cpu {
-  color: @fg-alt;
-}
-
-#idle_inhibitor,
-#clock {
-  font-family: "JetBrainsMono Nerd Font";
-}
-
-#clock.time {
-  font-size: 13.75px;
-  font-weight: 900;
-}
-
-#wireplumber,
-#battery,
-#custom-clipboard,
-#network {
-  font-size: 13px;
-  font-style: normal;
-}
-
 #custom-song {
   font-family: "Neuropolitical";
+  font-size: 12px;
   font-style: italic;
   font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   color: @foreground;
 }
 

@@ -39,6 +39,9 @@ set highlight-active-color "rgba(0,150, 200, 0.5)"
 set completion-highlight-fg "#151515" #02
 set completion-highlight-bg "#0099c9" #0C
 
+set inputbar-bg "#202020"
+set inputbar-fg "#0099c9"
+
 set completion-bg "#303030" #02
 set completion-fg "#E0E0E0" #0C
 

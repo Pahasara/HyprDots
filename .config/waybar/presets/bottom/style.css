@@ -26,6 +26,7 @@ window#waybar {
   margin: 2px 0;
   padding: 0 2px;
   transition: ease-in-out;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 #workspaces button:hover {
   color: @hover-fg;
@@ -101,22 +102,6 @@ window#waybar {
   animation-direction: alternate;
 }
 
-#idle_inhibitor {
-  font-size: 18px;
-  font-weight: 100;
-  border-radius: 25px;
-  padding-left: 7px;
-  padding-right: 9px;
-}
-
-#idle_inhibitor.activated {
-  color: @fg-module;
-}
-
-#idle_inhibitor.deactivated {
-  color: @active;
-}
-
 #custom-storage,
 #window,
 #clock.date,
@@ -135,6 +120,7 @@ window#waybar {
 }
 
 #wireplumber,
+#idle_inhibitor,
 #battery,
 #clock,
 #tray,
@@ -142,6 +128,7 @@ window#waybar {
 #network {
   font-size: 12px;
   font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 #custom-song {
@@ -149,7 +136,24 @@ window#waybar {
   font-size: 12px;
   font-style: italic;
   font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   color: @foreground;
+}
+
+#idle_inhibitor {
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding-left: 7px;
+  padding-right: 9px;
+}
+
+#idle_inhibitor.activated {
+  color: @fg-module;
+}
+
+#idle_inhibitor.deactivated {
+  color: @active;
 }
 
 .modules-right {

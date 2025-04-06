@@ -78,7 +78,7 @@ entry {
 
 /* List */
 listview {
-    lines:                    6;
+    lines:                    8;
     fixed-height:             false;
     dynamic:                  true;
     cycle:                    false;

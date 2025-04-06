@@ -1,4 +1,5 @@
 [Added Associations]
+application/epub+zip=com.github.johnfactotum.Foliate.desktop;org.pwmt.zathura-pdf-mupdf.desktop;calibre-ebook-edit.desktop;calibre-ebook-viewer.desktop;calibre-gui.desktop;org.kde.ark.desktop;
 application/pdf=zen.desktop;org.pwmt.zathura.desktop;firefox.desktop;libreoffice-draw.desktop;
 application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
@@ -28,6 +29,7 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 
 [Default Applications]
 application/cbz=org.pwmt.zathura.desktop
+application/epub+zip=com.github.johnfactotum.Foliate.desktop;
 application/pdf=zen.desktop;
 application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
