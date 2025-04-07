@@ -72,7 +72,7 @@ entry {
     placeholder:              "Search";
     padding:                  6px 0;
     cursor:                   text;
-    background-color:         inherit;
+    background-color:         @input-bg;
     text-color:               inherit;
 }
 

@@ -37,7 +37,7 @@ window#waybar {
   color: #000;
   background: @active;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
   margin: 2px;
   padding: 0 6px;
   opacity: 0.9;

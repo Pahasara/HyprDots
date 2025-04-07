@@ -9,7 +9,7 @@
   input-bg:   #00000066; // input
   input-br:   #242428;   // inputBorder
   select-fg:  #33CCFF;   // selected
-  select-bg:  #0000000F; // selected
+  select-bg:  #232B356A; //selected
 
   black   : #000000;
   red     : #F7768E;
