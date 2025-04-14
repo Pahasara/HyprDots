@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. **(12MB+)**
+> Read the sections below carefully, and use this command to clone the repo. **(8MB+)**
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
@@ -54,11 +54,11 @@
 
 - **Hyprland Integration** - Optimized for the latest Hyprland features
 - **Efficient Workflows** - Designed for productivity and ease of use
-- **Customizable** - Various presets and color schemes
+- **Customizable** - Various presets, color schemes and scripts
 - **Arch-Optimized** - Specially tuned for Arch Linux and its derivatives
 
 > [!IMPORTANT]
-> This setup is designed with a strong emphasis on keyboard shortcuts for nearly everything, from changing songs to shutting down your computer. For the full list of shortcuts, please check the [Keybindings Wiki](https://github.com/Pahasara/HyprDots/wiki/Keybindings).
+> This setup is designed with a strong emphasis on keyboard shortcuts for nearly everything, from changing songs to shutting down your computer. For the full list of shortcuts, please check the [Keybindings](https://github.com/Pahasara/HyprDots/wiki/Keybindings).
 
 ## 📚 Documentation
 
