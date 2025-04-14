@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. **(8MB+)**
+> Read the sections below carefully, and use this command to clone the repo. **(10MB+)**
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
@@ -42,7 +42,7 @@
 	
 ![fetch](https://github.com/user-attachments/assets/449bd691-6116-4ce4-8789-2f08bb289d88)
 
-| ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
+| ![mpv](https://github.com/user-attachments/assets/4b60c705-037c-4848-bbaa-287c6af33d88) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
 |--|--|
 	
 | ![yazi](https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6) | ![Hyprlock](https://github.com/user-attachments/assets/96c451da-1ced-466d-8cea-3d11af68be8c) |
