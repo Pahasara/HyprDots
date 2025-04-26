@@ -47,8 +47,9 @@ alias la='eza -a --icons --color=always --group-directories-first'
 alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-alias z="./.local/opt/zero/Zero.CLI"
+alias z="./.local/opt/ztrack/ZTrack"
 alias zero="./.local/opt/zero/Zero.CLI"
+alias ztrack="./.local/opt/ztrack/ZTrack"
 alias wall="swww img"
 alias vz="vim ~/.zshrc"
 alias ve="vim ~/.zshenv"
@@ -56,7 +57,7 @@ alias vk="vim ~/.config/kitty/kitty.conf"
 alias ns="dunstify 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' -a System -u normal"
 alias xzz="XZ_OPT='-9 -T12' tar -cJf"
 alias gzz="tar -czf"
-alias zst="tar -I 'zstd -19 -T12' -cf"
+alias zst="tar -I 'zstd -19 -T0' -cf"
 alias 7zz="7z a -t7z -m0=lzma2 -mx=9 -mmt=12 -mqs=on"
 alias cdc="cd && cd Code"
 alias cdd="cd && cd Downloads"
@@ -65,6 +66,7 @@ alias tp="trash-put"
 
 alias rwa="random-wall ~/Pictures/Wallpapers/Anime"
 alias rwc="random-wall ~/Pictures/Wallpapers/Cute"
+alias rwd="random-wall ~/Pictures/Wallpapers/DOTA"
 alias rwm="random-wall ~/Pictures/Wallpapers/ML"
 alias rwg="random-wall ~/Pictures/Wallpapers/Old-G"
 alias rwo="random-wall ~/Pictures/Wallpapers/Other"

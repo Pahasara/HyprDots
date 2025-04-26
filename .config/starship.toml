@@ -6,17 +6,10 @@ scan_timeout = 10
 # Disable the blank line at the start of the prompt
 add_newline = true
 
+# 
 # Use custom format
-#[$username@$hostname](bg:#323437 fg:#AFAFAF)\
-# [](fg:#323437)\
-# [   ](bg:#323437 fg:#AFAFAF)\
-# [](bg:#0077AA fg:#323437)\
-# [ $directory ](bg:#0077AA fg:#000000)\
-# [ ](fg:#0077AA)\
-# $line_break\
-
 format = """
-[](fg:#323437)\
+[](fg:#323437)\
 [   ](bg:#323437 fg:#AFAFAF)\
 [](bg:#0077AA fg:#323437)\
 [ $directory ](bg:#0077AA fg:#000000)\

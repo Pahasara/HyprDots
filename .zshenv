@@ -20,3 +20,5 @@ export MANROFFOPT="-c"
 # Add path for .local/bin/* scripts
 export PATH=$HOME/.local/bin:$PATH
 
+# mesa shader cache -custom path
+export SHADER_CACHE=$HOME/.cache/mesa_shader_cache
