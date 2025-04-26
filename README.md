@@ -40,12 +40,13 @@
 
 <div align="center">
 	
-![fetch](https://github.com/user-attachments/assets/449bd691-6116-4ce4-8789-2f08bb289d88)
+![fetch](https://github.com/user-attachments/assets/4f8c2613-d275-4c01-b54e-d5e78d5e9b8d)
 
-| ![mpv](https://github.com/user-attachments/assets/4b60c705-037c-4848-bbaa-287c6af33d88) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
+
+| ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
 |--|--|
 	
-| ![yazi](https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6) | ![Hyprlock](https://github.com/user-attachments/assets/96c451da-1ced-466d-8cea-3d11af68be8c) |
+| ![yazi](https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6) | ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
 |--|--|
 
 </div>
