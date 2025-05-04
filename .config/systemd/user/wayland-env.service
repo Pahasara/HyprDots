@@ -1,0 +1,12 @@
+[Unit]
+Description=Wayland Environment Variables
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target

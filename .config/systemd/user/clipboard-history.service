@@ -1,0 +1,13 @@
+[Unit]
+Description=Clipboard History Service
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sh -c 'wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

@@ -3,7 +3,6 @@ Description=Headphone Detection Service
 
 [Service]
 Type=simple
-ExecStartPre=/bin/sleep 2
 ExecStart=/home/%u/.local/bin/headphone-status
 
 [Install]

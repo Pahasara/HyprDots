@@ -10,7 +10,7 @@ configuration {
 
 /* Window */
 window {
-    width: 250px;
+    width: 350px;
     border: 2px;
     border-radius: 10px;
     border-color: @main-br;

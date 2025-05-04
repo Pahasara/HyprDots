@@ -11,9 +11,9 @@ add_newline = true
 format = """
 [](fg:#323437)\
 [   ](bg:#323437 fg:#AFAFAF)\
-[](bg:#0077AA fg:#323437)\
-[ $directory ](bg:#0077AA fg:#000000)\
-[ ](fg:#0077AA)\
+[](bg:#0088BB fg:#323437)\
+[ $directory ](bg:#0088BB fg:#000000)\
+[ ](fg:#0088BB)\
 $line_break\
 """
 

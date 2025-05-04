@@ -59,7 +59,7 @@
   },
   // Token Colors
   "editor.tokenColorCustomizations": {
-    "comments": "#88888F",
+    "comments": "#8F8F9F",
     "textMateRules": [
       {
         "scope": [
@@ -235,5 +235,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
-  }
+  },
+  "workbench.activityBar.location": "hidden"
 }
