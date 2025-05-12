@@ -3,38 +3,50 @@
   "telemetry.telemetryLevel": "off",
   "extensions.autoUpdate": false,
   "explorer.confirmDragAndDrop": false,
-  "editor.formatOnSave": true,
-  "workbench.sideBar.location": "right",
-  "window.titleBarStyle": "custom",
+
   // Appearance Settings
-  "workbench.colorTheme": "Material Night Eighties",
+  "window.titleBarStyle": "custom",
+  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
+
   // Editor Settings
   "editor.fontFamily": "CaskaydiaMono Nerd Font",
   "editor.fontSize": 15,
   "editor.tabSize": 4,
+  "editor.wordWrap": "on",
+  "editor.cursorSurroundingLines": 10,
   "editor.detectIndentation": false,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
   // File Type Specific
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[javascript]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.insertSpaces": true
   },
   "[javascriptreact]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.cursorSurroundingLines": 10,
+
   // Terminal Settings
   "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
   "terminal.integrated.fontSize": 14,
-  "terminal.external.linuxExec": "kitty",
+  "terminal.external.linuxExec": "/usr/bin/kitty",
+
   // Custom Colors
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#1A1A1A",
+    "titleBar.activeForeground": "#33CCFF",
     "breadcrumb.background": "#1A1A1A",
+    "breadcrumb.foreground": "#10eb73",
     "sideBar.background": "#1A1A1A",
+    "sideBar.foreground": "#DDDFDF",
     "sideBarSectionHeader.background": "#181818",
     "editor.background": "#1F1F1F",
     "editorLineNumber.foreground": "#88888F",
@@ -46,31 +58,36 @@
     "editorGroupHeader.tabsBackground": "#1A1A1A",
     "list.activeSelectionBackground": "#00ccff2a",
     "list.inactiveSelectionBackground": "#212122",
-    "tab.activeBackground": "#203A52",
+    "tab.activeBackground": "#102A42",
     "tab.inactiveBackground": "#1A1A1A",
-    "statusBar.background": "#000",
-    "statusBar.foreground": "#fff",
-    "statusBar.border": "#112",
-    "badge.background": "#000",
+    "statusBar.background": "#1A1A1A",
+    "statusBar.foreground": "#3CF",
+    "statusBar.debuggingForeground": "#ffa82f",
+    "statusBar.debuggingBackground": "#1A1A1A",
+    "statusBar.border": "#000",
+    "badge.background": "#1A1A1A",
     "badge.foreground": "#0099DD",
-    "activityBar.background": "#1A1A1A"
-    // "activityBarBadge.background": "#0AE",
-    // "activityBarBadge.foreground": "#000"
+    "activityBar.background": "#1A1A1A",
+    "activityBar.foreground": "#33ccff",
+    "activityBarBadge.background": "#0AE",
+    "activityBarBadge.foreground": "#000"
   },
+
   // Token Colors
   "editor.tokenColorCustomizations": {
-    "comments": "#8F8F9F",
+    "comments": "#6A6A7A",
     "textMateRules": [
       {
         "scope": [
-          "string.quoted.double",
-          "punctuation.definition.string",
           "string.quoted.other.lt-gt.include",
           "keyword.control.c",
           "storage.type.built-in.c",
           "storage.type.built-in.primitive.c",
           "string.template.js",
-          "string.template.js.jsx"
+          "string.template.js.jsx",
+          "string.quoted.double",
+          "string",
+          "punctuation.definition.string"
         ],
         "settings": {
           "foreground": "#ff5853"
@@ -78,84 +95,102 @@
       },
       {
         "scope": [
-          "variable.other.object.cs",
           "entity.name.type.cs",
           "entity.name.type.class",
+          "variable.other.object.cs",
           "string.quoted.double.c",
           "string.quoted.double.include.c",
           "punctuation.definition.string.begin.c",
           "punctuation.definition.string.end.c",
           "string.quoted.other.lt-gt.include.c",
-          "punctuation.definition.string.begin.js.jsx",
-          "punctuation.definition.string.end.js.jsx",
+          "punctuation.definition.string.begin.html",
+          "punctuation.definition.string.end.html",
+          "string.quoted.single.html",
+          "string.quoted.double.html",
           "punctuation.definition.string.begin.js",
           "punctuation.definition.string.end.js",
           "string.quoted.single.js",
           "string.quoted.double.js"
         ],
         "settings": {
-          "foreground": "#2dbe2d"
+          "foreground": "#34c547"
+        }
+      },
+      {
+        "scope": [
+          "entity.name.function",
+          "support.type.property-name.json.comments"
+        ],
+        "settings": {
+          "foreground": "#4acbef"
         }
       },
       {
         "scope": [
           "keyword",
-          "keyword.operator.expression",
+          "keyword.control",
+          "keyword.type",
           "storage.modifier",
+          "keyword.operator.expression",
           "storage.type",
           "entity.name.function.c"
         ],
         "settings": {
-          "foreground": "#00b7ff"
+          "foreground": "#6383ee"
         }
       },
       {
-        "scope": ["entity.name.function"],
+        "scope": [
+          "entity.name.variable.parameter",
+          "variable",
+          "variable.parameter"
+        ],
         "settings": {
-          "foreground": "#e2b820"
+          "foreground": "#c374dd"
+        }
+      },
+      {
+        "scope": [
+          "entity.name.type.namespace",
+          "entity.name.variable.local",
+          "variable.other.readwrite"
+        ],
+        "settings": {
+          "foreground": "#c9c9cc"
+        }
+      },
+      {
+        "scope": ["keyword.operator"],
+        "settings": {
+          "foreground": "#e7e7e7"
         }
       },
       {
         "scope": [
           "keyword.control.directive",
-          "keyword.control.flow",
-          "entity.name.variable.parameter",
-          "entity.other.attribute-name.js.jsx",
-          "constant"
+          "entity.other.attribute-name.js.jsx"
         ],
         "settings": {
-          "foreground": "#c758ff"
+          "foreground": "#c15bf5"
         }
       },
       {
-        "scope": ["entity.name.function.preprocessor"],
+        "scope": [],
+        "settings": {
+          "foreground": "#d7b126"
+        }
+      },
+      {
+        "scope": [
+          "entity.name.function.preprocessor",
+          "constant.character.escape"
+        ],
         "settings": {
           "foreground": "#ff71d0"
         }
       },
       {
-        "scope": ["keyword.operator", "variable.other.readwrite"],
-        "settings": {
-          "foreground": "#cfcfcf"
-        }
-      },
-      {
-        "scope": [
-          "variable",
-          "variable.parameter",
-          "entity.name.variable.local",
-          "support.type.property-name"
-        ],
-        "settings": {
-          "foreground": "#99daff"
-        }
-      },
-      {
-        "scope": [
-          "constant.numeric",
-          "constant.other.placeholder",
-          "constant.character.escape"
-        ],
+        "scope": ["constant", "constant.numeric", "constant.other.placeholder"],
         "settings": {
           "foreground": "#ff7c25"
         }
@@ -168,6 +203,7 @@
       }
     ]
   },
+
   // VIM Configuration
   "vim.smartRelativeLine": true,
   "vim.easymotion": true,
@@ -177,7 +213,8 @@
   "vim.hlsearch": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 200,
-  "vim.highlightedyank.color": "#D04C08",
+  "vim.highlightedyank.color": "#D05C08",
+  "vim.highlightedyank.textColor": "#000",
   "vim.insertModeKeyBindings": [
     {
       "before": ["'", "'"],
@@ -207,10 +244,8 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
-  // Miscellaneous
-  "workbench.settings.applyToAllProfiles": [],
-  "editor.semanticTokenColorCustomizations": {},
-  "editor.formatOnType": true,
+
+  // C/C++ specific
   "C_Cpp.legacyCompilerArgsBehavior": true,
   "C_Cpp.default.cStandard": "c17",
   "C_Cpp.default.cppStandard": "c++23",
@@ -232,9 +267,6 @@
     "cppcoreguidelines-avoid-magic-numbers",
     "misc-include-cleaner"
   ],
-  "workbench.iconTheme": "material-icon-theme",
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
+  "workbench.colorTheme": "Material Night Eighties",
   "workbench.activityBar.location": "hidden"
 }
