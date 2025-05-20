@@ -3,12 +3,18 @@
   "telemetry.telemetryLevel": "off",
   "extensions.autoUpdate": false,
   "explorer.confirmDragAndDrop": false,
+  "update.mode": "none",
+  //   "files.autoSave": "afterDelay",
+  //   "files.autoSaveDelay": 1000,
 
   // Appearance Settings
   "window.titleBarStyle": "custom",
   "workbench.sideBar.location": "right",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
+  "workbench.colorTheme": "Material Night Eighties",
+  //   "editor.bracketPairColorization.enabled": true,
+  //   "editor.guides.bracketPairs": true,
 
   // Editor Settings
   "editor.fontFamily": "CaskaydiaMono Nerd Font",
@@ -20,45 +26,43 @@
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  // File Type Specific
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
-  "[javascript]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
-  "[javascriptreact]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
+  "editor.linkedEditing": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.maxColumn": 100,
+  "editor.largeFileOptimizations": true,
+  "editor.snippetSuggestions": "top",
 
   // Terminal Settings
   "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
   "terminal.integrated.fontSize": 14,
   "terminal.external.linuxExec": "/usr/bin/kitty",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorStyleInactive": "block",
 
   // Custom Colors
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#1A1A1A",
-    "titleBar.activeForeground": "#33CCFF",
     "breadcrumb.background": "#1A1A1A",
     "breadcrumb.foreground": "#10eb73",
     "sideBar.background": "#1A1A1A",
-    "sideBar.foreground": "#DDDFDF",
     "sideBarSectionHeader.background": "#181818",
     "editor.background": "#1F1F1F",
     "editorLineNumber.foreground": "#88888F",
     "editorLineNumber.activeForeground": "#BFBFCB",
     "editor.lineHighlightBackground": "#262628",
     "editor.lineHighlightBorder": "#303032",
-    "editor.selectionBackground": "#00c3ff1a",
+    "editor.selectionBackground": "#88bbff2a",
     "editor.selectionHighlightBackground": "#0099DD42",
     "editorGroupHeader.tabsBackground": "#1A1A1A",
     "list.activeSelectionBackground": "#00ccff2a",
     "list.inactiveSelectionBackground": "#212122",
     "tab.activeBackground": "#102A42",
+    "tab.activeBorderTop": "#00BBDD94",
     "tab.inactiveBackground": "#1A1A1A",
     "statusBar.background": "#1A1A1A",
     "statusBar.foreground": "#3CF",
@@ -70,12 +74,18 @@
     "activityBar.background": "#1A1A1A",
     "activityBar.foreground": "#33ccff",
     "activityBarBadge.background": "#0AE",
-    "activityBarBadge.foreground": "#000"
+    "activityBarBadge.foreground": "#000",
+    "editorBracketHighlight.foreground1": "#5caeef",
+    "editorBracketHighlight.foreground2": "#dfb976",
+    "editorBracketHighlight.foreground3": "#c172d9",
+    "editorBracketHighlight.foreground4": "#4fb1bc",
+    "editorBracketHighlight.foreground5": "#97c26c",
+    "editorBracketHighlight.foreground6": "#abb2c0"
   },
 
   // Token Colors
   "editor.tokenColorCustomizations": {
-    "comments": "#6A6A7A",
+    "comments": "#7A7A8A",
     "textMateRules": [
       {
         "scope": [
@@ -83,26 +93,35 @@
           "keyword.control.c",
           "storage.type.built-in.c",
           "storage.type.built-in.primitive.c",
-          "string.template.js",
-          "string.template.js.jsx",
-          "string.quoted.double",
-          "string",
-          "punctuation.definition.string"
+          "string.cs",
+          "string.quoted.double.cs",
+          "punctuation.definition.string.cs",
+          "punctuation.definition.string.begin.cs",
+          "punctuation.definition.string.end.cs"
         ],
         "settings": {
-          "foreground": "#ff5853"
+          "foreground": "#ff4741"
         }
       },
       {
         "scope": [
           "entity.name.type.cs",
-          "entity.name.type.class",
+          "entity.name.type.class.cs",
           "variable.other.object.cs",
-          "string.quoted.double.c",
+          "variable.other.object.property.cs",
+          "string.quoted.double",
+          "punctuation.definition.string.begin",
+          "punctuation.definition.string.end",
           "string.quoted.double.include.c",
-          "punctuation.definition.string.begin.c",
-          "punctuation.definition.string.end.c",
           "string.quoted.other.lt-gt.include.c",
+          "meta.jsx.children.js"
+        ],
+        "settings": {
+          "foreground": "#40c752"
+        }
+      },
+      {
+        "scope": [
           "punctuation.definition.string.begin.html",
           "punctuation.definition.string.end.html",
           "string.quoted.single.html",
@@ -113,77 +132,63 @@
           "string.quoted.double.js"
         ],
         "settings": {
-          "foreground": "#34c547"
+          "foreground": "#4ed360"
         }
       },
       {
         "scope": [
           "entity.name.function",
-          "support.type.property-name.json.comments"
+          "entity.name.function.c",
+          "support.type.property-name.json"
         ],
         "settings": {
-          "foreground": "#4acbef"
+          "foreground": "#4cd8ff"
         }
       },
       {
         "scope": [
           "keyword",
           "keyword.control",
-          "keyword.type",
-          "storage.modifier",
+          "keyword.other",
           "keyword.operator.expression",
-          "storage.type",
-          "entity.name.function.c"
+          "storage.modifier",
+          "storage.type"
         ],
         "settings": {
-          "foreground": "#6383ee"
-        }
-      },
-      {
-        "scope": [
-          "entity.name.variable.parameter",
-          "variable",
-          "variable.parameter"
-        ],
-        "settings": {
-          "foreground": "#c374dd"
-        }
-      },
-      {
-        "scope": [
-          "entity.name.type.namespace",
-          "entity.name.variable.local",
-          "variable.other.readwrite"
-        ],
-        "settings": {
-          "foreground": "#c9c9cc"
-        }
-      },
-      {
-        "scope": ["keyword.operator"],
-        "settings": {
-          "foreground": "#e7e7e7"
-        }
-      },
-      {
-        "scope": [
-          "keyword.control.directive",
-          "entity.other.attribute-name.js.jsx"
-        ],
-        "settings": {
-          "foreground": "#c15bf5"
+          "foreground": "#d062ff"
         }
       },
       {
         "scope": [],
         "settings": {
-          "foreground": "#d7b126"
+          "foreground": "#92cae2"
+        }
+      },
+      {
+        "scope": [
+          "variable",
+          "entity.name.type.namespace.cs",
+          "entity.name.variable.local.cs",
+          "variable.other.readwrite.cs",
+          "meta.object-literal.key.js",
+          "variable.other.object.js"
+        ],
+        "settings": {
+          "foreground": "#d0d0d1"
+        }
+      },
+      {
+        "scope": ["keyword.operator"],
+        "settings": {
+          "foreground": "#ff7af2"
         }
       },
       {
         "scope": [
           "entity.name.function.preprocessor",
-          "constant.character.escape"
+          "constant.character.escape",
+          "variable.parameter.js",
+          "variable.other.property.js"
         ],
         "settings": {
           "foreground": "#ff71d0"
@@ -234,6 +239,14 @@
       "before": ["K"],
       "commands": ["lineBreakInsert"],
       "silent": true
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
     }
   ],
   "vim.leader": "<space>",
@@ -245,12 +258,17 @@
     "vscodevim.vim": 1
   },
 
+  // Git integration
+  //   "git.enableSmartCommit": true,
+  //   "git.confirmSync": false,
+  "git.autofetch": true,
+
+  // File Type Specific
   // C/C++ specific
   "C_Cpp.legacyCompilerArgsBehavior": true,
   "C_Cpp.default.cStandard": "c17",
   "C_Cpp.default.cppStandard": "c++23",
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-  "extensions.ignoreRecommendations": true,
   "C_Cpp.autocompleteAddParentheses": true,
   "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
   "C_Cpp.intelliSenseEngine": "default",
@@ -267,6 +285,43 @@
     "cppcoreguidelines-avoid-magic-numbers",
     "misc-include-cleaner"
   ],
-  "workbench.colorTheme": "Material Night Eighties",
+
+  // C#
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+
+  // Javascript
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+
+  // Performance optimizations
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/build": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/build/**": true,
+    "**/dist/**": true
+  },
+  "extensions.ignoreRecommendations": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "workbench.activityBar.location": "hidden"
 }

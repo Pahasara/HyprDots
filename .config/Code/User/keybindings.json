@@ -11,8 +11,17 @@
     "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
   },
   {
-    "key": "ctrl+t a",
+    "key": "ctrl+s",
     "command": "workbench.action.toggleActivityBarVisibility",
     "when": "true"
+  },
+  {
+    "key": "ctrl+k ctrl+t",
+    "command": "workbench.action.selectTheme"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
   }
 ]
