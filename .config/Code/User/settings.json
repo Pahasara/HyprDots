@@ -47,7 +47,7 @@
   // Custom Colors
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#1A1A1A",
-    "breadcrumb.background": "#1A1A1A",
+    "breadcrumb.background": "#181818",
     "breadcrumb.foreground": "#10eb73",
     "sideBar.background": "#1A1A1A",
     "sideBarSectionHeader.background": "#181818",
@@ -61,11 +61,15 @@
     "editorGroupHeader.tabsBackground": "#1A1A1A",
     "list.activeSelectionBackground": "#00ccff2a",
     "list.inactiveSelectionBackground": "#212122",
-    "tab.activeBackground": "#102A42",
+    "tab.activeBackground": "#10252A",
     "tab.activeBorderTop": "#00BBDD94",
     "tab.inactiveBackground": "#1A1A1A",
     "statusBar.background": "#1A1A1A",
     "statusBar.foreground": "#3CF",
+    "statusBarItem.errorForeground": "#ff5651",
+    "statusBarItem.errorBackground": "#1A1A1A",
+    "statusBarItem.warningForeground": "#ffa82f",
+    "statusBarItem.warningBackground": "#1A1A1A",
     "statusBar.debuggingForeground": "#ffa82f",
     "statusBar.debuggingBackground": "#1A1A1A",
     "statusBar.border": "#000",
@@ -322,6 +326,5 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.activityBar.location": "hidden"
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
