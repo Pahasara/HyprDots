@@ -3,10 +3,5 @@ use = "boydaihungst/mediainfo"
 rev = "436cb5f"
 hash = "144c0ac7a449fcab4e78e942eb41702c"
 
-[[plugin.deps]]
-use = "Reledia/glow"
-rev = "c76bf4f"
-hash = "a6b78bf9af5390e3a85a6951fbb7b93"
-
 [flavor]
 deps = []

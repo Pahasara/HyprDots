@@ -98,6 +98,7 @@
           "storage.type.built-in.c",
           "storage.type.built-in.primitive.c",
           "string.cs",
+          "string.quoted.single.cs",
           "string.quoted.double.cs",
           "punctuation.definition.string.cs",
           "punctuation.definition.string.begin.cs",
@@ -130,10 +131,10 @@
           "punctuation.definition.string.end.html",
           "string.quoted.single.html",
           "string.quoted.double.html",
-          "punctuation.definition.string.begin.js",
-          "punctuation.definition.string.end.js",
+          "punctuation.definition.string.",
           "string.quoted.single.js",
-          "string.quoted.double.js"
+          "string.quoted.double.js",
+          "string.template.js"
         ],
         "settings": {
           "foreground": "#4ed360"

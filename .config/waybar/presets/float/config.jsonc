@@ -112,7 +112,7 @@
             "󰤨"
         ],
         "on-click": "~/.local/bin/rofi-wifi",
-        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-wifi": "{essid}  {icon}  {signalStrength}%",
     },
     "network#speed": {
         "interval": 2,

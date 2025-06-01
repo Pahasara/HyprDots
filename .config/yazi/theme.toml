@@ -1,6 +1,6 @@
 # github.com/pahasara/HyprDots
 
-[manager]
+[mgr]
 cwd = { fg = "#3FAAFA" }
 
 # Hovered
@@ -17,9 +17,9 @@ marker_cut      = { fg = "#F38BA8", bg = "#F38BA8" }
 marker_selected = { fg = "#3FAAFA", bg = "#89b4fa" }
 
 # Tab
-tab_active   = { fg = "#1E1E2E", bg = "#2CB6FE" }
-tab_inactive = { fg = "#2CB6FE", bg = "#000000" }
-tab_width    = 1
+[tabs]
+active   = { fg = "#1E1E2E", bg = "#2CB6FE", bold = true }
+inactive = { fg = "#2CB6FE", bg = "#000000" }
 
 # Count
 count_copied   = { fg = "#1E1E2E", bg = "#A6E3A1" }
