@@ -46,7 +46,7 @@
 | ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
 |--|--|
 	
-| ![yazi](https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6) | ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
+| ![yazi](https://github.com/user-attachments/assets/6196b27f-ae3c-4942-af04-257edede6008)| ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
 |--|--|
 
 </div>
