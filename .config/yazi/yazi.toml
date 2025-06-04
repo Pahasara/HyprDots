@@ -23,8 +23,7 @@ max_height      = 1200
 cache_dir       = "~/.cache/yazi/"
 image_filter    = "lanczos3"
 image_quality   = 90
-sixel_fraction  = 10
-ueberzug_scale  = 1
+ueberzug_scale  = 0.75    # due to my monitor scale factor is 1.5
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
@@ -50,6 +49,9 @@ extract = [
 	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
+view = [
+	{ run = 'imv "$1"', orphan = true, for = "linux" },
+]
 play = [
 	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
 	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
@@ -63,7 +65,7 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "view", "reveal" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
@@ -81,8 +83,8 @@ rules = [
 micro_workers    = 10
 macro_workers    = 10
 bizarre_retry    = 3
-image_alloc      = 536870912  # 512MB
-image_bound      = [ 5000, 5000 ]
+image_alloc      = 1073741824  # 1024MB
+image_bound      = [ 0, 0 ]  # UNLIMITED
 suppress_preload = false
 
 [plugin]
