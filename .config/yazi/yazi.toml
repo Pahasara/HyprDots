@@ -4,7 +4,7 @@
 
 [mgr]
 ratio          = [ 1, 3, 3 ]
-sort_by        = "alphabetical"
+sort_by        = "natural"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_dir_first = true
@@ -88,6 +88,16 @@ image_bound      = [ 0, 0 ]  # UNLIMITED
 suppress_preload = false
 
 [plugin]
+prepend_preloaders = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    { mime = "application/subrip", run = "mediainfo" },
+]
+prepend_previewers = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo"},
+    { mime = "application/subrip", run = "mediainfo" },
+]
 fetchers = [
 	# Mimetype
 	{ id = "mime", name = "*", run = "mime", prio = "high" },
