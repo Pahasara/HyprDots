@@ -1,17 +1,20 @@
-# github.com/pahasara/HyprDots
-
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [mgr]
 ratio          = [ 1, 3, 3 ]
-sort_by        = "natural"
+sort_by        = "alphabetical"
 sort_sensitive = false
-sort_reverse   = false
+sort_reverse 	 = false
 sort_dir_first = true
+sort_translit  = false
 linemode       = "size"
 show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
+mouse_events   = [ "click", "scroll" ]
+title_format   = "Yazi: {cwd}"
 
 [preview]
 tab_size        = 4
@@ -26,126 +29,129 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = 'nvim "$@"',    block = true,  desc = "nvim",         for = "unix" },
-	{ run = 'code "%*"',    orphan = true, desc = "code",         for = "windows" },
-	{ run = 'code -w "%*"', block = true,  desc = "code (block)", for = "windows" },
+	{ run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
+	{ run = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
 ]
 open = [
-	{ run = 'xdg-open "$@"',                desc = "Open", for = "unix" },
+	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+	{ run = 'termux-open "$1"',             desc = "Open", for = "android" },
 ]
 reveal = [
-	{ run = 'open -R "$1"',                          desc = "Reveal", for = "macos" },
-	{ run = 'explorer /select, "%1"', orphan = true, desc = "Reveal", for = "windows" },
-	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
+	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
+	{ run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
+	{ run = 'termux-open "$(dirname "$1")"',        desc = "Reveal", for = "android" },
+	{ run = '''clear; exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-	{ run = 'unzip "$1"', desc = "Extract here", for = "unix" },
-	{ run = 'unzip "%1"', desc = "Extract here", for = "windows" },
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv "%1"', orphan = true, for = "windows" },
+	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
-]
-pdff = [
-  { run = 'zathura "$@"', desc = "zathura", for = "unix" },
-]
-imv = [
-  { run = 'imv "$@"', desc = "imv", for = "unix" },
-]
-tarxf = [
-  { run = 'tar xf "$@"', desc = "tar -xf", for = "unix" },
-]
-unrar = [
-  { run = 'unrar x "$@"', desc = "unrar", for = "unix" },
 ]
 
 [open]
 rules = [
+	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-	
-	{ mime = "text/*",  use = [ "edit", "reveal" ] },
-	{ mime = "image/*", use = [ "imv", "reveal" ] }, #default: open
-	{ mime = "video/*", use = [ "play", "reveal" ] },
-	{ mime = "audio/*", use = [ "play", "reveal" ] },
-	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
-	{ mime = "application/pdf", use = [ "pdff", "reveal" ] },
-
-	{ mime = "application/json", use = [ "edit", "reveal" ] },
-	{ mime = "*/javascript",     use = [ "edit", "reveal" ] },
-
-	{ mime = "application/zip",             use = [ "extract", "reveal" ] },
-	{ mime = "application/x-bzip",          use = [ "extract", "reveal" ] },
-	{ mime = "application/x-bzip2",         use = [ "extract", "reveal" ] },
-	{ mime = "application/x-7z-compressed", use = [ "extract", "reveal" ] },
-	{ mime = "application/x-rar",           use = [ "extract", "reveal" ] },
-	{ mime = "application/xz",              use = [ "tarxf", "reveal" ] },
-	{ mime = "application/x-tar",           use = [ "tarxf", "reveal" ] },
-	{ mime = "application/gzip",            use = [ "tarxf", "reveal" ] },
-	{ mime = "application/x-xz",            use = [ "tarxf", "reveal" ] },
-	{ mime = "application/zstd",            use = [ "tarxf", "reveal" ] },
-	{ mime = "application/vnd.rar",         use = [ "unrar", "reveal" ] },
-
-	{ mime = "*", use = [ "open", "reveal" ] },
+	# Text
+	{ mime = "text/*", use = [ "edit", "reveal" ] },
+	# Image
+	{ mime = "image/*", use = [ "open", "reveal" ] },
+	# Media
+	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
+	# Archive
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+	# JSON
+	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
+	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
+	# Empty file
+	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
+	# Fallback
+	{ name = "*", use = [ "open", "reveal" ] },
 ]
 
 [tasks]
 micro_workers    = 10
-macro_workers    = 25
-bizarre_retry    = 5
+macro_workers    = 10
+bizarre_retry    = 3
 image_alloc      = 536870912  # 512MB
-image_bound      = [ 0, 0 ]
+image_bound      = [ 5000, 5000 ]
 suppress_preload = false
 
 [plugin]
-prepend_previewers = [
-    { mime = "{audio,video}/*", run = "mediainfo"},
-    { mime = "application/x-subrip", run = "mediainfo"},
-    { name = "*.csv", run = "bat" },
-    { name = "*.md", run = "bat" }
+fetchers = [
+	# Mimetype
+	{ id = "mime", name = "*", run = "mime", prio = "high" },
+]
+spotters = [
+	{ name = "*/", run = "folder" },
+	# Code
+	{ mime = "text/*", run = "code" },
+	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
+	# Image
+	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
+	{ mime = "image/svg+xml", run = "svg" },
+	{ mime = "image/*", run = "image" },
+	# Video
+	{ mime = "video/*", run = "video" },
+	# Fallback
+	{ name = "*", run = "file" },
 ]
 preloaders = [
 	# Image
-	{ mime = "image/vnd.djvu", run = "noop" },
-	{ mime = "image/*",        run = "image" },
+	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
+	{ mime = "image/svg+xml", run = "svg" },
+	{ mime = "image/*", run = "image" },
 	# Video
 	{ mime = "video/*", run = "video" },
 	# PDF
 	{ mime = "application/pdf", run = "pdf" },
+	# Font
+	{ mime = "font/*", run = "font" },
+	{ mime = "application/ms-opentype", run = "font" },
 ]
 previewers = [
-	{ name = "*/", run = "folder", sync = true },
+	{ name = "*/", run = "folder" },
 	# Code
-	{ mime = "text/*",                 run = "bat" },
-	{ mime = "*/xml",                  run = "bat" },
-	{ mime = "*/cs",                   run = "bat" },
-	{ mime = "*/javascript",           run = "bat" },
-	{ mime = "*/x-wine-extension-ini", run = "bat" },
+	{ mime = "text/*", run = "code" },
+	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
 	# JSON
-	{ mime = "application/json", run = "json" },
+	{ mime = "application/{json,ndjson}", run = "json" },
 	# Image
-	{ mime = "image/vnd.djvu", run = "noop" },
-	{ mime = "image/*",        run = "image" },
+	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
+	{ mime = "image/svg+xml", run = "svg" },
+	{ mime = "image/*", run = "image" },
 	# Video
 	{ mime = "video/*", run = "video" },
 	# PDF
 	{ mime = "application/pdf", run = "pdf" },
 	# Archive
-	{ mime = "application/*zip",            run = "archive" },
-	{ mime = "application/gzip",            run = "archive" },
-	{ mime = "application/x-tar",           run = "archive" },
-	{ mime = "application/x-bzip",          run = "archive" },
-	{ mime = "application/x-bzip2",         run = "archive" },
-	{ mime = "application/x-7z-compressed", run = "archive" },
-	{ mime = "application/x-rar",           run = "archive" },
-	{ mime = "application/x-xz",            run = "archive" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+	{ mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
+	{ name = "*.{AppImage,appimage}", run = "archive" },
+	# Virtual Disk / Disk Image
+	{ mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+	{ mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+	{ name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+	# Font
+	{ mime = "font/*", run = "font" },
+	{ mime = "application/ms-opentype", run = "font" },
+	# Empty file
+	{ mime = "inode/empty", run = "empty" },
 	# Fallback
 	{ name = "*", run = "file" },
 ]
 
 [input]
+cursor_blink = false
+
 # cd
 cd_title  = "Change directory:"
 cd_origin = "top-center"
@@ -160,16 +166,6 @@ create_offset = [ 0, 2, 50, 3 ]
 rename_title  = "Rename:"
 rename_origin = "hovered"
 rename_offset = [ 0, 1, 50, 3 ]
-
-# trash
-trash_title 	= "Move {n} selected file{s} to trash? (y/N)"
-trash_origin	= "top-center"
-trash_offset	= [ 0, 2, 50, 3 ]
-
-# delete
-delete_title 	= "Delete {n} selected file{s} permanently? (y/N)"
-delete_origin	= "top-center"
-delete_offset	= [ 0, 2, 50, 3 ]
 
 # filter
 filter_title  = "Filter:"
@@ -191,15 +187,28 @@ shell_title  = [ "Shell:", "Shell (block):" ]
 shell_origin = "top-center"
 shell_offset = [ 0, 2, 50, 3 ]
 
+[confirm]
+# trash
+trash_title 	= "Trash {n} selected file{s}?"
+trash_origin	= "center"
+trash_offset	= [ 0, 0, 70, 20 ]
+
+# delete
+delete_title 	= "Permanently delete {n} selected file{s}?"
+delete_origin	= "center"
+delete_offset	= [ 0, 0, 70, 20 ]
+
 # overwrite
-overwrite_title  = "Overwrite an existing file? (y/N)"
-overwrite_origin = "top-center"
-overwrite_offset = [ 0, 2, 50, 3 ]
+overwrite_title   = "Overwrite file?"
+overwrite_content = "Will overwrite the following file:"
+overwrite_origin  = "center"
+overwrite_offset  = [ 0, 0, 50, 15 ]
 
 # quit
-quit_title  = "{n} task{s} running, sure to quit? (y/N)"
-quit_origin = "top-center"
-quit_offset = [ 0, 2, 50, 3 ]
+quit_title   = "Quit?"
+quit_content = "The following tasks are still running, are you sure you want to quit?"
+quit_origin  = "center"
+quit_offset  = [ 0, 0, 50, 15 ]
 
 [pick]
 open_title  = "Open with:"
@@ -207,11 +216,7 @@ open_origin = "hovered"
 open_offset = [ 0, 1, 50, 7 ]
 
 [which]
-sort_by        = "none"
+sort_by      	 = "none"
 sort_sensitive = false
-sort_reverse   = false
-
-[log]
-enabled = false
-
-[headsup]
+sort_reverse 	 = false
+sort_translit  = false

@@ -10,7 +10,7 @@ This is a Yazi plugin for previewing media files. The preview shows thumbnail
 using `ffmpeg` if available and media metadata using `mediainfo`.
 
 > [!IMPORTANT]
-> Minimum version: yazi v25.2.7.
+> Minimum version: yazi v25.5.28.
 
 ## Preview
 
@@ -48,13 +48,14 @@ Install mediainfo CLI:
 
 Install + config this plugin:
 
-> [!IMPORTANT] 
-> `mediainfo` use video, image, svg, magick built-in plugins behind the scene to render preview image, song cover.
+> [!IMPORTANT] > `mediainfo` use video, image, svg, magick built-in plugins behind the scene to render preview image, song cover.
 > So you can remove those 3 plugins from `preloaders` and `previewers` sections in `yazi.toml`.
 
 If you have cache problem, run this cmd, and follow the tips: `yazi --clear-cache`
 
 ```bash
+ya pkg add boydaihungst/mediainfo
+# or
 ya pack -a boydaihungst/mediainfo
 ```
 
@@ -92,7 +93,7 @@ Edit or add `yazi/theme.toml`:
 # Example: Video, Text, Image,... with green color in preview images above
 title = { fg = "green" }
 
-# Value style. Currently only support nightly.
-# Example: Format: FLAC with blue color in preview images above
+# Value style.
+# Example: `Format: FLAC` with blue color in preview images above
 tbl_col = { fg = "blue" }
 ```
