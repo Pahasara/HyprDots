@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. **(10MB+)**
+> Read the sections below carefully, and use this command to clone the repo. **(15MB+)**
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
@@ -46,7 +46,7 @@
 | ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) | ![Zen](https://github.com/user-attachments/assets/7f9d8891-106f-4c2f-aa84-f193bdf8474c) |
 |--|--|
 	
-| ![yazi](https://github.com/user-attachments/assets/298b1c19-6894-40fe-90ba-edb49fe0efc6) | ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
+| ![yazi](https://github.com/user-attachments/assets/6196b27f-ae3c-4942-af04-257edede6008)| ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
 |--|--|
 
 </div>
@@ -81,18 +81,19 @@ Comprehensive documentation is available in the [Wiki](https://github.com/Pahasa
 | **Rofi** | Application launcher and menu system |
 | **Hyprlock** | Secure and stylish screen locker |
 | **Dunst** | Lightweight notification daemon |
-| **Neovim** | Powerful text editor |
+| **Neovim** | Higly customizable text editor |
 | **Yazi** | Modern terminal file manager |
 
 ## 🔑 Essential Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
-| `Windows + Space` | Open application launcher |
-| `Windows + Return` | Open terminal |
-| `Windows + X` | Open power menu |
-| `Windows + W` | Open WiFi menu |
-| `Windows + Q` | Close active window |
+| `Super + Space` | Open application launcher |
+| `Super + Return` | Open terminal |
+| `Super + E` | Open File explorer |
+| `Super + X` | Open power menu |
+| `Super + W` | Open WiFi menu |
+| `Super + Q` | Close active window |
 
 <p align="center">
   <a href="https://github.com/Pahasara/HyprDots/wiki/Keybindings">
