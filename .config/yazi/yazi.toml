@@ -22,8 +22,9 @@ max_width       = 1200
 max_height      = 1200
 cache_dir       = "~/.cache/yazi/"
 image_filter    = "lanczos3"
+image_delay     = 1
 image_quality   = 90
-ueberzug_scale  = 0.75    # due to my monitor scale factor is 1.5
+ueberzug_scale  = 0.75    # due to my monitor scale factor 1.5
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]

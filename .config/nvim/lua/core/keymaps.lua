@@ -11,7 +11,7 @@ vim.g.have_nerd_font = true
 local keymap = vim.keymap -- for conciseness
 
 -- Set custom Escape
-keymap.set('i', "''", '<ESC>', { desc = 'Exit insert mode with kj' })
+keymap.set('i', "''", '<ESC>', { desc = 'Exit insert mode with 2 single quotes' })
 
 -- Jump-motions
 keymap.set('n', '<leader>bb', '<C-o>', { desc = 'Goto older cursor position' })
