@@ -125,18 +125,19 @@ keymap = [
 	{ on = [ ",", "r" ], run = "sort random --reverse=no",                      desc = "Sort randomly" },
 
 	# Goto
-	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
+	{ on = [ "g", "h" ],       run = "cd ~",                      desc = "Go home" },
 	{ on = [ "g", "c" ],       run = "cd ~/Code",                 desc = "Go to the code directory" },
-	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go ~/Downloads" },
-	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
-	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow hovered symlink" },
+	{ on = [ "g", "C" ],       run = "cd ~/.config",              desc = "Go ~/.config" },
+	{ on = [ "g", "d" ],       run = "cd ~/Downloads",            desc = "Go ~/Downloads" },
+	{ on = [ "g", "<Space>" ], run = "cd --interactive",          desc = "Jump interactively" },
+	{ on = [ "g", "f" ],       run = "follow",                    desc = "Follow hovered symlink" },
 	{ on = [ "g", "a" ],       run = "cd ~/MEGAsync/Assignments", desc = "Go ~/MEGAsync/Assignment" },
 	{ on = [ "g", "m" ],       run = "cd ~/MEGAsync",             desc = "Go ~/MEGAsync" },
 	{ on = [ "g", "p" ],       run = "cd ~/Pictures",             desc = "Go ~/Pictures" },
 	{ on = [ "g", "n" ],       run = "cd ~/MEGAsync/Notes",       desc = "Go ~/Notes" },
 	{ on = [ "g", "u" ],       run = "cd ~/Desktop/USB",          desc = "Go ~/Desktop/USB" },
 	{ on = [ "g", "t" ],       run = "cd /tmp",                   desc = "Go /tmp" },
+	{ on = [ "g", "w" ],       run = "cd ~/Pictures/Wallpapers",  desc = "Go ~/Pictures/Wallpapers" },
 
 
 	# Tabs
