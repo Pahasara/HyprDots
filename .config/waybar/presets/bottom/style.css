@@ -24,7 +24,7 @@ window#waybar {
   border-radius: 15px;
   box-shadow: none;
   margin: 2px 0;
-  padding: 0 2px;
+  padding: 0 6px;
   transition: ease-in-out;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
@@ -39,7 +39,7 @@ window#waybar {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
-  padding: 0 6px;
+  padding: 0 8px;
   opacity: 0.9;
 }
 

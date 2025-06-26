@@ -3,35 +3,37 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
+    // "reload_style_on_change": true,
+    "margin-top": 7,
+    "margin-left": 15,
+    "margin-right": 15,
+    "margin-bottom": 0,
     "layer": "top",
     "position": "top",
-    "spacing": 15,
-    "reload_style_on_change": true,
+    "spacing": 10,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces",
-        "custom/song"
+        "hyprland/workspaces"
         // "custom/storage",
         // "cpu",
         // "memory",
     ],
-    // "modules-center":[
-    //     "hyprland/window"
-        // "custom/weather"
-    // ],
+    "modules-center":[
+        // "hyprland/window",
+        // "custom/weather",
+        "custom/song",
+    ],
     "modules-right": [
         "tray",
         // "custom/update",
-        "pulseaudio",
-        // "wireplumber",
-        // "pulseaudio#microphone",
-        "battery",
         "network",
-        "clock#date",
-        "clock#time",
+        // "backlight",
+        "wireplumber",
+        "battery",
+        "clock",
     ],
     //################
     //### MODULES  ###
@@ -46,29 +48,36 @@
             "2": [],
             "3": [],
             "4": [],
-            // "5": [],
+            "5": [],
             // "6": [],
             // "7": [],
             // "8": [],
-            "9": [],
+            // "9": [],
             "10": []
         },
-        // "format": "<small>{icon}</small>",
+        "format": "<small>{icon}</small>",
         "format-icons": {
-            // "active": "",
-            // "default": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            // "active": "<small></small>",
+            "default": "",
         }
     },
     "hyprland/window": {
         "max-length": 40,
         "tooltip": false
     },
-    "clock#time": {
-        "format": "{:%I:%M <small>%p</small>}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "clock#date": {
-        "format": "{:%a <big>%d</big> %b}",
+    "clock": {
+        // "format": "{:%H:%M | %a %d}",
+        "format": "{:%a <big>%d</big> %b  %I:<big>%M</big> %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -79,8 +88,8 @@
             "critical": 15,
         },
         "format": "<big>{icon}</big>",
-        "format-charging": "<big>󰂄</big>",
-        "format-plugged": "<big>󰂄</big>",
+        "format-charging": "",
+        "format-plugged": "",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
@@ -96,7 +105,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
         "format": " ",
-        "format-wifi": "{icon} ",
+        "format-wifi": "{icon}",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
@@ -109,8 +118,7 @@
             "󰤨"
         ],
         "on-click": "~/.local/bin/rofi-wifi",
-        "tooltip-format-wifi": "{essid}  {icon}  {signalStrength}%",
-
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
     },
     "network#speed": {
         "interval": 2,
@@ -147,57 +155,24 @@
         "format": "{icon}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "",
+        "format-muted": "  {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",
-            "hands-free": "🎧 ",
-            "headset": " ",
+            "hands-free": " ",
+            "headset": " ",
             "phone": "",
             "portable": "",
             "car": " ",
             "default": [
                "",
-                " ",
+                "",
                 " "
             ],
         },
         "tooltip-format": "Volume: {volume}%",
         "on-click": "easyeffects"
-    },
-    "pulseaudio": {
-	    "format": "{format_source}{icon} ",
-	    "format-bluetooth": "{icon} 󰂰 {volume}%",
-	    "format-muted": "",
-    	"format-source": "<big></big>   ",
-	    "format-source-muted": "",
-	    "format-icons": {
-		    "headphone": "<big></big>",
-		    "hands-free": "<big></big>",
-		    "headset": "<big></big>",
-		    "phone": "",
-		    "portable": "",
-		    "car": "",
-		    "default": [
-			    "", "", ""
-		    ],
-	    },
-		"ignored-sinks": [
-			"Easy Effects Sink"
-		],
-        "on-click": "easyeffects",
-        "scroll-step": 2.0,
-	    "smooth-scrolling-threshold": 1,
-	    "tooltip-format": "{desc} | {volume}%",
-    },
-    "pulseaudio#microphone": {
-	    "format": "{format_source} ",
-    	"format-source": "",
-	    "format-source-muted": "",
-        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
-        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
-	    "tooltip-format": "{source_desc} | {source_volume}%",
     },
     "cpu": {
         "interval": 2,
@@ -213,7 +188,7 @@
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
     "custom/storage": {
-        "interval": 30,
+        "interval": 300,
         "format": " {}",
         "format-alt": "{percentage}%  ",
         "return-type": "json",
@@ -224,8 +199,7 @@
         "exec": "~/.local/bin/media-info",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
-        "escape": true,
-        "tooltip": false
+        "escape": true
     },
     "backlight": {
         "format": "󰃟 ",
@@ -253,21 +227,13 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "", // {icon}
+        "format": "<big> </big>", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
-        "on-click-right": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/presets/powermenu.rasi",
         "timeout": 60.0,
         "tooltip": false
-    },
-    "custom/clipboard":{
-        "format": " ",
-        "on-click": "cliphist list | rofi -dmenu -display-columns 2 -config ~/.config/rofi/presets/clipboard.rasi | cliphist decode | wl-copy",
-        "on-click-right": "pkill rofi",
-        "tooltip-format": "Clipboard"
-
     },
     "custom/notification": {
         "format": "",
@@ -281,11 +247,12 @@
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
-    "custom/separator" : {
-        "format": " ",
-    },
     "tray": {
-        "icon-size": 16,
-        "spacing": 12
+        "icon-size": 17,
+        "spacing": 3
     },
+    "custom/seperator":{
+        "format": "|",
+        "tooltip": false
+    }
 }
