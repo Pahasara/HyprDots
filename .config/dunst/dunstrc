@@ -4,7 +4,7 @@
     monitor = 0                     # Primary monitor
     follow = mouse                  # Follow mouse position
     origin = bottom-right           # Notification placement
-    offset = (8, 8)                 # Offset from screen edge
+    offset = (12, 10)                 # Offset from screen edge
     layer = top
 
     # Notification Size and Dimensions
@@ -24,7 +24,7 @@
     frame_width = 2                  # Frame border thickness
 
     # Text Formatting
-    font = Ubuntu Nerd Font 11.25   # Default font
+    font = Sans Serif 11.25   # Default font
     format = "<span weight='bold' font='13.25'>%s</span>\n%b"  # Title and body format
     alignment = left                 # Text alignment
     vertical_alignment = center      # Vertical text alignment
@@ -66,7 +66,7 @@
     background = "#020A0FAF"
     foreground = "#F5F5F5"
     highlight = "#64B5F6"
-    frame_color = "#4748519F"
+    frame_color = "#505254A5"
     max_icon_size = 72
     timeout = 7
 
@@ -75,7 +75,7 @@
     background = "#121315C6"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
-    frame_color = "#4748519F"
+    frame_color = "#505254A5"
     max_icon_size = 48
     timeout = 20
 
@@ -84,7 +84,7 @@
     background = "#121315DD"
     foreground = "#FFBB44"
     highlight = "#FF6633"
-    frame_color = "#FF663358"
+    frame_color = "#FF66335F"
     max_icon_size = 64
     timeout = 1000
 

@@ -164,7 +164,7 @@
         "name": "Local",
         "scope": ["variable.other.readwrite", "variable.other.property"],
         "settings": {
-          "foreground": "#9bd3eb"
+          "foreground": "#a7d2e4"
         }
       },
       {
@@ -187,6 +187,7 @@
           "constant.language.json",
           "entity.other.attribute-name.pseudo-class.css",
           "constant.language.null.js.jsx",
+          "constant.language.null.ts.tsx",
           "constant.language.boolean"
         ],
         "settings": {
@@ -202,6 +203,9 @@
           "string.quoted.double.html",
           "string.quoted.single.js",
           "string.quoted.double.js",
+          "string.quoted.single.tsx",
+          "string.quoted.double.tsx",
+          "string.template.tsx",
           "string.template.js"
         ],
         "settings": {
@@ -231,7 +235,8 @@
           "entity.other.attribute-name",
           "support.variable.property",
           "variable.other.property.js",
-          "variable.other.property.jsx"
+          "variable.other.property.jsx",
+          "variable.other.property.tsx"
         ],
         "settings": {
           "foreground": "#36c1e0",
