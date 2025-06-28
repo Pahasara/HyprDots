@@ -75,17 +75,28 @@ window#waybar {
 #custom-storage,
 #memory,
 #cpu,
-#clock,
 #tray,
 #network,
 #backlight,
-#wireplumber,
+#clock,
+#pulseaudio,
 #battery {
-  padding: 0px 10px 0px 8px;
+  padding: 0px 2px 0px 8px;
   background-color: @background;
   border: 2px solid @border-module;
   color: @fg-module;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#backlight,
+#clock,
+#pulseaudio,
+#battery {
+  padding: 0px 10px 0px 8px;
+}
+
+#pulseaudio {
+  padding: 0px 14px 0px 8px;
 }
 
 #workspaces {
@@ -108,7 +119,7 @@ window#waybar {
 #network,
 #clock,
 #backlight,
-#wireplumber,
+#pulseaudio,
 #battery {
   border-radius: 4px 14px 6px 15px;
 }

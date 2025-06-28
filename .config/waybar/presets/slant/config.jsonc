@@ -31,7 +31,7 @@
         // "custom/update",
         "network",
         // "backlight",
-        "wireplumber",
+        "pulseaudio",
         "battery",
         "clock",
     ],
@@ -151,28 +151,38 @@
 	    "tooltip": true,
 	    "on-click": "blueman-manager",
     },
-    "wireplumber": {
-        "format": "{icon}",
-        "format-bluetooth": " {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " ",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": "",
-            "portable": "",
-            "car": " ",
-            "default": [
-               "",
-                "",
-                " "
-            ],
-        },
-        "tooltip-format": "Volume: {volume}%",
-        "on-click": "easyeffects"
+    "pulseaudio": {
+	    "format": "{format_source}{icon}",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": "",
+    	"format-source": "<big></big>  ",
+	    "format-source-muted": "",
+	    "format-icons": {
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "easyeffects",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
+    },
+    "pulseaudio#microphone": {
+	    "format": "{format_source} ",
+    	"format-source": "",
+	    "format-source-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
+	    "tooltip-format": "{source_desc} | {source_volume}%",
     },
     "cpu": {
         "interval": 2,
