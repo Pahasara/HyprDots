@@ -113,31 +113,35 @@ install_aur_packages() {
 install_dotfiles() {
     log_step "Installing HyprDots configs"
     mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.local/share" "$HOME/Pictures/Wallpapers"
-    mkdir -p "$HOME/.icons"
 
-    # Copy config and local files
     [[ -d ".config" ]] && cp -r .config/* "$HOME/.config/" && log_info "Copied .config files"
     [[ -d ".local" ]] && cp -r .local/* "$HOME/.local/" && log_info "Copied .local files"
     [[ -d ".walls" ]] && cp -r .walls/* "$HOME/Pictures/Wallpapers/" 2>/dev/null && log_info "Copied wallpapers"
 
-    # Copy icon archives
-    if [[ -f ".icons/McMojave-cursors.tar.xz" ]]; then
-        cp ".icons/McMojave-cursors.tar.xz" "$HOME/.icons/" && log_info "Copied McMojave-cursors archive"
-        tar -xf "$HOME/.icons/McMojave-cursors.tar.xz" -C "$HOME/.icons/" && log_info "Extracted McMojave-cursors icon"
-        rm "$HOME/.icons/McMojave-cursors.tar.xz"
-    else
-        log_warning "McMojave-cursors.tar.xz icon archive not found."
-    fi
+    log_success "Config files installed."
+}
 
-    if [[ -f ".icons/McMojave-hyprcursor.tar.xz" ]]; then
-        cp ".icons/McMojave-hyprcursor.tar.xz" "$HOME/.icons/" && log_info "Copied McMojave-hyprcursor archive"
-        tar -xf "$HOME/.icons/McMojave-hyprcursor.tar.xz" -C "$HOME/.icons/" && log_info "Extracted McMojave-hyprcursor"
-        rm "$HOME/.icons/McMojave-hyprcursor.tar.xz"
-    else
-        log_warning "McMojave-hyprcursor.tar.xz icon archive not found."
-    fi
+install_cursors() {
+    log_step "Installing macOS cursor themes (Hyprcursor + XCursor)"
+    mkdir -p "$HOME/.local/share/icons"
 
-    log_success "Config & icons install complete."
+    local HCUR_URL="https://github.com/Pahasara/apple_hyprcursor/releases/latest/download/macOS-hyprcursor.tar.xz"
+    local XCUR_URL="https://github.com/Pahasara/apple_hyprcursor/releases/latest/download/macOS.tar.xz"
+
+    local HCUR_FILE="$HOME/.local/share/icons/macOS-hyprcursor.tar.xz"
+    local XCUR_FILE="$HOME/.local/share/icons/macOS.tar.xz"
+
+    log_info "Downloading Hyprcursor..."
+    curl -L --fail --output "$HCUR_FILE" "$HCUR_URL" || { log_error "Failed to download Hyprcursor."; exit 1; }
+
+    log_info "Downloading XCursor..."
+    curl -L --fail --output "$XCUR_FILE" "$XCUR_URL" || { log_error "Failed to download XCursor."; exit 1; }
+
+    log_info "Extracting cursors..."
+    tar -xf "$HCUR_FILE" -C "$HOME/.local/share/icons" && rm "$HCUR_FILE" && log_info "Installed macOS Hyprcursor"
+    tar -xf "$XCUR_FILE" -C "$HOME/.local/share/icons" && rm "$XCUR_FILE" && log_info "Installed macOS XCursor"
+
+    log_success "Cursor themes installation complete."
 }
 
 install_omz() {
@@ -191,6 +195,7 @@ EOF
     install_yay
     install_aur_packages
     install_dotfiles
+    install_cursors
     install_omz
     configure_services
     echo
