@@ -60,8 +60,8 @@
     "editorGroupHeader.tabsBackground": "#1F1F1F",
     "list.activeSelectionBackground": "#00ccff2a",
     "list.inactiveSelectionBackground": "#212122",
-    "tab.activeBackground": "#10252F",
-    "tab.activeBorderTop": "#00BBDDaa",
+    "tab.activeBackground": "#13293A",
+    "tab.activeBorderTop": "#0070DA",
     "tab.inactiveBackground": "#1F1F1F",
     "statusBar.background": "#1F1F1F",
     "statusBar.foreground": "#3CF",
@@ -71,7 +71,7 @@
     "statusBarItem.warningBackground": "#1F1F1F",
     "statusBar.debuggingForeground": "#ffa82f",
     "statusBar.debuggingBackground": "#1F1F1F",
-    "statusBar.border": "#222",
+    "statusBar.border": "#282828",
     "badge.background": "#1F1F1F",
     "badge.foreground": "#0099DD",
     "activityBar.background": "#1F1F1F",
@@ -106,44 +106,50 @@
       },
       {
         "name": "String",
-        "scope": ["string.quoted.other.lt-gt.include", "string"],
+        "scope": [
+          "constant.character.character-class.regexp.cs",
+          "string.quoted.other.lt-gt.include",
+          "string"
+        ],
         "settings": {
-          "foreground": "#ff5953"
+          "foreground": "#ed736f"
+        }
+      },
+      {
+        "name": "Keyword/Control",
+        "scope": [
+          "keyword",
+          "storage.type",
+          "entity.name.function.preprocessor",
+          "keyword.control"
+        ],
+        "settings": {
+          "foreground": "#4a9cdff6",
+          "fontStyle": "italic"
         }
       },
       {
         "name": "Name",
+        "scope": ["entity.name.type", "entity.name.type.class"],
+        "settings": {
+          "foreground": "#42cdefee"
+        }
+      },
+      {
+        "name": "Class",
         "scope": [
-          "entity.name.type",
-          "entity.name.namespace",
-          "entity.name.type.class",
           "meta.jsx.children.js",
           "entity.other.attribute-name.class.css"
         ],
         "settings": {
-          "foreground": "#1ed536"
+          "foreground": "#76e286f7"
         }
       },
       {
         "name": "Method",
         "scope": ["entity.name.function", "support.function"],
         "settings": {
-          "foreground": "#dfbd25"
-        }
-      },
-      {
-        "name": "Keyword",
-        "scope": ["keyword", "storage.type"],
-        "settings": {
-          "foreground": "#19a1fb",
-          "fontStyle": "italic"
-        }
-      },
-      {
-        "name": "Control",
-        "scope": ["entity.name.function.preprocessor", "keyword.control"],
-        "settings": {
-          "foreground": "#fa59c4"
+          "foreground": "#dec96bf7"
         }
       },
       {
@@ -154,7 +160,8 @@
           "variable.other.constant",
           "variable.other.enummember",
           "meta.jsx.children.js",
-          "variable.parameter.js"
+          "variable.parameter.js",
+          "entity.name.namespace"
         ],
         "settings": {
           "foreground": "#cdcdcd"
@@ -174,7 +181,7 @@
           "constant.other.color.rgb-value.hex.css"
         ],
         "settings": {
-          "foreground": "#d073f4"
+          "foreground": "#cc88e7"
         }
       },
       {
@@ -191,7 +198,7 @@
           "constant.language.boolean"
         ],
         "settings": {
-          "foreground": "#ff8838"
+          "foreground": "#f69f65"
         }
       },
       {
@@ -209,7 +216,7 @@
           "string.template.js"
         ],
         "settings": {
-          "foreground": "#4ed360"
+          "foreground": "#63d172"
         }
       },
       {
@@ -222,7 +229,7 @@
           "variable.language.this.js"
         ],
         "settings": {
-          "foreground": "#f94c46"
+          "foreground": "#fc6661"
         }
       },
       {
@@ -239,7 +246,7 @@
           "variable.other.property.tsx"
         ],
         "settings": {
-          "foreground": "#36c1e0",
+          "foreground": "#44bfda",
           "fontStyle": "italic"
         }
       },
@@ -252,14 +259,14 @@
           "storage.type.js"
         ],
         "settings": {
-          "foreground": "#ff65cc"
+          "foreground": "#f078c8"
         }
       },
       {
         "name": "CSS Attribute",
         "scope": ["entity.other.attribute-name.id.css", "keyword.other.unit"],
         "settings": {
-          "foreground": "#eca41e"
+          "foreground": "#e8a52a"
         }
       }
     ]
