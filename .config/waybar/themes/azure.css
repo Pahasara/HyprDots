@@ -12,7 +12,7 @@
 @define-color fg-blink rgba(230, 245, 255, 1.0);
 @define-color fg-persist rgba(120, 125, 130, 1.0);
 
-@define-color border rgba(56, 57, 59, 1.0);
+@define-color border rgba(0, 170, 221, 0.97);
 @define-color border-module rgba(33, 150, 220, 0.8);
 @define-color border-alt rgba(24, 25, 27, 1.0);
 

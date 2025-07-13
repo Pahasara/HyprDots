@@ -21,7 +21,7 @@ set zoom-min 10
 set guioptions "none"
 
 # Zathurarc-dark
-set default-bg "#181818" #00
+set default-bg "#323232" #00
 set default-fg "#FFFFFF" #01
 
 set statusbar-fg "#B0B0B0" #04
@@ -49,8 +49,8 @@ set notification-bg "#161616" #0B
 set notification-fg "#DFDFDF" #00
 
 set recolor "true"
-set recolor-lightcolor "#080808" #00
-set recolor-darkcolor "#DEDEDE" #06
+set recolor-lightcolor "#181818" #00
+set recolor-darkcolor "#FCFCFC" #06
 set recolor-reverse-video "true"
 set recolor-keephue "true"
 

@@ -165,7 +165,7 @@
 		"ignored-sinks": [
 			"Easy Effects Sink"
 		],
-        "on-click": "easyeffects",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2.0,
 	    "smooth-scrolling-threshold": 1,
 	    "tooltip-format": "{desc} | {volume}%",

@@ -2,14 +2,14 @@
 
 /* Fluent Theme */
 * {
-  bg:         #0104088A; //window
-  main-bg:    #02080FAA; //main
-  main-br:    #38393B;   //windowBorder
+  bg:         #0104084A; //window
+  main-bg:    #02080F6A; //main
+  main-br:    #00BBEE88;   //windowBorder
   main-fg:    #DEDEDE;   //main
-  input-bg:   #0000004F; //input
+  input-bg:   #0000000F; //input
   input-br:   #242424;   //inputBorder
   select-fg:  #33BBFF;   //selected
-  select-bg:  #232B358A; //selected
+  select-bg:  #232B3599; //selected
 
   black   : #000000;
   red     : #F7768E;

@@ -63,25 +63,25 @@
 
 # Urgency Levels
 [urgency_low]
-    background = "#020A0FAF"
+    background = "#020A0F7F"
     foreground = "#F5F5F5"
     highlight = "#64B5F6"
-    frame_color = "#505254A5"
+    frame_color = "#00BBEE88"
     max_icon_size = 72
     timeout = 7
 
 [urgency_normal]
     default_icon = "$HOME/.local/share/icons/dunst/info.png"
-    background = "#121315C6"
+    background = "#12131586"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
-    frame_color = "#505254A5"
+    frame_color = "#00BBEEAA"
     max_icon_size = 48
     timeout = 20
 
 [urgency_critical]
     default_icon = "$HOME/.local/share/icons/dunst/caution.png"
-    background = "#121315DD"
+    background = "#121315AD"
     foreground = "#FFBB44"
     highlight = "#FF6633"
     frame_color = "#FF66335F"

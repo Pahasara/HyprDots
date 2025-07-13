@@ -104,12 +104,12 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
-        "format": " ",
+        "format": "",
         "format-wifi": "{icon}",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": " ",
+        "format-disconnected": "",
         "format-icons": [
             "󰤯",
             "󰤟",
@@ -171,7 +171,7 @@
 		"ignored-sinks": [
 			"Easy Effects Sink"
 		],
-        "on-click": "easyeffects",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2.0,
 	    "smooth-scrolling-threshold": 1,
 	    "tooltip-format": "{desc} | {volume}%",

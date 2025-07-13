@@ -8,7 +8,7 @@ configuration {
 @theme "theme"
 
 * {
-    background-color:   @bg;
+    background-color:   @main-bg;
     text-color:         @main-fg;
 }
 
@@ -18,7 +18,7 @@ window {
     border:                   2px;
     border-radius:            10px;
     border-color:             @main-br;
-    background-color:         @bg;
+    background-color:         @main-bg;
     children:                 [ mainbox ];
     location:                 northeast;
     y-offset:                 1;
@@ -28,6 +28,7 @@ window {
 mainbox {
     spacing:                  0;
     text-color:               @main-fg;
+    background-color:         @main-bg;
     children:                 [ textbox-custom, listview, inputbar ];
 }
 
@@ -38,8 +39,8 @@ textbox-custom {
     horizontal-align:         0.5;
     padding:                  8px 0;
     expand:                   false;
-    background-color:         @main-bg;
-    text-color:               @main-fg;
+    background-color:         inherit;
+    text-color:               inherit;
     expand:                   false;
     content:                  "  Wi-Fi";
 }
@@ -49,7 +50,7 @@ inputbar {
     margin:                   8px;
     border-radius:            6px;
     spacing:                  inherit;
-    background-color:         @main-bg;
+    background-color:         @input-bg;
     text-color:               @grey;
     children:                 [ prompt, entry ];
 }
@@ -81,7 +82,7 @@ listview {
 element {
     padding:                  6px;
     cursor:                   pointer;
-    background-color:         inherit;
+    background-color:         @input-bg;
     text-color:               @main-fg;
 }
 
@@ -96,5 +97,5 @@ element-text {
     padding:                  0 6px;
     cursor:                   inherit;
     text-color:               inherit;
-    background-color:         transparent;
+    background-color:         inherit;
 }

@@ -28,6 +28,7 @@ window {
 mainbox {
     spacing:                  0;
     text-color:               @main-fg;
+    background-color:         @main-bg;
     children:                 [ textbox-custom, listview, inputbar ];
 }
 
@@ -72,7 +73,7 @@ entry {
     placeholder:              "Search";
     padding:                  6px 0;
     cursor:                   text;
-    background-color:         @input-bg;
+    background-color:         inherit;
     text-color:               inherit;
 }
 

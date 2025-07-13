@@ -1,6 +1,6 @@
 [Added Associations]
 application/epub+zip=com.github.johnfactotum.Foliate.desktop;org.pwmt.zathura-pdf-mupdf.desktop;calibre-ebook-edit.desktop;calibre-ebook-viewer.desktop;calibre-gui.desktop;org.kde.ark.desktop;
-application/pdf=org.pwmt.zathura.desktop;zen.desktop;libreoffice-draw.desktop;gimp.desktop;
+application/pdf=org.pwmt.zathura.desktop;zen.desktop;okularApplication_pdf.desktop;libreoffice-draw.desktop;gimp.desktop;
 application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
 application/x-compressed-tar=/home/shinzo/.local/share/applications/ark.desktop;
 application/x-executable=userapp-kitty-IRIMW2.desktop;nemo-autorun-software.desktop;kitty-open.desktop;
@@ -56,6 +56,7 @@ video/x-matroska=mpv.desktop;
 x-scheme-handler/about=zen-beta.desktop
 x-scheme-handler/chrome=zen.desktop
 x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
 x-scheme-handler/http=zen.desktop
 x-scheme-handler/https=zen.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop

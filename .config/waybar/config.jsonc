@@ -5,35 +5,36 @@
     //#####################
     // "reload_style_on_change": true,
     "margin-top": 7,
-    "margin-left": 15,
-    "margin-right": 15,
+    "margin-left": 8,
+    "margin-right": 8,
     "margin-bottom": 0,
     "layer": "top",
     "position": "top",
-    "spacing": 10,
+    "spacing": 15,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/song"
         // "custom/storage",
         // "cpu",
         // "memory",
     ],
-    "modules-center":[
-        // "hyprland/window",
+    // "modules-center":[
+        // "hyprland/window"
         // "custom/weather",
-        "custom/song",
-    ],
+    // ],
     "modules-right": [
         "tray",
         // "custom/update",
-        "network",
-        // "backlight",
         "pulseaudio",
+        // "backlight",
         "battery",
-        "clock",
+        "network",
+        "clock#date",
+        "clock#time",
     ],
     //################
     //### MODULES  ###
@@ -48,36 +49,29 @@
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            // "5": [],
             // "6": [],
             // "7": [],
             // "8": [],
-            // "9": [],
+            "9": [],
             "10": []
         },
         "format": "<small>{icon}</small>",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            // "active": "<small></small>",
-            "default": "",
+            // "active": "",
+            "default": "",
         }
     },
     "hyprland/window": {
-        "max-length": 40,
+        "max-length": 30,
         "tooltip": false
     },
-    "clock": {
-        // "format": "{:%H:%M | %a %d}",
-        "format": "{:%a <big>%d</big> %b  %I:<big>%M</big> %p}",
+    "clock#time": {
+        "format": "{:%I:%M <small>%p</small>}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#date": {
+        "format": "{:%a <big>%d</big> %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -105,7 +99,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
         "format": " ",
-        "format-wifi": "{icon}",
+        "format-wifi": "{icon} ",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
@@ -118,7 +112,7 @@
             "󰤨"
         ],
         "on-click": "~/.local/bin/rofi-wifi",
-        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-wifi": "{essid}  {icon}  {signalStrength}%",
     },
     "network#speed": {
         "interval": 2,
@@ -151,11 +145,11 @@
 	    "tooltip": true,
 	    "on-click": "blueman-manager",
     },
-    "pulseaudio": {
-	    "format": "{format_source}{icon}",
+        "pulseaudio": {
+	    "format": "{format_source}{icon} ",
 	    "format-bluetooth": "{icon} 󰂰 {volume}%",
 	    "format-muted": "",
-    	"format-source": "<big></big>  ",
+    	"format-source": "<big></big>   ",
 	    "format-source-muted": "",
 	    "format-icons": {
 		    "headphone": "<big></big>",
@@ -171,18 +165,33 @@
 		"ignored-sinks": [
 			"Easy Effects Sink"
 		],
-        "on-click": "easyeffects",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2.0,
 	    "smooth-scrolling-threshold": 1,
 	    "tooltip-format": "{desc} | {volume}%",
     },
-    "pulseaudio#microphone": {
-	    "format": "{format_source} ",
-    	"format-source": "",
-	    "format-source-muted": "",
-        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
-        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
-	    "tooltip-format": "{source_desc} | {source_volume}%",
+    "wireplumber": {
+        "format": "{icon}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": [
+               "",
+                " ",
+                " "
+            ],
+        },
+        "tooltip-format": "Volume: {volume}%",
+        "on-click": "easyeffects"
     },
     "cpu": {
         "interval": 2,
@@ -237,7 +246,7 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "<big> </big>", //{icon}
+        "format": "", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -258,11 +267,7 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 17,
-        "spacing": 3
-    },
-    "custom/seperator":{
-        "format": "|",
-        "tooltip": false
+        "icon-size": 16,
+        "spacing": 12
     }
 }

@@ -3,16 +3,16 @@
 @import url("themes/azure.css");
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "Neuropolitical";
   font-size: 12px;
-  padding: 0px 3px;
   font-weight: bold;
 }
 
 window#waybar {
-  background: @transparent;
-  border: 0px solid @border;
-  border-radius: 10px;
+  color: @fg-module;
+  background: @background;
+  border: 2px solid @border;
+  border-radius: 15px;
 }
 
 #workspaces {
@@ -64,73 +64,8 @@ window#waybar {
   animation: workspace_urgent 1s ease-in-out infinite;
 }
 
-#mode {
-  background: #64727d;
-  border-bottom: 3px solid white;
-}
-
-#idle_inhibitor,
-#workspaces,
-#custom-song,
-#custom-storage,
-#memory,
-#cpu,
-#tray,
-#network,
-#backlight,
-#clock,
-#pulseaudio,
-#battery {
-  padding: 0px 2px 0px 8px;
-  background-color: @background;
-  border: 2px solid @border-module;
-  color: @fg-module;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
-}
-
-#backlight,
-#clock,
-#pulseaudio,
-#battery {
-  padding: 0px 10px 0px 8px;
-}
-
-#pulseaudio {
-  padding: 0px 14px 0px 8px;
-}
-
-#workspaces {
-  text-shadow: none;
-}
-
-#idle_inhibitor,
-#workspaces,
-#custom-storage,
-#memory,
-#cpu {
-  border-radius: 14px 4px 15px 6px;
-}
-
-#custom-song {
-  border-radius: 14px 9px 14px 9px;
-}
-
-#tray,
-#network,
-#clock,
-#backlight,
-#pulseaudio,
-#battery {
-  border-radius: 4px 14px 6px 15px;
-}
-
-.modules-left,
-.modules-right,
-.modules-center {
-}
-
-#custom-logo {
-  color: @foreground;
+#tray {
+  background-color: @bg-tray;
 }
 
 #battery icon {
@@ -144,7 +79,7 @@ window#waybar {
 #battery.charging {
   color: @foreground;
   animation-name: blink;
-  animation-duration: 1.2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -174,16 +109,37 @@ window#waybar {
   animation-direction: alternate;
 }
 
-#network {
-  padding: 0px 13px 0px 8px;
+#custom-storage,
+#window,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
 }
 
-#network.disconnected {
+#clock.time {
+  font-size: 13.75px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray,
+#pulseaudio,
+#network {
+  font-size: 12px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 #idle_inhibitor {
-  font-size: 14px;
-  padding: 0px 5px 0px 8px;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding-left: 7px;
+  padding-right: 9px;
 }
 
 #idle_inhibitor.activated {
@@ -194,23 +150,22 @@ window#waybar {
   color: @active;
 }
 
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-seperator {
-  color: @separator;
-}
-
-#tray {
-  padding: 3px;
-}
-
 #custom-song {
-  font-family: "NeuroPolitical";
+  font-family: "Neuropolitical";
+  font-size: 12px;
   font-style: italic;
   font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   color: @foreground;
+}
+
+.modules-left {
+  padding-left: 8px;
+}
+
+.modules-right {
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 5px;
 }
