@@ -23,7 +23,7 @@ PACMAN_PACKAGES=(
     "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
     "kitty" "zsh" "starship" "eza" "fastfetch" "lolcat"
     "7zip" "aria2" "cliphist" "grim" "slurp" "brightnessctl"
-    "udiskie" "unzip" "mediainfo" "openssh"
+    "udiskie" "unzip" "mediainfo" "openssh" "kompare"
     "kde-cli-tools" "kdegraphics-thumbnailers" "qt5ct"
     "ripgrep" "kvantum" "bluez" "bluez-utils"
     "mpv" "ffmpegthumbs" "imagemagick" "imv" "speech-dispatcher"
@@ -36,7 +36,7 @@ PACMAN_PACKAGES=(
 
 AUR_PACKAGES=(
     "ianny" "qt6ct-kde" "rofi-calc-git" "rofi-emoji-git"
-    "apple-fonts" "nomacs" "zen-browser-bin"
+    "apple-fonts" "nomacs" "zen-browser-bin" "waypaper"
     "kvantum-theme-whitesur-git"
     "whitesur-gtk-theme"
     "whitesur-icon-theme"
