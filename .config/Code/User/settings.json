@@ -20,6 +20,7 @@
   "editor.fontSize": 15,
   "editor.tabSize": 4,
   "editor.wordWrap": "on",
+  "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 10,
   "editor.detectIndentation": false,
   "editor.formatOnType": true,
@@ -121,7 +122,8 @@
           "keyword",
           "storage.type",
           "entity.name.function.preprocessor",
-          "keyword.control"
+          "keyword.control",
+          "entity.name.tag.http"
         ],
         "settings": {
           "foreground": "#4a9cdff6",
@@ -157,7 +159,6 @@
         "scope": [
           "entity.name.variable.field.cs",
           "variable.other",
-          "variable.other.constant",
           "variable.other.enummember",
           "meta.jsx.children.js",
           "variable.parameter.js",
@@ -178,6 +179,7 @@
         "name": "Parameter",
         "scope": [
           "variable.parameter",
+          "keyword.control.http",
           "constant.other.color.rgb-value.hex.css"
         ],
         "settings": {
@@ -190,6 +192,7 @@
           "constant",
           "constant.character.escape",
           "constant.numeric",
+          "variable.other.constant",
           "constant.other.placeholder",
           "constant.language.json",
           "entity.other.attribute-name.pseudo-class.css",
@@ -272,53 +275,11 @@
     ]
   },
 
-  // VIM Configuration
-  "vim.smartRelativeLine": true,
-  "vim.easymotion": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.duration": 200,
-  "vim.highlightedyank.color": "#DC6F08DD",
-  "vim.highlightedyank.textColor": "#000",
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["'", "'"],
-      "after": ["<ESC>"]
+  // Neovim Configuration
+  "vscode-neovim.compositeKeys": {
+    "''": {
+      "command": "vscode-neovim.escape"
     }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
-    },
-    {
-      "before": ["Esc"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["K"],
-      "commands": ["lineBreakInsert"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "w"],
-      "commands": [":w"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": [":q"]
-    }
-  ],
-  "vim.leader": "<space>",
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false
-  },
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
   },
 
   // Git integration
@@ -364,6 +325,11 @@
     "editor.insertSpaces": true
   },
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
 
   // Performance optimizations
   "search.exclude": {
@@ -381,9 +347,7 @@
     "**/dist/**": true
   },
   "extensions.ignoreRecommendations": true,
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
