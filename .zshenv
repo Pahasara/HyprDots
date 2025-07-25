@@ -30,5 +30,6 @@ export MANROFFOPT="-c"
 export ZSTD_CLEVEL=12  # Default Zstandard compression level
 
 # ─── PATH ──────────────────────────────────────────────────
-export PATH="$SCRIPT_DIR:$PATH"  # Add user scripts to PATH
+export PATH="$SCRIPT_DIR:$PATH"             # Add user scripts to PATH
+export PATH="$PATH:$HOME/.dotnet/tools"     # Add .NET global tools to PATH
 

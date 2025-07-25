@@ -24,8 +24,8 @@ set guioptions "none"
 set default-bg "#323232" #00
 set default-fg "#FFFFFF" #01
 
-set statusbar-fg "#B0B0B0" #04
-set statusbar-bg "#202020" #01
+set statusbar-fg "#CDCECF" #04
+set statusbar-bg "#202224" #01
 
 set notification-error-bg "#AC4142" #08
 set notification-error-fg "#151515" #00

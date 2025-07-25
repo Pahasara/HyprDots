@@ -46,36 +46,36 @@
 
   // Custom Colors
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#1F1F1F",
-    "breadcrumb.background": "#181818",
+    "titleBar.activeBackground": "#1E1E1F",
+    "breadcrumb.background": "#161617",
     "breadcrumb.foreground": "#44cfff",
-    "sideBar.background": "#1F1F1F",
-    "sideBarSectionHeader.background": "#1F1F1F",
-    "editor.background": "#181818",
+    "sideBar.background": "#1E1E1F",
+    "sideBarSectionHeader.background": "#1E1E1F",
+    "editor.background": "#161617",
     "editorLineNumber.foreground": "#88888F",
     "editorLineNumber.activeForeground": "#BFBFCB",
     "editor.lineHighlightBackground": "#222224",
     "editor.lineHighlightBorder": "#282830",
     "editor.selectionBackground": "#44aacc66",
     "editor.selectionHighlightBackground": "#3399cc66",
-    "editorGroupHeader.tabsBackground": "#1F1F1F",
+    "editorGroupHeader.tabsBackground": "#1E1E1F",
     "list.activeSelectionBackground": "#00ccff2a",
     "list.inactiveSelectionBackground": "#212122",
     "tab.activeBackground": "#13293A",
     "tab.activeBorderTop": "#0070DA",
-    "tab.inactiveBackground": "#1F1F1F",
-    "statusBar.background": "#1F1F1F",
+    "tab.inactiveBackground": "#1E1E1F",
+    "statusBar.background": "#1E1E1F",
     "statusBar.foreground": "#3CF",
     "statusBarItem.errorForeground": "#ff5651",
-    "statusBarItem.errorBackground": "#1F1F1F",
+    "statusBarItem.errorBackground": "#1E1E1F",
     "statusBarItem.warningForeground": "#ffa82f",
-    "statusBarItem.warningBackground": "#1F1F1F",
+    "statusBarItem.warningBackground": "#1E1E1F",
     "statusBar.debuggingForeground": "#ffa82f",
-    "statusBar.debuggingBackground": "#1F1F1F",
+    "statusBar.debuggingBackground": "#1E1E1F",
     "statusBar.border": "#282828",
-    "badge.background": "#1F1F1F",
+    "badge.background": "#1E1E1F",
     "badge.foreground": "#0099DD",
-    "activityBar.background": "#1F1F1F",
+    "activityBar.background": "#1E1E1F",
     "activityBar.foreground": "#33ccff",
     "activityBarBadge.background": "#0AE",
     "activityBarBadge.foreground": "#000",
@@ -132,7 +132,11 @@
       },
       {
         "name": "Name",
-        "scope": ["entity.name.type", "entity.name.type.class"],
+        "scope": [
+          "entity.name.type",
+          "entity.name.type.class",
+          "entity.name.namespace"
+        ],
         "settings": {
           "foreground": "#42cdefee"
         }
@@ -161,8 +165,7 @@
           "variable.other",
           "variable.other.enummember",
           "meta.jsx.children.js",
-          "variable.parameter.js",
-          "entity.name.namespace"
+          "variable.parameter.js"
         ],
         "settings": {
           "foreground": "#cdcdcd"
@@ -209,8 +212,12 @@
         "scope": [
           "punctuation.definition.string.begin.html",
           "punctuation.definition.string.end.html",
+          "punctuation.definition.string.begin.xml",
+          "punctuation.definition.string.end.xml",
           "string.quoted.single.html",
           "string.quoted.double.html",
+          "string.quoted.single.xml",
+          "string.quoted.double.xml",
           "string.quoted.single.js",
           "string.quoted.double.js",
           "string.quoted.single.tsx",
@@ -349,5 +356,19 @@
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
+  },
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
   }
 }
