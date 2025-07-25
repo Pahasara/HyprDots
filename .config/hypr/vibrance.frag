@@ -1,40 +1,68 @@
-// vibrance for hyprland
+#version 300 es
+
+// Vibrance Screen Shader for Hyprland
+// Based on SweetFX vibrance implementation
+// Enhances color saturation while preserving luminance
 
 precision mediump float;
-varying vec2 v_texcoord;
+
+// Input texture coordinate from vertex shader
+in vec2 v_texcoord;
+
+// Screen texture sampler
 uniform sampler2D tex;
 
-// see https://github.com/CeeJayDK/SweetFX/blob/a792aee788c6203385a858ebdea82a77f81c67f0/Shaders/Vibrance.fx#L20-L30
+// Output fragment color
+out vec4 fragColor;
+
+// ===== VIBRANCE CONFIGURATION =====
+// Color channel balance (R, G, B) - adjust individual channel sensitivity
 const vec3 VIB_RGB_BALANCE = vec3(1.0, 1.0, 1.0);
+
+// Vibrance intensity (0.0 = no effect, higher = more vibrant)
 const float VIB_VIBRANCE = 0.15;
 
-
+// Precomputed vibrance coefficients for performance
 const vec3 VIB_coeffVibrance = VIB_RGB_BALANCE * -VIB_VIBRANCE;
 
 void main() {
-
-    vec4 pixColor = texture2D(tex, v_texcoord);
-
-    // RGB
-    vec3 color = vec3(pixColor[0], pixColor[1], pixColor[2]);
-
-
-    // vec3 VIB_coefLuma = vec3(0.333333, 0.333334, 0.333333); // was for `if VIB_LUMA == 1`
-    vec3 VIB_coefLuma = vec3(0.212656, 0.715158, 0.072186); // try both and see which one looks nicer.
-
+    // Sample the original pixel color from screen texture
+    vec4 pixColor = texture(tex, v_texcoord);
+    
+    // Extract RGB components for processing
+    vec3 color = pixColor.rgb;
+    
+    // ===== LUMINANCE CALCULATION =====
+    // Two options for luminance calculation:
+    // Option 1: Equal weight (simple average)
+    // vec3 VIB_coefLuma = vec3(0.333333, 0.333334, 0.333333);
+    
+    // Option 2: Perceptual luminance (Rec. 709 standard)
+    // Weights based on human eye sensitivity to different colors
+    vec3 VIB_coefLuma = vec3(0.212656, 0.715158, 0.072186);
+    
+    // Calculate perceptual brightness of the pixel
     float luma = dot(VIB_coefLuma, color);
-
-    float max_color = max(color[0], max(color[1], color[2]));
-    float min_color = min(color[0], min(color[1], color[2]));
-
+    
+    // ===== SATURATION ANALYSIS =====
+    // Find the most and least saturated color channels
+    float max_color = max(color.r, max(color.g, color.b));
+    float min_color = min(color.r, min(color.g, color.b));
+    
+    // Calculate current color saturation (difference between max and min channels)
     float color_saturation = max_color - min_color;
-
-    vec3 p_col = vec3(vec3(vec3(vec3(sign(VIB_coeffVibrance) * color_saturation) - 1.0) * VIB_coeffVibrance) + 1.0);
-
-    pixColor[0] = mix(luma, color[0], p_col[0]);
-    pixColor[1] = mix(luma, color[1], p_col[1]);
-    pixColor[2] = mix(luma, color[2], p_col[2]);
-
-    gl_FragColor = pixColor;
+    
+    // ===== VIBRANCE ENHANCEMENT =====
+    // Create per-channel vibrance multipliers based on current saturation
+    // This creates a non-linear response that enhances less saturated colors more
+    vec3 p_col = vec3(sign(VIB_coeffVibrance) * color_saturation - 1.0) * VIB_coeffVibrance + 1.0;
+    
+    // Apply vibrance by mixing between luminance and original color
+    // Higher saturation pixels get less enhancement (preserves skin tones)
+    pixColor.r = mix(luma, color.r, p_col.r);
+    pixColor.g = mix(luma, color.g, p_col.g);
+    pixColor.b = mix(luma, color.b, p_col.b);
+    
+    // Output the enhanced color (alpha channel unchanged)
+    fragColor = pixColor;
 }
-
