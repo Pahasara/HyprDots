@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. **(15MB+)**
+> Read the sections below carefully, and use this command to clone the repo. **(~5MB)**
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
@@ -39,14 +39,15 @@
 ## ✨ Showcase
 
 <div align="center">
-	
-![fetch](https://github.com/user-attachments/assets/4f8c2613-d275-4c01-b54e-d5e78d5e9b8d)
+
+
+![fetch](https://github.com/user-attachments/assets/667ba849-bb41-4a9e-86f8-0f7c5bd06c75)
 
 
 | ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) |![Zen](https://github.com/user-attachments/assets/59590d03-4af8-4078-8b34-9437cc369f1d) |
 |--|--|
 	
-| ![yazi](https://github.com/user-attachments/assets/6196b27f-ae3c-4942-af04-257edede6008)| ![Hyprlock](https://github.com/user-attachments/assets/d5315def-0dc3-44a0-a98a-11df3b6292ac) |
+| ![yazi](https://github.com/user-attachments/assets/6196b27f-ae3c-4942-af04-257edede6008)| ![Hyprlock](https://github.com/user-attachments/assets/008d33e5-4874-4979-a86b-574a8251c9e2) |
 |--|--|
 
 </div>
