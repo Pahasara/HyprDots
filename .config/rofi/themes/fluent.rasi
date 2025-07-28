@@ -4,12 +4,12 @@
 * {
   bg:         #0104084A; //window
   main-bg:    #02080F6A; //main
-  main-br:    #00BBEE88;   //windowBorder
+  main-br:    #00BBEE88; //windowBorder
   main-fg:    #DEDEDE;   //main
   input-bg:   #0000000F; //input
   input-br:   #242424;   //inputBorder
   select-fg:  #33BBFF;   //selected
-  select-bg:  #232B3599; //selected
+  select-bg:  #00000088; //selected
 
   black   : #000000;
   red     : #F7768E;
