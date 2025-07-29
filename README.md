@@ -41,13 +41,13 @@
 <div align="center">
 
 
-![fetch](https://github.com/user-attachments/assets/667ba849-bb41-4a9e-86f8-0f7c5bd06c75)
+![fetch](https://github.com/user-attachments/assets/bec3e3c0-dc78-4095-b558-32423846a2ac)
 
 
 | ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) |![Zen](https://github.com/user-attachments/assets/59590d03-4af8-4078-8b34-9437cc369f1d) |
 |--|--|
 	
-| ![yazi](https://github.com/user-attachments/assets/6196b27f-ae3c-4942-af04-257edede6008)| ![Hyprlock](https://github.com/user-attachments/assets/008d33e5-4874-4979-a86b-574a8251c9e2) |
+| ![yazi](https://github.com/user-attachments/assets/05ffa7b3-3187-4ce5-a522-7dec074d2988)| ![Hyprlock](https://github.com/user-attachments/assets/008d33e5-4874-4979-a86b-574a8251c9e2) |
 |--|--|
 
 </div>
