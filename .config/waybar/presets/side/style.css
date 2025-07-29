@@ -4,7 +4,7 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -59,7 +59,7 @@ window#waybar {
 }
 
 #clock.date {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 #battery icon {
@@ -107,7 +107,6 @@ window#waybar {
   margin: 5px;
   border-radius: 16px;
   background: @foreground;
-  color: @fg-alt;
   padding: 5px;
   padding-right: 12px;
 }
@@ -117,9 +116,12 @@ window#waybar {
 }
 
 #idle_inhibitor.deactivated {
-  color: @active;
+  color: #000;
 }
 
+#network {
+  font-size: 16px;
+}
 #pulseaudio {
   font-size: 13px;
 }

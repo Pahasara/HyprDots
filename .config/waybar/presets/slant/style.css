@@ -4,7 +4,7 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 12px;
+  font-size: 14.75px;
   padding: 0px 3px;
   font-weight: bold;
 }
@@ -42,7 +42,7 @@ window#waybar {
 #workspaces button.active {
   color: @fg-blink;
   background: @fg-blink;
-  min-width: 30px;
+  min-width: 34px;
   transition: all 0.3s ease-in-out;
   opacity: 0.7;
 }
@@ -182,8 +182,13 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 14px;
+  font-size: 16px;
   padding: 0px 5px 0px 8px;
+}
+
+#clock.time {
+  font-size: 15px;
+  font-weight: 900;
 }
 
 #idle_inhibitor.activated {

@@ -4,7 +4,7 @@
 
 * {
   font-family: "Neuropolitical";
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
 }
 
@@ -24,7 +24,7 @@ window#waybar {
   border-radius: 15px;
   box-shadow: none;
   margin: 2px 0;
-  padding: 0 6px;
+  padding: 0 8px;
   transition: ease-in-out;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
@@ -111,11 +111,11 @@ window#waybar {
 }
 
 #clock.date {
-  font-size: 11.75px;
+  font-size: 14px;
 }
 
 #clock.time {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 900;
 }
 
@@ -126,14 +126,14 @@ window#waybar {
 #tray,
 #pulseaudio,
 #network {
-  font-size: 12px;
+  font-size: 15px;
   font-family: "JetBrainsMono Nerd Font";
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 #custom-song {
   font-family: "Neuropolitical";
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 700;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
@@ -141,11 +141,11 @@ window#waybar {
 }
 
 #idle_inhibitor {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 100;
   border-radius: 25px;
-  padding-left: 7px;
-  padding-right: 9px;
+  padding-left: 9px;
+  padding-right: 10px;
 }
 
 #idle_inhibitor.activated {

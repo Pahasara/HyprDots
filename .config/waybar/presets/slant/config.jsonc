@@ -33,7 +33,8 @@
         // "backlight",
         "pulseaudio",
         "battery",
-        "clock",
+        "clock#date",
+        "clock#time"
     ],
     //################
     //### MODULES  ###
@@ -75,9 +76,12 @@
         "max-length": 40,
         "tooltip": false
     },
-    "clock": {
-        // "format": "{:%H:%M | %a %d}",
-        "format": "{:%a <big>%d</big> %b  %I:<big>%M</big> %p}",
+    "clock#time": {
+        "format": "{:%I:%M <small>%p</small>}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#date": {
+        "format": "{:%a %d %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -88,8 +92,8 @@
             "critical": 15,
         },
         "format": "<big>{icon}</big>",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "<big>󰂄</big>",
+        "format-plugged": "<big>󱟢</big>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
@@ -258,8 +262,8 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 17,
-        "spacing": 3
+        "icon-size": 19,
+        "spacing": 5
     },
     "custom/seperator":{
         "format": "|",

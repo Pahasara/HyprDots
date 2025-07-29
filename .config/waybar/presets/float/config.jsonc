@@ -8,7 +8,7 @@
     "margin-left": 8,
     "margin-right": 8,
     "margin-bottom": 0,
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
     "spacing": 15,
     //##################
@@ -82,8 +82,8 @@
             "critical": 15,
         },
         "format": "<big>{icon}</big>",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "<big>󰂄</big>",
+        "format-plugged": "<big>󱟢</big>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
@@ -267,7 +267,7 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 16,
+        "icon-size": 19,
         "spacing": 12
     }
 }

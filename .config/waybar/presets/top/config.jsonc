@@ -3,7 +3,7 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
     "spacing": 15,
     "reload_style_on_change": true,
@@ -80,7 +80,7 @@
         },
         "format": "<big>{icon}</big>",
         "format-charging": "<big>󰂄</big>",
-        "format-plugged": "<big>󰂄</big>",
+        "format-plugged": "<big>󱟢</big>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "{icon} {capacity}%",
         "format-icons": [
@@ -285,7 +285,7 @@
         "format": " ",
     },
     "tray": {
-        "icon-size": 16,
+        "icon-size": 20,
         "spacing": 12
     },
 }

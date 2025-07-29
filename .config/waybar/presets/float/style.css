@@ -4,7 +4,7 @@
 
 * {
   font-family: "Neuropolitical";
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -21,9 +21,9 @@ window#waybar {
 
 #workspaces button {
   padding: 0px;
-  margin: 8px 10px 8px 0px;
-  min-height: 5px;
-  min-width: 18px;
+  margin: 8px 12px 8px 0px;
+  min-height: 0px;
+  min-width: 20px;
   border-radius: 15px;
   border: 0px;
   transition: all 0.3s ease-in-out;
@@ -42,7 +42,7 @@ window#waybar {
 #workspaces button.active {
   color: @fg-blink;
   background: @fg-blink;
-  min-width: 30px;
+  min-width: 35px;
   transition: all 0.3s ease-in-out;
   opacity: 0.7;
 }
@@ -62,10 +62,6 @@ window#waybar {
   color: @warning;
   background-color: @warning;
   animation: workspace_urgent 1s ease-in-out infinite;
-}
-
-#tray {
-  background-color: @bg-tray;
 }
 
 #battery icon {
@@ -109,6 +105,10 @@ window#waybar {
   animation-direction: alternate;
 }
 
+#tray {
+  background-color: @bg-tray;
+}
+
 #custom-storage,
 #window,
 #clock.date,
@@ -118,7 +118,7 @@ window#waybar {
 }
 
 #clock.time {
-  font-size: 13.75px;
+  font-size: 16px;
   font-weight: 900;
 }
 
@@ -129,13 +129,13 @@ window#waybar {
 #tray,
 #pulseaudio,
 #network {
-  font-size: 12px;
+  font-size: 15px;
   font-family: "JetBrainsMono Nerd Font";
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 #idle_inhibitor {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 100;
   border-radius: 25px;
   padding-left: 7px;
@@ -152,7 +152,7 @@ window#waybar {
 
 #custom-song {
   font-family: "Neuropolitical";
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 700;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
