@@ -2,7 +2,7 @@
 //  Modified:   https://github.com/pahasara/hyprdots
 
 configuration {
-    font:  "Ubuntu Nerd Font 11";
+    font:  "Ubuntu Nerd Font 13";
 }
 
 @theme "theme"
@@ -14,15 +14,15 @@ configuration {
 
 /* Window */
 window {
-    width:                    300px;
+    width:                    320px;
     border:                   2px;
-    border-radius:            10px;
+    border-radius:            12px;
     border-color:             @main-br;
     background-color:         @bg;
     children:                 [ mainbox ];
     location:                 northeast;
-    y-offset:                 1; //-36
-    x-offset:                 -2;
+    y-offset:                 4;
+    x-offset:                 -4;
 }
 
 mainbox {
@@ -33,7 +33,7 @@ mainbox {
 }
 
 textbox-custom {
-    font:                     "Ubuntu Nerd Font Bold 11";
+    font:                     "Ubuntu Nerd Font Bold 12";
     border:                   0 0 2px 0;
     border-color:             @input-br;
     horizontal-align:         0.5;
@@ -55,7 +55,7 @@ inputbar {
 }
 
 textbox-custom2 {
-    font:                     "Ubuntu Nerd Font Bold 11";
+    font:                     "Ubuntu Nerd Font Bold 12";
     padding:                  6px 6px 6px 10px;
     expand:                   false;
     background-color:         inherit;

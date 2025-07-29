@@ -6,7 +6,7 @@ configuration {
     drun-match-fields: "name";
     display-run: "Menu:";
     display-ssh: "SSH:";
-    display-drun: " ";
+    display-drun: "󰀻 ";
     display-window: " ";
     terminal: "/usr/bin/kitty";
 }
@@ -14,7 +14,7 @@ configuration {
 @theme "azure"
 
 * {
-    font: "Ubuntu Nerd Font 12";
+    font: "Ubuntu Nerd Font 14";
 
     background-color:   transparent;
     text-color:         @main-fg;
@@ -26,8 +26,8 @@ configuration {
 
 window {
     location:       center;
-    width:          250;
-    border-radius:  15px;
+    width:          290px;
+    border-radius:  20px;
 
     border: 2px;
     border-color: @main-br;
@@ -41,7 +41,7 @@ mainbox {
 inputbar {
     background-color:   @input-bg;
     border-color:       @input-br;
-    border-radius:  12px;
+    border-radius:  15px;
     border:         2px;
 
     padding:    8px 16px;
@@ -74,7 +74,7 @@ listview {
     background-color:   transparent;
     margin:     12px 0 0;
     columns:    1;
-    lines:      6;
+    lines:      7;
 
     fixed-height: false;
 }

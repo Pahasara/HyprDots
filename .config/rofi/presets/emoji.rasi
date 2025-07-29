@@ -2,7 +2,7 @@
 //  Modified: https://github.com/pahasara/hyprdots
 
 configuration {
-    font: "Ubuntu Nerd Font 11";
+    font: "Ubuntu Nerd Font 13";
 }
 
 @theme "theme"
@@ -21,8 +21,8 @@ window {
     background-color: @bg;
     children: [ mainbox ];
     location: northeast;
-    y-offset: 1;
-    x-offset: -2;
+    y-offset: 4;
+    x-offset: -4;
 }
 
 mainbox {
@@ -69,7 +69,7 @@ entry {
 
 /* List */
 listview {
-    lines: 6;
+    lines: 7;
     fixed-height: false;
     dynamic: true;
     cycle: false;
