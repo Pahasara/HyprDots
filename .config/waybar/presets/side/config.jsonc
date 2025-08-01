@@ -30,6 +30,7 @@
         "tray",
         "network",
         // "backlight",
+        "pulseaudio#mic",
         "pulseaudio",
         // "wireplumber",
         "battery",
@@ -108,7 +109,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
         "format": " ",
-        "format-wifi": "{icon}",
+        "format-wifi": "<big>{icon}</big>",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{essid}",
         "format-linked": " {ifname} (No IP)",
@@ -154,11 +155,36 @@
 	    "tooltip": true,
 	    "on-click": "blueman-manager",
     },
-    "pulseaudio": {
-	    "format": "{format_source}{icon} ",
+        "pulseaudio": {
+	    "format": "<big>{icon}</big>",
 	    "format-bluetooth": "{icon} 󰂰 {volume}%",
-	    "format-muted": "",
-    	"format-source": "<big></big>   ",
+	    "format-muted": " ",
+    	"format-source": "<big></big> ",
+	    "format-source-muted": "",
+	    "format-icons": {
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
+    },
+    "pulseaudio#mic": {
+	    "format": "{format_source}",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": " ",
+    	"format-source": "<big></big>",
 	    "format-source-muted": "",
 	    "format-icons": {
 		    "headphone": "<big></big>",
@@ -276,7 +302,7 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 19,
+        "icon-size": 20,
         "spacing":15 
     },
     "custom/seperator":{
