@@ -16,7 +16,7 @@
     progress_bar_corner_radius = 4  # Progress bar corner roundness
 
     # Visual Appearance
-    corner_radius = 9                # Notification corner roundness
+    corner_radius = 12               # Notification corner roundness
     separator_height = 2             # Separator line thickness
     separator_color = "#11111B"      # Separator color
     padding = 15                     # Internal padding
@@ -95,12 +95,14 @@
 
 [system]
     appname = "System"
+    max_icon_size = 72
     default_icon = "$HOME/.local/share/icons/dunst/arch.png"
     timeout = 5
 
 [gamemode]
     appname = "gamemode"
     default_icon = "$HOME/.local/share/icons/dunst/gamemode.png"
+    max_icon_size = 72
     timeout = 5
 
 [mic_low]
