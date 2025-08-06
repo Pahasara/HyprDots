@@ -1,101 +1,105 @@
-//  Source:     https://github.com/sejjy/hyprrice
-//  Modified:   https://github.com/pahasara/hyprdots
+//  Source: https://github.com/sejjy/hyprrice
+//  Modified: https://github.com/pahasara/hyprdots
 
 configuration {
-    font:  "Ubuntu Nerd Font 13";
+    font: "Ubuntu Nerd Font 13";
 }
 
 @theme "theme"
 
 * {
-    background-color:   @main-bg;
-    text-color:         @main-fg;
+    background-color: transparent;
+    text-color: @main-fg;
 }
 
 /* Window */
 window {
-    width:                    250px;
-    border:                   2px;
-    border-radius:            12px;
-    border-color:             @main-br;
-    background-color:         @main-bg;
-    children:                 [ mainbox ];
-    location:                 northeast;
-    y-offset:                 4;
-    x-offset:                 -4;
+    width: 250px;
+    border: 2px;
+    border-radius: 10px;
+    border-color: @main-br;
+    background-color: @bg;
+    children: [ mainbox ];
+    location: northeast;
+    y-offset: 6;
+    x-offset: -6;
 }
 
 mainbox {
-    spacing:                  0;
-    text-color:               @main-fg;
-    background-color:         @main-bg;
-    children:                 [ textbox-custom, listview, inputbar ];
+    spacing: 0;
+    text-color: @main-fg;
+    children: [ textbox-custom, listview, inputbar ];
 }
 
 textbox-custom {
-    font:                     "Ubuntu Nerd Font Bold 11";
-    border:                   0 0 2px 0;
-    border-color:             @input-br;
-    horizontal-align:         0.5;
-    padding:                  8px 0;
-    expand:                   false;
-    background-color:         inherit;
-    text-color:               inherit;
-    expand:                   false;
-    content:                  "  Wi-Fi";
+    font: "Ubuntu Nerd Font Bold 11";
+    border: 0 0 2px 0;
+    border-color: @input-br;
+    horizontal-align: 0.5;
+    padding: 8px 0;
+    expand: false;
+    background-color: @main-bg;
+    text-color: @main-fg;
+    content: " Wi-Fi";
+}
+
+textbox-icon {
+    font: "Ubuntu Nerd Font Bold 12";
+    border: 0 0 2px 0;
+    horizontal-align: 0.5;
+    padding: 6px 12px 6px 16px;
+    expand: false;
+    content: "";
+    text-color: inherit;
 }
 
 /* Input */
 inputbar {
-    margin:                   8px;
-    border-radius:            6px;
-    spacing:                  inherit;
-    background-color:         @input-bg;
-    text-color:               @grey;
-    children:                 [ prompt, entry ];
+    margin: 28px 8px 8px 8px;
+    border-radius: 6px;
+    spacing: inherit;
+    text-color: @input-fg;
+    children: [ textbox-icon, entry ];
 }
 
 prompt {
-    padding:                  6px 6px 6px 10px;
-    background-color:         inherit;
-    text-color:               inherit;
+    padding: 6px 6px 6px 10px;
+    background-color: inherit;
+    text-color: inherit;
 }
 
 entry {
-    placeholder:              "Search";
-    padding:                  6px 0;
-    cursor:                   text;
-    background-color:         inherit;
-    text-color:               inherit;
+    placeholder: "Search";
+    padding: 6px 0;
+    cursor: text;
+    background-color: inherit;
+    text-color: inherit;
 }
 
 /* List */
 listview {
-    lines:                    6;
-    fixed-height:             false;
-    dynamic:                  true;
-    cycle:                    false;
-    padding:                  8px 8px 0;
-    background-color:         inherit;
+    lines: 7;
+    fixed-height: false;
+    dynamic: true;
+    cycle: false;
+    padding: 8px 8px 0;
 }
 
 element {
-    padding:                  6px;
-    cursor:                   pointer;
-    background-color:         @input-bg;
-    text-color:               @main-fg;
+    padding: 6px;
+    cursor: pointer;
+    text-color: @main-fg;
 }
 
 element selected active,
 element selected normal {
-    border-radius:            6px;
-    background-color:         @select-bg;
-    text-color:               @select-fg;
+    border-radius: 9px;
+    background-color: @select-bg;
+    text-color: @select-fg;
 }
 
 element-text {
-    padding:                  0 6px;
-    cursor:                   inherit;
-    text-color:               inherit;
-    background-color:         inherit;
+    padding: 0 6px;
+    cursor: inherit;
+    text-color: inherit;
 }

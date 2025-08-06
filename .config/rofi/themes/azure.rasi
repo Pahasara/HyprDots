@@ -7,6 +7,7 @@
   main-br:    #00BBEF99; //windowBorder
   main-fg:    #DEDEDE;   //main
   input-bg:   #0000004F; //input
+  input-fg:   #ffffffbb; //input
   input-br:   #00CCFF33; //inputBorder
   select-fg:  #33BBFF;   //selected
   select-bg:  #00000044; //selected

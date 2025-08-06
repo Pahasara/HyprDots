@@ -50,12 +50,12 @@ inputbar {
 }
 
 prompt {
-    text-color: @grey;
+    text-color: @input-fg;
 }
 
 entry {
     placeholder:        "Type...";
-    placeholder-color:  @main-fg;
+    placeholder-color:  @input-fg;
 }
 
 message {

@@ -21,8 +21,8 @@ window {
     background-color: @bg;
     children: [ mainbox ];
     location: northeast;
-    y-offset: 4;
-    x-offset: -4;
+    y-offset: 6;
+    x-offset: -6;
 }
 
 mainbox {
@@ -32,7 +32,7 @@ mainbox {
 }
 
 textbox-custom {
-    font: "Ubuntu Nerd Font Bold 11";
+    font: "Ubuntu Nerd Font Bold 12";
     border: 0 0 2px 0;
     border-color: @input-br;
     horizontal-align: 0.5;
@@ -40,17 +40,28 @@ textbox-custom {
     expand: false;
     background-color: @main-bg;
     text-color: @main-fg;
-    content: "☺ Emoji";
+    content: "😀 Emoji";
 }
+
+textbox-icon {
+    font: "Ubuntu Nerd Font Bold 11";
+    border: 0 0 2px 0;
+    horizontal-align: 0.5;
+    padding: 6px 12px 6px 16px;
+    expand: false;
+    content: "";
+    text-color: inherit;
+}
+
 
 /* Input */
 inputbar {
     margin: 8px;
     border-radius: 6px;
     spacing: inherit;
-    background-color: @main-bg;
-    text-color: inherit;
-    children: [ prompt, entry ];
+    background-color: transparent;
+    text-color: @input-fg;
+    children: [ textbox-icon, entry ];
 }
 
 prompt {
@@ -84,7 +95,7 @@ element {
 
 element selected active,
 element selected normal {
-    border-radius: 6px;
+    border-radius: 9px;
     background-color: @select-bg;
     text-color: @select-fg;
 }
