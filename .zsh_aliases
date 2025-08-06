@@ -1,0 +1,92 @@
+######################
+#      ALIASES       #
+######################
+
+# 📂 Directory Shortcuts
+alias cdc="cd && cd Code"
+alias cdd="cd && cd Downloads"
+alias cdg="cd && cd Github"
+
+# 🧠 Shell & System Helpers
+alias :q="exit"
+alias srcz="source ~/.zshrc && dunstify 'Arch Linux' 'Shell config reloaded!' -a System -u low"
+alias se="sudoedit"
+alias vi="nvim"
+alias vim="nvim"
+alias va="vim ~/.zsh_aliases"
+alias vz="vim ~/.zshrc"
+alias ve="vim ~/.zshenv"
+alias vk="vim ~/.config/kitty/kitty.conf"
+
+# 🖼️ Wallpaper Switching
+alias wall="swww img"
+alias rwa="random-wall ~/Pictures/Wallpapers/Anime"
+alias rwc="random-wall ~/Pictures/Wallpapers/Cute"
+alias rwd="random-wall ~/Pictures/Wallpapers/DOTA"
+alias rwdc="random-wall ~/Pictures/Wallpapers/DC"
+alias rwm="random-wall ~/Pictures/Wallpapers/ML"
+alias rwh="random-wall ~/Pictures/Wallpapers/HOK"
+alias rwg="random-wall ~/Pictures/Wallpapers/Old-G"
+alias rwo="random-wall ~/Pictures/Wallpapers/Other"
+alias rwl="random-wall ~/Pictures/Wallpapers/League"
+alias rww="random-wall ~/Pictures/Wallpapers/WD"
+
+# 🗃️ File Listing (with eza)
+alias ls='eza --icons --color=always --group-directories-first'
+alias ll='eza -alF --icons --color=always --group-directories-first'
+alias la='eza -a --icons --color=always --group-directories-first'
+alias l='eza -F --icons --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
+
+# 🧼 Arch Linux Waifu Notifiers
+alias hi="dunstify 'Arch Linux' 'Welcome back, baka~ 😤 You better have some dotfiles to show me!' -a System -u normal"
+alias ns="dunstify 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' -a System -u normal"
+alias rice="dunstify 'Arch Linux' 'Let’s rice together today, senpai~ 🌸 Don’t leave me looking basic!' -a System -u low"
+
+# 📦 Package Management
+alias update="yay && dunstify 'Arch Linux' 'System updated successfully ✨' -a System -u low"
+alias clean="yay -Rns $(pacman -Qtdq) && dunstify 'Arch Linux' 'Removed unused packages 🧹' -a System -u low"
+alias pm="pacman"
+
+# 🗑️ Cleanup
+alias tp="trash-put"
+
+# 🛠️ Compression Tools
+alias xzz="XZ_OPT='-9 -T12' tar -cJf"
+alias gzz="tar -czf"
+alias zst="tar -I 'zstd -19 -T0' -cf"
+alias 7zz="7z a -t7z -m0=lzma2 -mx=9 -mmt=12 -mqs=on"
+
+# 🛑 Systemctl
+alias sctl="systemctl"
+alias sctls="systemctl status"
+alias sctle="systemctl enable"
+alias sctld="systemctl disable"
+alias sctlr="systemctl restart"
+
+# 🧪 Languages & Tools
+alias dr="dotnet run"
+alias dpl="dotnet publish -r linux-x64 --sc"
+alias dpw="dotnet publish -r win-x64 --sc"
+alias gcc="gcc -Wall"
+alias g++="g++ -Wall"
+alias cl="clang -std=c23 -Wall"
+alias cl++="clang++ -std=c++23 -Wall"
+alias jr="java"
+alias jc="javac"
+alias py="python"
+
+# 💻 CLI Programs
+alias ac="aria2c"
+alias mk="musikcube"
+alias y="yazi"
+alias mg="mega-get"
+alias yd="yt-dlp -f 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/bv*+ba/b' --embed-thumbnail --embed-metadata"
+alias yd720="yt-dlp -f 'bv[ext=mp4][height=720]+ba[ext=m4a]/b[ext=mp4][height<=720]' --embed-thumbnail --embed-metadata"
+alias ff="fastfetch"
+
+# 🧃 Custom Tools
+alias z="./.local/opt/ztrack/ZTrack"
+alias zero="./.local/opt/zero/Zero.CLI"
+alias ztrack="./.local/opt/ztrack/ZTrack"
+
