@@ -17,7 +17,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # ─── Diff Tool ─────────────────────────────────────────────
-export DIFFPROG="kompare"
+export DIFFPROG="kompare paccdiff -s"
 
 # ─── BAT (Better `cat`) ────────────────────────────────────
 export BAT_THEME="tokyonight_night"
@@ -28,6 +28,7 @@ export MANROFFOPT="-c"
 
 # ─── Compression ───────────────────────────────────────────
 export ZSTD_CLEVEL=12  # Default Zstandard compression level
+export ZSTD_NBTHREADS="$(nproc)"
 
 # ─── PATH ──────────────────────────────────────────────────
 export PATH="$SCRIPT_DIR:$PATH"             # Add user scripts to PATH

@@ -123,7 +123,8 @@
           "storage.type",
           "entity.name.function.preprocessor",
           "keyword.control",
-          "entity.name.tag.http"
+          "entity.name.tag.http",
+          "constant.character.character-class.regexp.cs"
         ],
         "settings": {
           "foreground": "#4a9cdff6",
@@ -375,5 +376,6 @@
   // XML
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
-  }
+  },
+  "editor.tabCompletion": "on"
 }
