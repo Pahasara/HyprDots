@@ -2,7 +2,7 @@
 TerminalApplication=kitty
 
 [Icons]
-Theme=BigSur
+Theme=WhiteSur-dark
 
 [KDE]
 ShowDeleteCommand=false
