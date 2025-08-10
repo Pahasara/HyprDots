@@ -106,13 +106,11 @@
         "tooltip-format": "Battery level: {capacity}%\nRemaining time: {time}"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        /* "format-wifi": "{essid} ({signalStrength}%) ", */
+        // "interface": "*",
         "format": " ",
-        "format-wifi": "<big>{icon}</big>",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": "{essid}",
-        "format-linked": " {ifname} (No IP)",
+        "format-wifi": "{icon} ",
+        "format-ethernet": " {ifname}",
+        "format-linked": "󰕥 {ifname}",
         "format-disconnected": " ",
         "format-icons": [
             "󰤯",
@@ -121,8 +119,12 @@
             "󰤥",
             "󰤨"
         ],
+        "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}\nInterface: {ifname}",
+        "tooltip-format-ethernet": "Ethernet Connected\nIP: {ipaddr}/{cidr}\nInterface: {ifname}",
+        "tooltip-format-disconnected": "Network Disconnected",
         "on-click": "~/.local/bin/rofi-wifi",
-        "tooltip-format-wifi": "{essid}  {icon}  {signalStrength}%",
+        "interval": 1
     },
     "network#speed": {
         "interval": 2,
