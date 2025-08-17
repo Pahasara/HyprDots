@@ -1,6 +1,8 @@
 [Added Associations]
 application/json=zen.desktop;org.kde.kate.desktop;code.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;nvim.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;zen.desktop;okularApplication_pdf.desktop;libreoffice-draw.desktop;gimp.desktop;
+audio/mpeg=org.gnome.Lollypop.desktop;mpv.desktop;org.kde.kid3.desktop;audacity.desktop;
+image/bmp=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;okularApplication_kimgio.desktop;gimp.desktop;
 image/jpeg=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
 image/png=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
 text/plain=org.kde.kate.desktop;nvim.desktop;code.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;
@@ -12,6 +14,8 @@ text/x-python=org.kde.kate.desktop;code.desktop;nvim.desktop;okularApplication_t
 [Default Applications]
 application/json=zen.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+audio/mpeg=org.gnome.Lollypop.desktop;
+image/bmp=org.nomacs.ImageLounge.desktop;
 image/jpeg=org.nomacs.ImageLounge.desktop;
 image/png=org.nomacs.ImageLounge.desktop;
 text/plain=org.kde.kate.desktop;

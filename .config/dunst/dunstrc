@@ -91,7 +91,7 @@
 # Special Notification Config
 [play_sound]
     msg_urgency = "normal"
-    script = ~/.local/bin/notify-sound
+    script = ~/.local/bin/sound-alert
 
 [system]
     appname = "System"
