@@ -1,0 +1,10 @@
+[Unit]
+Description=Clean Mesa shader cache at boot
+Before=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/shader-cleaner
+
+[Install]
+WantedBy=default.target

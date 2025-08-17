@@ -1,0 +1,48 @@
+#!/bin/bash
+set -euo pipefail
+
+# Description:
+#   Cleans Mesa shader cache if Mesa has been upgraded.
+#   Stores the last Mesa version in a file to detect changes.
+
+# ─── Configuration ────────────────────────────────────────────────
+VERSION_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/.mesa_last_version"
+MESA_SHADER_CACHE_PATH="${MESA_SHADER_CACHE_PATH:-${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache_db}"
+LEGACY_SHADER_CACHE_PATH="${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache"
+LOGFILE="${XDG_CACHE_HOME:-$HOME/.cache}/mesa-shader-cleaner.log"
+
+# ─── Functions ────────────────────────────────────────────────────
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOGFILE"
+}
+
+get_current_mesa_version() {
+    pacman -Qi mesa | awk '/^Version/ { print $3 }'
+}
+
+# ─── Execution ────────────────────────────────────────────────────
+CURRENT_VERSION="$(get_current_mesa_version)"
+
+# If version file doesn't exist, create it and exit
+if [[ ! -f "$VERSION_FILE" ]]; then
+    echo "$CURRENT_VERSION" > "$VERSION_FILE"
+    log "Initialized version tracking: $CURRENT_VERSION"
+    exit 0
+fi
+
+# Read previous version
+PREVIOUS_VERSION="$(<"$VERSION_FILE")"
+
+# Compare versions
+if [[ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]]; then
+    log "Mesa upgraded: $PREVIOUS_VERSION → $CURRENT_VERSION"
+    log "Cleaning shader cache..."
+
+    rm -rf -- "$MESA_SHADER_CACHE_PATH" "$LEGACY_SHADER_CACHE_PATH"
+
+    log "Shader caches removed."
+    echo "$CURRENT_VERSION" > "$VERSION_FILE"
+# else
+#     log "Mesa version unchanged ($CURRENT_VERSION). No cleanup needed."
+fi
+

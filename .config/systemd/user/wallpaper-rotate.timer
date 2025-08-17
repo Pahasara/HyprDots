@@ -1,0 +1,10 @@
+[Unit]
+Description=Wallpaper Rotation Timer
+
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

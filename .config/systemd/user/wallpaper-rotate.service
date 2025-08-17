@@ -1,0 +1,8 @@
+[Unit]
+Description=Wallpaper Rotation Service
+After=swww-daemon.service
+Requires=swww-daemon.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/random-wall
