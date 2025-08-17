@@ -1,0 +1,13 @@
+[Unit]
+Description=Battery Connection Monitor Service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/battery-monitor
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=10
+
+[Install]
+WantedBy=default.target

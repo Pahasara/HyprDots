@@ -1,9 +1,0 @@
-[Unit]
-Description=Charger notify service
-
-[Service]
-Type=simple
-ExecStart=/home/%u/.local/bin/battery-status
-
-[Install]
-WantedBy=default.target

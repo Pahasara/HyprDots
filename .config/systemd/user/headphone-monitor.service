@@ -1,0 +1,16 @@
+[Unit]
+Description=Headphone Connection Monitor Service
+After=graphical-session.target pipewire.service wireplumber.service
+Wants=pipewire.service wireplumber.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/headphone-monitor
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=60
+TimeoutStopSec=10
+
+[Install]
+WantedBy=default.target

@@ -54,7 +54,7 @@ env_editor_confirm() {
 }
 
 NOTIFY=yes
-CURSOR=yes
+CURSOR=no
 FREEZE=
 WAIT=no
 SCALE=

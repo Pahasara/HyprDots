@@ -1,24 +1,23 @@
 #!/bin/bash
-
 ## This script allows adjusting volume and microphone settings using:
 ##   - up   : Increase volume
 ##   - down : Decrease volume
 ##   - mute : Toggle mute for speakers
-##   - mic  : Toggle mute for the microphone
-
+##   - mic  : Toggle mute for the microphone (with LED control)
 ## Features:
 ## - Displays appropriate volume icons based on current levels.
+## - Controls microphone mute LED via ASUS WMI.
 ## - Sends notifications with `dunstify` (Dunst).
-
 ## Requirements:
 ## - `wireplumber`: Uses `wpctl` for audio control.
 ## - `dunst`: Required for notifications.
-
+## - ASUS laptop with WMI support for LED control.
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 msgTag="volume"
 icon_path="$HOME/.local/share/icons/dunst"
 TIME=1000
+LED_PATH="/sys/class/leds/platform::micmute/brightness"
 
 # Function to get the appropriate volume icon based on level
 get_volume_icon() {
@@ -31,6 +30,30 @@ get_volume_icon() {
         echo "$icon_path/volume-mid.png"
     else
         echo "$icon_path/volume.png"
+    fi
+}
+
+# Function to control microphone LED
+control_mic_led() {
+    local state=$1
+    if [ -w "$LED_PATH" ]; then
+        echo "$state" > "$LED_PATH" 2>/dev/null
+    elif [ -e "$LED_PATH" ]; then
+        # If we don't have write permissions, try with sudo
+        echo "$state" | sudo tee "$LED_PATH" > /dev/null 2>&1
+    else
+        # LED path doesn't exist - probably not an ASUS laptop with WMI support
+        return 1
+    fi
+}
+
+# Function to check if mic is muted and sync LED
+sync_mic_led() {
+    local mic_mute=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo "yes" || echo "no")
+    if [[ "$mic_mute" == "yes" ]]; then
+        control_mic_led 1  # Turn LED on when muted
+    else
+        control_mic_led 0  # Turn LED off when unmuted
     fi
 }
 
@@ -59,15 +82,26 @@ case "$1" in
     mic)
         wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
         mic_mute=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo "yes" || echo "no")
+        
+        # Control the LED based on mute status
         if [[ "$mic_mute" == "yes" ]]; then
-            dunstify -t $TIME \
-                     -a "Mic" -u low \
-                     -h string:x-dunst-stack-tag:$msgTag "Muted"
+            control_mic_led 1  # Turn LED on when muted
+            # Uncomment below lines to enable notification
+            # dunstify -t $TIME \
+            #          -a "Mic" -u low \
+            #          -h string:x-dunst-stack-tag:$msgTag "Muted"
         else
-            dunstify -t $TIME \
-                     -a "Mic" -u normal \
-                     -h string:x-dunst-stack-tag:$msgTag "Unmuted"
+            control_mic_led 0  # Turn LED off when unmuted
+            # Uncomment below lines to enable notification
+            # dunstify -t $TIME \
+            #          -a "Mic" -u normal \
+            #          -h string:x-dunst-stack-tag:$msgTag "Unmuted"
         fi
+        exit 0
+        ;;
+    sync-led)
+        # Hidden option to sync LED with current mic state (useful for startup scripts)
+        sync_mic_led
         exit 0
         ;;
     *)
@@ -78,6 +112,7 @@ esac
 
 volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
 mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || echo "no")
+
 if [[ "$mute" != "yes" ]]; then
     dunstify -t $TIME \
              -a "Volume" -u low -i "$(get_volume_icon $volume)" \

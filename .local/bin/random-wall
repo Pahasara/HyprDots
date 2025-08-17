@@ -4,7 +4,7 @@
 ## If no directory is provided as an argument, it defaults to `~/Pictures/Wallpapers`.
 
 ## Features:
-## - Supports multiple image formats (`.jpg`, `.jpeg`, `.png`, `.gif`).
+## - Supports multiple image formats (`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`).
 ## - Allows specifying a custom wallpaper directory as an argument.
 ## - Applies a smooth transition effect via `swww`.
 
@@ -17,20 +17,16 @@
 
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
-default_wallpaper_dir=~/Pictures/Wallpapers
+wallpaper_dir="${1:-${WALL_DIR:-$HOME/Pictures/Wallpapers}}"
 
-find_images() {
-  find "$1" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \)
-}
+mapfile -t wallpapers < <(find "$wallpaper_dir" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' \))
 
-wallpaper_dir=${1:-$default_wallpaper_dir}
-
-if [[ -d $wallpaper_dir && $(find_images "$wallpaper_dir") ]]; then
-  random_wallpaper=$(find_images "$wallpaper_dir" | shuf -n 1)
-  
-  swww img "$random_wallpaper" --transition-type simple --transition-step 20
-  
-  echo "Wallpaper set to: $random_wallpaper"
-else
-  echo "Wallpaper directory is either missing or does not contain any images."
+if [[ ${#wallpapers[@]} -eq 0 ]]; then
+  echo "No wallpapers found in $wallpaper_dir"
+  exit 1
 fi
+
+random_wallpaper="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
+
+swww img "$random_wallpaper" --transition-type simple --transition-step 20
+echo "Wallpaper set: $random_wallpaper"

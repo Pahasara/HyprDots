@@ -1,9 +1,0 @@
-[Unit]
-Description=Headphone Detection Service
-
-[Service]
-Type=simple
-ExecStart=/home/%u/.local/bin/headphone-status
-
-[Install]
-WantedBy=default.target

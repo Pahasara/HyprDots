@@ -1,5 +1,5 @@
 [Unit]
-Description=KDE Polkit Authentication Agent Service
+Description=Polkit Authentication Agent Service
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target

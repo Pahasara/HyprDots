@@ -1,17 +1,126 @@
 #!/bin/bash
-
-## This script checks the battery level and sends a critical notification if it drops below 25% while not charging.
-
-## Usage:
-## - Run this script periodically using a cron job or systemd service.
-
+##
+## Battery Low Warning Service
+## Checks battery level and sends critical notifications for low battery
+## 
+## Features:
+## - Configurable battery thresholds
+## - Progressive warning levels (25%, 15%, 10%, 5%)
+## - Rate limiting to prevent spam
+## - Proper error handling
+##
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
+##
 
-BATTERY_PATH="/sys/class/power_supply/BAT0"
-BATTERY_LEVEL=$(cat "${BATTERY_PATH}/capacity")
-STATUS=$(cat "${BATTERY_PATH}/status")
+set -euo pipefail
 
-if [[ "$STATUS" != "Charging" ]] && [[ "$BATTERY_LEVEL" -le 25 ]]; then
-    dunstify -u critical "Battery Low" "Battery level is ${BATTERY_LEVEL}%. Connect to the charger." -I "$HOME/.local/share/icons/dunst/low-battery.png"
-    $HOME/.local/bin/sound-alert
-fi
+# Configuration
+readonly SCRIPT_NAME="battery-warning"
+readonly BATTERY_PATH="/sys/class/power_supply/BAT0"
+readonly CAPACITY_FILE="${BATTERY_PATH}/capacity"
+readonly STATUS_FILE="${BATTERY_PATH}/status"
+readonly ICON_LOW_BATTERY="$HOME/.local/share/icons/dunst/low-battery.png"
+readonly SOUND_ALERT="$HOME/.local/bin/sound-alert"
+readonly CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
+readonly LAST_WARNING_FILE="$CACHE_DIR/.battery_last_warning"
+
+# Battery thresholds and urgency levels
+declare -A THRESHOLDS=(
+    [25]="low"
+    [15]="normal" 
+    [10]="critical"
+    [5]="critical"
+)
+
+# Logging function
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$SCRIPT_NAME] $1" >&2
+}
+
+# Get battery info
+get_battery_info() {
+    local capacity status
+    
+    if [[ -r "$CAPACITY_FILE" && -r "$STATUS_FILE" ]]; then
+        capacity=$(cat "$CAPACITY_FILE" 2>/dev/null || echo "0")
+        status=$(cat "$STATUS_FILE" 2>/dev/null || echo "Unknown")
+        echo "$capacity:$status"
+    else
+        log "Error: Cannot read battery files"
+        echo "0:Unknown"
+    fi
+}
+
+# Check if we should send warning (rate limiting)
+should_warn() {
+    local -r level="$1"
+    local last_warning_level=""
+    
+    if [[ -f "$LAST_WARNING_FILE" ]]; then
+        last_warning_level=$(cat "$LAST_WARNING_FILE" 2>/dev/null || echo "")
+    fi
+    
+    # Only warn if battery level decreased to a new threshold
+    [[ "$level" -lt "${last_warning_level:-100}" ]]
+}
+
+# Send warning notification
+send_warning() {
+    local -r level="$1"
+    local -r urgency="$2"
+    
+    local message="Battery Low - ${level}%"
+    [[ "$level" -le 10 ]] && message="CRITICAL: Battery at ${level}%! Connect charger immediately."
+    [[ "$level" -le 5 ]] && message="EMERGENCY: Battery at ${level}%! System will shutdown soon!"
+    
+    if command -v dunstify >/dev/null 2>&1; then
+        dunstify -u "$urgency" -t 5000 \
+                 -I "$ICON_LOW_BATTERY" \
+                 "Battery Warning" "$message"
+    else
+        notify-send -u "$urgency" -t 5000 \
+                    -i "$ICON_LOW_BATTERY" \
+                    "Battery Warning" "$message"
+    fi
+    
+    # Play alert sound
+    if [[ -x "$SOUND_ALERT" ]]; then
+        "$SOUND_ALERT" 2>/dev/null || log "Warning: Sound alert failed"
+    fi
+    
+    # Update last warning level
+    echo "$level" > "$LAST_WARNING_FILE"
+    log "Warning sent for battery level: ${level}%"
+}
+
+# Main function
+main() {
+    # Create cache directory if needed
+    mkdir -p "$CACHE_DIR"
+    
+    # Get battery information
+    local battery_info capacity status
+    battery_info=$(get_battery_info)
+    capacity=${battery_info%%:*}
+    status=${battery_info##*:}
+    
+    log "Battery check: ${capacity}% (${status})"
+    
+    # Don't warn if charging or if capacity is invalid
+    if [[ "$status" == "Charging" ]] || [[ "$status" == "Full" ]] || [[ "$capacity" -le 0 ]]; then
+        # Reset warning state when charging
+        [[ "$status" =~ ^(Charging|Full)$ ]] && rm -f "$LAST_WARNING_FILE"
+        exit 0
+    fi
+    
+    # Check thresholds
+    for threshold in $(printf '%s\n' "${!THRESHOLDS[@]}" | sort -nr); do
+        if [[ "$capacity" -le "$threshold" ]] && should_warn "$threshold"; then
+            send_warning "$threshold" "${THRESHOLDS[$threshold]}"
+            break
+        fi
+    done
+}
+
+# Execute main function
+main "$@"

@@ -1,0 +1,113 @@
+#!/bin/bash
+##
+## Battery Connection Monitor Service
+## Monitors battery charging status and provides real-time notifications
+## 
+## Features:
+## - Event-driven monitoring using inotify (no polling overhead)
+## - Desktop notifications with custom icons
+## - Audio feedback for power events
+## - Proper logging and error handling
+##
+## Author: Pahasara Dewnith (https://github.com/Pahasara)
+##
+
+set -euo pipefail
+
+# Configuration
+readonly SCRIPT_NAME="battery-monitor"
+readonly BATTERY_PATH="/sys/class/power_supply/BAT0"
+readonly STATUS_FILE="${BATTERY_PATH}/status"
+readonly ICON_CONNECTED="$HOME/.local/share/icons/dunst/plugged.png"
+readonly ICON_DISCONNECTED="$HOME/.local/share/icons/dunst/unplugged.png"
+readonly SOUND_CONNECTED="$HOME/.local/bin/sound-alert --plugged"
+readonly SOUND_DISCONNECTED="$HOME/.local/bin/sound-alert --unplugged"
+
+# State management
+declare -g last_status="unknown"
+
+# Logging function
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$SCRIPT_NAME] $1" >&2
+}
+
+# Notification function
+send_notification() {
+    local -r message="$1"
+    local -r icon="$2"
+    local -r sound_cmd="$3"
+    
+    if command -v dunstify >/dev/null 2>&1; then
+        dunstify -t 2000 -u low -I "$icon" "$message" || {
+            log "Warning: dunstify failed, using notify-send"
+            notify-send -t 2000 -i "$icon" "$message"
+        }
+    else
+        notify-send -t 2000 -i "$icon" "$message"
+    fi
+    
+    if ! $sound_cmd 2>/dev/null; then
+        log "Warning: Sound command failed: $sound_cmd"
+    fi
+}
+
+# Get current battery status
+get_battery_status() {
+    if [[ -r "$STATUS_FILE" ]]; then
+        cat "$STATUS_FILE" 2>/dev/null || echo "Unknown"
+    else
+        echo "Unknown"
+    fi
+}
+
+# Handle status changes
+handle_status_change() {
+    local -r current_status="$1"
+    
+    if [[ "$current_status" != "$last_status" ]]; then
+        case "$current_status" in
+            "Charging"|"Full")
+                log "Power connected (Status: $current_status)"
+                send_notification "Plugged in" "$ICON_CONNECTED" "$SOUND_CONNECTED"
+                ;;
+            "Discharging")
+                log "Power disconnected"
+                send_notification "Unplugged" "$ICON_DISCONNECTED" "$SOUND_DISCONNECTED"
+                ;;
+        esac
+        last_status="$current_status"
+    fi
+}
+
+# Cleanup function
+cleanup() {
+    log "Service stopping..."
+    exit 0
+}
+
+# Signal handling
+trap cleanup SIGTERM SIGINT
+
+# Main function
+main() {
+    log "Starting battery monitor service"
+    
+    # Verify battery path exists
+    if [[ ! -d "$BATTERY_PATH" ]]; then
+        log "Error: Battery path $BATTERY_PATH not found"
+        exit 1
+    fi
+    
+    # Set initial state
+    last_status=$(get_battery_status)
+    log "Initial battery status: $last_status"
+    
+    # Use inotify to monitor battery status file for changes (event-driven, no polling!)
+    while inotifywait -e modify "$STATUS_FILE" 2>/dev/null; do
+        current_status=$(get_battery_status)
+        handle_status_change "$current_status"
+    done
+}
+
+# Execute main function
+main "$@"
