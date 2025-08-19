@@ -16,10 +16,9 @@ set -euo pipefail
 
 # Configuration
 readonly SCRIPT_NAME="battery-warning"
-readonly BATTERY_PATH="/sys/class/power_supply/BAT0"
-readonly CAPACITY_FILE="${BATTERY_PATH}/capacity"
-readonly STATUS_FILE="${BATTERY_PATH}/status"
-readonly ICON_LOW_BATTERY="$HOME/.local/share/icons/dunst/low-battery.png"
+readonly POWER_SUPPLY_PATH="/sys/class/power_supply"
+readonly ICON_LOW_BATTERY="$HOME/.local/share/icons/dunst/battery-low.png"
+readonly ICON_DEAD_BATTERY="$HOME/.local/share/icons/dunst/battery-dead.png"
 readonly SOUND_ALERT="$HOME/.local/bin/sound-alert"
 readonly CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
 readonly LAST_WARNING_FILE="$CACHE_DIR/.battery_last_warning"
@@ -32,18 +31,39 @@ declare -A THRESHOLDS=(
     [5]="critical"
 )
 
+# Global variables
+declare -g battery_path=""
+declare -g capacity_file=""
+declare -g status_file=""
+
 # Logging function
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$SCRIPT_NAME] $1" >&2
+}
+
+# Find battery path
+find_battery() {
+    for bat in "$POWER_SUPPLY_PATH"/BAT*; do
+        if [[ -d "$bat" && -r "$bat/capacity" && -r "$bat/status" ]]; then
+            battery_path="$bat"
+            capacity_file="$bat/capacity"
+            status_file="$bat/status"
+            log "Found battery: $battery_path"
+            return 0
+        fi
+    done
+    
+    log "Error: No readable battery found in $POWER_SUPPLY_PATH"
+    return 1
 }
 
 # Get battery info
 get_battery_info() {
     local capacity status
     
-    if [[ -r "$CAPACITY_FILE" && -r "$STATUS_FILE" ]]; then
-        capacity=$(cat "$CAPACITY_FILE" 2>/dev/null || echo "0")
-        status=$(cat "$STATUS_FILE" 2>/dev/null || echo "Unknown")
+    if [[ -r "$capacity_file" && -r "$status_file" ]]; then
+        capacity=$(cat "$capacity_file" 2>/dev/null || echo "0")
+        status=$(cat "$status_file" 2>/dev/null || echo "Unknown")
         echo "$capacity:$status"
     else
         log "Error: Cannot read battery files"
@@ -57,11 +77,13 @@ should_warn() {
     local last_warning_level=""
     
     if [[ -f "$LAST_WARNING_FILE" ]]; then
-        last_warning_level=$(cat "$LAST_WARNING_FILE" 2>/dev/null || echo "")
+        last_warning_level=$(cat "$LAST_WARNING_FILE" 2>/dev/null || echo "100")
+    else
+        last_warning_level="100"
     fi
     
     # Only warn if battery level decreased to a new threshold
-    [[ "$level" -lt "${last_warning_level:-100}" ]]
+    [[ "$level" -lt "$last_warning_level" ]]
 }
 
 # Send warning notification
@@ -69,34 +91,70 @@ send_warning() {
     local -r level="$1"
     local -r urgency="$2"
     
-    local message="Battery Low - ${level}%"
-    [[ "$level" -le 10 ]] && message="CRITICAL: Battery at ${level}%! Connect charger immediately."
-    [[ "$level" -le 5 ]] && message="EMERGENCY: Battery at ${level}%! System will shutdown soon!"
+    local message=""
+    local icon=""
+    local timeout=5000
     
-    if command -v dunstify >/dev/null 2>&1; then
-        dunstify -u "$urgency" -t 5000 \
-                 -I "$ICON_LOW_BATTERY" \
-                 "Battery Warning" "$message"
+    # Determine message and icon based on battery level
+    if [[ "$level" -le 5 ]]; then
+        message="EMERGENCY: Battery at ${level}%! System will shutdown soon!"
+        icon="$ICON_DEAD_BATTERY"
+        timeout=10000
+    elif [[ "$level" -le 10 ]]; then
+        message="CRITICAL: Battery at ${level}%! Connect charger immediately."
+        icon="$ICON_DEAD_BATTERY"
+        timeout=8000
+    elif [[ "$level" -le 15 ]]; then
+        message="Low Battery: ${level}% - Please connect charger"
+        icon="$ICON_LOW_BATTERY"
+        timeout=6000
     else
-        notify-send -u "$urgency" -t 5000 \
-                    -i "$ICON_LOW_BATTERY" \
-                    "Battery Warning" "$message"
+        message="Battery at ${level}% - Consider connecting charger"
+        icon="$ICON_LOW_BATTERY"
+        timeout=5000
     fi
     
-    # Play alert sound
+    # Check if custom icon exists
+    if [[ ! -f "$icon" ]]; then
+        log "Error: Custom icon not found: $icon"
+        return 1
+    fi
+    
+    # Send notification
+    if command -v dunstify >/dev/null 2>&1; then
+        dunstify -u "$urgency" -t "$timeout" -I "$icon" "Battery Warning" "$message" || {
+            log "Error: dunstify notification failed"
+            return 1
+        }
+    elif command -v notify-send >/dev/null 2>&1; then
+        notify-send -u "$urgency" -t "$timeout" -i "$icon" "Battery Warning" "$message" || {
+            log "Error: notify-send notification failed"
+            return 1
+        }
+    else
+        log "Error: No notification system available"
+        return 1
+    fi
+    
+    # Play sound alert
     if [[ -x "$SOUND_ALERT" ]]; then
         "$SOUND_ALERT" 2>/dev/null || log "Warning: Sound alert failed"
     fi
     
     # Update last warning level
     echo "$level" > "$LAST_WARNING_FILE"
-    log "Warning sent for battery level: ${level}%"
+    log "Warning sent for battery level: ${level}% (urgency: $urgency)"
 }
 
 # Main function
 main() {
     # Create cache directory if needed
     mkdir -p "$CACHE_DIR"
+    
+    # Find battery
+    if ! find_battery; then
+        exit 1
+    fi
     
     # Get battery information
     local battery_info capacity status
@@ -106,18 +164,23 @@ main() {
     
     log "Battery check: ${capacity}% (${status})"
     
-    # Don't warn if charging or if capacity is invalid
-    if [[ "$status" == "Charging" ]] || [[ "$status" == "Full" ]] || [[ "$capacity" -le 0 ]]; then
-        # Reset warning state when charging
-        [[ "$status" =~ ^(Charging|Full)$ ]] && rm -f "$LAST_WARNING_FILE"
+    # Don't warn if charging/full or if capacity is invalid
+    if [[ "$status" == "Charging" ]] || [[ "$status" == "Full" ]] || [[ "$capacity" -le 0 ]] || [[ "$capacity" -gt 100 ]]; then
+        # Reset warning state when charging/full
+        if [[ "$status" =~ ^(Charging|Full)$ ]]; then
+            if [[ -f "$LAST_WARNING_FILE" ]]; then
+                rm -f "$LAST_WARNING_FILE"
+                log "Battery charging/full - warning state reset"
+            fi
+        fi
         exit 0
     fi
     
-    # Check thresholds
+    # Check thresholds (from highest to lowest)
     for threshold in $(printf '%s\n' "${!THRESHOLDS[@]}" | sort -nr); do
         if [[ "$capacity" -le "$threshold" ]] && should_warn "$threshold"; then
             send_warning "$threshold" "${THRESHOLDS[$threshold]}"
-            break
+            break  # Send only one warning per run
         fi
     done
 }

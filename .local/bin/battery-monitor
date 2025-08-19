@@ -4,10 +4,11 @@
 ## Monitors battery charging status and provides real-time notifications
 ## 
 ## Features:
-## - Event-driven monitoring using inotify (no polling overhead)
+## - Event-driven monitoring using inotify with polling fallback
 ## - Desktop notifications with custom icons
 ## - Audio feedback for power events
 ## - Proper logging and error handling
+## - Handles multiple battery detection
 ##
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 ##
@@ -16,19 +17,83 @@ set -euo pipefail
 
 # Configuration
 readonly SCRIPT_NAME="battery-monitor"
-readonly BATTERY_PATH="/sys/class/power_supply/BAT0"
-readonly STATUS_FILE="${BATTERY_PATH}/status"
+readonly POWER_SUPPLY_PATH="/sys/class/power_supply"
 readonly ICON_CONNECTED="$HOME/.local/share/icons/dunst/plugged.png"
 readonly ICON_DISCONNECTED="$HOME/.local/share/icons/dunst/unplugged.png"
 readonly SOUND_CONNECTED="$HOME/.local/bin/sound-alert --plugged"
 readonly SOUND_DISCONNECTED="$HOME/.local/bin/sound-alert --unplugged"
+readonly POLL_INTERVAL=3
+readonly LOG_FILE="/tmp/battery-monitor.log"
 
-# State management
-declare -g last_status="unknown"
+# Global variables
+declare -g battery_path=""
+declare -g ac_adapter_path=""
+declare -g last_charging_state="unknown"
 
 # Logging function
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$SCRIPT_NAME] $1" >&2
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "[$timestamp] [$SCRIPT_NAME] $1" | tee -a "$LOG_FILE" >&2
+}
+
+# Find battery and AC adapter
+find_power_devices() {
+    # Find battery
+    for bat in "$POWER_SUPPLY_PATH"/BAT*; do
+        if [[ -d "$bat" && -r "$bat/status" ]]; then
+            battery_path="$bat"
+            log "Found battery: $battery_path"
+            break
+        fi
+    done
+
+    # Find AC adapter
+    for ac in "$POWER_SUPPLY_PATH"/{ADP*,AC*,ACAD*}; do
+        if [[ -d "$ac" && -r "$ac/online" ]]; then
+            ac_adapter_path="$ac"
+            log "Found AC adapter: $ac_adapter_path"
+            break
+        fi
+    done
+
+    if [[ -z "$battery_path" ]]; then
+        log "Error: No readable battery found in $POWER_SUPPLY_PATH"
+        return 1
+    fi
+}
+
+# Get charging state (more reliable than just battery status)
+get_charging_state() {
+    local battery_status="Unknown"
+    local ac_online="0"
+
+    # Get battery status
+    if [[ -r "$battery_path/status" ]]; then
+        battery_status=$(cat "$battery_path/status" 2>/dev/null || echo "Unknown")
+    fi
+
+    # Get AC adapter status if available
+    if [[ -n "$ac_adapter_path" && -r "$ac_adapter_path/online" ]]; then
+        ac_online=$(cat "$ac_adapter_path/online" 2>/dev/null || echo "0")
+    fi
+
+    # Determine charging state
+    if [[ "$battery_status" == "Charging" ]] || [[ "$ac_online" == "1" && "$battery_status" != "Discharging" ]]; then
+        echo "charging"
+    elif [[ "$battery_status" == "Discharging" ]] || [[ "$ac_online" == "0" ]]; then
+        echo "discharging"
+    else
+        echo "$battery_status"
+    fi
+}
+
+# Get battery percentage
+get_battery_percentage() {
+    if [[ -r "$battery_path/capacity" ]]; then
+        cat "$battery_path/capacity" 2>/dev/null || echo "?"
+    else
+        echo "?"
+    fi
 }
 
 # Notification function
@@ -37,76 +102,212 @@ send_notification() {
     local -r icon="$2"
     local -r sound_cmd="$3"
     
+    # Check if icon exists, use fallback if not
+    local notification_icon="$icon"
+    if [[ ! -f "$icon" ]]; then
+        case "$message" in
+            *"Plugged"*|*"Charging"*) notification_icon="battery-charging" ;;
+            *"Unplugged"*|*"Discharging"*) notification_icon="battery-empty" ;;
+            *) notification_icon="battery" ;;
+        esac
+        log "Icon not found: $icon, using fallback: $notification_icon"
+    fi
+    
+    # Send notification
     if command -v dunstify >/dev/null 2>&1; then
-        dunstify -t 2000 -u low -I "$icon" "$message" || {
-            log "Warning: dunstify failed, using notify-send"
-            notify-send -t 2000 -i "$icon" "$message"
-        }
+        if ! dunstify -t 3000 -u low -i "$notification_icon" "Battery Status" "$message" 2>/dev/null; then
+            log "dunstify failed, trying notify-send"
+            notify-send -t 3000 -i "$notification_icon" "Battery Status" "$message" 2>/dev/null || log "All notification methods failed"
+        fi
+    elif command -v notify-send >/dev/null 2>&1; then
+        notify-send -t 3000 -i "$notification_icon" "Battery Status" "$message" 2>/dev/null || log "notify-send failed"
     else
-        notify-send -t 2000 -i "$icon" "$message"
+        log "No notification system available"
     fi
     
-    if ! $sound_cmd 2>/dev/null; then
-        log "Warning: Sound command failed: $sound_cmd"
+    # Play sound
+    if [[ -n "$sound_cmd" ]]; then
+        if ! eval "$sound_cmd" 2>/dev/null; then
+            log "Sound command failed: $sound_cmd"
+        fi
     fi
 }
 
-# Get current battery status
-get_battery_status() {
-    if [[ -r "$STATUS_FILE" ]]; then
-        cat "$STATUS_FILE" 2>/dev/null || echo "Unknown"
-    else
-        echo "Unknown"
-    fi
-}
-
-# Handle status changes
-handle_status_change() {
-    local -r current_status="$1"
+# Handle charging state changes
+handle_state_change() {
+    local -r current_state="$1"
+    local -r battery_pct=$(get_battery_percentage)
     
-    if [[ "$current_status" != "$last_status" ]]; then
-        case "$current_status" in
-            "Charging"|"Full")
-                log "Power connected (Status: $current_status)"
-                send_notification "Plugged in" "$ICON_CONNECTED" "$SOUND_CONNECTED"
+    if [[ "$current_state" != "$last_charging_state" ]]; then
+        log "State change: $last_charging_state -> $current_state (Battery: ${battery_pct}%)"
+        
+        case "$current_state" in
+            "charging")
+                send_notification "Charger connected (${battery_pct}%)" "$ICON_CONNECTED" "$SOUND_CONNECTED"
                 ;;
-            "Discharging")
-                log "Power disconnected"
-                send_notification "Unplugged" "$ICON_DISCONNECTED" "$SOUND_DISCONNECTED"
+            "discharging")
+                send_notification "Charger disconnected (${battery_pct}%)" "$ICON_DISCONNECTED" "$SOUND_DISCONNECTED"
+                ;;
+            "Full")
+                send_notification "Battery fully charged" "$ICON_CONNECTED" ""
                 ;;
         esac
-        last_status="$current_status"
+        
+        last_charging_state="$current_state"
     fi
+}
+
+# Test if inotify works on sysfs files
+test_inotify_support() {
+    local status_file="$battery_path/status"
+    log "Testing inotify support on sysfs files..."
+    
+    # Test for 3 seconds to see if inotify triggers
+    if timeout 3 inotifywait -qq -e modify,attrib "$status_file" 2>/dev/null; then
+        log "inotify works on battery status file"
+        return 0
+    else
+        log "inotify doesn't work reliably on sysfs files (this is normal)"
+        return 1
+    fi
+}
+
+# Monitor using udev events (best method for hardware changes)
+monitor_with_udev() {
+    log "Starting udev event monitoring"
+    local event_count=0
+    local last_event_time=0
+    
+    # Monitor udev events for power_supply subsystem
+    udevadm monitor --subsystem-match=power_supply --property | while read -r line; do
+        current_time=$(date +%s)
+        
+        # Only process relevant power supply events
+        if [[ "$line" == *"POWER_SUPPLY_ONLINE"* ]] || [[ "$line" == *"POWER_SUPPLY_STATUS"* ]]; then
+            # Debounce rapid events (ignore events within 2 seconds of each other)
+            if (( current_time - last_event_time >= 2 )); then
+                sleep 0.5  # Brief delay for sysfs to stabilize
+                current_state=$(get_charging_state)
+                handle_state_change "$current_state"
+                last_event_time=$current_time
+            fi
+        fi
+    done
+}
+
+# Monitor using optimized polling
+monitor_with_smart_polling() {
+    log "Starting smart polling monitoring"
+    local fast_interval=1    # Check every 1 second when recently changed
+    local slow_interval=5    # Check every 5 seconds when stable
+    local current_interval=$slow_interval
+    local stable_count=0
+    
+    while true; do
+        current_state=$(get_charging_state)
+        
+        if [[ "$current_state" != "$last_charging_state" ]]; then
+            handle_state_change "$current_state"
+            current_interval=$fast_interval  # Switch to fast polling
+            stable_count=0
+        else
+            ((stable_count++))
+            # After 10 stable readings, switch back to slow polling
+            if (( stable_count >= 10 && current_interval == fast_interval )); then
+                current_interval=$slow_interval
+                log "Switching to slow polling mode"
+            fi
+        fi
+        
+        sleep "$current_interval"
+    done
+}
+
+# Monitor using inotify (kept for completeness, but often doesn't work on sysfs)
+monitor_with_inotify() {
+    log "Starting inotify monitoring"
+    local status_file="$battery_path/status"
+    local ac_file="$ac_adapter_path/online"
+    
+    # Monitor both battery status and AC adapter if available
+    local watch_files=("$status_file")
+    if [[ -n "$ac_adapter_path" && -r "$ac_file" ]]; then
+        watch_files+=("$ac_file")
+    fi
+    
+    while true; do
+        if inotifywait -qq -e modify,attrib "${watch_files[@]}" 2>/dev/null; then
+            sleep 0.5  # Brief delay to avoid rapid-fire notifications
+            current_state=$(get_charging_state)
+            handle_state_change "$current_state"
+        else
+            log "inotify failed, falling back to polling"
+            return 1
+        fi
+    done
 }
 
 # Cleanup function
 cleanup() {
-    log "Service stopping..."
+    log "Service stopping (PID: $$)"
+    jobs -p | xargs -r kill 2>/dev/null || true
     exit 0
 }
 
+# Check dependencies (only warn about critical missing deps)
+check_dependencies() {
+    local missing_critical=()
+    
+    if ! command -v udevadm >/dev/null 2>&1; then
+        missing_critical+=("udev (for hardware event monitoring)")
+    fi
+    
+    if ! command -v dunstify >/dev/null 2>&1 && ! command -v notify-send >/dev/null 2>&1; then
+        missing_critical+=("notification system (dunst or libnotify)")
+    fi
+    
+    if [[ ${#missing_critical[@]} -gt 0 ]]; then
+        log "Warning: Missing critical dependencies: ${missing_critical[*]}"
+    fi
+}
+
 # Signal handling
-trap cleanup SIGTERM SIGINT
+trap cleanup SIGTERM SIGINT SIGQUIT
 
 # Main function
 main() {
-    log "Starting battery monitor service"
+    log "Starting battery monitor service (PID: $$)"
     
-    # Verify battery path exists
-    if [[ ! -d "$BATTERY_PATH" ]]; then
-        log "Error: Battery path $BATTERY_PATH not found"
+    # Check dependencies
+    check_dependencies
+    
+    # Find power supply devices
+    if ! find_power_devices; then
         exit 1
     fi
     
     # Set initial state
-    last_status=$(get_battery_status)
-    log "Initial battery status: $last_status"
+    last_charging_state=$(get_charging_state)
+    local battery_pct=$(get_battery_percentage)
+    log "Initial state: $last_charging_state (Battery: ${battery_pct}%)"
     
-    # Use inotify to monitor battery status file for changes (event-driven, no polling!)
-    while inotifywait -e modify "$STATUS_FILE" 2>/dev/null; do
-        current_status=$(get_battery_status)
-        handle_status_change "$current_status"
-    done
+    # Choose monitoring method (priority order: udev > inotify > polling)
+    if command -v udevadm >/dev/null 2>&1; then
+        log "Using udev event monitoring (optimal method)"
+        monitor_with_udev
+    elif command -v inotifywait >/dev/null 2>&1; then
+        log "udev not available, testing inotify support..."
+        if test_inotify_support; then
+            log "Using inotify monitoring"
+            monitor_with_inotify
+        else
+            log "inotify doesn't work on sysfs, using smart polling"
+            monitor_with_smart_polling
+        fi
+    else
+        log "Using smart polling monitoring (install udev or inotify-tools for better performance)"
+        monitor_with_smart_polling
+    fi
 }
 
 # Execute main function
