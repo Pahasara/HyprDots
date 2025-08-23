@@ -15,7 +15,7 @@ export HISTFILE="$ZSH/cache/.zsh_history"
 # ──────────────────────────────────────────────────────────────
 export SCRIPT_DIR="$HOME/.local/bin"         # Custom user scripts directory
 export WALL_DIR="$HOME/Pictures/Wallpapers"  # Wallpaper storage directory
-export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache"  # custom shader cache
+export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache_custom"  # custom shader cache
 
 # ──────────────────────────────────────────────────────────────
 # Editor Configuration
@@ -26,7 +26,7 @@ export VISUAL="nvim"
 # ──────────────────────────────────────────────────────────────
 # Diff Tools
 # ──────────────────────────────────────────────────────────────
-export DIFFPROG="kompare paccdiff -s"  # Use Kompare & paccdiff for diffs
+export DIFFPROG="kompare"  # Use Kompare for diffs
 
 # ──────────────────────────────────────────────────────────────
 # Better `cat` with BAT
