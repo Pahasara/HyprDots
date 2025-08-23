@@ -216,7 +216,7 @@
         "exec": "~/.config/waybar/modules/storage.sh"
     },
     "custom/song": {
-        "interval": 5,
+        "interval": 2,
         "exec": "~/.local/bin/media-info",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
