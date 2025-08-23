@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Zen Mode Toggle Script for Hyprland
+set -euo pipefail
+
+# Configuration
+HYPR_CONFIG="$HOME/.config/hypr/hyprland.conf"
+WAYMOD_SCRIPT="${SCRIPT_DIR:+$SCRIPT_DIR/waymod}"
+WAYMOD_SCRIPT="${WAYMOD_SCRIPT:-$HOME/.local/bin/waymod}"
+
+# Check if zen mode is currently active
+is_zen_active() {
+    grep -q "^source=zen\.conf" "$HYPR_CONFIG"
+}
+
+# Activate zen mode
+activate_zen() {
+    sed -i 's/^#source=zen\.conf$/source=zen.conf/' "$HYPR_CONFIG"
+    echo "Hyprland zen: ON"
+    
+    if [[ -x "$WAYMOD_SCRIPT" ]]; then
+        "$WAYMOD_SCRIPT" top azure
+        echo "Waybar zen: ON"
+    fi
+}
+
+# Deactivate zen mode
+deactivate_zen() {
+    sed -i 's/^source=zen\.conf$/#source=zen.conf/' "$HYPR_CONFIG"
+    echo "Hyprland zen: OFF"
+    
+    if [[ -x "$WAYMOD_SCRIPT" ]]; then
+        "$WAYMOD_SCRIPT" float azure
+        echo "Waybar zen: OFF"
+    fi
+}
+
+# Main logic
+case "${1:-toggle}" in
+    "on")
+        if ! is_zen_active; then
+            activate_zen
+        fi
+        ;;
+    "off")
+        if is_zen_active; then
+            deactivate_zen
+        fi
+        ;;
+    "toggle")
+        if is_zen_active; then
+            deactivate_zen
+        else
+            activate_zen
+        fi
+        ;;
+    *)
+        echo "Usage: zen-mode [toggle|on|off]"
+        exit 1
+        ;;
+esac
