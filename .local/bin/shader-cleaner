@@ -4,12 +4,20 @@ set -euo pipefail
 # Description:
 #   Cleans Mesa shader cache if Mesa has been upgraded.
 #   Stores the last Mesa version in a file to detect changes.
+#   Cleans all known Mesa shader cache formats: sf, db, and default.
 
 # ─── Configuration ────────────────────────────────────────────────
 VERSION_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/.mesa_last_version"
-MESA_SHADER_CACHE_PATH="${MESA_SHADER_CACHE_PATH:-${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache_db}"
-LEGACY_SHADER_CACHE_PATH="${XDG_CACHE_HOME:-$HOME/.cache}/mesa_shader_cache"
-LOGFILE="${XDG_CACHE_HOME:-$HOME/.cache}/mesa-shader-cleaner.log"
+CACHE_BASE="${XDG_CACHE_HOME:-$HOME/.cache}"
+LOGFILE="${CACHE_BASE}/mesa-shader-cleaner.log"
+
+# Mesa shader cache paths (all known formats)
+MESA_SHADER_CACHE_PATHS=(
+    "${CACHE_BASE}/mesa_shader_cache_db"                             # Database format
+    "${CACHE_BASE}/mesa_shader_cache_sf"                             # Single file format
+    "${CACHE_BASE}/mesa_shader_cache_custom"                         # Custom shader caches
+    "${MESA_SHADER_CACHE_PATH:-${CACHE_BASE}/mesa_shader_cache}"     # Modern standard (temp)
+)
 
 # ─── Functions ────────────────────────────────────────────────────
 log() {
@@ -18,6 +26,37 @@ log() {
 
 get_current_mesa_version() {
     pacman -Qi mesa | awk '/^Version/ { print $3 }'
+}
+
+clean_shader_caches() {
+    local cleaned_count=0
+    local total_size=0
+    
+    for cache_path in "${MESA_SHADER_CACHE_PATHS[@]}"; do
+        if [[ -e "$cache_path" ]]; then
+            # Calculate size before removal (for logging)
+            if command -v du >/dev/null 2>&1; then
+                local size_kb=$(du -sk "$cache_path" 2>/dev/null | cut -f1 || echo "0")
+                total_size=$((total_size + size_kb))
+            fi
+            
+            log "Removing shader cache: $cache_path"
+            rm -rf -- "$cache_path"
+            ((cleaned_count++))
+        fi
+    done
+    
+    if [[ $cleaned_count -gt 0 ]]; then
+        if [[ $total_size -gt 0 ]]; then
+            log "Cleaned $cleaned_count shader cache(s), freed ${total_size}KB of disk space."
+        else
+            log "Cleaned $cleaned_count shader cache(s)."
+        fi
+    else
+        log "No shader caches found to clean."
+    fi
+    
+    return $cleaned_count
 }
 
 # ─── Execution ────────────────────────────────────────────────────
@@ -36,13 +75,18 @@ PREVIOUS_VERSION="$(<"$VERSION_FILE")"
 # Compare versions
 if [[ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]]; then
     log "Mesa upgraded: $PREVIOUS_VERSION → $CURRENT_VERSION"
-    log "Cleaning shader cache..."
-
-    rm -rf -- "$MESA_SHADER_CACHE_PATH" "$LEGACY_SHADER_CACHE_PATH"
-
-    log "Shader caches removed."
+    log "Cleaning shader caches..."
+    
+    if clean_shader_caches; then
+        log "Shader cache cleanup completed successfully."
+    fi
+    
+    # Update version file
     echo "$CURRENT_VERSION" > "$VERSION_FILE"
-# else
-#     log "Mesa version unchanged ($CURRENT_VERSION). No cleanup needed."
+    log "Version file updated to: $CURRENT_VERSION"
+else
+    # Uncomment the line below if you want to log when no cleanup is needed
+    # log "Mesa version unchanged ($CURRENT_VERSION). No cleanup needed."
+    :
 fi
 
