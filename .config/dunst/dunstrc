@@ -71,7 +71,7 @@
     timeout = 7
 
 [urgency_normal]
-    default_icon = "$HOME/.local/share/icons/dunst/info.png"
+    default_icon = "info"
     background = "#12131596"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
@@ -80,7 +80,7 @@
     timeout = 20
 
 [urgency_critical]
-    default_icon = "$HOME/.local/share/icons/dunst/caution.png"
+    default_icon = "caution"
     background = "#1213149D"
     foreground = "#FFBB44"
     highlight = "#FF6633EE"
@@ -96,12 +96,12 @@
 [system]
     appname = "System"
     max_icon_size = 72
-    default_icon = "$HOME/.local/share/icons/dunst/arch.png"
+    default_icon = "arch"
     timeout = 5
 
 [gamemode]
     appname = "gamemode"
-    default_icon = "$HOME/.local/share/icons/dunst/gamemode.png"
+    default_icon = "gamemode"
     max_icon_size = 72
     timeout = 5
 
@@ -109,13 +109,13 @@
     appname = "Mic"
     msg_urgency = "low"
     max_icon_size = 72
-    default_icon = "$HOME/.local/share/icons/dunst/mic-off.png"
+    default_icon = "mic-off"
 
 [mic_high]
     appname = "Mic"
     msg_urgency = "normal"
     max_icon_size = 72
-    default_icon = "$HOME/.local/share/icons/dunst/mic-on.png"
+    default_icon = "mic-on"
 
 [volume]
     appname = "Volume"
