@@ -255,6 +255,7 @@
         "exec": "~/.local/bin/media-info",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
+        "on-click-middle": "~/.local/bin/player toggle_play",
         "escape": true
     },
     "backlight": {
