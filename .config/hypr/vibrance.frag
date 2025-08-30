@@ -1,19 +1,19 @@
-#version 300 es
+#version 320 es
+// Enhanced Vibrance Screen Shader for Hyprland
+// OpenGL ES 3.2 optimized with modern GLSL features
+// Influenced by SweetFX vibrance implementation
 
-// Vibrance Screen Shader for Hyprland
-// Based on SweetFX vibrance implementation
-// Enhances color saturation while preserving luminance
 
-precision mediump float;
+precision highp float;
 
 // Input texture coordinate from vertex shader
 in vec2 v_texcoord;
 
 // Screen texture sampler
-uniform sampler2D tex;
+layout(binding = 0) uniform sampler2D tex;
 
 // Output fragment color
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 // ===== VIBRANCE CONFIGURATION =====
 // Color channel balance (R, G, B) - adjust individual channel sensitivity
