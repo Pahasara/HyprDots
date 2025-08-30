@@ -1,6 +1,5 @@
 #!/bin/bash
-set -euo pipefail
-
+set -e  # Exit on error, but handle errors gracefully
 # Description:
 #   Cleans Mesa shader cache if Mesa has been upgraded.
 #   Stores the last Mesa version in a file to detect changes.
@@ -9,23 +8,39 @@ set -euo pipefail
 # ─── Configuration ────────────────────────────────────────────────
 VERSION_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/.mesa_last_version"
 CACHE_BASE="${XDG_CACHE_HOME:-$HOME/.cache}"
-LOGFILE="${CACHE_BASE}/mesa-shader-cleaner.log"
+SHADER_CLEANER_LOG="${CACHE_BASE}/mesa-shader-cleaner.log"
 
 # Mesa shader cache paths (all known formats)
 MESA_SHADER_CACHE_PATHS=(
-    "${CACHE_BASE}/mesa_shader_cache_db"                             # Database format
-    "${CACHE_BASE}/mesa_shader_cache_sf"                             # Single file format
-    "${CACHE_BASE}/mesa_shader_cache_custom"                         # Custom shader caches
-    "${MESA_SHADER_CACHE_PATH:-${CACHE_BASE}/mesa_shader_cache}"     # Modern standard (temp)
+    "${CACHE_BASE}/mesa_shader_cache_db"
+    "${CACHE_BASE}/mesa_shader_cache_sf"
+    "${MESA_SHADER_CACHE_DIR:-${CACHE_BASE}/mesa_shader_cache}"
+    "${SHADER_CACHE_DIR:-${CACHE_BASE}/shader_cache}"
 )
 
+# Add custom path if provided as argument
+if [ $# -gt 0 ] && [ -n "$1" ]; then
+    MESA_SHADER_CACHE_PATHS+=("$1")
+fi
+
 # ─── Functions ────────────────────────────────────────────────────
+
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOGFILE"
+    local message="[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+    echo "$message"
+    if echo "$message" >> "$SHADER_CLEANER_LOG" 2>/dev/null; then
+        :  # Success, do nothing
+    fi
 }
 
 get_current_mesa_version() {
-    pacman -Qi mesa | awk '/^Version/ { print $3 }'
+    local version
+    version=$(pacman -Qi mesa 2>/dev/null | awk '/^Version/ { print $3 }')
+    if [ -n "$version" ]; then
+        echo "$version"
+    else
+        echo "unknown"
+    fi
 }
 
 clean_shader_caches() {
@@ -33,60 +48,99 @@ clean_shader_caches() {
     local total_size=0
     
     for cache_path in "${MESA_SHADER_CACHE_PATHS[@]}"; do
-        if [[ -e "$cache_path" ]]; then
+        if [ -e "$cache_path" ]; then
             # Calculate size before removal (for logging)
             if command -v du >/dev/null 2>&1; then
-                local size_kb=$(du -sk "$cache_path" 2>/dev/null | cut -f1 || echo "0")
-                total_size=$((total_size + size_kb))
+                local size_kb
+                size_kb=$(du -sk "$cache_path" 2>/dev/null | cut -f1)
+                if [ -n "$size_kb" ] && [ "$size_kb" != "0" ]; then
+                    total_size=$((total_size + size_kb))
+                fi
             fi
             
             log "Removing shader cache: $cache_path"
-            rm -rf -- "$cache_path"
-            ((cleaned_count++))
+            if rm -rf -- "$cache_path" 2>/dev/null; then
+                cleaned_count=$((cleaned_count + 1))
+            else
+                log "Failed to remove: $cache_path"
+            fi
         fi
     done
     
-    if [[ $cleaned_count -gt 0 ]]; then
-        if [[ $total_size -gt 0 ]]; then
-            log "Cleaned $cleaned_count shader cache(s), freed ${total_size}KB of disk space."
+    if [ $cleaned_count -gt 0 ]; then
+        if [ $total_size -gt 0 ]; then
+            if [ $total_size -gt 1024 ]; then
+                local size_mb=$((total_size / 1024))
+                log "Cleaned $cleaned_count cache(s), freed ${size_mb}MB"
+            else
+                log "Cleaned $cleaned_count cache(s), freed ${total_size}KB"
+            fi
         else
-            log "Cleaned $cleaned_count shader cache(s)."
+            log "Cleaned $cleaned_count cache(s)"
         fi
     else
         log "No shader caches found to clean."
     fi
+}
+
+safe_write_version() {
+    local version="$1"
+    local temp_file="${VERSION_FILE}.tmp"
     
-    return $cleaned_count
+    # Write to temp file, then move atomically
+    if echo "$version" > "$temp_file" 2>/dev/null; then
+        if mv "$temp_file" "$VERSION_FILE" 2>/dev/null; then
+            # log "Version file updated successfully to: $version"
+            return 0
+        else
+            rm -f "$temp_file" 2>/dev/null
+            log "Failed to update version file"
+            return 1
+        fi
+    else
+        log "Failed to write temp version file"
+        return 1
+    fi
 }
 
 # ─── Execution ────────────────────────────────────────────────────
-CURRENT_VERSION="$(get_current_mesa_version)"
 
-# If version file doesn't exist, create it and exit
-if [[ ! -f "$VERSION_FILE" ]]; then
-    echo "$CURRENT_VERSION" > "$VERSION_FILE"
-    log "Initialized version tracking: $CURRENT_VERSION"
+# Create directories
+mkdir -p "$CACHE_BASE" 2>/dev/null || true
+mkdir -p "$(dirname "$SHADER_CLEANER_LOG")" 2>/dev/null || true
+
+CURRENT_VERSION=$(get_current_mesa_version)
+
+# Exit if we can't detect Mesa version
+if [ "$CURRENT_VERSION" = "unknown" ]; then
+    log "Cannot detect Mesa version. Exiting."
     exit 0
 fi
 
 # Read previous version
-PREVIOUS_VERSION="$(<"$VERSION_FILE")"
-
-# Compare versions
-if [[ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]]; then
-    log "Mesa upgraded: $PREVIOUS_VERSION → $CURRENT_VERSION"
-    log "Cleaning shader caches..."
-    
-    if clean_shader_caches; then
-        log "Shader cache cleanup completed successfully."
-    fi
-    
-    # Update version file
-    echo "$CURRENT_VERSION" > "$VERSION_FILE"
-    log "Version file updated to: $CURRENT_VERSION"
-else
-    # Uncomment the line below if you want to log when no cleanup is needed
-    # log "Mesa version unchanged ($CURRENT_VERSION). No cleanup needed."
-    :
+PREVIOUS_VERSION=""
+if [ -f "$VERSION_FILE" ] && [ -r "$VERSION_FILE" ]; then
+    PREVIOUS_VERSION=$(cat "$VERSION_FILE" 2>/dev/null | head -1 | tr -d '\n\r')
 fi
 
+# Handle empty or missing version (first run)
+if [ -z "$PREVIOUS_VERSION" ]; then
+    log "Cache base: $CACHE_BASE, Version file: $VERSION_FILE"
+    log "Initialized version tracking: $CURRENT_VERSION"
+    safe_write_version "$CURRENT_VERSION"
+    exit 0
+fi
+
+# Compare versions
+if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+    log "Mesa upgraded: $PREVIOUS_VERSION → $CURRENT_VERSION"
+    # log "Cleaning shader caches..."
+    
+    clean_shader_caches
+    # log "Shader cache cleanup completed."
+    
+    # Update version file
+    safe_write_version "$CURRENT_VERSION"
+fi
+
+exit 0
