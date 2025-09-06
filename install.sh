@@ -6,6 +6,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
+MAGENTA='\033[0;35m'
 NC='\033[0m'
 
 # Logging functions
@@ -14,12 +15,13 @@ log_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 log_step() { echo -e "${BLUE}[STEP]${NC} $1"; }
 log_success() { echo -e "${CYAN}[SUCCESS]${NC} $1"; }
+log_prompt() { echo -e "${MAGENTA}[PROMPT]${NC} $1"; }
 
 # Package lists
 PACMAN_PACKAGES=(
     "hyprland" "waybar" "dunst" "hypridle" "hyprlock"
     "sddm" "polkit-kde-agent" "xdg-desktop-portal-hyprland"
-    "xdg-desktop-portal-gtk" "pipewire" "pipewire-pulse"
+    "xdg-desktop-portal-gtk" "pipewire" "pipewire-pulse" "pipewire-alsa"
     "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
     "kitty" "zsh" "starship" "eza" "fastfetch" "lolcat"
     "7zip" "aria2" "cliphist" "grim" "slurp" "brightnessctl"
@@ -40,6 +42,28 @@ AUR_PACKAGES=(
     "kvantum-theme-whitesur-git"
     "whitesur-gtk-theme"
     "whitesur-icon-theme"
+)
+
+# User services that are enabled by default
+ENABLED_USER_SERVICES=(
+    "battery-monitor.service"
+    "headphone-monitor.service"
+    "ianny.service"
+    "mic-led-monitor.service"
+    "swww-daemon.service"
+    "udiskie-automount.service"
+)
+
+ENABLED_GRAPHICAL_SERVICES=(
+    "clipboard-history.service"
+    "hypridle.service"
+    "polkit-authentication.service"
+    "waybar.service"
+    "wayland-env.service"
+)
+
+ENABLED_TIMERS=(
+    "battery-warning.timer"
 )
 
 check_permissions() {
@@ -63,7 +87,9 @@ backup_configs() {
     local items=(
         ".config/hypr" ".config/waybar" ".config/dunst" ".config/rofi"
         ".config/kitty" ".config/yazi" ".config/neovim" ".config/mpv"
-        ".zshrc" ".zshenv"
+        ".config/gtk-3.0" ".config/gtk-4.0" ".config/qt5ct" ".config/qt6ct"
+        ".config/Kvantum" ".config/systemd"
+        ".zshrc" ".zshenv" ".gtkrc-2.0"
     )
     for item in "${items[@]}"; do
         [[ -e "$HOME/$item" ]] && cp -r "$HOME/$item" "$backup_dir/$item" && log_info "Backed up $item"
@@ -114,11 +140,95 @@ install_dotfiles() {
     log_step "Installing HyprDots configs"
     mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.local/share" "$HOME/Pictures/Wallpapers"
 
+    # Copy config files
     [[ -d ".config" ]] && cp -r .config/* "$HOME/.config/" && log_info "Copied .config files"
     [[ -d ".local" ]] && cp -r .local/* "$HOME/.local/" && log_info "Copied .local files"
     [[ -d ".walls" ]] && cp -r .walls/* "$HOME/Pictures/Wallpapers/" 2>/dev/null && log_info "Copied wallpapers"
 
+    # Ensure proper permissions for executables
+    find "$HOME/.local/bin" -type f -exec chmod +x {} \; 2>/dev/null
+
     log_success "Config files installed."
+}
+
+configure_gtk_themes() {
+    log_step "Configuring GTK themes"
+    
+    # Wait for AUR packages to be properly installed
+    sleep 2
+    
+    # Set GTK theme via gsettings
+    if command -v gsettings &>/dev/null; then
+        gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark" 2>/dev/null || log_warning "Could not set GTK theme via gsettings"
+        gsettings set org.gnome.desktop.interface icon-theme "WhiteSur-dark" 2>/dev/null || log_warning "Could not set icon theme via gsettings"
+        gsettings set org.gnome.desktop.interface cursor-theme "macOS" 2>/dev/null || log_warning "Could not set cursor theme via gsettings"
+    fi
+    
+    # Create GTK-3.0 config
+    mkdir -p "$HOME/.config/gtk-3.0"
+    cat > "$HOME/.config/gtk-3.0/settings.ini" << EOF
+[Settings]
+gtk-theme-name=WhiteSur-Dark
+gtk-icon-theme-name=WhiteSur-dark
+gtk-font-name=Sans 11
+gtk-cursor-theme-name=macOS
+gtk-cursor-theme-size=28
+gtk-toolbar-style=GTK_TOOLBAR_BOTH
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=0
+gtk-menu-images=0
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=0
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintslight
+gtk-xft-rgba=rgb
+gtk-application-prefer-dark-theme=1
+gtk-decoration-layout=appmenu:none
+EOF
+
+    # Create GTK-4.0 config
+    mkdir -p "$HOME/.config/gtk-4.0"
+
+    # Check if WhiteSur theme symlinks exist and preserve them
+    local gtk4_theme_dir="/usr/share/themes/WhiteSur-Dark/gtk-4.0"
+    if [[ -d "$gtk4_theme_dir" ]]; then
+        # Create symlinks if they don't exist
+        [[ ! -L "$HOME/.config/gtk-4.0/gtk.css" ]] && ln -sf "$gtk4_theme_dir/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+        [[ ! -L "$HOME/.config/gtk-4.0/gtk-dark.css" ]] && ln -sf "$gtk4_theme_dir/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
+        log_info "GTK-4.0 theme symlinks preserved/created"
+    fi
+
+    cat > "$HOME/.config/gtk-4.0/settings.ini" << EOF
+[Settings]
+gtk-theme-name=WhiteSur-Dark
+gtk-icon-theme-name=WhiteSur-dark
+gtk-font-name=Sans 11
+gtk-cursor-theme-name=macOS
+gtk-cursor-theme-size=28
+gtk-application-prefer-dark-theme=1
+EOF
+
+    # Create GTK-2.0 config
+    cat > "$HOME/.gtkrc-2.0" << EOF
+gtk-theme-name="WhiteSur-Dark"
+gtk-icon-theme-name="WhiteSur-dark"
+gtk-font-name="Sans 11"
+gtk-cursor-theme-name="macOS"
+gtk-cursor-theme-size=28
+gtk-toolbar-style=GTK_TOOLBAR_BOTH
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=0
+gtk-menu-images=0
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=0
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle="hintslight"
+gtk-xft-rgba="rgb"
+EOF
+
+    log_success "GTK themes configured."
 }
 
 install_cursors() {
@@ -147,29 +257,129 @@ install_cursors() {
 install_omz() {
     log_step "Setting up Zsh + plugins"
     command -v zsh &>/dev/null || { log_error "Zsh not installed."; exit 1; }
-    [[ -d "$HOME/.oh-my-zsh" ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    
+    # Install Oh My Zsh if not present
+    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+        log_info "Installing Oh My Zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    fi
+    
     ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
     declare -A plugins=(
         ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
         ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
         ["zsh-autocomplete"]="https://github.com/marlonrichert/zsh-autocomplete.git"
     )
+    
+    log_info "Installing Zsh plugins..."
     for name in "${!plugins[@]}"; do
-        [[ ! -d "$ZSH_CUSTOM/plugins/$name" ]] && git clone --depth 1 "${plugins[$name]}" "$ZSH_CUSTOM/plugins/$name"
+        if [[ ! -d "$ZSH_CUSTOM/plugins/$name" ]]; then
+            log_info "Installing $name..."
+            git clone --depth 1 "${plugins[$name]}" "$ZSH_CUSTOM/plugins/$name"
+        fi
     done
-    cp .zshrc "$HOME/.zshrc" 2>/dev/null || log_warning "Could not copy .zshrc"
-    cp .zshenv "$HOME/.zshenv" 2>/dev/null || log_warning "Could not copy .zshenv"
-    [[ "$SHELL" != *"zsh"* ]] && chsh -s "$(which zsh)" || log_warning "Failed to set zsh as default shell"
+    
+    # Copy config files
+    [[ -f ".zshrc" ]] && cp .zshrc "$HOME/.zshrc" || log_warning "Could not copy .zshrc"
+    [[ -f ".zshenv" ]] && cp .zshenv "$HOME/.zshenv" || log_warning "Could not copy .zshenv"
+    
+    # Change default shell
+    if [[ "$SHELL" != *"zsh"* ]]; then
+        log_info "Changing default shell to zsh..."
+        chsh -s "$(which zsh)" || log_warning "Failed to set zsh as default shell"
+    fi
+    
     log_success "Zsh configured."
 }
 
+configure_user_services() {
+    log_step "Configuring user services"
+    
+    # Create systemd user directories
+    mkdir -p "$HOME/.config/systemd/user/default.target.wants"
+    mkdir -p "$HOME/.config/systemd/user/graphical-session.target.wants"
+    mkdir -p "$HOME/.config/systemd/user/timers.target.wants"
+    
+    log_prompt "The following user services are available:"
+    echo "  - battery-monitor.service (battery monitoring)"
+    echo "  - headphone-monitor.service (headphone plugging detection)"
+    echo "  - ianny.service (eye strain protection)"
+    echo "  - mic-led-monitor.service (microphone LED indicator)"
+    echo "  - swww-daemon.service (wallpaper daemon)"
+    echo "  - udiskie-automount.service (auto-mounting)"
+    echo "  - clipboard-history.service (clipboard management)"
+    echo "  - polkit-authentication.service (authentication agent)"
+    echo "  - wayland-env.service (environment variables)"
+    echo "  - battery-warning.timer (battery warning timer)"
+    echo "  - shader-cleaner.service (not enabled by default)"
+    echo
+    
+    read -p "Enable default services automatically? (y/n): " auto_enable
+    
+    if [[ $auto_enable == [yY] ]]; then
+        # Enable default.target services
+        for service in "${ENABLED_USER_SERVICES[@]}"; do
+            if [[ -f "$HOME/.config/systemd/user/$service" ]]; then
+                systemctl --user enable "$service" 2>/dev/null && log_info "Enabled $service"
+            fi
+        done
+        
+        # Enable graphical-session.target services
+        for service in "${ENABLED_GRAPHICAL_SERVICES[@]}"; do
+            if [[ -f "$HOME/.config/systemd/user/$service" ]] || [[ -f "/usr/lib/systemd/user/$service" ]]; then
+                systemctl --user enable "$service" 2>/dev/null && log_info "Enabled $service for graphical session"
+            fi
+        done
+        
+        # Enable timers
+        for timer in "${ENABLED_TIMERS[@]}"; do
+            if [[ -f "$HOME/.config/systemd/user/$timer" ]]; then
+                systemctl --user enable "$timer" 2>/dev/null && log_info "Enabled $timer"
+            fi
+        done
+    else
+        log_info "You can manually enable services later using:"
+        log_info "systemctl --user enable <service-name>"
+    fi
+    
+    # Reload systemd user daemon
+    systemctl --user daemon-reload
+    
+    log_success "User services configured."
+}
+
 configure_services() {
-    log_step "Enabling services"
-    systemctl --user enable --now pipewire.service pipewire-pulse.service wireplumber.service
-    command -v hypridle &>/dev/null && systemctl --user enable --now hypridle.service
+    log_step "Enabling system services"
+    
+    # Enable pipewire services
+    systemctl --user enable --now pipewire.service pipewire-pulse.service wireplumber.service 2>/dev/null
+    
+    # Enable SDDM
     sudo systemctl enable sddm.service
-    pacman -Q bluez bluez-utils &>/dev/null && sudo systemctl enable bluetooth.service
-    log_success "Services configured."
+    
+    # Enable Bluetooth if packages are installed
+    if pacman -Q bluez bluez-utils &>/dev/null; then
+        sudo systemctl enable bluetooth.service
+        log_info "Bluetooth service enabled"
+    fi
+    
+    log_success "System services configured."
+}
+
+final_setup() {
+    log_step "Performing final setup tasks"
+    
+    # Update font cache
+    fc-cache -fv &>/dev/null
+    
+    # Update GTK icon cache
+    gtk-update-icon-cache -f -t "$HOME/.local/share/icons" 2>/dev/null || true
+    
+    # Set executable permissions for scripts
+    find "$HOME/.config/hypr/scripts" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
+    find "$HOME/.local/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
+    
+    log_success "Final setup completed."
 }
 
 main() {
@@ -182,27 +392,43 @@ main() {
  |     |    |    |       |    \_ |_____/ |_____|    |    ______|
 
 EOF
-    echo -e "${NC}${CYAN}HyprDots Installation Script${NC}"
-    echo -e "This will install and configure your Hyprland compositor."
+    echo -e "${NC}${CYAN}HyprDots Installation Script v2.0${NC}"
+    echo -e "This will install and configure your Hyprland compositor with smart configurations."
     echo
+    
     check_permissions
     check_system
+    
     read -p "Start installation? (y/n): " c
     [[ $c != [yY] ]] && exit 0
+    
     update_system
     backup_configs
     install_pacman_packages
     install_yay
     install_aur_packages
     install_dotfiles
+    configure_gtk_themes
     install_cursors
     install_omz
+    configure_user_services
     configure_services
+    final_setup
+    
     echo
     log_success "HyprDots installation complete!"
-    log_warning "Please reboot to apply all changes."
+    log_info "Changes made:"
+    log_info "  ✓ Installed all packages including pipewire-alsa"
+    log_info "  ✓ Configured GTK themes properly"
+    log_info "  ✓ Set up user services with selective enabling"
+    log_info "  ✓ Applied proper file permissions"
+    log_info "  ✓ Updated font and icon caches"
+    echo
+    log_warning "Please reboot to apply all changes and start the desktop environment."
+    log_info "After reboot, you may need to select 'Hyprland (uwsm)' from your display manager."
+    
     read -p "Reboot now? (y/n): " r
     [[ $r == [yY] ]] && sudo reboot
 }
 
-main
+main "$@"
