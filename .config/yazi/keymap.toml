@@ -133,6 +133,7 @@ keymap = [
 	{ on = [ "g", "f" ],       run = "follow",                    desc = "Follow hovered symlink" },
 	{ on = [ "g", "a" ],       run = "cd ~/MEGAsync/Assignments", desc = "Go ~/MEGAsync/Assignment" },
 	{ on = [ "g", "m" ],       run = "cd ~/MEGAsync",             desc = "Go ~/MEGAsync" },
+	{ on = [ "g", "M" ],       run = "cd ~/MVM",                  desc = "Go ~/MVM" },
 	{ on = [ "g", "p" ],       run = "cd ~/Pictures",             desc = "Go ~/Pictures" },
 	{ on = [ "g", "n" ],       run = "cd ~/MEGAsync/Notes",       desc = "Go ~/Notes" },
 	{ on = [ "g", "u" ],       run = "cd ~/Desktop/USB",          desc = "Go ~/Desktop/USB" },
