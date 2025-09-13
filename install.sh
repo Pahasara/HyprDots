@@ -33,7 +33,7 @@ PACMAN_PACKAGES=(
     "ttf-cascadia-mono-nerd" "ttf-jetbrains-mono-nerd" "ttf-hack-nerd"
     "ttf-ubuntu-nerd" "ttf-dejavu-nerd" "woff2-font-awesome"
     "dolphin" "qbittorrent" "zathura" "zathura-cb" "zathura-pdf-mupdf"
-    "neovim" "swww" "yazi"
+    "neovim" "swww" "yazi" "zoxide"
 )
 
 AUR_PACKAGES=(
