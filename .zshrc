@@ -40,11 +40,14 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-################
-#   ALIASES    #
-################
+###############
+#   CUSTOM    #
+###############
 # Load aliases from a separate file
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+
+# Source local config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 ################
 #   STARTUP    #
@@ -55,4 +58,7 @@ echo "Welcome, $USER!" | lolcat
 
 # Start Starship prompt
 eval "$(starship init zsh)"
+
+# Start zoxide
+eval "$(zoxide init --cmd cd zsh)"
 

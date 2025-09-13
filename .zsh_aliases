@@ -16,6 +16,7 @@ alias vim="nvim"
 alias va="vim ~/.zsh_aliases"
 alias vz="vim ~/.zshrc"
 alias ve="vim ~/.zshenv"
+alias vl="vim ~/.zshrc.local"
 alias vk="vim ~/.config/kitty/kitty.conf"
 
 # 🖼️ Wallpaper Switching
@@ -86,7 +87,7 @@ alias yd720="yt-dlp -f 'bv[ext=mp4][height=720]+ba[ext=m4a]/b[ext=mp4][height<=7
 alias ff="fastfetch"
 
 # 🧃 Custom Tools
-alias z="./.local/opt/ztrack/ZTrack"
+alias zt="./.local/opt/ztrack/ZTrack"
 alias zero="./.local/opt/zero/Zero.CLI"
 alias ztrack="./.local/opt/ztrack/ZTrack"
 
