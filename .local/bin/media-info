@@ -16,12 +16,15 @@ default_max_length=32
 trim_info() {
     local info="$1"
     local max_length="$2"
-
+    
     if [ ${#info} -gt $max_length ]; then
         local trim_length=$((max_length - 1))
-        info="${info:0:$trim_length}…"
+        local trimmed="${info:0:$trim_length}"
+        
+        trimmed=$(echo "$trimmed" | sed 's/ ✦ *$//; s/✦ *$//')
+        
+        info="${trimmed}…"
     fi
-
     echo "$info"
 }
 
@@ -32,18 +35,16 @@ else
 fi
 
 spotify_status=$(playerctl --player=spotify status 2>/dev/null)
-
 if [ "$spotify_status" == "Playing" ]; then
     info=$(playerctl metadata --player=spotify --format '{{title}} ✦ {{artist}}')
     trimmed_info=$(trim_info "$info" "$max_length")
-    output="  $trimmed_info "
+    output=" $trimmed_info "
 else
     music_status=$(playerctl status 2>/dev/null)
-
     if [ "$music_status" == "Playing" ]; then
         info=$(playerctl metadata --format '{{title}} ✦ {{artist}}')
         trimmed_info=$(trim_info "$info" "$max_length")
-        output="  $trimmed_info "
+        output=" $trimmed_info "
     fi
 fi
 
