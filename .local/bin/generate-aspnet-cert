@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+# ASP.NET Core HTTPS Certificate Generator
+
+set -euo pipefail
+
+readonly CERT_DIR="$HOME/.aspnet/https"
+readonly DOMAIN="localhost"
+readonly DAYS=365
+
+command -v openssl >/dev/null || { echo "Error: openssl required"; exit 1; }
+command -v trust >/dev/null || { echo "Error: p11-kit required"; exit 1; }
+
+mkdir -p "$CERT_DIR"
+
+# Generate certificates
+openssl genrsa -out "$CERT_DIR/ca.key" 2048 2>/dev/null
+openssl req -x509 -key "$CERT_DIR/ca.key" -out "$CERT_DIR/ca.crt" -days $DAYS \
+    -subj "/CN=localhost-ca/O=localhost-ca" 2>/dev/null
+
+openssl genrsa -out "$CERT_DIR/$DOMAIN.key" 2048 2>/dev/null
+openssl req -new -key "$CERT_DIR/$DOMAIN.key" -out "$CERT_DIR/$DOMAIN.csr" \
+    -subj "/CN=$DOMAIN/O=localhost-ca" 2>/dev/null
+
+openssl x509 -req -in "$CERT_DIR/$DOMAIN.csr" -days $DAYS -out "$CERT_DIR/$DOMAIN.crt" \
+    -CA "$CERT_DIR/ca.crt" -CAkey "$CERT_DIR/ca.key" -CAcreateserial \
+    -extensions v3_req -extfile <(cat <<EOF
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = keyEncipherment, dataEncipherment, digitalSignature
+extendedKeyUsage = serverAuth, clientAuth
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+subjectAltName = DNS:localhost,DNS:*.localhost,IP:127.0.0.1,IP:::1
+EOF
+) 2>/dev/null
+
+read -s -p "Enter PFX password: " pfx_password
+echo
+
+openssl pkcs12 -export -out "$CERT_DIR/$DOMAIN.pfx" \
+    -inkey "$CERT_DIR/$DOMAIN.key" -in "$CERT_DIR/$DOMAIN.crt" \
+    -certfile "$CERT_DIR/ca.crt" -name "ASP.NET Core HTTPS development certificate" \
+    -passout pass:"$pfx_password" 2>/dev/null
+
+sudo trust anchor "$CERT_DIR/ca.crt" 2>/dev/null
+
+rm -f "$CERT_DIR/$DOMAIN.csr" "$CERT_DIR/ca.srl"
+
+echo "Certificate created: $CERT_DIR/$DOMAIN.pfx"
+echo "Configure with environment variables:"
+echo "export ASPNETCORE_Kestrel__Certificates__Default__Path=\"$CERT_DIR/$DOMAIN.pfx\""
+echo "export ASPNETCORE_Kestrel__Certificates__Default__Password=\"$pfx_password\""

@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# ==========================================================
+# VPN DNS & Firewall Toggle Script
+# Modes:
+#   vpn on     → Allow DNS for VPN, stop dnscrypt-proxy
+#   vpn off    → Restore dnscrypt-proxy, block raw DNS
+#   vpn toggle → Switch between on/off
+# ==========================================================
+
+set -e
+
+STATE_FILE="/tmp/vpn-dns.state"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+# -------------------------
+# Functions
+# -------------------------
+vpn_on() {
+    echo -e "${BLUE}→ Switching to VPN mode...${NC}"
+
+    # Stop dnscrypt-proxy
+    sudo systemctl stop dnscrypt-proxy
+
+    # Let NetworkManager manage DNS
+    sudo sed -i 's/dns=none/dns=default/' /etc/NetworkManager/conf.d/dns.conf || true
+    sudo systemctl reload NetworkManager
+
+    sleep 1  # give NM time to apply
+
+    # Temporarily allow DNS for VPN resolution
+    sudo ufw allow out 53 comment "VPN DNS"
+
+    echo "on" | tee "$STATE_FILE" > /dev/null
+    echo -e "${GREEN}✔ VPN mode enabled: DNS open for VPN, dnscrypt-proxy stopped${NC}"
+}
+
+vpn_off() {
+    echo -e "${BLUE}→ Switching to normal mode...${NC}"
+
+    # Block raw DNS again
+    sudo ufw delete allow out 53 || true
+
+    # Restore dnscrypt-proxy
+    sudo sed -i 's/dns=default/dns=none/' /etc/NetworkManager/conf.d/dns.conf || true
+    sudo systemctl reload NetworkManager
+
+    sleep 1  # give NM time to apply
+
+    # Point resolv.conf to dnscrypt-proxy
+    {
+        echo "nameserver ::1"
+        echo "nameserver 127.0.0.1"
+        echo "options edns0"
+    } | sudo tee /etc/resolv.conf > /dev/null
+
+    sudo systemctl start dnscrypt-proxy
+
+    echo "off" | tee "$STATE_FILE" > /dev/null
+    echo -e "${GREEN}✔ Normal mode enabled: dnscrypt-proxy active, DNS locked down${NC}"
+}
+
+vpn_toggle() {
+    if [[ -f "$STATE_FILE" ]] && grep -q "on" "$STATE_FILE"; then
+        vpn_off
+    else
+        vpn_on
+    fi
+}
+
+# -------------------------
+# Main
+# -------------------------
+case "$1" in
+    on) vpn_on ;;
+    off) vpn_off ;;
+    toggle) vpn_toggle ;;
+    *)
+        echo -e "${YELLOW}Usage:${NC} $0 {on|off|toggle}"
+        exit 1
+        ;;
+esac
