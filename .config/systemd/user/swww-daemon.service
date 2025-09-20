@@ -3,9 +3,12 @@ Description=swww Wallpaper Daemon
 After=graphical-session.target
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/swww-daemon
 Restart=on-failure
-Type=simple
+RestartSec=2
+StartLimitBurst=10
+StartLimitIntervalSec=30
 
 [Install]
 WantedBy=default.target
