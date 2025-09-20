@@ -5,6 +5,7 @@
 ## Features:
 ## - Trims track information to a specified maximum length
 ## - Supports optional max_length argument for customizing display length
+## - Configurable players list for easy customization
 
 ## Requirements:
 ## - `playerctl`: For retrieving media player track information
@@ -12,6 +13,7 @@
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 default_max_length=32
+PLAYERS=("spotify" "Lollypop")
 
 trim_info() {
     local info="$1"
@@ -34,17 +36,23 @@ else
     max_length=$default_max_length
 fi
 
-spotify_status=$(playerctl --player=spotify status 2>/dev/null)
-if [ "$spotify_status" == "Playing" ]; then
-    info=$(playerctl metadata --player=spotify --format '{{title}} ✦ {{artist}}')
-    trimmed_info=$(trim_info "$info" "$max_length")
-    output=" $trimmed_info "
-else
+# Check preferred players in order
+for player in "${PLAYERS[@]}"; do
+    if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
+        info=$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')
+        trimmed_info=$(trim_info "$info" "$max_length")
+        output=" $trimmed_info"
+        break
+    fi
+done
+
+# If no preferred players are playing, check any player
+if [ -z "$output" ]; then
     music_status=$(playerctl status 2>/dev/null)
     if [ "$music_status" == "Playing" ]; then
         info=$(playerctl metadata --format '{{title}} ✦ {{artist}}')
         trimmed_info=$(trim_info "$info" "$max_length")
-        output=" $trimmed_info "
+        output=" $trimmed_info"
     fi
 fi
 
