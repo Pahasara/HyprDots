@@ -9,7 +9,6 @@
 
   // Appearance Settings
   "window.titleBarStyle": "custom",
-  "workbench.sideBar.location": "right",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
   //   "editor.bracketPairColorization.enabled": true,
@@ -117,17 +116,24 @@
         }
       },
       {
-        "name": "Keyword/Control",
+        "name": "Keyword",
         "scope": [
           "keyword",
           "storage.type",
           "entity.name.function.preprocessor",
-          "keyword.control",
           "entity.name.tag.http",
           "constant.character.character-class.regexp.cs"
         ],
         "settings": {
           "foreground": "#4a9cdff6",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "Control",
+        "scope": ["keyword.control"],
+        "settings": {
+          "foreground": "#e461c3f6",
           "fontStyle": "italic"
         }
       },
