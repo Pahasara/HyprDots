@@ -6,7 +6,7 @@ After=graphical-session.target
 Type=simple
 ExecStart=/usr/bin/swww-daemon
 Restart=on-failure
-RestartSec=2
+RestartSec=1
 StartLimitBurst=10
 StartLimitIntervalSec=30
 
