@@ -9,7 +9,8 @@
 
   // Appearance Settings
   "window.titleBarStyle": "custom",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
   "workbench.productIconTheme": "fluent-icons",
   //   "editor.bracketPairColorization.enabled": true,
   //   "editor.guides.bracketPairs": true,
@@ -24,6 +25,7 @@
   "editor.detectIndentation": false,
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.linkedEditing": true,
   "editor.scrollBeyondLastLine": false,
@@ -116,16 +118,29 @@
         }
       },
       {
+        "name": "Constant",
+        "scope": [
+          "constant",
+          "constant.character.escape",
+          "constant.numeric",
+          "variable.other.constant",
+          "constant.other.placeholder"
+        ],
+        "settings": {
+          "foreground": "#ff7fdff6",
+          "fontStyle": "italic"
+        }
+      },
+      {
         "name": "Keyword",
         "scope": [
           "keyword",
-          "storage.type",
           "entity.name.function.preprocessor",
           "entity.name.tag.http",
           "constant.character.character-class.regexp.cs"
         ],
         "settings": {
-          "foreground": "#4a9cdff6",
+          "foreground": "#509eddf6",
           "fontStyle": "italic"
         }
       },
@@ -133,29 +148,19 @@
         "name": "Control",
         "scope": ["keyword.control"],
         "settings": {
-          "foreground": "#e461c3f6",
-          "fontStyle": "italic"
-        }
-      },
-      {
-        "name": "Name",
-        "scope": [
-          "entity.name.type",
-          "entity.name.type.class",
-          "entity.name.namespace"
-        ],
-        "settings": {
-          "foreground": "#42cdefee"
+          "foreground": "#e29766"
         }
       },
       {
         "name": "Class",
         "scope": [
+          "entity.name.type",
+          "entity.name.type.class",
           "meta.jsx.children.js",
           "entity.other.attribute-name.class.css"
         ],
         "settings": {
-          "foreground": "#76e286f7"
+          "foreground": "#61cc71f7"
         }
       },
       {
@@ -168,6 +173,9 @@
       {
         "name": "Variable",
         "scope": [
+          "entity.name.namespace",
+          "variable.other.readwrite",
+          "variable.other.property",
           "entity.name.variable.field.cs",
           "variable.other",
           "variable.other.enummember",
@@ -179,31 +187,19 @@
         }
       },
       {
-        "name": "Local",
-        "scope": ["variable.other.readwrite", "variable.other.property"],
-        "settings": {
-          "foreground": "#a7d2e4"
-        }
-      },
-      {
-        "name": "Parameter",
+        "name": "Parameter.HTTP",
         "scope": [
           "variable.parameter",
           "keyword.control.http",
           "constant.other.color.rgb-value.hex.css"
         ],
         "settings": {
-          "foreground": "#cc88e7"
+          "foreground": "#c489db"
         }
       },
       {
-        "name": "Constant",
+        "name": "Constant.JS",
         "scope": [
-          "constant",
-          "constant.character.escape",
-          "constant.numeric",
-          "variable.other.constant",
-          "constant.other.placeholder",
           "constant.language.json",
           "entity.other.attribute-name.pseudo-class.css",
           "constant.language.null.js.jsx",
@@ -382,6 +378,5 @@
   // XML
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
-  },
-  "editor.tabCompletion": "on"
+  }
 }
