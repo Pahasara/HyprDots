@@ -108,7 +108,7 @@
     "network": {
         // "interface": "*",
         "format": " ",
-        "format-wifi": "{icon} ",
+        "format-wifi": "{icon}",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
         "format-disconnected": " ",
