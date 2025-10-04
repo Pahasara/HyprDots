@@ -28,5 +28,5 @@ fi
 
 random_wallpaper="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
 
-swww img "$random_wallpaper" --transition-type simple --transition-step 20
+swww img "$random_wallpaper" --transition-type simple --transition-fps 60 --transition-step 10
 echo "Wallpaper set: $random_wallpaper"
