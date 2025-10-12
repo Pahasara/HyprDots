@@ -89,13 +89,11 @@
         "states": {
             // "good": 95,
             "warning": 25,
-            "critical": 15,
+            "critical": 15
         },
         "format": "<big>{icon}</big>",
         "format-charging": "<big>󰂄</big>",
-        "format-plugged": "<big>󱟢</big>",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "{icon} {capacity}%",
+        "format-not-charging": "<big>󱟢</big>",
         "format-icons": [
             " ",
             " ",

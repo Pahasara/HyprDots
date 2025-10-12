@@ -1,6 +1,6 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/azure.css");
+@import url("themes/fluent.css");
 
 * {
   font-family: "Neuropolitical";
@@ -68,7 +68,7 @@ window#waybar {
   color: red;
 }
 
-#battery.plugged {
+#battery.not-charging {
   color: @foreground;
 }
 

@@ -68,7 +68,7 @@ window#waybar {
   color: red;
 }
 
-#battery.plugged {
+#battery.not-charging {
   color: @foreground;
 }
 
