@@ -16,103 +16,93 @@
 </div>
 
 > [!NOTE]
-> Read the sections below carefully, and use this command to clone the repo. **(~5MB)**
+> Clone the repo with this command (**~5MB**):
 > ```bash
 > git clone --depth 1 https://github.com/Pahasara/HyprDots.git
 > ```
 
 <div align="center">
   <a href="https://github.com/Pahasara/HyprDots/wiki/Installation">
-    <img src="https://img.shields.io/badge/📥 Installation-32302f?style=for-the-badge&logoColor=white&labelColor=258598&color=05aa57" alt="Installation"/>
+    <img src="https://img.shields.io/badge/Installation-32302f?style=for-the-badge&labelColor=258598&color=05aa57" alt="Installation"/>
   </a>
   <a href="https://github.com/Pahasara/HyprDots/wiki/Customization">
-    <img src="https://img.shields.io/badge/🛠️ Customization-32302f?style=for-the-badge&logoColor=white&labelColor=b16286&color=7244b3" alt="Customization"/>
+    <img src="https://img.shields.io/badge/Customization-32302f?style=for-the-badge&labelColor=b16286&color=7244b3" alt="Customization"/>
   </a>
   <a href="https://github.com/Pahasara/HyprDots/wiki/Keybindings">
-    <img src="https://img.shields.io/badge/🎮 Keybindings-32302f?style=for-the-badge&logoColor=white&labelColor=d3869b&color=fb4934" alt="Keybindings"/>
+    <img src="https://img.shields.io/badge/Keybindings-32302f?style=for-the-badge&labelColor=d3869b&color=fb4934" alt="Keybindings"/>
   </a>
   <a href="https://github.com/Pahasara/HyprDots/wiki/FAQ">
-    <img src="https://img.shields.io/badge/❓ FAQ-32302f?style=for-the-badge&logoColor=white&labelColor=8ec07c&color=fabd2f" alt="FAQ"/>
+    <img src="https://img.shields.io/badge/FAQ-32302f?style=for-the-badge&labelColor=8ec07c&color=fabd2f" alt="FAQ"/>
   </a>
 </div>
 
-## ✨ Showcase
+# Showcase
 
 <div align="center">
-
 
 ![fetch](https://github.com/user-attachments/assets/bec3e3c0-dc78-4095-b558-32423846a2ac)
 
-
-| ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) |![Zen](https://github.com/user-attachments/assets/59590d03-4af8-4078-8b34-9437cc369f1d) |
+| ![mpv](https://github.com/user-attachments/assets/7211a828-b238-4ee4-8096-e4760569fd0f) | ![Zen](https://github.com/user-attachments/assets/59590d03-4af8-4078-8b34-9437cc369f1d) |
 |--|--|
-	
-| ![yazi](https://github.com/user-attachments/assets/05ffa7b3-3187-4ce5-a522-7dec074d2988)| ![Hyprlock](https://github.com/user-attachments/assets/008d33e5-4874-4979-a86b-574a8251c9e2) |
+
+| ![yazi](https://github.com/user-attachments/assets/05ffa7b3-3187-4ce5-a522-7dec074d2988) | ![Hyprlock](https://github.com/user-attachments/assets/008d33e5-4874-4979-a86b-574a8251c9e2) |
 |--|--|
 
 </div>
 
-## 🚀 Features
+# Features
 
-- **Hyprland Integration** - Optimized for the latest Hyprland features
-- **Efficient Workflows** - Designed for productivity and ease of use
-- **Customizable** - Various presets, color schemes and scripts
-- **Arch-Optimized** - Specially tuned for Arch Linux and its derivatives
+- **HyprReady** – Built around the latest Hyprland updates  
+- **Fast & Clean** – Smooth workflows that don’t get in your way  
+- **Customizable** – Themes, scripts, and configs u can tweak  
+- **Arch First** – Works best on Arch and its derivatives  
 
 > [!IMPORTANT]
-> This setup is designed with a strong emphasis on keyboard shortcuts for nearly everything, from changing songs to shutting down your computer. For the full list of shortcuts, please check the [Keybindings](https://github.com/Pahasara/HyprDots/wiki/Keybindings).
+> This setup runs on keyboard shortcuts for pretty much everything.
+> See the full [Keybindings](https://github.com/Pahasara/HyprDots/wiki/Keybindings) for details.
 
-## 📚 Documentation
+# Documentation
 
-Comprehensive documentation is available in the [Wiki](https://github.com/Pahasara/HyprDots/wiki):
+<p><strong>Everything you need is in the <a href="https://github.com/Pahasara/HyprDots/wiki">Wiki</a>:</strong></p>
 
-- [**Installation Guide**](https://github.com/Pahasara/HyprDots/wiki/Installation) - Step-by-step setup instructions
-- [**Customization**](https://github.com/Pahasara/HyprDots/wiki/Customization) - Learn how to personalize your setup
-- [**Keybindings**](https://github.com/Pahasara/HyprDots/wiki/Keybindings) - Complete keyboard shortcut reference
-- [**Components**](https://github.com/Pahasara/HyprDots/wiki/Components) - Core software and tools inlcuded
-- [**Troubleshooting**](https://github.com/Pahasara/HyprDots/wiki/Troubleshooting) - Solutions to common issues
-- [**FAQ**](https://github.com/Pahasara/HyprDots/wiki/FAQ) - Answers to frequently asked questions
+<ul>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Installation">Installation Guide</a></h3></li>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Customization">Customization</a></h3></li>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Keybindings">Keybindings</a></h3></li>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Components">Components</a></h3></li>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Troubleshooting">Troubleshooting</a></h3></li>
+  <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/FAQ">FAQ</a></h3></li>
+</ul>
 
-## 🛠️ Core Components
+# Core Components
 
 | Component | Description |
 |-----------|-------------|
-| **Hyprland** | Dynamic tiling Wayland compositor |
-| **Waybar** | Highly customizable status bar |
-| **Rofi** | Application launcher and menu system |
-| **Hyprlock** | Secure and stylish screen locker |
-| **Dunst** | Lightweight notification daemon |
-| **Neovim** | Higly customizable text editor |
-| **Yazi** | Modern terminal file manager |
+| **Hyprland** | Wayland Compositor |
+| **Waybar** | Status Bar |
+| **Rofi** | Launcher & Menus |
+| **Dunst** | Notification Daemon |
+| **Neovim** | Text Editor |
+| **Yazi** | TUI File Manager |
+| **Hyprlock** | LockScreen |
 
-## 🔑 Essential Shortcuts
+# Quick Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
-| `Super + Space` | Open application launcher |
-| `Super + Return` | Open terminal |
-| `Super + E` | Open File explorer |
-| `Super + X` | Open power menu |
-| `Super + W` | Open WiFi menu |
-| `Super + Q` | Close active window |
+| `Super + Space` | App launcher |
+| `Super + Return` | Terminal |
+| `Super + E` | File explorer (GUI) |
+| `Super + X` | Power menu |
+| `Super + W` | WiFi menu |
+| `Super + Q` | Close window |
 
-<p align="center">
+<div align="left">
   <a href="https://github.com/Pahasara/HyprDots/wiki/Keybindings">
     <img src="https://img.shields.io/badge/View_All_Keybindings_→-32302f?style=for-the-badge&labelColor=d3869b&color=fb4934" alt="View All Keybindings" />
   </a>
-</p>
-
-## ❤️ Thanks for Visiting!
-
-I hope you like my project! If so, don't forget to give it a `star`, as it means a lot.
-
-<div align="center">
-  <p>
-    <a href="https://github.com/Pahasara/HyprDots/issues">
-      <img src="https://img.shields.io/badge/🐛 Report an issue-32302f?style=for-the-badge&labelColor=05aa57&color=b16286" alt="Report an issue" />
-    </a>
-    <a href="https://github.com/Pahasara/HyprDots/commits/main">
-      <img src="https://img.shields.io/badge/🔄 Check for updates-32302f?style=for-the-badge&labelColor=fabd2f&color=8ec07c" alt="Check for updates" />
-    </a>
-  </p>
 </div>
+
+## Thanks for Visiting!
+
+I hope you like my project! If so, don't forget to give it a ⭐, as it means a lot.
