@@ -1,0 +1,169 @@
+/* github.com/pahasara/HyprDots */
+
+@import url("themes/fluent.css");
+
+* {
+  font-family: "Neuropolitical";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+window#waybar {
+  color: @fg-module;
+  background: @background;
+}
+
+#workspaces {
+  min-width: 150px;
+  background: @bg-module;
+  border-radius: 15px;
+}
+
+#workspaces button {
+  color: @fg-blink;
+  border-radius: 15px;
+  box-shadow: none;
+  margin: 2px 0;
+  padding: 0 8px;
+  transition: ease-in-out;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+#workspaces button:hover {
+  color: @hover-fg;
+  background: @hover-bg;
+  text-shadow: none;
+}
+#workspaces button.active {
+  color: #000;
+  background: @active;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  margin: 2px;
+  padding: 0 8px;
+  opacity: 0.9;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#workspaces button.urgent {
+  color: #000;
+  background-color: @warning;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  animation: workspace_urgent 1s ease-in-out infinite;
+  margin: 2px;
+  padding: 0 6px;
+}
+
+#tray {
+  background-color: @bg-tray;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.not-charging {
+  color: @foreground;
+}
+
+#battery.charging {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @fg-blink;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-storage,
+#window,
+#clock.date,
+#memory,
+#cpu {
+  color: @fg-alt;
+}
+
+#clock.date {
+  font-size: 14px;
+}
+
+#clock.time {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+#wireplumber,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray,
+#pulseaudio,
+#network {
+  font-size: 15px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#gamemode.running {
+  color: @foreground;
+}
+
+#custom-song {
+  font-family: "Neuropolitical";
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  padding-right: 10px;
+  color: @foreground;
+}
+
+#idle_inhibitor {
+  font-size: 21px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding-left: 9px;
+  padding-right: 10px;
+}
+
+#idle_inhibitor.activated {
+  color: @fg-module;
+}
+
+#idle_inhibitor.deactivated {
+  color: @active;
+}
+
+.modules-right {
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 3px;
+  margin: 5px;
+}

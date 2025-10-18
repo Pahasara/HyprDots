@@ -1,0 +1,309 @@
+// github.com/pahasara/HyprDots
+{
+    //#####################
+    //### CONFIGURATION ###
+    //#####################
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 15,
+    "reload_style_on_change": true,
+    //##################
+    //### BAR ORDER  ###
+    //##################
+    "modules-left": [
+        "idle_inhibitor",
+        "hyprland/workspaces"
+        // "custom/storage",
+        // "cpu",
+        // "memory",
+    ],
+    "modules-center":[
+        "clock#date",
+        "clock#time"
+        // "hyprland/window"
+        // "custom/weather"
+    ],
+    "modules-right": [
+        "custom/song",
+        "tray",
+        "gamemode",
+        // "custom/update",
+        "network",
+        "pulseaudio",
+        // "wireplumber",
+        // "pulseaudio#microphone",
+        "battery"
+    ],
+    //################
+    //### MODULES  ###
+    //################
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            // "5": [],
+            // "6": [],
+            // "7": [],
+            // "8": [],
+            "9": [],
+            "10": []
+        },
+        // "format": "<small>{icon}</small>",
+        "format-icons": {
+            // "active": "",
+            // "default": "",
+        }
+    },
+    "hyprland/window": {
+        "max-length": 40,
+        "tooltip": false
+    },
+    "clock#time": {
+        "format": "{:%I:%M <small>%p</small>}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#date": {
+        "format": "{:%a <big>%d</big> %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "battery": {
+        "interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 25,
+            "critical": 15
+        },
+        "format": "<small>{capacity}% </small><big>{icon}</big>",
+        "format-charging": "<small>{capacity}% </small><big>󰂄</big>",
+        "format-not-charging": "<small>{capacity}% </small><big>󱟢</big>",
+        "format-icons": [
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰁹"
+        ],
+        "tooltip-format": "Battery level: {capacity}%\nRemaining time: {time}"
+    },
+    "network": {
+        // "interface": "*",
+        "format": " ",
+        "format-wifi": "<big>{icon}</big> ",
+        "format-ethernet": " {ifname}",
+        "format-linked": "󰕥 {ifname}",
+        "format-disconnected": " ",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}\nInterface: {ifname}",
+        "tooltip-format-ethernet": "Ethernet Connected\nIP: {ipaddr}/{cidr}\nInterface: {ifname}",
+        "tooltip-format-disconnected": "Network Disconnected",
+        "on-click": "~/.local/bin/rofi-wifi",
+        "interval": 1
+    },
+    "network#speed": {
+        "interval": 2,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 20,
+        "max-length": 24,
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+    },
+    "bluetooth": {
+	    "format": " ",
+	    "format-disabled": "󰂳",
+	    "format-connected": "󰂱 {num_connections}",
+	    "tooltip-format": " {device_alias}",
+	    "tooltip-format-connected": "{device_enumerate}",
+	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	    "tooltip": true,
+	    "on-click": "blueman-manager",
+    },
+    "wireplumber": {
+        "format": "{icon}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+	    "format-muted": "<big> </big>",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "🎧 ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": [
+               "",
+                " ",
+                " "
+            ],
+        },
+        "tooltip-format": "Volume: {volume}%",
+        "on-click": "easyeffects"
+    },
+    "pulseaudio": {
+	    "format": "{format_source}{icon} ",
+	    "format-bluetooth": "{icon} 󰂰 {volume}%",
+	    "format-muted": " ",
+    	"format-source": "<big></big>  ",
+	    "format-source-muted": "",
+	    "format-icons": {
+		    "headphone": "<big></big>",
+		    "hands-free": "<big></big>",
+		    "headset": "<big></big>",
+		    "phone": "",
+		    "portable": "",
+		    "car": "",
+		    "default": [
+			    "", "", ""
+		    ],
+	    },
+		"ignored-sinks": [
+			"Easy Effects Sink"
+		],
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 2.0,
+	    "smooth-scrolling-threshold": 1,
+	    "tooltip-format": "{desc} | {volume}%",
+    },
+    "pulseaudio#microphone": {
+	    "format": "{format_source} ",
+    	"format-source": "",
+	    "format-source-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
+	    "tooltip-format": "{source_desc} | {source_volume}%",
+    },
+    "cpu": {
+        "interval": 2,
+        "format": " {usage}%",
+        "tooltip": true,
+    },
+    "memory": {
+        "interval": 5,
+        "format": " {used:0.1f}G",
+        "format-alt": "{percentage}% 󰾆",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+        "on-click-right": "kitty --title btop sh -c 'btop'"
+    },
+    "custom/storage": {
+        "interval": 30,
+        "format": " {}",
+        "format-alt": "{percentage}%  ",
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    "custom/song": {
+        "interval": 2,
+        "exec": "~/.local/bin/media-info max_length=20",
+        "on-click": "~/.local/bin/player next_track",
+        "on-click-right": "~/.local/bin/player previous_track",
+        "on-click-middle": "~/.local/bin/player toggle_play",
+        "escape": true,
+        "tooltip": false
+    },
+    "backlight": {
+        "format": "󰃟 ",
+        // "format": "<big>{icon}</big> {percent}%",
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            "󰃞",
+            "󰃟",
+            "󰃝",
+            "󰃠"
+        ],
+        "on-scroll-down": "brightnessctl set 1%-",
+        "on-scroll-up": "brightnessctl set +1%",
+        "tooltip-format": "Backlight: {percent}%"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec":"~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+    "idle_inhibitor": {
+        "format": "", // {icon}
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "on-click-right": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/presets/powermenu.rasi",
+        "timeout": 60.0,
+        "tooltip": false
+    },
+    "custom/clipboard":{
+        "format": " ",
+        "on-click": "cliphist list | rofi -dmenu -display-columns 2 -config ~/.config/rofi/presets/clipboard.rasi | cliphist decode | wl-copy",
+        "on-click-right": "pkill rofi",
+        "tooltip-format": "Clipboard"
+
+    },
+    "custom/notification": {
+        "format": "",
+        "on-click": "~/.local/bin/notify-history",
+        "on-click-right": "dunstctl close-all",
+        "tooltip-format": "Notifications"
+    },
+    "custom/update": {
+        "exec": "~/.local/bin/update-status",
+        "interval": 43200,
+        "on-click": "~/.local/bin/update-status",
+        "tooltip-format": "Check Updates"
+    },
+    "custom/separator" : {
+        "format": " ",
+    },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "<U+F7B3>",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 19,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 12
+    },
+}
