@@ -150,6 +150,7 @@ window#waybar {
   color: @active;
 }
 
+#gamemode.running,
 #custom-song {
   font-family: "Neuropolitical";
   font-size: 14px;

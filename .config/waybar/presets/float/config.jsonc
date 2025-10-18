@@ -17,10 +17,10 @@
     "modules-left": [
         "idle_inhibitor",
         "hyprland/workspaces",
-        "custom/song"
         // "custom/storage",
         // "cpu",
         // "memory",
+        "custom/song"
     ],
     // "modules-center":[
         // "hyprland/window"
@@ -28,11 +28,12 @@
     // ],
     "modules-right": [
         "tray",
+        "gamemode",
         // "custom/update",
         "pulseaudio",
         // "backlight",
-        "battery",
         "network",
+        "battery",
         "clock#date",
         "clock#time",
     ],
@@ -81,22 +82,27 @@
             "warning": 25,
             "critical": 15
         },
-        "format": "<big>{icon}</big>",
-        "format-charging": "<big>󰂄</big>",
-        "format-not-charging": "<big>󱟢</big>",
+        "format": "<big>{icon}</big><small> {capacity}%</small>",
+        "format-charging": "<big>󰂄</big><small> {capacity}%</small>",
+        "format-not-charging": "<big>󱟢</big><small> {capacity}%</small>",
         "format-icons": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰁹"
         ],
         "tooltip-format": "Battery level: {capacity}%\nRemaining time: {time}"
     },
     "network": {
         // "interface": "*",
         "format": " ",
-        "format-wifi": "{icon} ",
+        "format-wifi": "<big>{icon}</big> ",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
         "format-disconnected": " ",
@@ -267,8 +273,20 @@
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
-    "tray": {
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "<U+F7B3>",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
         "icon-size": 19,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
+    "tray": {
+        "icon-size": 20,
         "spacing": 12
     }
 }
