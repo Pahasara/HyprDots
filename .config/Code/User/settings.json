@@ -12,6 +12,7 @@
   "workbench.sideBar.location": "right",
   "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
   "workbench.productIconTheme": "fluent-icons",
+  "workbench.editor.empty.hint": "hidden",
   //   "editor.bracketPairColorization.enabled": true,
   //   "editor.guides.bracketPairs": true,
 
@@ -93,16 +94,9 @@
     "textMateRules": [
       {
         "name": "Comment",
-        "scope": [
-          "comment",
-          "comment.block",
-          "comment.block.documentation",
-          "comment.line",
-          "comment.line.double-slash",
-          "punctuation.definition.comment"
-        ],
+        "scope": ["comment"],
         "settings": {
-          "foreground": "#7F7F8F",
+          "foreground": "#7B7B8B",
           "fontStyle": "italic"
         }
       },
@@ -120,14 +114,20 @@
       {
         "name": "Constant",
         "scope": [
-          "constant",
-          "constant.character.escape",
-          "constant.numeric",
           "variable.other.constant",
+          "constant.character.escape",
           "constant.other.placeholder"
         ],
         "settings": {
-          "foreground": "#ff7fdff6",
+          "foreground": "#a8c4d2",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "Numeric",
+        "scope": ["constant.numeric"],
+        "settings": {
+          "foreground": "#ff47d1",
           "fontStyle": "italic"
         }
       },
@@ -140,7 +140,7 @@
           "constant.character.character-class.regexp.cs"
         ],
         "settings": {
-          "foreground": "#509eddf6",
+          "foreground": "#5ba8e6f6",
           "fontStyle": "italic"
         }
       },
@@ -160,7 +160,7 @@
           "entity.other.attribute-name.class.css"
         ],
         "settings": {
-          "foreground": "#61cc71f7"
+          "foreground": "#5bc36bf7"
         }
       },
       {
@@ -183,7 +183,14 @@
           "variable.parameter.js"
         ],
         "settings": {
-          "foreground": "#cdcdcd"
+          "foreground": "#cecece"
+        }
+      },
+      {
+        "name": "Operator",
+        "scope": ["keyword.operator"],
+        "settings": {
+          "foreground": "#e1e1e1"
         }
       },
       {
@@ -194,7 +201,7 @@
           "constant.other.color.rgb-value.hex.css"
         ],
         "settings": {
-          "foreground": "#c489db"
+          "foreground": "#ca98e1"
         }
       },
       {

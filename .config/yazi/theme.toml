@@ -39,7 +39,7 @@ syntect_theme = "~/.config/yazi/themes/tokyonight_night.tmTheme.xml"
 
 [tabs]
 active   = { fg = "black", bg = "green", bold = true }
-inactive = { fg = "green", bg = "black" }
+inactive = { fg = "green", bg = "#020202" }
 
 # Separator
 sep_inner = { open = "", close = "" }
