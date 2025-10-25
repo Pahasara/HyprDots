@@ -102,7 +102,7 @@
         "format-wifi": "<big>{icon}</big> ",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
-        "format-disconnected": " ",
+        "format-disconnected": "<big></big> ",
         "format-icons": [
             "󰤯",
             "󰤟",
@@ -303,7 +303,7 @@
         "tooltip-format": "Games running: {count}"
     },
     "tray": {
-        "icon-size": 20,
+        "icon-size": 21,
         "spacing": 12
     },
 }

@@ -105,7 +105,7 @@
         "format-wifi": "<big>{icon}</big> ",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
-        "format-disconnected": " ",
+        "format-disconnected": "<big></big> ",
         "format-icons": [
             "󰤯",
             "󰤟",

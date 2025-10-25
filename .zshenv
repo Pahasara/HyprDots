@@ -48,6 +48,7 @@ export ZSTD_NBTHREADS="$(nproc)"           # Use all CPU cores for compression
 # ──────────────────────────────────────────────────────────────
 export PATH="$PATH:$HOME/.dotnet/tools"     # Add .NET global tools to PATH
 export DOTNET_CLI_TELEMETRY_OPTOUT=1        # Disable .NET telemetry
+export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1   # Disable .NET-Http-REPL telemetry
 
 # ──────────────────────────────────────────────────────────────
 # Experimental & Debugging Flags
