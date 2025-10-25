@@ -20,6 +20,10 @@ $line_break\
 right_format = """
 $character\
 $symbol\
+$c\
+$cpp\
+$dotnet\
+$java\
 $python\
 $git_branch\
 $git_state\
@@ -62,10 +66,37 @@ style = 'bold gray'
 format = "took [$duration]($style) "
 style = "yellow"
 
+[shell]
+zsh_indicator = '_'
+style = "fg:#000000 bg:#45BB11"
+format = '[](fg:#45BB11)[ $indicator ]($style)[](fg:#45BB11)'
+disabled = false
+
+[c]
+symbol = '󰙱'
+style = "fg:#000000 bg:#127CFF"
+format = '[](fg:#127CFF)[ $symbol ]($style)[](fg:#127CFF)'
+
+[cpp]
+symbol = ''
+style = "fg:#000000 bg:#5797D8"
+format = '[](fg:#5797D8)[ $symbol ]($style)[](fg:#5797D8)'
+disabled = false
+
+[dotnet]
+symbol = ''
+style = "fg:#000000 bg:#997DF8"
+format = '[](fg:#997DF8)[ $symbol ]($style)[](fg:#997DF8)'
+
+[java]
+symbol = '󰬷'
+style = "fg:#000000 bg:#FD3502"
+format = '[](fg:#FD3502)[ $symbol ]($style)[](fg:#FD3502)'
+
 [python]
-symbol = ''
+symbol = ''
 style = "fg:#000000 bg:#18C429"
-format = ' [](fg:#18C429)[ $symbol $virtualenv ]($style)[](fg:#18C429)'
+format = '[](fg:#18C429)[ $symbol $virtualenv ]($style)[](fg:#18C429)'
 
 [git_branch]
 symbol = ""
