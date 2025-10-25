@@ -39,7 +39,7 @@ fi
 # Check preferred players in order
 for player in "${PLAYERS[@]}"; do
     if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-        info=$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')
+        info=$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')
         trimmed_info=$(trim_info "$info" "$max_length")
         output=" $trimmed_info"
         break
@@ -50,7 +50,7 @@ done
 if [ -z "$output" ]; then
     music_status=$(playerctl status 2>/dev/null)
     if [ "$music_status" == "Playing" ]; then
-        info=$(playerctl metadata --format '{{title}} ✦ {{artist}}')
+        info=$(playerctl metadata --format '{{title}} ✦ {{artist}} ')
         trimmed_info=$(trim_info "$info" "$max_length")
         output=" $trimmed_info"
     fi
