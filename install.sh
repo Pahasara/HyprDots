@@ -20,7 +20,7 @@ log_prompt() { echo -e "${MAGENTA}[PROMPT]${NC} $1"; }
 # Package lists
 PACMAN_PACKAGES=(
     "hyprland" "waybar" "dunst" "hypridle" "hyprlock"
-    "sddm" "polkit-kde-agent" "xdg-desktop-portal-hyprland"
+    "sddm" "polkit-gnome" "xdg-desktop-portal-hyprland"
     "xdg-desktop-portal-gtk" "pipewire" "pipewire-pulse" "pipewire-alsa"
     "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
     "kitty" "zsh" "starship" "eza" "fastfetch" "lolcat"
