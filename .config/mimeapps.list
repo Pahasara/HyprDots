@@ -24,3 +24,5 @@ text/x-csrc=org.kde.kate.desktop;
 text/x-maven+xml=org.kde.kate.desktop;
 text/x-python=org.kde.kate.desktop;
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
