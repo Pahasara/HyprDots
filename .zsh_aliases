@@ -91,3 +91,6 @@ alias zt="./.local/opt/ztrack/ZTrack"
 alias zero="./.local/opt/zero/Zero.CLI"
 alias ztrack="./.local/opt/ztrack/ZTrack"
 
+# Custom Utitlies
+alias cat="bat --style plain"
+

@@ -15,7 +15,7 @@ export HISTFILE="$ZSH/cache/.zsh_history"
 # ──────────────────────────────────────────────────────────────
 export SCRIPT_DIR="$HOME/.local/bin"         # Custom user scripts directory
 export WALL_DIR="$HOME/Pictures/Wallpapers"  # Wallpaper storage directory
-export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/shader_cache"  # custom shader cache
+export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/shader_cache"
 
 # ──────────────────────────────────────────────────────────────
 # Editor Configuration
@@ -38,17 +38,29 @@ export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -
 export MANROFFOPT="-c"
 
 # ──────────────────────────────────────────────────────────────
+# Build Optimizations
+# ──────────────────────────────────────────────────────────────
+export MAKEFLAGS="-j$(nproc)"
+export CMAKE_BUILD_PARALLEL_LEVEL="$(nproc)"
+export NINJA_NUM_CORES="$(nproc)"
+export CFLAGS="-O3 -march=native -pipe"
+export CXXFLAGS="$CFLAGS"
+
+# ──────────────────────────────────────────────────────────────
 # Compression Settings
 # ──────────────────────────────────────────────────────────────
-export ZSTD_CLEVEL=12                      # Zstandard default compression level
+export ZSTD_CLEVEL=12                      # Zstandard compression level
 export ZSTD_NBTHREADS="$(nproc)"           # Use all CPU cores for compression
+export XZ_DEFAULTS="-T$(nproc)"
+export GZIP=-9
 
 # ──────────────────────────────────────────────────────────────
 # .NET SDK & Tools
 # ──────────────────────────────────────────────────────────────
-export PATH="$PATH:$HOME/.dotnet/tools"     # Add .NET global tools to PATH
-export DOTNET_CLI_TELEMETRY_OPTOUT=1        # Disable .NET telemetry
-export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1   # Disable .NET-Http-REPL telemetry
+export DOTNET_ROOT="/usr/share/dotnet"
+export DOTNET_TOOLS_PATH="$HOME/.dotnet/tools"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1           # Disable .NET telemetry
+export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1      # Disable .NET-Http-REPL telemetry
 
 # ──────────────────────────────────────────────────────────────
 # Experimental & Debugging Flags
@@ -56,6 +68,9 @@ export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1   # Disable .NET-Http-REPL telemetry
 export ANV_DEBUG="video-decode,video-encode"  # Enable Vulkan video decode/encode
 
 # ──────────────────────────────────────────────────────────────
-# PATH Updates
+# PATH
 # ──────────────────────────────────────────────────────────────
-export PATH="$SCRIPT_DIR:$PATH"             # Prepend user scripts directory to PATH
+export PATH="$PATH:$SCRIPT_DIR"
+export PATH="$PATH:$DOTNET_ROOT"
+export PATH="$PATH:$DOTNET_TOOLS_PATH"
+
