@@ -65,6 +65,14 @@
 
 <p><strong>Everything you need is in the <a href="https://github.com/Pahasara/HyprDots/wiki">Wiki</a>:</strong></p>
 
+> [!WARNING]
+> **Documentation Outdated:**  
+> HyprDots has recently undergone major refactoring and several breaking changes.  
+> The current documentation and wiki may not fully reflect the latest structure or behavior.  
+> 
+> **Contributions and PRs are welcome** to help bring the docs up to date!
+
+
 <ul>
   <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Installation">Installation Guide</a></h3></li>
   <li><h3><a href="https://github.com/Pahasara/HyprDots/wiki/Customization">Customization</a></h3></li>
