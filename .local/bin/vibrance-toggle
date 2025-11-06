@@ -1,13 +1,14 @@
 #!/bin/bash
-
 CONFIG_FILE="$HOME/.config/hypr/general.conf"
 
 # Check if the line is currently uncommented (active)
-if grep -q "^[[:space:]]*screen_shader = vibrance.frag" "$CONFIG_FILE"; then
+if grep -q "^[[:space:]]*screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag" "$CONFIG_FILE"; then
     # It's active, comment it out
-    sed -i 's|^\([[:space:]]*\)\(screen_shader = vibrance.frag.*\)$|\1# \2|' "$CONFIG_FILE"
+    sed -i 's|^\([[:space:]]*\)\(screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag.*\)$|\1# \2|' "$CONFIG_FILE"
+    echo "Screen shader disabled"
 else
     # It's commented, uncomment it
-    sed -i 's|^\([[:space:]]*\)# \(screen_shader = vibrance.frag.*\)$|\1\2|' "$CONFIG_FILE"
+    sed -i 's|^\([[:space:]]*\)#[[:space:]]*\(screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag.*\)$|\1\2|' "$CONFIG_FILE"
+    echo "Screen shader enabled"
 fi
 
