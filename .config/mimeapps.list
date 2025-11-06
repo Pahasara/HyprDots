@@ -1,6 +1,6 @@
 [Added Associations]
 application/json=zen.desktop;org.kde.kate.desktop;code.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;nvim.desktop;
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;zen.desktop;okularApplication_pdf.desktop;libreoffice-draw.desktop;gimp.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;zen.desktop;okularApplication_pdf.desktop;
 audio/mpeg=mpv.desktop;org.gnome.Lollypop.desktop;org.kde.kid3.desktop;audacity.desktop;
 image/bmp=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;okularApplication_kimgio.desktop;gimp.desktop;
 image/jpeg=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
@@ -23,6 +23,9 @@ text/x-cmake=org.kde.kate.desktop;
 text/x-csrc=org.kde.kate.desktop;
 text/x-maven+xml=org.kde.kate.desktop;
 text/x-python=org.kde.kate.desktop;
-x-scheme-handler/postman=Postman.desktop
-x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/gitkraken=GitKraken.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/postman=Postman.desktop
+
+[Removed Associations]
+application/pdf=libreoffice-draw.desktop;gimp.desktop;
