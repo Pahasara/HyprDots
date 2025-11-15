@@ -84,7 +84,7 @@ alias y="yazi"
 alias mg="mega-get"
 alias yd="yt-dlp -f 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/bv*+ba/b' --embed-thumbnail --embed-metadata"
 alias yd720="yt-dlp -f 'bv[ext=mp4][height=720]+ba[ext=m4a]/b[ext=mp4][height<=720]' --embed-thumbnail --embed-metadata"
-alias ff="fastfetch"
+alias ff="clear && fastfetch"
 
 # 🧃 Custom Tools
 alias zt="./.local/opt/ztrack/ZTrack"
@@ -93,4 +93,5 @@ alias ztrack="./.local/opt/ztrack/ZTrack"
 
 # Custom Utitlies
 alias cat="bat --style plain"
+alias pacclean="paccache -rv && paccache -rvuk0"
 
