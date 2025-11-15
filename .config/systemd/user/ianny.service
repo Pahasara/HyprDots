@@ -1,9 +1,0 @@
-[Unit]
-Description=Ianny Service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/ianny
-
-[Install]
-WantedBy=default.target
