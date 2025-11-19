@@ -1,115 +1,113 @@
 #!/usr/bin/bash
+#
+# Rofi Wi-Fi Manager
+# A simple network selector using nmcli + rofi with notifications.
+#
+# Capabilities:
+#   • Toggle Wi-Fi on/off
+#   • List available networks (secure/connected marked)
+#   • Connect to saved or new networks (with password prompt)
+#   • Notify success/failure via dunst + sound-alert
+#
+# Dependencies: nmcli, rofi, dunstify, sound-alert
+# Author: Pahasara Dewnith  |  https://github.com/Pahasara
 
-## This script provides a Rofi-based Wi-Fi manager for selecting and connecting to available networks.
-## It allows enabling/disabling Wi-Fi, listing available networks, and handling secure connections.
-
-## Features:
-## - Enables or disables Wi-Fi via `nmcli`.
-## - Lists available Wi-Fi networks with secure networks marked.
-## - Automatically detects the currently connected network.
-## - Prompts for a password when connecting to new networks.
-## - Sends notifications via `dunstify` and plays sounds on success or failure.
-
-## Requirements:
-## - `nmcli`: Used for network management.
-## - `rofi`: Provides a selection menu.
-## - `dunstify`: Displays notifications.
-## - `sound-alert`: Custom notification sound script (HyprDots).
-
-## Author: Pahasara Dewnith (https://github.com/Pahasara)
-
+# --- CONFIG -----------------------------------------------------
 ICON_WIFI="$HOME/.local/share/icons/dunst/wifi.png"
 ICON_CAUTION="$HOME/.local/share/icons/dunst/caution.png"
 SOUND_NOTIFY="$HOME/.local/bin/sound-alert"
 SOUND_ERROR="$HOME/.local/bin/sound-alert --error"
 TIME_DURATION=4000
 
-# Check if required commands exist
+EMOJI_WIFI=" "
+EMOJI_LOCK=" "
+EMOJI_POWER=" "
+
+ROFI_CONFIG="$HOME/.config/rofi/presets/wifi.rasi"
+
+# --- DEPENDENCY CHECK ------------------------------------------
 for cmd in nmcli rofi dunstify; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-        echo "Error: Required command '$cmd' not found"
+    command -v "$cmd" >/dev/null 2>&1 || {
+        echo "Error: '$cmd' command not found"
         exit 1
-    fi
+    }
 done
 
-# Get currently connected SSID
-current_connection=$(nmcli -t -f active,ssid dev wifi | awk -F: '/^yes:/ {print $2}')
+# --- CURRENT CONNECTION ----------------------------------------
+current_connection=$(nmcli -t -f active,ssid dev wifi \
+    | awk -F: '/^yes:/ {print $2}')
 
-# Get a list of available wifi connections with better sed handling
-wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d |
-    sed 's/  */ /g' |
-    sed -E "s/WPA*.?\S/ /g" |
-    sed "s/^--/ /g" |
-    sed "s/  //g" |
-    sed "/--/d" |
-    while read -r line; do
-        ssid="${line#* }"
+# --- WIFI LIST PARSING (CLEAN, SAFE, UTF-8, MULTI-WORD SSID) ---
+wifi_list=$(
+    nmcli -t -f ssid,security dev wifi \
+    | while IFS=: read -r ssid sec; do
+        # Skip empty SSIDs (hidden networks)
+        [ -z "$ssid" ] && continue
+
         if [ "$ssid" = "$current_connection" ]; then
-            echo "   $ssid"
+            echo "$EMOJI_WIFI $ssid"
         else
-            echo "  $ssid"
+            echo "$EMOJI_LOCK $ssid"
         fi
-    done)
+    done
+)
 
-# Check WiFi status for toggle option
-if nmcli -fields WIFI g | grep -q "enabled"; then
-    toggle="  Disable Wi-Fi"
+# --- WIFI TOGGLE STATE -----------------------------------------
+wifi_state=$(nmcli -t -f WIFI g)
+if [[ "$wifi_state" == "enabled" ]]; then
+    toggle="$EMOJI_POWER Disable Wi-Fi"
 else
-    toggle="  Enable Wi-Fi"
+    toggle="$EMOJI_POWER Enable Wi-Fi"
 fi
 
-# Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u |
-    rofi -dmenu -I -selected-row 0 -p "Wi-Fi SSID: " -config ~/.config/rofi/presets/wifi.rasi)
+# --- ROFI MENU --------------------------------------------------
+chosen_network=$(printf "%s\n%s\n" "$toggle" "$wifi_list" \
+    | rofi -dmenu -i -p "Wi-Fi SSID:" -config "$ROFI_CONFIG")
 
-# Exit if no selection was made
+# No selection
 [ -z "$chosen_network" ] && exit 0
 
-# Get name of connection - handling both icon cases
-if [[ "$chosen_network" =~ ^[[:space:]]*("Enable Wi-Fi"|"Disable Wi-Fi")$ ]]; then
-    chosen_id="$chosen_network"
-else
-    chosen_id="${chosen_network:3}"
+# --- EXTRACT SSID SAFELY (REMOVE FIRST TOKEN ONLY) -------------
+chosen_id=$(echo "$chosen_network" | sed 's/^[^[:alnum:]]* *//')
+
+# --- HANDLE TOGGLE ---------------------------------------------
+if [[ "$chosen_network" == "$EMOJI_POWER Disable Wi-Fi" ]]; then
+    nmcli radio wifi off
+    exit 0
 fi
 
-# Handle WiFi actions
-case "$chosen_network" in
-    "  Enable Wi-Fi")
-        nmcli radio wifi on
-        ;;
-    "  Disable Wi-Fi")
-        nmcli radio wifi off
-        ;;
-    *)
-        success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
-        
-        # Check if the network is already saved
-        if nmcli -g NAME connection | grep -q "^${chosen_id}$"; then
-            if nmcli connection up id "$chosen_id"; then
-                dunstify -t "$TIME_DURATION" -u low -I "$ICON_WIFI" "$success_message"
-                $SOUND_NOTIFY
-            else
-                dunstify -u low -I "$ICON_CAUTION" "Failed to connect to $chosen_id"
-                $SOUND_ERROR
-            fi
-        else
-            # Only prompt for password if the network requires one
-            wifi_password=$(rofi -dmenu -p "Password: " -password)
-            
-            # Exit if no password was entered
-            [ -z "$wifi_password" ] && exit 0
-            
-            # Rescan available networks before attempting connection
-            nmcli device wifi rescan
-            sleep 1  # Give time for the scan to complete
-            
-            if nmcli device wifi connect "$chosen_id" password "$wifi_password"; then
-                dunstify -t "$TIME_DURATION" -u low -I "$ICON_WIFI" "$success_message"
-                $SOUND_NOTIFY
-            else
-                dunstify -u low -I "$ICON_CAUTION" "Failed to connect to $chosen_id. Please check your password."
-                $SOUND_ERROR
-            fi
-        fi
-        ;;
-esac
+if [[ "$chosen_network" == "$EMOJI_POWER Enable Wi-Fi" ]]; then
+    nmcli radio wifi on
+    exit 0
+fi
+
+# --- CONNECTING LOGIC ------------------------------------------
+success_msg="Connected to \"$chosen_id\""
+
+# Check if saved connection exists
+if nmcli -g NAME connection | grep -Fxq "$chosen_id"; then
+    if nmcli connection up id "$chosen_id"; then
+        dunstify -t "$TIME_DURATION" -u low -I "$ICON_WIFI" "$success_msg"
+        $SOUND_NOTIFY
+    else
+        dunstify -u low -I "$ICON_CAUTION" "Failed to connect to $chosen_id"
+        $SOUND_ERROR
+    fi
+else
+    # Prompt password for new connection
+    wifi_password=$(rofi -dmenu -p "Password:" -password)
+
+    [ -z "$wifi_password" ] && exit 0
+
+    nmcli device wifi rescan
+    sleep 1
+
+    if nmcli device wifi connect "$chosen_id" password "$wifi_password"; then
+        dunstify -t "$TIME_DURATION" -u low -I "$ICON_WIFI" "$success_msg"
+        $SOUND_NOTIFY
+    else
+        dunstify -u low -I "$ICON_CAUTION" "Wrong password? Failed to connect to $chosen_id"
+        nmcli connection delete "$chosen_id" >/dev/null 2>&1
+        $SOUND_ERROR
+    fi
+fi
