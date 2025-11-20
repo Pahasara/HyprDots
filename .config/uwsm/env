@@ -1,0 +1,35 @@
+# github.com/pahasara/HyprDots
+
+# ─────────────────────────────────────────────
+# UWSM Environment Variables
+# ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+# Cursor Configuration
+# ─────────────────────────────────────────────
+export XCURSOR_THEME=macOS
+export XCURSOR_SIZE=28
+
+# ─────────────────────────────────────────────
+# Toolkit & Theme Integration
+# ─────────────────────────────────────────────
+export QT_QPA_PLATFORMTHEME=qt6ct
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+# ─────────────────────────────────────────────
+# Multimedia & SDL Configuration
+# ─────────────────────────────────────────────
+export SDL_VIDEO_DRIVER=wayland
+export SDL_AUDIO_DRIVER=pipewire
+
+# ─────────────────────────────────────────────
+# Scaling & Display Settings
+# ─────────────────────────────────────────────
+export GDK_SCALE=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1
+export AVALONIA_SCREEN_SCALE_FACTORS=eDP-1=1.25
+
+# vim: set ft=sh :

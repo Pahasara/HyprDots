@@ -1,0 +1,21 @@
+# github.com/pahasara/HyprDots
+
+# ─────────────────────────────────────────────
+# UWSM Hyprland-Specific Environment Variables
+# ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+# Desktop Environment
+# ─────────────────────────────────────────────
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_MENU_PREFIX=arch-
+
+# ─────────────────────────────────────────────
+# Cursor Configuration
+# ─────────────────────────────────────────────
+export HYPRCURSOR_THEME=macOS-hyprcursor
+export HYPRCURSOR_SIZE=28
+
+# vim: set ft=sh :
