@@ -10,7 +10,8 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
+    "csharp": true
   },
 
   // Appearance Settings
@@ -38,7 +39,6 @@
   "editor.minimap.renderCharacters": false,
   "editor.minimap.maxColumn": 100,
   "editor.largeFileOptimizations": true,
-  "editor.suggest.showSnippets": false,
   //   "editor.bracketPairColorization.enabled": true,
   //   "editor.guides.bracketPairs": true,
 
@@ -189,7 +189,7 @@
           "variable.other.constant.object.js"
         ],
         "settings": {
-          "foreground": "#cecece"
+          "foreground": "#ccc"
         }
       },
       {
@@ -339,11 +339,6 @@
     }
   },
 
-  // Git integration
-  //   "git.enableSmartCommit": true,
-  //   "git.confirmSync": false,
-  "git.autofetch": true,
-
   // File Type Specific
   // C/C++ specific
   "C_Cpp.legacyCompilerArgsBehavior": true,
@@ -381,15 +376,19 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
+  "javascript.suggest.autoImports": true,
+  "javascript.validate.enable": false, // let ESLint handle it
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "files.exclude": { "**/node_modules": true, "**/dist": true },
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "emmet.showSuggestionsAsSnippets": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
 
   // XML
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
-  }
+  },
+  "editor.suggest.preview": true
 }
