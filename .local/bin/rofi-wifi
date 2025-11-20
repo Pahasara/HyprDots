@@ -33,31 +33,41 @@ for cmd in nmcli rofi dunstify; do
     }
 done
 
-# --- CURRENT CONNECTION ----------------------------------------
-current_connection=$(nmcli -t -f active,ssid dev wifi \
-    | awk -F: '/^yes:/ {print $2}')
-
-# --- WIFI LIST PARSING (CLEAN, SAFE, UTF-8, MULTI-WORD SSID) ---
-wifi_list=$(
-    nmcli -t -f ssid,security dev wifi \
-    | while IFS=: read -r ssid sec; do
-        # Skip empty SSIDs (hidden networks)
-        [ -z "$ssid" ] && continue
-
-        if [ "$ssid" = "$current_connection" ]; then
-            echo "$EMOJI_WIFI $ssid"
-        else
-            echo "$EMOJI_LOCK $ssid"
-        fi
-    done
-)
-
-# --- WIFI TOGGLE STATE -----------------------------------------
+# --- FRIENDLY WAIT (ROFI SCANNING) -----------------------------
 wifi_state=$(nmcli -t -f WIFI g)
 if [[ "$wifi_state" == "enabled" ]]; then
     toggle="$EMOJI_POWER Disable Wi-Fi"
+
+    # Only scan if Wi-Fi is enabled
+    (
+        echo "Scanning Wi-Fi networks..."
+    ) | rofi -dmenu -p "Wi-Fi" -config "$ROFI_CONFIG" &
+    rofi_pid=$!
+
+    nmcli device wifi rescan
+    sleep 1
+    kill "$rofi_pid" 2>/dev/null
 else
     toggle="$EMOJI_POWER Enable Wi-Fi"
+fi
+
+# --- CURRENT CONNECTION ----------------------------------------
+current_connection=$(nmcli -t -f active,ssid dev wifi | awk -F: '/^yes:/ {print $2}')
+
+# --- WIFI LIST PARSING -----------------------------------------
+wifi_list=""
+if [[ "$wifi_state" == "enabled" ]]; then
+    wifi_list=$(
+        nmcli -t -f ssid,security dev wifi \
+            | while IFS=: read -r ssid sec; do
+                [ -z "$ssid" ] && continue
+                if [ "$ssid" = "$current_connection" ]; then
+                    echo "$EMOJI_WIFI $ssid"
+                else
+                    echo "$EMOJI_LOCK $ssid"
+                fi
+            done
+    )
 fi
 
 # --- ROFI MENU --------------------------------------------------
