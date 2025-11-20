@@ -40,7 +40,7 @@ textbox-custom {
     expand: false;
     background-color: @main-bg;
     text-color: @main-fg;
-    content: " Wi-Fi";
+    content: "  Wi-Fi";
 }
 
 textbox-icon {

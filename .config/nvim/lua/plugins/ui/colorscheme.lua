@@ -46,7 +46,7 @@ return {
       local bg_visual = '#324867'
       local fg = '#D5D5D5'
       local fg_dark = '#EFEFEF'
-      local fg_gutter = '#424242'
+      local fg_gutter = '#020202'
       local border = '#161616'
 
       require('tokyonight').setup {
