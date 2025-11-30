@@ -13,7 +13,13 @@
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 default_max_length=32
-PLAYERS=("spotify" "Lollypop")
+PLAYERS=("spotify" "Lollypop" "firefox")
+
+# Icons
+ICON_SPOTIFY=""
+ICON_LOLLYPOP=""
+ICON_FIREFOX=""
+ICON_GENERIC=""
 
 trim_info() {
     local info="$1"
@@ -36,23 +42,38 @@ else
     max_length=$default_max_length
 fi
 
-# Check preferred players in order
+detect_icon() {
+    local player="$1"
+
+    case "$player" in
+        spotify*)      echo "$ICON_SPOTIFY" ;;
+        Lollypop*)     echo "$ICON_LOLLYPOP" ;;
+        firefox*|org.mpris.MediaPlayer2.firefox*) echo "$ICON_FIREFOX" ;;
+        *)             echo "$ICON_GENERIC" ;;
+    esac
+}
+
+output=""
+
+# Check preferred players first
 for player in "${PLAYERS[@]}"; do
     if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
         info=$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')
         trimmed_info=$(trim_info "$info" "$max_length")
-        output=" $trimmed_info"
+        icon=$(detect_icon "$player")
+        output="$icon $trimmed_info"
         break
     fi
 done
 
-# If no preferred players are playing, check any player
+# Fallback: any player
 if [ -z "$output" ]; then
-    music_status=$(playerctl status 2>/dev/null)
-    if [ "$music_status" == "Playing" ]; then
-        info=$(playerctl metadata --format '{{title}} ✦ {{artist}} ')
+    active_player=$(playerctl --list-players 2>/dev/null | head -n 1)
+    if [[ -n "$active_player" ]] && playerctl --player="$active_player" status 2>/dev/null | grep -q "Playing"; then
+        info=$(playerctl metadata --player="$active_player" --format '{{title}} ✦ {{artist}} ')
         trimmed_info=$(trim_info "$info" "$max_length")
-        output=" $trimmed_info"
+        icon=$(detect_icon "$active_player")
+        output="$icon $trimmed_info"
     fi
 fi
 
