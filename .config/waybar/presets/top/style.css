@@ -144,6 +144,15 @@ window#waybar {
   color: @foreground;
 }
 
+#custom-active_window {
+  font-family: "Neuropolitical";
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  color: @foreground;
+}
+
 #idle_inhibitor {
   font-size: 21px;
   font-weight: 100;
