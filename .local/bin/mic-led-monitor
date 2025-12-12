@@ -2,23 +2,25 @@
 ## Daemon script to continuously sync microphone LED with mute state
 ## Checks every 2 seconds and updates LED if state changes
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
+
 LED_PATH="/sys/class/leds/platform::micmute/brightness"
 CHECK_INTERVAL=2
 LAST_STATE=""
+
 # Function to control microphone LED
 control_mic_led() {
     local state=$1
-    if [ -w "$LED_PATH" ]; then
-        echo "$state" > "$LED_PATH" 2>/dev/null
-    elif [ -e "$LED_PATH" ]; then
-        # If we don't have write permissions, try with sudo
-        echo "$state" | sudo tee "$LED_PATH" > /dev/null 2>&1
-    else
-        # LED path doesn't exist - log and continue
-        echo "$(date): LED path not available" >&2
-        return 1
+    
+    # Need access to direct write (udev/chmod)
+    if echo "$state" > "$LED_PATH" 2>/dev/null; then
+        return 0
     fi
+    
+    echo "$(date): ERROR - Failed to write to LED path. Check permissions!" >&2
+    echo "$(date): Run: ls -l $LED_PATH" >&2
+    return 1
 }
+
 # Function to get current LED state
 get_current_led_state() {
     if [ -r "$LED_PATH" ]; then
@@ -27,37 +29,57 @@ get_current_led_state() {
         echo "unknown"
     fi
 }
+
 # Function to check mic mute state
 check_mic_state() {
     local mic_mute=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>/dev/null | grep -q MUTED && echo "muted" || echo "unmuted")
     echo "$mic_mute"
 }
+
 # Wait for audio system to be ready
 echo "$(date): Waiting for audio system to be ready..."
 wait_count=0
-max_wait=30
+max_wait=45  # Increased to 45 seconds
 while [ $wait_count -lt $max_wait ]; do
-    if wpctl status >/dev/null 2>&1; then
+    if wpctl status >/dev/null 2>&1 && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ >/dev/null 2>&1; then
         echo "$(date): Audio system ready after $wait_count seconds"
+        # Additional grace period for audio system to stabilize
+        sleep 2
         break
     fi
     sleep 1
     ((wait_count++))
 done
+
 if [ $wait_count -eq $max_wait ]; then
     echo "$(date): Audio system not ready after $max_wait seconds, exiting"
     exit 1
 fi
+
 echo "$(date): Starting mic LED monitoring daemon (checking every ${CHECK_INTERVAL}s)"
+
+# FORCE initial sync on startup - always update LED regardless of LAST_STATE
+echo "$(date): Forcing initial LED sync..."
+current_mic_state=$(check_mic_state)
+
+if [ "$current_mic_state" = "muted" ]; then
+    control_mic_led 1
+    echo "$(date): Initial state - Mic muted - LED turned ON"
+else
+    control_mic_led 0
+    echo "$(date): Initial state - Mic unmuted - LED turned OFF"
+fi
+
+LAST_STATE="$current_mic_state"
+
 # Main monitoring loop
 while true; do
     # Get current mic mute state
     current_mic_state=$(check_mic_state)
-
+    
     # Only update LED if state changed
     if [ "$current_mic_state" != "$LAST_STATE" ]; then
         current_led=$(get_current_led_state)
-
         if [ "$current_mic_state" = "muted" ]; then
             if [ "$current_led" != "1" ]; then
                 control_mic_led 1
@@ -69,9 +91,8 @@ while true; do
                 echo "$(date): Mic unmuted - LED turned OFF"
             fi
         fi
-
         LAST_STATE="$current_mic_state"
     fi
-
+    
     sleep $CHECK_INTERVAL
 done
