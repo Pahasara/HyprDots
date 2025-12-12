@@ -99,6 +99,24 @@
     default_icon = "arch"
     timeout = 5
 
+[warning]
+    appname = "warning"
+    max_icon_size = 72
+    default_icon = "warning"
+    timeout = 5
+
+[configure]
+    appname = "configure"
+    max_icon_size = 72
+    default_icon = "configure"
+    timeout = 2
+
+[configure_red]
+    appname = "configure_red"
+    max_icon_size = 72
+    default_icon = "configure-red"
+    timeout = 2
+
 [gamemode]
     appname = "gamemode"
     default_icon = "gamemode"

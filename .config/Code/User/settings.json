@@ -4,50 +4,41 @@
   "extensions.autoUpdate": false,
   "explorer.confirmDragAndDrop": false,
   "update.mode": "none",
-  //   "files.autoSave": "afterDelay",
-  //   "files.autoSaveDelay": 1000,
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "csharp": true
-  },
 
-  // Appearance Settings
+  // Appearance
   "window.titleBarStyle": "custom",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
   "workbench.editor.empty.hint": "hidden",
 
-  // Editor Settings
-  "editor.fontFamily": "CaskaydiaMono Nerd Font",
+  // Editor - Core Settings
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
   "editor.fontSize": 15,
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.lineNumbers": "relative",
-  "editor.cursorSurroundingLines": 10,
+  "editor.cursorSurroundingLines": 25,
+  "editor.scrollBeyondLastLine": true,
   "editor.detectIndentation": false,
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.tabCompletion": "on",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.linkedEditing": true,
-  "editor.scrollBeyondLastLine": false,
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.maxColumn": 100,
   "editor.largeFileOptimizations": true,
-  //   "editor.bracketPairColorization.enabled": true,
-  //   "editor.guides.bracketPairs": true,
   "editor.suggest.preview": true,
+
+  // Emmet for React/TS
   "emmet.includeLanguages": {
-    "typescriptreact": "html",
-    "javascriptreact": "html"
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
   },
 
-  // Terminal Settings
+  // Terminal
   "terminal.integrated.fontFamily": "CaskaydiaMono Nerd Font",
   "terminal.integrated.fontSize": 14,
   "terminal.external.linuxExec": "/usr/bin/kitty",
@@ -56,7 +47,7 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorStyleInactive": "block",
 
-  // Custom Colors
+  // Theme Colors
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#1E1E1F",
     "breadcrumb.background": "#161617",
@@ -99,42 +90,70 @@
     "editorBracketHighlight.foreground6": "#abb2c0"
   },
 
-  // Token Colors
+  // Syntax Colors - Optimized for TS/JS/React
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
-        "name": "Comment",
-        "scope": ["comment"],
+        "name": "Comments",
+        "scope": ["comment", "punctuation.definition.comment"],
         "settings": {
           "foreground": "#7B7B8B",
           "fontStyle": "italic"
         }
       },
       {
-        "name": "String",
+        "name": "Strings",
         "scope": [
-          "constant.character.character-class.regexp.cs",
-          "string.quoted.other.lt-gt.include",
-          "string"
+          "string.quoted",
+          "string.template",
+          "string.quoted.single",
+          "string.quoted.double"
         ],
         "settings": {
-          "foreground": "#ed736f"
+          "foreground": "#6bd178"
         }
       },
       {
-        "name": "Constant",
+        "name": "Keywords & Modifiers",
         "scope": [
-          "variable.other.constant",
-          "constant.character.escape",
-          "constant.other.placeholder"
+          "keyword",
+          "storage.type",
+          "storage.modifier",
+          "keyword.control",
+          "keyword.operator.new",
+          "keyword.control.export",
+          "keyword.control.import",
+          "keyword.control.from",
+          "keyword.control.as",
+          "storage.type.class",
+          "storage.type.function",
+          "storage.type.interface",
+          "storage.type.type",
+          "storage.type.enum",
+          "storage.type.namespace"
         ],
         "settings": {
-          "foreground": "#a8c4d2",
+          "foreground": "#e29766",
           "fontStyle": "italic"
         }
       },
       {
-        "name": "Numeric",
+        "name": "Constants & Booleans",
+        "scope": [
+          "constant.language",
+          "constant.language.boolean",
+          "constant.language.null",
+          "constant.language.undefined",
+          "variable.language.this",
+          "variable.language.super"
+        ],
+        "settings": {
+          "foreground": "#ff77cf",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "Numbers",
         "scope": ["constant.numeric"],
         "settings": {
           "foreground": "#ff47d1",
@@ -142,160 +161,118 @@
         }
       },
       {
-        "name": "Keyword",
-        "scope": [
-          "keyword",
-          "entity.name.function.preprocessor",
-          "entity.name.tag.http",
-          "constant.character.character-class.regexp.cs"
-        ],
-        "settings": {
-          "foreground": "#5ba8e6f6",
-          "fontStyle": "italic"
-        }
-      },
-      {
-        "name": "Control",
-        "scope": ["keyword.control"],
-        "settings": {
-          "foreground": "#e29766"
-        }
-      },
-      {
-        "name": "Class",
+        "name": "Types & Interfaces",
         "scope": [
           "entity.name.type",
           "entity.name.type.class",
-          "meta.jsx.children.js",
-          "entity.other.attribute-name.class.css"
+          "entity.name.type.interface",
+          "entity.name.type.module",
+          "support.class",
+          "support.type.builtin"
         ],
         "settings": {
-          "foreground": "#5bc36bf7"
+          "foreground": "#00e0bef6"
         }
       },
       {
-        "name": "Method",
-        "scope": ["entity.name.function", "support.function"],
+        "name": "Primitive Types",
+        "scope": ["support.type.primitive"],
         "settings": {
-          "foreground": "#dec96bf7"
+          "foreground": "#d092ff"
         }
       },
       {
-        "name": "Variable",
+        "name": "Functions & Methods",
         "scope": [
-          "entity.name.namespace",
-          "variable.other.readwrite",
-          "variable.other.property",
-          "entity.name.variable.field.cs",
+          "entity.name.function",
+          "support.function",
+          "meta.function-call.generic"
+        ],
+        "settings": {
+          "foreground": "#e0c878"
+        }
+      },
+      {
+        "name": "Variables & Parameters",
+        "scope": [
+          "variable",
           "variable.other",
-          "variable.other.enummember",
-          "meta.jsx.children.js",
-          "variable.parameter.js",
-          "variable.other.constant.object.js"
+          "variable.parameter",
+          "variable.other.readwrite",
+          "variable.other.constant",
+          "variable.other.object",
+          "variable.other.property"
         ],
         "settings": {
           "foreground": "#ccc"
         }
       },
       {
-        "name": "Operator",
-        "scope": ["keyword.operator"],
+        "name": "Object Properties",
+        "scope": [
+          "variable.other.property",
+          "support.variable.property",
+          "meta.object-literal.key"
+        ],
+        "settings": {
+          "foreground": "#4dc4de",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "JSX/HTML Tags",
+        "scope": ["entity.name.tag", "support.class.component"],
+        "settings": {
+          "foreground": "#ff77cf"
+        }
+      },
+      {
+        "name": "JSX/HTML Attributes",
+        "scope": ["entity.other.attribute-name"],
+        "settings": {
+          "foreground": "#4dc4de",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "Operators",
+        "scope": [
+          "keyword.operator",
+          "keyword.operator.logical",
+          "keyword.operator.type"
+        ],
         "settings": {
           "foreground": "#e1e1e1"
         }
       },
       {
-        "name": "Parameter.HTTP",
+        "name": "CSS Properties",
         "scope": [
-          "variable.parameter",
-          "keyword.control.http",
-          "constant.other.color.rgb-value.hex.css"
-        ],
-        "settings": {
-          "foreground": "#ca98e1"
-        }
-      },
-      {
-        "name": "Constant.JS",
-        "scope": [
-          "constant.language.json",
-          "entity.other.attribute-name.pseudo-class.css",
-          "constant.language.null.js.jsx",
-          "constant.language.null.ts.tsx",
-          "constant.language.boolean"
-        ],
-        "settings": {
-          "foreground": "#f69f65"
-        }
-      },
-      {
-        "name": "HTML/JS String",
-        "scope": [
-          "punctuation.definition.string.begin.html",
-          "punctuation.definition.string.end.html",
-          "punctuation.definition.string.begin.xml",
-          "punctuation.definition.string.end.xml",
-          "string.quoted.single.html",
-          "string.quoted.double.html",
-          "string.quoted.single.xml",
-          "string.quoted.double.xml",
-          "string.quoted.single.js",
-          "string.quoted.double.js",
-          "string.quoted.single.tsx",
-          "string.quoted.double.tsx",
-          "string.template.tsx",
-          "string.template.js"
-        ],
-        "settings": {
-          "foreground": "#63d172"
-        }
-      },
-      {
-        "name": "HTML/JS Tag/Name",
-        "scope": [
-          "entity.name.tag",
-          "entity.name.tag.css",
-          "support.variable.js",
-          "support.class",
-          "variable.language.this.js"
-        ],
-        "settings": {
-          "foreground": "#fc6661"
-        }
-      },
-      {
-        "name": "JS/CSS Property",
-        "scope": [
-          "support.type.property-name.json",
           "support.type.property-name.css",
-          "variable.css",
-          "variable.argument.css",
-          "entity.other.attribute-name",
-          "support.variable.property",
-          "variable.other.property.js",
-          "variable.other.property.jsx",
-          "variable.other.property.tsx"
+          "support.type.property-name.json"
         ],
         "settings": {
-          "foreground": "#44bfda",
+          "foreground": "#4dc4de",
           "fontStyle": "italic"
         }
       },
       {
-        "name": "JS/CSS Value",
+        "name": "CSS Values & Units",
         "scope": [
           "support.constant.property-value.css",
-          "support.constant.font-name.css",
-          "storage.type.function.js",
-          "storage.type.js"
+          "keyword.other.unit.css",
+          "constant.other.color"
         ],
         "settings": {
-          "foreground": "#f078c8"
+          "foreground": "#f483cf"
         }
       },
       {
-        "name": "CSS Attribute",
-        "scope": ["entity.other.attribute-name.id.css", "keyword.other.unit"],
+        "name": "CSS Selectors",
+        "scope": [
+          "entity.other.attribute-name.id.css",
+          "entity.other.attribute-name.class.css"
+        ],
         "settings": {
           "foreground": "#e8a52a"
         }
@@ -303,110 +280,100 @@
     ]
   },
 
-  // Performance optimizations
+  // TypeScript/JavaScript
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+
+  // CSS & TailwindCSS
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Performance
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
-    "**/*.code-search": true,
     "**/build": true,
-    "**/dist": true
+    "**/dist": true,
+    "**/.next": true,
+    "**/.cache": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true,
     "**/build/**": true,
-    "**/dist/**": true
+    "**/dist/**": true,
+    "**/.next/**": true
   },
-  "extensions.ignoreRecommendations": true,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "explorer.fileNesting.patterns": {
-    "*.ts": "${capture}.js, ${capture}.js.map, ${capture}.d.ts",
-    "*.tsx": "${capture}.js, ${capture}.jsx, ${capture}.d.ts",
-    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "*.jsx": "${capture}.js",
-    "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
-    "*.sqlite": "${capture}.${extname}-*",
-    "*.db": "${capture}.${extname}-*",
-    "*.sqlite3": "${capture}.${extname}-*",
-    "*.db3": "${capture}.${extname}-*",
-    "*.sdb": "${capture}.${extname}-*",
-    "*.s3db": "${capture}.${extname}-*"
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": false
   },
 
-  // Neovim Configuration
+  // File Nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .npmrc, .yarnrc",
+    "tsconfig.json": "tsconfig.*.json",
+    "*.ts": "${capture}.js, ${capture}.d.ts",
+    "*.tsx": "${capture}.js, ${capture}.jsx",
+    "*.js": "${capture}.js.map, ${capture}.min.js",
+    ".env": ".env.*, .envrc",
+    "tailwind.config.*": "postcss.config.*",
+    "next.config.*": "next-env.d.ts"
+  },
+
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": false,
+    "typescript": true,
+    "typescriptreact": true,
+    "javascript": true,
+    "javascriptreact": true
+  },
+
+  // Neovim
   "vscode-neovim.compositeKeys": {
     "''": {
       "command": "vscode-neovim.escape"
     }
   },
-
-  // File Type Specific
-  // C/C++ specific
-  "C_Cpp.legacyCompilerArgsBehavior": true,
-  "C_Cpp.default.cStandard": "c17",
-  "C_Cpp.default.cppStandard": "c++23",
-  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-  "C_Cpp.autocompleteAddParentheses": true,
-  "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
-  "C_Cpp.intelliSenseEngine": "default",
-  "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
-    "bugprone-*",
-    "cert-*",
-    "performance-*",
-    "misc-*",
-    "portability-*",
-    "clang-analyzer-*",
-    "cppcoreguidelines-*"
-  ],
-  "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
-    "cppcoreguidelines-avoid-magic-numbers",
-    "misc-include-cleaner"
-  ],
-
-  // C#
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
-
-  // Javascript
-  "[javascript]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
-  "[javascriptreact]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
-  "javascript.suggest.autoImports": true,
-  "javascript.validate.enable": false, // let ESLint handle it
-  "files.exclude": { "**/node_modules": true, "**/dist": true },
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-
-  // CSS, TailwindCSS
-  "tailwindCSS.emmetCompletions": true,
-  "tailwindCSS.includeLanguages": {
-    "javascript": "javascript",
-    "javascriptreact": "html",
-    "typescript": "javascript",
-    "typescriptreact": "html"
-  },
-
-  // Typescript
-  "typescript.suggest.autoImports": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.validate.enable": false,
-  "[typescript]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
-  "[typescriptreact]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
   },
 
   // ESLint
@@ -417,8 +384,6 @@
     "typescriptreact"
   ],
 
-  // XML
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  }
+  // Misc
+  "extensions.ignoreRecommendations": true
 }

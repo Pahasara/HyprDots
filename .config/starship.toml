@@ -55,7 +55,7 @@ truncation_symbol = "…/"
 style = 'bold gray'
 
 [directory.substitutions]
-"Desktop" = " "
+"Desktop" = "󰇄 "
 "Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
