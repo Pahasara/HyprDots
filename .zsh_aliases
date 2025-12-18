@@ -18,6 +18,7 @@ alias vz="vim ~/.zshrc"
 alias ve="vim ~/.zshenv"
 alias vl="vim ~/.zshrc.local"
 alias vk="vim ~/.config/kitty/kitty.conf"
+alias vs="vim ~/.config/starship.toml"
 
 # 🖼️ Wallpaper Switching
 alias wall="swww img"
@@ -67,8 +68,7 @@ alias sctlr="systemctl restart"
 
 # 🧪 Languages & Tools
 alias dr="dotnet run"
-alias dpl="dotnet publish -r linux-x64 --sc"
-alias dpw="dotnet publish -r win-x64 --sc"
+alias dw="dotnet watch"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 alias cl="clang -std=c23 -Wall"
@@ -79,7 +79,6 @@ alias py="python"
 
 # 💻 CLI Programs
 alias ac="aria2c"
-alias mk="musikcube"
 alias y="yazi"
 alias mg="mega-get"
 alias yd="yt-dlp -f 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/bv*+ba/b' --embed-thumbnail --embed-metadata"
@@ -93,5 +92,6 @@ alias ztrack="./.local/opt/ztrack/ZTrack"
 
 # Custom Utitlies
 alias cat="bat --style plain"
+alias less="bat --style plain"
 alias pacclean="paccache -rv && paccache -rvuk0"
 
