@@ -221,7 +221,7 @@
     },
     "custom/song": {
         "interval": 2,
-        "exec": "~/.local/bin/media-info",
+        "exec": "~/.local/bin/media-info max_length=20",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
         "on-click-middle": "~/.local/bin/player toggle_play",

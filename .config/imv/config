@@ -3,6 +3,8 @@
 [options]
 # Suppress built-in key bindings, and specify them explicitly in this config file.
 suppress_default_binds = true
+# Set scaling mode to use. [none|shrink|full|crop]
+# scaling_mode = none
 
 [aliases]
 # Define aliases here. Any arguments passed to an alias are appended to the
