@@ -23,7 +23,7 @@ PACMAN_PACKAGES=(
     "sddm" "polkit-gnome" "xdg-desktop-portal-hyprland"
     "xdg-desktop-portal-gtk" "pipewire" "pipewire-pulse" "pipewire-alsa"
     "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
-    "kitty" "zsh" "starship" "eza" "fastfetch" "lolcat"
+    "kitty" "zsh" "starship" "fzf" "eza" "fastfetch" "lolcat"
     "7zip" "aria2" "cliphist" "grim" "slurp" "brightnessctl"
     "udiskie" "unzip" "mediainfo" "kompare"
     "kde-cli-tools" "kdegraphics-thumbnailers" "qt5ct"
@@ -48,7 +48,6 @@ AUR_PACKAGES=(
 ENABLED_USER_SERVICES=(
     "battery-monitor.service"
     "headphone-monitor.service"
-    "ianny.service"
     "mic-led-monitor.service"
     "swww-daemon.service"
     "udiskie-automount.service"
@@ -64,6 +63,7 @@ ENABLED_GRAPHICAL_SERVICES=(
 
 ENABLED_TIMERS=(
     "battery-warning.timer"
+    "wallpaper-rotate.timer"
 )
 
 check_permissions() {
@@ -128,6 +128,7 @@ install_aur_packages() {
     local to_install=()
     for pkg in "${AUR_PACKAGES[@]}"; do
         yay -Q "$pkg" &>/dev/null || to_install+=("$pkg")
+    \
     done
     [[ ${#to_install[@]} -eq 0 ]] && log_info "All AUR packages installed." && return
     yay -S --needed --noconfirm "${to_install[@]}" || {
@@ -144,12 +145,49 @@ install_dotfiles() {
     [[ -d ".config" ]] && cp -r .config/* "$HOME/.config/" && log_info "Copied .config files"
     [[ -d ".local" ]] && cp -r .local/* "$HOME/.local/" && log_info "Copied .local files"
     [[ -d ".walls" ]] && cp -r .walls/* "$HOME/Pictures/Wallpapers/" 2>/dev/null && log_info "Copied wallpapers"
-
+    
+    # Copy zsh files
+    [[ -f ".zshrc" ]] && cp .zshrc "$HOME/.zshrc" || log_warning "Could not copy .zshrc"
+    [[ -f ".zshenv" ]] && cp .zshenv "$HOME/.zshenv" || log_warning "Could not copy .zshenv"
+    [[ -f ".zsh_aliases" ]] && cp .zsh_aliases "$HOME/.zsh_aliases" || log_warning "Could not copy .zsh_aliases"
+    
     # Ensure proper permissions for executables
     find "$HOME/.local/bin" -type f -exec chmod +x {} \; 2>/dev/null
 
     log_success "Config files installed."
 }
+
+install_zinit() {
+    log_step "Setting up Zsh + Zinit"
+    command -v zsh &>/dev/null || { log_error "Zsh not installed."; exit 1; }
+    
+    local ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+    
+    # Check for existing OMZ (and remove it if found for a clean start)
+    # if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    #     log_warning "Found Oh My Zsh installation. Removing it for Zinit migration."
+    #     rm -rf "$HOME/.oh-my-zsh"
+    # fi
+
+    # Install Zinit if not present
+    if [[ ! -d "$ZINIT_HOME" ]]; then
+        log_info "Installing Zinit..."
+        mkdir -p "$(dirname "$ZINIT_HOME")"
+        git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" || { log_error "Zinit install failed."; exit 1; }
+    fi
+    
+    # Zinit handles plugin installation when zshrc is sourced, we only need to install the base manager.
+    log_info "Zinit manager installed. Plugins will be installed when Zsh is first run."
+
+    # Change default shell
+    if [[ "$SHELL" != *"zsh"* ]]; then
+        log_info "Changing default shell to zsh..."
+        chsh -s "$(which zsh)" || log_warning "Failed to set zsh as default shell"
+    fi
+    
+    log_success "Zsh and Zinit configured."
+}
+
 
 configure_gtk_themes() {
     log_step "Configuring GTK themes"
@@ -254,44 +292,6 @@ install_cursors() {
     log_success "Cursor themes installation complete."
 }
 
-install_omz() {
-    log_step "Setting up Zsh + plugins"
-    command -v zsh &>/dev/null || { log_error "Zsh not installed."; exit 1; }
-    
-    # Install Oh My Zsh if not present
-    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-        log_info "Installing Oh My Zsh..."
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    fi
-    
-    ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
-    declare -A plugins=(
-        ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
-        ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-        ["zsh-autocomplete"]="https://github.com/marlonrichert/zsh-autocomplete.git"
-    )
-    
-    log_info "Installing Zsh plugins..."
-    for name in "${!plugins[@]}"; do
-        if [[ ! -d "$ZSH_CUSTOM/plugins/$name" ]]; then
-            log_info "Installing $name..."
-            git clone --depth 1 "${plugins[$name]}" "$ZSH_CUSTOM/plugins/$name"
-        fi
-    done
-    
-    # Copy config files
-    [[ -f ".zshrc" ]] && cp .zshrc "$HOME/.zshrc" || log_warning "Could not copy .zshrc"
-    [[ -f ".zshenv" ]] && cp .zshenv "$HOME/.zshenv" || log_warning "Could not copy .zshenv"
-    
-    # Change default shell
-    if [[ "$SHELL" != *"zsh"* ]]; then
-        log_info "Changing default shell to zsh..."
-        chsh -s "$(which zsh)" || log_warning "Failed to set zsh as default shell"
-    fi
-    
-    log_success "Zsh configured."
-}
-
 configure_user_services() {
     log_step "Configuring user services"
     
@@ -303,7 +303,6 @@ configure_user_services() {
     log_prompt "The following user services are available:"
     echo "  - battery-monitor.service (battery monitoring)"
     echo "  - headphone-monitor.service (headphone plugging detection)"
-    echo "  - ianny.service (eye strain protection)"
     echo "  - mic-led-monitor.service (microphone LED indicator)"
     echo "  - swww-daemon.service (wallpaper daemon)"
     echo "  - udiskie-automount.service (auto-mounting)"
@@ -311,6 +310,7 @@ configure_user_services() {
     echo "  - polkit-authentication.service (authentication agent)"
     echo "  - wayland-env.service (environment variables)"
     echo "  - battery-warning.timer (battery warning timer)"
+    echo "  - wallpaper-rotate.timer (wallpaper rotate timer)"
     echo "  - shader-cleaner.service (not enabled by default)"
     echo
     
@@ -392,7 +392,7 @@ main() {
  |     |    |    |       |    \_ |_____/ |_____|    |    ______|
 
 EOF
-    echo -e "${NC}${CYAN}HyprDots Installation Script v2.0${NC}"
+    echo -e "${NC}${CYAN}HyprDots Installation Script v2.1${NC}"
     echo -e "This will install and configure your Hyprland compositor with smart configurations."
     echo
     
@@ -410,7 +410,7 @@ EOF
     install_dotfiles
     configure_gtk_themes
     install_cursors
-    install_omz
+    install_zinit
     configure_user_services
     configure_services
     final_setup
@@ -418,9 +418,9 @@ EOF
     echo
     log_success "HyprDots installation complete!"
     log_info "Changes made:"
-    log_info "  ✓ Installed all packages including pipewire-alsa"
-    log_info "  ✓ Configured GTK themes properly"
-    log_info "  ✓ Set up user services with selective enabling"
+    log_info "  ✓ Installed all packages"
+    log_info "  ✓ Configured GTK themes"
+    log_info "  ✓ Set up user services"
     log_info "  ✓ Applied proper file permissions"
     log_info "  ✓ Updated font and icon caches"
     echo
