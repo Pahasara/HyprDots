@@ -3,9 +3,12 @@
 [mgr]
 cwd = { fg = "cyan" }
 
-# Hovered
-hovered         = { reversed = true }
-preview_hovered = { underline = false }
+[flavor]
+dark = "tokyo-night"
+
+[indicator]
+current = { reversed = true }
+preview = { underline = false }
 
 # Find
 find_keyword  = { fg = "yellow", bold = true, italic = true, underline = true }
@@ -28,9 +31,6 @@ count_selected = { fg = "white", bg = "yellow" }
 # Border
 border_symbol = "│"
 border_style  = { fg = "darkgray" }
-
-# Highlighting
-syntect_theme = "~/.config/yazi/themes/tokyonight_night.tmTheme.xml"
 
 # : }}}
 
@@ -220,17 +220,17 @@ rules = [
 	# Empty files
 	# { mime = "inode/empty", fg = "red" },
 
-	# Special files
-	{ name = "*", is = "orphan", bg = "red" },
-	{ name = "*", is = "exec"  , fg = "green" },
+	# Special files (renamed name -> url)
+	{ url = "*", is = "orphan", bg = "red" },
+	{ url = "*", is = "exec"  , fg = "green" },
 
-	# Dummy files
-	{ name = "*", is = "dummy", bg = "red" },
-	{ name = "*/", is = "dummy", bg = "red" },
+	# Dummy files (renamed name -> url)
+	{ url = "*", is = "dummy", bg = "red" },
+	{ url = "*/", is = "dummy", bg = "red" },
 
 	# Fallback
 	# { name = "*", fg = "white" },
-	{ name = "*/", fg = "blue" }
+	{ url = "*/", fg = "blue" }
 ]
 
 # : }}}

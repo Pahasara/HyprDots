@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>author</key>
-	<string>Folke Lemaitre (http://github.com/folke)</string>
+	<string>Kristi Russell (http://github.com/enkia)</string>
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>name</key>
-	<string>TokyoNight</string>
+	<string>Enki-Tokyo-Night</string>
 	<key>semanticClass</key>
 	<string>enki.theme.tokyo</string>
 	<key>settings</key>
@@ -17,7 +18,7 @@
 				<key>activeGuide</key>
 				<string>#363b54</string>
 				<key>background</key>
-				<string>#1a1b26</string>
+				<string>#1d1f29</string>
 				<key>caret</key>
 				<string>#DBC08A</string>
 				<key>findHighlight</key>
@@ -25,7 +26,7 @@
 				<key>findHighlightForeground</key>
 				<string>#000000</string>
 				<key>foreground</key>
-				<string>#c0caf5</string>
+				<string>#AFBAD4ff</string>
 				<key>guide</key>
 				<string>#4f4f5e40</string>
 				<key>gutterForeground</key>
@@ -36,6 +37,10 @@
 				<string>#4f4f5e</string>
 				<key>lineHighlight</key>
 				<string>#00000030</string>
+				<key>phantomCss</key>
+				<string>&lt;![CDATA[ html { position: relative; } ]]&gt;</string>
+				<key>popupCss</key>
+				<string>&lt;![CDATA[ html { color: #B376B3; background-color: #2b2d3a; padding: 10px; } a { color: #6189BB; line-height: 1.2; text-decoration: none; } .error, .deleted { color: #50B4DC; } .success, .inserted { color: #9DBA72; } .warning, .modified { color: #ffa300; } ]]&gt;</string>
 				<key>selection</key>
 				<string>#9D599D40</string>
 				<key>selectionBorder</key>
@@ -67,7 +72,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#565f89</string>
+				<string>#444b6a</string>
 			</dict>
 		</dict>
 		<dict>
@@ -78,7 +83,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#565f89</string>
+				<string>#7982a9</string>
 			</dict>
 		</dict>
 		<dict>
@@ -92,24 +97,11 @@
 				<string>#ff9e64</string>
 			</dict>
 		</dict>
-    <dict>
-      <key>name</key>
-      <string>String, Symbols, Markup Heading</string>
-      <key>scope</key>
-      <string>meta.property.lua,string.unquoted.key.lua,support.other.metaproperty.lua,support.other.metaproperty.lua,constant.other.symbol, constant.other.key, markup.heading, meta.attribute-selector</string>
-      <key>settings</key>
-      <dict>
-        <key>fontStyle</key>
-        <string></string>
-        <key>foreground</key>
-        <string>#73daca</string>
-      </dict>
-    </dict>
 		<dict>
 			<key>name</key>
-			<string>String</string>
+			<string>String, Symbols, Markup Heading</string>
 			<key>scope</key>
-			<string>string</string>
+			<string>string, constant.other.symbol, constant.other.key, markup.heading, meta.attribute-selector</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -131,52 +123,13 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Info</string>
-			<key>scope</key>
-			<string>markup.info</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#0db9d7</string>
-				<key>background</key>
-				<string>#192b38</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Warning</string>
-			<key>scope</key>
-			<string>markup.warning</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#e0af68</string>
-				<key>background</key>
-				<string>#2e2a2d</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Error</string>
-			<key>scope</key>
-			<string>markup.error</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#db4b4b</string>
-				<key>background</key>
-				<string>#2d202a</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
 			<string>Invalid</string>
 			<key>scope</key>
 			<string>invalid, invalid.illegal</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#f7768e</string>
+				<string>#ff5370</string>
 			</dict>
 		</dict>
 		<dict>
@@ -354,7 +307,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#2ac3de</string>
+				<string>#0db9d7</string>
 			</dict>
 		</dict>
 		<dict>
@@ -554,7 +507,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#2ac3de</string>
+				<string>#0db9d7</string>
 			</dict>
 		</dict>
 		<dict>
@@ -779,7 +732,7 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>CSS pseudo selectors</string>
+			<string>CSS psuedo selectors</string>
 			<key>scope</key>
 			<string>entity.other.attribute-name.pseudo-class, entity.other.attribute-name.pseudo-element, entity.other.attribute-name.placeholder, meta.property-list meta.property-value</string>
 			<key>settings</key>
