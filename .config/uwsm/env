@@ -19,8 +19,12 @@ export QT_QPA_PLATFORM=wayland
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
 # ─────────────────────────────────────────────
-# Multimedia & SDL Configuration
+# Gaming & SDL Configuration
 # ─────────────────────────────────────────────
+export PROTON_ENABLE_WAYLAND=1
+export PROTON_USE_NTSYNC=1
+export DXVK_ASYNC=1
+
 export SDL_VIDEO_DRIVER=wayland
 export SDL_AUDIO_DRIVER=pipewire
 
