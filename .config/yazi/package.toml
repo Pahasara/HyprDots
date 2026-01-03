@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "c6d0de7"
-hash = "7b024fc14b462235068400207cbe7bf0"
+rev = "90a1652"
+hash = "7a83bfab51d1d2ba6558cc56bd52539a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "63f9650"
+rev = "03cdd4b"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
@@ -13,5 +13,12 @@ use = "Ape/simple-status"
 rev = "d0da104"
 hash = "68603fdd1dcaf415227e2c77a9317947"
 
-[flavor]
-deps = []
+[[plugin.deps]]
+use = "pahasara/size-mtime"
+rev = "1a671f0"
+hash = "8d9905e092e8b6d5bf9c8a7451f12ce5"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "8e6296f"
+hash = "d9da921c3bd37ba32ee27a8a7a40461f"

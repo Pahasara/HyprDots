@@ -218,18 +218,18 @@ rules = [
 	{ mime = "application/{pdf,doc,rtf}", fg = "cyan" },
 
 	# Empty files
-	# { mime = "inode/empty", fg = "red" },
+	{ mime = "inode/empty", fg = "red" },
 
-	# Special files (renamed name -> url)
+	# Special files
 	{ url = "*", is = "orphan", bg = "red" },
 	{ url = "*", is = "exec"  , fg = "green" },
 
-	# Dummy files (renamed name -> url)
+	# Dummy files
 	{ url = "*", is = "dummy", bg = "red" },
 	{ url = "*/", is = "dummy", bg = "red" },
 
 	# Fallback
-	# { name = "*", fg = "white" },
+	# { url = "*", fg = "white" },
 	{ url = "*/", fg = "blue" }
 ]
 
