@@ -13,6 +13,7 @@ export SCRIPT_DIR="$HOME/.local/bin"
 export WALL_DIR="$HOME/Pictures/Wallpapers"
 export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/shader_cache"
 export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
+export GOPATH="$HOME/.go"
 
 export DOTNET_ROOT="/usr/share/dotnet"
 export DOTNET_TOOLS_PATH="$HOME/.dotnet/tools"
