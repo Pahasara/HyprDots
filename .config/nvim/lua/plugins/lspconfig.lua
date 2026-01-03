@@ -48,6 +48,10 @@ return {
     -- NOTE: jdtls
     local jdtls_config = require 'lsp_config.jdtls'
     vim.lsp.config('jdtls', { settings = { jdtls_config } })
+
+    -- NOTE: basedpyright
+    local basedpyright_config = require 'lsp_config.basedpyright'
+    vim.lsp.config('basedpyright', basedpyright_config)
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et
