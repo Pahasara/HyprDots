@@ -2,6 +2,7 @@
 sync_dots.sh
 .config/hypr/hyprland.conf
 .config/hypr/local.conf
+.local/bin/timecanvas
 .config/systemd/user/default.target.wants
 .config/systemd/user/graphical-session.target.wants
 .config/systemd/user/timers.target.wants
