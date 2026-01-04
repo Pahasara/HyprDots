@@ -1,122 +1,115 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-    	"source": "~/Pictures/Assets/fetch.png",
-    	"type": "kitty-direct",
-    	"padding": {
-    		"top": 1,
-                "left": 0,
-                "right":3
-    	}
+        "source": "~/Pictures/Assets/fetch.png",
+        "padding": {
+            "top": 1,
+            "left": 2,
+            "right": 3
+        }
     },
     "display": {
         "separator": " "
     },
     "modules": [
-	    "break",
-        "break",
         // "break",
-	{
+        "break",
+        "break",
+        {
             "type": "title",
             "keyWidth": 10
         },
-        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[31m-----------"
+        },
+        // "break",
         {
             "type": "os",
             "key": " ",
-            "keyColor": "34",  // = color4
+            "keyColor": "34"
         },
         {
             "type": "kernel",
-            "key": " ",
-            "keyColor": "34",
+            "key": " ",
+            "keyColor": "33"
         },
         {
             "type": "packages",
-            // "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "34",  
+            "keyColor": "31"
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "34", },
-        "break",
-        // {
-        //     "type": "terminal",
-        //     "key": " ",
-        //     "keyColor": "34", 
-        // },
-        {
-            "type": "wm",
-            "key": " ",
-            "keyColor": "34", 
+            "keyColor": "32"
         },
-        // {
-        //     "type": "cursor",
-        //     "key": " ",
-        //     "keyColor": "34", 
-        // },
-        // {
-        //     "type": "terminalfont",
-        //     "key": " ",
-        //     "keyColor": "34", 
-        // },
+        // "break",
         {
-            "type": "uptime",
-            "key": " ",
-            "keyColor": "34", 
+            "type": "custom",
+            "format": "\u001b[32m------------------------"
         },
         {
             "type": "command",
-            "key": "󱦟 ",
-            "keyColor": "34",
-            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+            "key": "󰦱 ",
+            "keyColor": "38",
+            "text": "printf 'Mesa %s (Vulkan %s)\\n' \"$(pacman -Qi mesa | awk -F': ' '/^Version/ {print $2}' | cut -d: -f2)\" \"$(vulkaninfo | awk '/apiVersion/{print $3; exit}')\""
+        },
+        {
+            "type": "command",
+            "key": " ",
+            "keyColor": "35",
+            "text": "$SCRIPT_DIR/dev-info"
+        },
+        {
+            "type": "wm",
+            "key": " ",
+            "keyColor": "34"
         },
         // {
-        //     "type": "host",
-        //     "key": "󰌢 ",
-        //     "keyColor": "blue"
-        // },
-        // {
-        //     "type": "datetime",
-        //     "format": "{1}-{3}-{11}",
-        //     "key": " ",
+        //     "type": "uptime",
+        //     "key": " ",
         //     "keyColor": "34", 
         // },
-        // {
-        //     "type": "media",
-        //     "key": "󰝚 ",
-        //     "keyColor": "34", 
-        // },
+        {
+            "type": "command",
+            "key": "󱦟 ",
+            "keyColor": "37",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        },
         // "break",
-        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[32m------------------------"
+        },
         {
             "type": "cpu",
             "key": " ",
-            "keyColor": "blue"
+            "keyColor": "32"
         },
-        // {
-        //     "type": "display",
-        //     "key": " ",
-        //     "keyColor": "blue"
-        // },
         {
             "type": "gpu",
             "key": " ",
-            "keyColor": "blue"
+            "keyColor": "36"
         },
         {
             "type": "memory",
             "key": " ",
-            "keyColor": "blue"
+            "keyColor": "31"
         },
-        "break",
+        {
+            "type": "disk",
+            "key": " ",
+            "keyColor": "33"
+        },
+        // "break",
         {
             "type": "custom",
-            "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+            "format": "\u001b[31m────────────"
         }
-        // "break",
-        // "break",
+        // {
+        //     "type": "custom",
+        //     "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+        // }
     ]
 }
