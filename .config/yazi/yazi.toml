@@ -32,9 +32,9 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = '${EDITOR:-vi} "%s"', desc = "$EDITOR", block = true, for = "unix" },
-	{ run = 'code "%s"',    orphan = true, desc = "code",           for = "windows" },
-	{ run = 'code -w "%s"', block = true,  desc = "code (block)",   for = "windows" },
+	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'code %s',    orphan = true, desc = "code",           for = "windows" },
+	{ run = 'code -w %s', block = true,  desc = "code (block)",   for = "windows" },
 ]
 open = [
 	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
@@ -50,7 +50,7 @@ reveal = [
 	{ run = "clear; exiftool %s1; echo 'Press enter to exit'; read _", desc = "Show EXIF", for = "unix", block = true },
 ]
 view = [
-	{ run = 'imv "%1"', orphan = true, for = "linux" }, 
+	{ run = 'imv %s', orphan = true, for = "linux" }, 
 ]
 extract = [
 	{ run = "ya pub extract --list %s", desc = "Extract here" },
