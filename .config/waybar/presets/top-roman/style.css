@@ -1,0 +1,177 @@
+/* github.com/pahasara/HyprDots */
+
+@import url("themes/fluent.css");
+
+* {
+  font-family: "CaskaydiaMono Nerd Font";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+window#waybar {
+  color: @fg-module;
+  background: @background;
+}
+
+#workspaces {
+  min-width: 150px;
+  background: @bg-module;
+  border-radius: 15px;
+}
+
+#workspaces button {
+  color: @fg-blink;
+  border-radius: 15px;
+  box-shadow: none;
+  margin: 2px;
+  padding: 0 8px;
+  transition: ease-in-out;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+#workspaces button:hover {
+  color: @hover-fg;
+  background: @hover-bg;
+  text-shadow: none;
+}
+#workspaces button.active {
+  color: @active;
+  background: transparent;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  margin: 2px;
+  padding: 0 8px;
+  opacity: 1;
+}
+
+#workspaces button.empty {
+  opacity: 0.4;
+}
+
+#workspaces button.urgent {
+  color: @warning;
+  background-color: transparent;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  animation: workspace_urgent 1s ease-in-out infinite;
+  margin: 2px;
+  padding: 0 6px;
+}
+
+#tray {
+  background-color: @bg-tray;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.not-charging {
+  color: @foreground;
+}
+
+#battery.charging {
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 1.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @fg-blink;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @critical;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-storage,
+#window,
+#clock.date,
+#custom-date,
+#memory,
+#cpu {
+  font-size: 15;
+  color: @fg-alt;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#wireplumber,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray,
+#pulseaudio,
+#network {
+  font-size: 15px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#clock.time {
+  font-size: 16px;
+}
+
+#gamemode.running {
+  color: @foreground;
+}
+
+#custom-song {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  color: @foreground;
+}
+
+#custom-update {
+  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  color: @fg-alt;
+}
+
+#custom-active_window {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  color: @foreground;
+}
+
+#idle_inhibitor {
+  font-size: 21px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding-left: 9px;
+  padding-right: 15px;
+}
+
+#idle_inhibitor.activated {
+  color: @active;
+}
+
+#idle_inhibitor.deactivated {
+  color: @fg-module;
+}
+
+.modules-right {
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 3px;
+  margin: 5px;
+}
