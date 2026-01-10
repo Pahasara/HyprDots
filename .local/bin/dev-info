@@ -1,0 +1,17 @@
+#!/bin/sh
+
+dotnet_v=$(dotnet --version)
+# gcc_v=$(gcc -dumpversion 2>/dev/null)
+node_v=$(node --version 2>/dev/null | sed 's/v//')
+# java_v=$(java -version 2>&1 | awk -F'["_]' 'NR==1{print $2}')
+# python_v=$(python --version 2>&1 | awk '{print $2}')
+# rust_v=$(rustc --version 2>/dev/null | awk '{print $2}')
+
+printf "\e[0m.NET\e[0m %s" "$dotnet_v"
+# printf " / \e[34m\e[0m %s" "$gcc_v"
+printf " / \e[33m\e[0m %s" "$node_v"
+# printf " / \e[31m\e[0m %s" "$java_v"
+# printf " / \e[32m\e[0m %s" "$python_v"
+# printf " / \e[38;5;208m\e[0m %s" "$rust_v"
+
+printf "\e[0m"
