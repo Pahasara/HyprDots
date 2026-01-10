@@ -1,0 +1,76 @@
+#!/bin/bash
+## Arch update checker with time-based caching
+
+CACHE_FILE="/tmp/$USER-waybar-update-status"
+WAYBAR_INTERVAL=$((12 * 60 * 60)) # 12 hours
+SAFETY_MARGIN=$((2 * 60))         # 2 minutes
+
+DEFAULT_CACHE_TIME=$((WAYBAR_INTERVAL - SAFETY_MARGIN))
+PACMAN_CMD="checkupdates"
+AUR_CMD="yay -Qum"
+
+CACHE_TIME="$DEFAULT_CACHE_TIME"
+FORCE_REFRESH=0
+MODE=""
+
+for arg in "$@"; do
+    case "$arg" in
+        --force)
+            FORCE_REFRESH=1
+            ;;
+        cache_time=*)
+            CACHE_TIME="${arg#cache_time=}"
+            ;;
+        all|pacman|aur)
+            MODE="$arg"
+            ;;
+    esac
+done
+
+now=$(date +%s)
+use_cache=false
+
+if [[ -f "$CACHE_FILE" && $FORCE_REFRESH -eq 0 ]]; then
+    read -r last_check pacman_updates aur_updates < "$CACHE_FILE" || true
+
+    if [[ -n "$last_check" ]] && (( now - last_check < CACHE_TIME )); then
+        use_cache=true
+    fi
+fi
+
+if ! $use_cache; then
+    pacman_updates=$($PACMAN_CMD 2>/dev/null | wc -l)
+    aur_updates=$($AUR_CMD 2>/dev/null | wc -l)
+    echo "$now $pacman_updates $aur_updates" > "$CACHE_FILE"
+fi
+
+total_updates=$((pacman_updates + aur_updates))
+
+case "$MODE" in
+    "")
+        (( total_updates == 0 )) && echo " none" || echo " $total_updates"
+        ;;
+    all)
+        if $use_cache && (( FORCE_REFRESH == 0 )); then
+            echo "Cached results"
+            echo "Pacman updates: $pacman_updates"
+            echo "AUR updates: $aur_updates"
+        else
+            echo "Pacman Updates:"
+            $PACMAN_CMD 2>/dev/null || echo "No Pacman updates available."
+            echo
+            echo "AUR Updates:"
+            $AUR_CMD 2>/dev/null || echo "No AUR updates available."
+        fi
+        ;;
+    pacman)
+        (( pacman_updates == 0 )) \
+            && echo "No Pacman updates available." \
+            || echo "  $pacman_updates Pacman updates available."
+        ;;
+    aur)
+        (( aur_updates == 0 )) \
+            && echo "No AUR updates available." \
+            || echo "  $aur_updates AUR updates available."
+        ;;
+esac
