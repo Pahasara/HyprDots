@@ -44,7 +44,7 @@ return {
       local bg_highlight = '#292E44'
       local bg_search = '#3DDBD9'
       local bg_visual = '#324867'
-      local fg = '#D5D5D5'
+      local fg = '#DCDCDC'
       local fg_dark = '#EFEFEF'
       local fg_gutter = '#020202'
       local border = '#161616'
@@ -72,12 +72,12 @@ return {
 
       vim.cmd 'colorscheme tokyonight'
 
-      vim.cmd 'hi CursorLineNr guifg=#BCBCBF'
-      vim.cmd 'hi LineNrAbove guifg=#888899'
-      vim.cmd 'hi LineNrBelow guifg=#888899'
+      vim.cmd 'hi CursorLineNr guifg=#CCCCCF'
+      vim.cmd 'hi LineNrAbove guifg=#9999aa'
+      vim.cmd 'hi LineNrBelow guifg=#9999aa'
       vim.cmd 'hi Search guibg=#194B68'
 
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#768696' })
+      vim.api.nvim_set_hl(0, 'Comment', { fg = '#8696a6' })
     end,
   },
 }
