@@ -1,13 +1,6 @@
 #!/bin/bash
 set -e
-
 ## This script allows switching Waybar layouts and themes dynamically.
-
-## Usage:
-## - Run with one of the following layouts:
-##   - `top`, `bottom`, `float`, `slant`, `side`, `slant-compact`
-## - Optionally, specify a theme as the second argument.
-##   Example: `./waymod bottom fluent`
 
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
@@ -17,12 +10,12 @@ WAYBAR_STYLE="$HOME/.config/waybar/style.css"
 WAYBAR_SCRIPT="$HOME/.config/waybar/waybar.sh"
 
 # Define valid presets
-VALID_PRESETS=("top" "top-modern" "bottom" "float" "float-modern" "slant" "side" "slant-compact")
+VALID_PRESETS=("top" "top-modern" "top-roman" "bottom" "float" "float-modern" "slant" "side" "slant-compact")
 
 # Check if the given preset is valid
 if [[ ! " ${VALID_PRESETS[*]} " =~ " $1 " ]]; then
     echo "Invalid preset: $1"
-    echo "Usage: $0 {top|top-modern|bottom|float|float-modern|slant|side|slant-compact} [theme]"
+    echo "Usage: $0 {top|top-modern|top-roman|bottom|float|float-modern|slant|side|slant-compact} [theme]"
     exit 1
 fi
 

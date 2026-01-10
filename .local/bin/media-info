@@ -1,18 +1,15 @@
 #!/bin/bash
 
-## This script allows getting currently playing track information
-
-## Features:
-## - Trims track information to a specified maximum length
-## - Supports optional max_length argument for customizing display length
-## - Configurable players list for easy customization
-
-## Requirements:
-## - `playerctl`: For retrieving media player track information
-
+## Media info script with runtime filtering
+## Supports:
+## - max_length=NUMBER
+## - --no-browser (disable Firefox / browser players)
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 default_max_length=32
+DISABLE_BROWSER=0
+
+# Preferred players (order matters)
 PLAYERS=("spotify" "Lollypop" "firefox")
 
 # Icons
@@ -21,60 +18,73 @@ ICON_LOLLYPOP=""
 ICON_FIREFOX=""
 ICON_GENERIC=""
 
+# Argument parsing
+for arg in "$@"; do
+    case "$arg" in
+        max_length=*)
+            max_length="${arg#max_length=}"
+            ;;
+        --no-browser)
+            DISABLE_BROWSER=1
+            ;;
+    esac
+done
+
+max_length="${max_length:-$default_max_length}"
+
 trim_info() {
     local info="$1"
-    local max_length="$2"
-    
-    if [ ${#info} -gt $max_length ]; then
-        local trim_length=$((max_length - 1))
-        local trimmed="${info:0:$trim_length}"
-        
-        trimmed=$(echo "$trimmed" | sed 's/ ✦ *$//; s/✦ *$//')
-        
-        info="${trimmed}…"
+    local max="$2"
+
+    if (( ${#info} > max )); then
+        info="${info:0:max-1}"
+        info="$(sed 's/ ✦ *$//; s/✦ *$//' <<< "$info")…"
     fi
     echo "$info"
 }
 
-if [[ $1 =~ max_length=([0-9]+) ]]; then
-    max_length="${BASH_REMATCH[1]}"
-else
-    max_length=$default_max_length
-fi
-
 detect_icon() {
-    local player="$1"
-
-    case "$player" in
-        spotify*)      echo "$ICON_SPOTIFY" ;;
-        Lollypop*)     echo "$ICON_LOLLYPOP" ;;
-        firefox*|org.mpris.MediaPlayer2.firefox*) echo "$ICON_FIREFOX" ;;
-        *)             echo "$ICON_GENERIC" ;;
+    case "$1" in
+        spotify*)   echo "$ICON_SPOTIFY" ;;
+        Lollypop*)  echo "$ICON_LOLLYPOP" ;;
+        firefox*|org.mpris.MediaPlayer2.firefox*)
+                     echo "$ICON_FIREFOX" ;;
+        *)          echo "$ICON_GENERIC" ;;
     esac
+}
+
+is_browser_player() {
+    [[ "$1" == firefox* || "$1" == org.mpris.MediaPlayer2.firefox* ]]
 }
 
 output=""
 
-# Check preferred players first
+# Preferred players pass
 for player in "${PLAYERS[@]}"; do
+    if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
+        continue
+    fi
+
     if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-        info=$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')
-        trimmed_info=$(trim_info "$info" "$max_length")
-        icon=$(detect_icon "$player")
-        output="$icon $trimmed_info"
+        info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')"
+        output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
         break
     fi
 done
 
-# Fallback: any player
-if [ -z "$output" ]; then
-    active_player=$(playerctl --list-players 2>/dev/null | head -n 1)
-    if [[ -n "$active_player" ]] && playerctl --player="$active_player" status 2>/dev/null | grep -q "Playing"; then
-        info=$(playerctl metadata --player="$active_player" --format '{{title}} ✦ {{artist}} ')
-        trimmed_info=$(trim_info "$info" "$max_length")
-        icon=$(detect_icon "$active_player")
-        output="$icon $trimmed_info"
-    fi
+# Fallback: any active player
+if [[ -z "$output" ]]; then
+    while read -r player; do
+        if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
+            continue
+        fi
+
+        if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
+            info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')"
+            output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
+            break
+        fi
+    done < <(playerctl --list-players 2>/dev/null)
 fi
 
 echo "$output"
