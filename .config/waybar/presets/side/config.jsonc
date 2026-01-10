@@ -23,7 +23,7 @@
         // "memory",
         // "custom/storage",
     ],
-    "modules-center":[
+    "modules-center": [
         "hyprland/workspaces",
     ],
     "modules-right": [
@@ -146,64 +146,68 @@
         ]
     },
     "bluetooth": {
-	    "format": " ",
-	    "format-disabled": "󰂳",
-	    "format-connected": "󰂱 {num_connections}",
-	    "tooltip-format": " {device_alias}",
-	    "tooltip-format-connected": "{device_enumerate}",
-	    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
-	    "tooltip": true,
-	    "on-click": "blueman-manager",
+        "format": " ",
+        "format-disabled": "󰂳",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": " {device_alias}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+        "tooltip": true,
+        "on-click": "blueman-manager",
     },
-        "pulseaudio": {
-	    "format": "<big>{icon}</big>",
-	    "format-bluetooth": "{icon} 󰂰 {volume}%",
-	    "format-muted": " ",
-    	"format-source": "<big></big> ",
-	    "format-source-muted": "",
-	    "format-icons": {
-		    "headphone": "<big></big>",
-		    "hands-free": "<big></big>",
-		    "headset": "<big></big>",
-		    "phone": "",
-		    "portable": "",
-		    "car": "",
-		    "default": [
-			    "", "", ""
-		    ],
-	    },
-		"ignored-sinks": [
-			"Easy Effects Sink"
-		],
+    "pulseaudio": {
+        "format": "<big>{icon}</big>",
+        "format-bluetooth": "{icon} 󰂰 {volume}%",
+        "format-muted": " ",
+        "format-source": "<big></big> ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "<big></big>",
+            "hands-free": "<big></big>",
+            "headset": "<big></big>",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ],
+        },
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ],
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2.0,
-	    "smooth-scrolling-threshold": 1,
-	    "tooltip-format": "{desc} | {volume}%",
+        "smooth-scrolling-threshold": 1,
+        "tooltip-format": "{desc} | {volume}%",
     },
     "pulseaudio#mic": {
-	    "format": "{format_source}",
-	    "format-bluetooth": "{icon} 󰂰 {volume}%",
-	    "format-muted": " ",
-    	"format-source": "<big></big>",
-	    "format-source-muted": "",
-	    "format-icons": {
-		    "headphone": "<big></big>",
-		    "hands-free": "<big></big>",
-		    "headset": "<big></big>",
-		    "phone": "",
-		    "portable": "",
-		    "car": "",
-		    "default": [
-			    "", "", ""
-		    ],
-	    },
-		"ignored-sinks": [
-			"Easy Effects Sink"
-		],
+        "format": "{format_source}",
+        "format-bluetooth": "{icon} 󰂰 {volume}%",
+        "format-muted": " ",
+        "format-source": "<big></big>",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "<big></big>",
+            "hands-free": "<big></big>",
+            "headset": "<big></big>",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ],
+        },
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ],
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2.0,
-	    "smooth-scrolling-threshold": 1,
-	    "tooltip-format": "{desc} | {volume}%",
+        "smooth-scrolling-threshold": 1,
+        "tooltip-format": "{desc} | {volume}%",
     },
     "wireplumber": {
         "format": "{icon}",
@@ -220,7 +224,7 @@
             "portable": "",
             "car": " ",
             "default": [
-               "",
+                "",
                 "",
                 " "
             ],
@@ -278,7 +282,7 @@
         "format-alt-click": "click-right",
         "interval": 1800,
         "return-type": "json",
-        "exec":"~/.config/waybar/modules/weather.sh",
+        "exec": "~/.config/waybar/modules/weather.sh",
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
@@ -297,16 +301,16 @@
         "tooltip-format": "Notifications"
     },
     "custom/update": {
-        "exec": "~/.local/bin/update-status",
-        "interval": 43200,
+        "exec": "~/.local/bin/arch-update-status",
+        "interval": 21600,
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
     "tray": {
         "icon-size": 20,
-        "spacing":15 
+        "spacing": 15
     },
-    "custom/seperator":{
+    "custom/seperator": {
         "format": "|",
         "tooltip": false
     }

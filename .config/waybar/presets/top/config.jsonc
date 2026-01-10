@@ -282,8 +282,8 @@
         "tooltip-format": "Notifications"
     },
     "custom/update": {
-        "exec": "~/.local/bin/update-status",
-        "interval": 43200,
+        "exec": "~/.local/bin/arch-update-status",
+        "interval": 21600,
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
