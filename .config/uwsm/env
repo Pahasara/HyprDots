@@ -13,10 +13,13 @@ export XCURSOR_SIZE=28
 # ─────────────────────────────────────────────
 # Toolkit & Theme Integration
 # ─────────────────────────────────────────────
-export QT_QPA_PLATFORMTHEME=qt6ct
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+export GSK_RENDERER=vulkan
+
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 # ─────────────────────────────────────────────
 # Gaming & SDL Configuration
