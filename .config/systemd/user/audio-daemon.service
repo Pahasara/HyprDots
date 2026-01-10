@@ -1,0 +1,21 @@
+[Unit]
+Description=Headphone & Mic LED Monitor
+After=pipewire.service wireplumber.service
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/audio-daemon
+Restart=on-failure
+RestartSec=3
+
+# Performance optimizations
+Nice=19
+IOSchedulingClass=idle
+
+# Security
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

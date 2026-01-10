@@ -1,0 +1,91 @@
+#!/usr/bin/bash
+# github.com/pahasara/HyprDots
+
+LED_PATH="/sys/class/leds/platform::micmute/brightness"
+ICON_HP_CON="$HOME/.local/share/icons/dunst/headphone-con.png"
+ICON_HP_DIS="$HOME/.local/share/icons/dunst/headphone-dis.png"
+SOUND_CMD="$HOME/.local/bin/sound-alert"
+
+last_hp_state=""
+last_mic_state=""
+
+wait_for_audio() {
+    local wait_count=0
+    local max_wait=30
+    
+    while (( wait_count < max_wait )); do
+        if wpctl status &>/dev/null && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ &>/dev/null; then
+            sleep 1
+            return 0
+        fi
+        sleep 1
+        (( wait_count++ ))
+    done
+    
+    echo "ERROR: Audio system not ready after ${max_wait}s" >&2
+    return 1
+}
+
+update_mic_led() {
+    local new_state
+    
+    if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>/dev/null | grep -q "MUTED"; then
+        new_state="1"
+    else
+        new_state="0"
+    fi
+    
+    if [[ "$new_state" != "$last_mic_state" || "$1" == "force" ]]; then
+        if echo "$new_state" > "$LED_PATH" 2>/dev/null; then
+            last_mic_state="$new_state"
+            [[ "$1" == "force" ]] && echo "Mic LED initialized: $([ "$new_state" = "1" ] && echo "ON (muted)" || echo "OFF (unmuted)")"
+        else
+            echo "ERROR: Cannot write to LED path. Check udev rules!" >&2
+        fi
+    fi
+}
+
+check_headphones() {
+    local curr_hp
+    
+    if pactl list sinks 2>/dev/null | grep -q "Active Port:.*headphone"; then
+        curr_hp="connected"
+    else
+        curr_hp="disconnected"
+    fi
+    
+    if [[ -n "$last_hp_state" && "$curr_hp" != "$last_hp_state" ]]; then
+        if [[ "$curr_hp" == "connected" ]]; then
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$UID/bus" \
+            dunstify -u low -i "$ICON_HP_CON" -r 9992 "Audio" "Headphones Connected"
+            [[ -x "$SOUND_CMD" ]] && $SOUND_CMD --plugged &>/dev/null &
+        else
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$UID/bus" \
+            dunstify -u low -i "$ICON_HP_DIS" -r 9992 "Audio" "Headphones Disconnected"
+            [[ -x "$SOUND_CMD" ]] && $SOUND_CMD --unplugged &>/dev/null &
+        fi
+    fi
+    
+    last_hp_state="$curr_hp"
+}
+
+echo "Waiting for audio system..."
+wait_for_audio || exit 1
+
+echo "Initializing mic LED state..."
+update_mic_led force
+
+check_headphones
+
+echo "Audio monitoring started"
+
+pactl subscribe | stdbuf -oL grep --line-buffered "Event 'change' on" | while read -r line; do
+    case "$line" in
+        *"source"*)
+            update_mic_led
+            ;;
+        *"sink"*)
+            check_headphones
+            ;;
+    esac
+done
