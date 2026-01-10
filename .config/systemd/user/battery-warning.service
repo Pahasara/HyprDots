@@ -1,7 +1,0 @@
-[Unit]
-Description=Battery Low Warning Check
-PartOf=graphical-session.target
-
-[Service]
-Type=oneshot
-ExecStart=%h/.local/bin/battery-warning

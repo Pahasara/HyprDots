@@ -1,0 +1,20 @@
+[Unit]
+Description=Power & Battery Monitor
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/power-daemon
+Restart=on-failure
+RestartSec=5
+
+# Performance optimizations
+Nice=19
+
+# Security
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

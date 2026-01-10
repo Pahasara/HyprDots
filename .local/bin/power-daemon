@@ -1,0 +1,117 @@
+#!/usr/bin/bash
+# github.com/pahasara/HyprDots
+
+ICON_PLUGGED="$HOME/.local/share/icons/dunst/plugged.png"
+ICON_UNPLUGGED="$HOME/.local/share/icons/dunst/unplugged.png"
+ICON_LOW="$HOME/.local/share/icons/dunst/battery-low.png"
+ICON_CRITICAL="$HOME/.local/share/icons/dunst/battery-dead.png"
+SOUND_CMD="$HOME/.local/bin/sound-alert"
+
+WARN_LOW=25
+WARN_CRITICAL=5
+CHECK_INTERVAL=10
+
+STATE_FILE="/tmp/power_daemon_state_$USER"
+
+# Find battery path
+BAT_PATH=$(echo /sys/class/power_supply/BAT* | cut -d' ' -f1)
+[[ ! -d "$BAT_PATH" ]] && { echo "Error: Battery not found"; exit 1; }
+
+# Ensure state file exists
+touch "$STATE_FILE" 2>/dev/null || STATE_FILE="$HOME/.cache/power_daemon_state"
+touch "$STATE_FILE" 2>/dev/null
+
+STATUS_FILE="$BAT_PATH/status"
+CAPACITY_FILE="$BAT_PATH/capacity"
+
+notify() {
+    local msg="$1" icon="$2" urgency="$3" sound_arg="$4"
+    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$UID/bus" \
+    dunstify -u "$urgency" -i "$icon" -r 9991 "Power Manager" "$msg"
+    [[ -x "$SOUND_CMD" ]] && $SOUND_CMD "$sound_arg" &>/dev/null &
+}
+
+check_power() {
+    local status capacity prev_status prev_cap notified_low notified_critical
+    
+    read -r status < "$STATUS_FILE" 2>/dev/null || return
+    read -r capacity < "$CAPACITY_FILE" 2>/dev/null || return
+    read -r prev_status prev_cap notified_low notified_critical < "$STATE_FILE" 2>/dev/null
+    
+    : "${prev_cap:=$capacity}" "${notified_low:=0}" "${notified_critical:=0}"
+    
+    # Status change notifications
+    if [[ "$status" != "$prev_status" ]]; then
+        case "$status" in
+            Charging)
+                notify "Charging Started ($capacity%)" "$ICON_PLUGGED" low "--plugged"
+                notified_low=0 notified_critical=0
+                ;;
+            Discharging)
+                notify "Charger Disconnected ($capacity%)" "$ICON_UNPLUGGED" normal "--unplugged"
+                ;;
+            Full)
+                notify "Battery Charged" "$ICON_PLUGGED" low ""
+                notified_low=0 notified_critical=0
+                ;;
+        esac
+    fi
+    
+    # Battery warnings (discharging only)
+    if [[ "$status" == "Discharging" ]]; then
+        if (( capacity <= WARN_CRITICAL && notified_critical == 0 )); then
+            notify "CRITICAL BATTERY ($capacity%)" "$ICON_CRITICAL" critical "--critical"
+            notified_critical=1
+        elif (( capacity > WARN_CRITICAL )); then
+            notified_critical=0
+        fi
+        
+        if (( capacity <= WARN_LOW && capacity > WARN_CRITICAL && notified_low == 0 )); then
+            notify "Low Battery ($capacity%)" "$ICON_LOW" critical "--low"
+            notified_low=1
+        elif (( capacity > WARN_LOW )); then
+            notified_low=0
+        fi
+    fi
+    
+    printf "%s %d %d %d\n" "$status" "$capacity" "$notified_low" "$notified_critical" > "$STATE_FILE" 2>/dev/null
+}
+
+# Export function so subshells can use it
+export -f check_power notify
+export ICON_PLUGGED ICON_UNPLUGGED ICON_LOW ICON_CRITICAL SOUND_CMD
+export STATUS_FILE CAPACITY_FILE STATE_FILE WARN_LOW WARN_CRITICAL UID
+
+# Cleanup function
+cleanup() {
+    [[ -n "$PERIODIC_PID" ]] && kill $PERIODIC_PID 2>/dev/null
+    [[ -n "$UDEV_PID" ]] && kill $UDEV_PID 2>/dev/null
+    exit 0
+}
+trap cleanup SIGTERM SIGINT EXIT
+
+# Initial check
+check_power
+
+# Periodic battery level checks
+(
+    while true; do
+        sleep "$CHECK_INTERVAL"
+        check_power
+    done
+) &
+PERIODIC_PID=$!
+
+# Fast udev event monitoring
+(
+    stdbuf -oL udevadm monitor -u -s power_supply | \
+    while IFS= read -r line; do
+        if [[ "$line" == *"UDEV"*"change"* ]]; then
+            check_power
+        fi
+    done
+) &
+UDEV_PID=$!
+
+# Keep script running
+wait
