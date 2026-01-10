@@ -4,7 +4,7 @@ application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;zen.desktop;okularApplication
 audio/mpeg=mpv.desktop;org.gnome.Lollypop.desktop;org.kde.kid3.desktop;audacity.desktop;
 image/bmp=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;okularApplication_kimgio.desktop;gimp.desktop;
 image/jpeg=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
-image/png=nomacs-2.desktop;nomacs.desktop;org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
+image/png=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;gimp.desktop;okularApplication_kimgio.desktop;imv.desktop;imv-dir.desktop;
 inode/directory=org.kde.dolphin.desktop;kitty-open.desktop;yazi.desktop;org.kde.kid3.desktop;
 text/html=zen.desktop;nvim.desktop;code.desktop;pgadmin4.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;
@@ -19,7 +19,7 @@ application/json=zen.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 audio/mpeg=mpv.desktop;
 image/bmp=org.nomacs.ImageLounge.desktop;
-image/png=nomacs-2.desktop;
+image/png=org.nomacs.ImageLounge.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;
 inode/directory=org.kde.dolphin.desktop;
 text/html=zen.desktop;
@@ -34,3 +34,4 @@ x-scheme-handler/postman=Postman.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-draw.desktop;gimp.desktop;
+image/png=nomacs-2.desktop;nomacs.desktop;
