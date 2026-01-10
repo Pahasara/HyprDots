@@ -1,25 +1,25 @@
+# github.com/Pahasara/HyprDots
+
 # ──────────────────────────────────────────────────────────────
 # CORE
 # ──────────────────────────────────────────────────────────────
-scan_timeout = 5
+scan_timeout = 10
 command_timeout = 300
 add_newline = true
+
 
 # ──────────────────────────────────────────────────────────────
 # PROMPT LAYOUT
 # ──────────────────────────────────────────────────────────────
 format = """
-[](fg:#323437)\
-[  ](bg:#363842 fg:#CFCFCF)\
-[](bg:#008FCF fg:#323437)\
-[ $directory ](bg:#008FCF fg:#000000)\
-[ ](fg:#008FCF)\
+[ ](fg:#0091E3)\
+[ $directory](fg:#4FAADB)\
+[ ❱ ](fg:#C1009A)\
 $line_break\
 """
 
 right_format = """
 $character\
-$symbol\
 $c\
 $cpp\
 $rust\
@@ -33,27 +33,15 @@ $git_status\
 $cmd_duration\
 """
 
+
 # ──────────────────────────────────────────────────────────────
 # CHARACTER
 # ──────────────────────────────────────────────────────────────
 [character]
-success_symbol = "[✔](green)"
+success_symbol = "[](green)" # ✔
 error_symbol = "[✘](red)"
 vimcmd_symbol = "[λ](blue)"
 
-# ──────────────────────────────────────────────────────────────
-# USERNAME & HOSTNAME
-# ──────────────────────────────────────────────────────────────
-[username]
-show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user]($style)'
-
-[hostname]
-ssh_only = false
-format = '[$hostname ]($style)'
-style = 'bold gray'
 
 # ──────────────────────────────────────────────────────────────
 # DIRECTORY
@@ -61,93 +49,87 @@ style = 'bold gray'
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
 home_symbol = "~"
-truncation_length = 4
+style = 'bold gray'
+truncation_length = 2
 truncation_symbol = "…/"
 truncate_to_repo = true
-style = 'bold gray'
 read_only = " 󰌾"
-read_only_style = "bg:#008FCF fg:#000000"
+read_only_style = "fg:#FF3F3F"
 
 [directory.substitutions]
-"Desktop" = "󰇄 "
+"Desktop"   = "󰇄 "
 "Documents" = "󰈙 "
+"MEGAsync"  = " "
 "Downloads" = " "
-"Music" = " "
-"Code" = " "
-"Pictures" = " "
+"Music"     = " "
+"Code"      = " "
+"Pictures"  = " "
+
 
 # ──────────────────────────────────────────────────────────────
 # COMMAND DURATION
 # ──────────────────────────────────────────────────────────────
 [cmd_duration]
-format = "[](fg:#E9A127)[ $duration ]($style)[](fg:#E9A127)"
-style = "fg:000000 bg:#E9A127"
+format = "[  $duration ]($style)"
+style = "fg:#E9A127"
 min_time = 1
 show_milliseconds = true
 
-# ──────────────────────────────────────────────────────────────
-# SHELL INDICATOR
-# ──────────────────────────────────────────────────────────────
-[shell]
-zsh_indicator = '_'
-style = "fg:#000000 bg:#45BB11"
-format = '[](fg:#45BB11)[ $indicator ]($style)[](fg:#45BB11)'
-disabled = false
 
 # ──────────────────────────────────────────────────────────────
 # PROGRAMMING LANGUAGES
 # ──────────────────────────────────────────────────────────────
-# Style: [Symbol ](BG_COLOR) [ Version ](Style) [](BG_COLOR)
 
 [c]
-symbol = ''
-style = "fg:#000000 bg:#127CFF"
-format = '[$symbol ](fg:#127CFF)[ $version ]($style)[](fg:#127CFF)'
+symbol = ""
+style = "fg:#128CFF"
+format = '[ $symbol $version ]($style)'
 
 [cpp]
-symbol = ''
-style = "fg:#000000 bg:#5797D8"
-format = '[$symbol ](fg:#5797D8)[ $version ]($style)[](fg:#5797D8)'
-disabled = false
-
-[dotnet]
-symbol = ''
-style = "fg:#000000 bg:#997DF8"
-format = '[$symbol ](fg:#997DF8)[ $version ]($style)[](fg:#997DF8)'
-
-[java]
-symbol = ''
-style = "fg:#000000 bg:#FD3502"
-format = '[$symbol ](fg:#FD3502)[ $version ]($style)[](fg:#FD3502)'
-
-[python]
-symbol = ''
-style = "fg:#000000 bg:#18C429"
-format = '[$symbol ](fg:#18C429)[ $virtualenv $version ]($style)[](fg:#18C429)'
+symbol = ""
+style = "fg:#5797D8"
+format = '[ $symbol $version ]($style)'
 
 [rust]
-symbol = '🦀'
-style = "fg:#000000 bg:#CE412B"
-format = '[$symbol ](fg:#CE412B)[ $version ]($style)[](fg:#CE412B)'
+symbol = ""
+style = "fg:#CE412B"
+format = '[ $symbol $version ]($style)'
+
+[dotnet]
+symbol = ""
+style = "fg:#997DF8"
+format = '[ $symbol $version ]($style)'
+
+[java]
+symbol = ""
+style = "fg:#FD3502"
+format = '[ $symbol $version ]($style)'
+
+[python]
+symbol = ""
+style = "fg:#18C429"
+format = '[ $symbol $version ]($style)'
 
 [nodejs]
-symbol = ''
-style = "fg:#000000 bg:#54B538"
-format = '[$symbol ](fg:#54B538)[ $version ]($style)[](fg:#54B538)'
+symbol = ""
+style = "fg:#54B538"
+format = '[ $symbol $version ]($style)'
+
 
 # ──────────────────────────────────────────────────────────────
-# GIT MODULES
+# GIT
 # ──────────────────────────────────────────────────────────────
+
 [git_branch]
 symbol = ""
-style = "fg:#000000 bg:#18C429"
-format = '[](fg:#18C429)[ $symbol $branch ]($style)[](fg:#18C429  bg:#FF3F3F)'
+style = "fg:#18C429"
+format = '[ $symbol $branch ]($style)'
 truncation_length = 20
 only_attached = false
 
 [git_status]
-style = "fg:#000000 bg:#FF3F3F"
-format = '[$all_status$ahead_behind ]($style)[](fg:#FF3F3F)'
+style = "fg:#FF3F3F"
+format = '[ $all_status$ahead_behind ]($style)'
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
@@ -157,15 +139,17 @@ renamed = "»${count}"
 modified = "!${count}"
 staged = "+${count}"
 untracked = "?${count}"
-stashed = '$${count}'
+stashed = "$${count}"
 
 [git_state]
-format = '[](fg:yellow)[$state( $progress_current of $progress_total)]($style)[](fg:yellow)'
-style = "bold yellow"
+style = "fg:#E9A127"
+format = '[  $state($progress_current/$progress_total) ]($style)'
+
 
 # ──────────────────────────────────────────────────────────────
-# PERFORMANCE DISABLES
+# DISABLE UNUSED MODULES
 # ──────────────────────────────────────────────────────────────
+
 [git_metrics]
 disabled = true
 
@@ -189,3 +173,13 @@ disabled = true
 
 [kubernetes]
 disabled = true
+
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[shell]
+disabled = true
+
