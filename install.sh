@@ -25,7 +25,7 @@ PACMAN_PACKAGES=(
     "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
     "kitty" "zsh" "starship" "fzf" "eza" "fastfetch" "lolcat"
     "7zip" "aria2" "cliphist" "grim" "slurp" "brightnessctl"
-    "udiskie" "unzip" "mediainfo" "kompare"
+    "udiskie" "unzip" "mediainfo" "kompare" "pacman-contrib"
     "kde-cli-tools" "kdegraphics-thumbnailers" "qt5ct"
     "ripgrep" "kvantum" "bluez" "bluez-utils"
     "mpv" "ffmpegthumbs" "imagemagick" "imv" "speech-dispatcher"
@@ -33,7 +33,7 @@ PACMAN_PACKAGES=(
     "ttf-cascadia-mono-nerd" "ttf-jetbrains-mono-nerd" "ttf-hack-nerd"
     "ttf-ubuntu-nerd" "ttf-dejavu-nerd" "woff2-font-awesome"
     "dolphin" "qbittorrent" "zathura" "zathura-cb" "zathura-pdf-mupdf"
-    "neovim" "swww" "yazi" "zoxide"
+    "neovim" "swww" "socat" "yazi" "zoxide"
 )
 
 AUR_PACKAGES=(
