@@ -5,6 +5,7 @@ export LANG="en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export DIFFPROG="kompare"
+export BROWSER="zen-browser"
 
 # ──────────────────────────────────────────────────────────────
 # DIRECTORIES & PATHS
@@ -47,11 +48,17 @@ export BAT_THEME="tokyonight_night"
 export MANROFFOPT="-c"
 # Pipe `man` output through bat for highlighting
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -l man'"
+# TLDR color customization
+export TLDR_COLOR_NAME="magenta"
+export TLDR_COLOR_DESCRIPTION="blue"
+export TLDR_COLOR_EXAMPLE="red"
+export TLDR_COLOR_COMMAND="green"
 
 # ──────────────────────────────────────────────────────────────
 # TELEMETRY & DEBUGGING FLAGS
 # ──────────────────────────────────────────────────────────────
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export TESTINGPLATFORM_TELEMETRY_OPTOUT=1
 export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1
 export ANV_DEBUG="video-decode,video-encode"
 
