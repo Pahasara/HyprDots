@@ -518,7 +518,7 @@ exts = [
 	{ name = "cshtml", text = "󱦗", fg = "#512bd4" },
 	{ name = "cson", text = "", fg = "#cbcb41" },
 	{ name = "csproj", text = "󰪮", fg = "#512bd4" },
-	{ name = "css", text = "", fg = "#663399" },
+	{ name = "css", text = "", fg = "#663399" },
 	{ name = "csv", text = "", fg = "#89e051" },
 	{ name = "cts", text = "", fg = "#519aba" },
 	{ name = "cu", text = "", fg = "#89e051" },

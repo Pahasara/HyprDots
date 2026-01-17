@@ -324,7 +324,7 @@
     },
     "custom/date": {
         "exec": "~/.config/waybar/modules/roman_date.sh",
-        "interval": 60,
+        "interval": 5,
         "format": "{}",
         "tooltip": false
     }

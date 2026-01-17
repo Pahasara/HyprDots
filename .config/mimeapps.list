@@ -13,6 +13,15 @@ text/x-cmake=org.kde.kate.desktop;nvim.desktop;okularApplication_txt.desktop;org
 text/x-csrc=org.kde.kate.desktop;nvim.desktop;okularApplication_txt.desktop;libreoffice-writer.desktop;org.kde.kwrite.desktop;
 text/x-maven+xml=org.kde.kate.desktop;nvim.desktop;zen.desktop;code.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;
 text/x-python=org.kde.kate.desktop;code.desktop;nvim.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;libreoffice-writer.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
+x-scheme-handler/chrome=zen.desktop;
+application/x-extension-htm=zen.desktop;
+application/x-extension-html=zen.desktop;
+application/x-extension-shtml=zen.desktop;
+application/xhtml+xml=zen.desktop;
+application/x-extension-xhtml=zen.desktop;
+application/x-extension-xht=zen.desktop;
 
 [Default Applications]
 application/json=zen.desktop;
@@ -22,7 +31,7 @@ image/bmp=org.nomacs.ImageLounge.desktop;
 image/png=org.nomacs.ImageLounge.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;
 inode/directory=org.kde.dolphin.desktop;
-text/html=zen.desktop;
+text/html=zen.desktop
 text/plain=org.kde.kate.desktop;
 text/x-cmake=org.kde.kate.desktop;
 text/x-csrc=org.kde.kate.desktop;
@@ -31,6 +40,15 @@ text/x-python=org.kde.kate.desktop;
 x-scheme-handler/gitkraken=GitKraken.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/chrome=zen.desktop
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/xhtml+xml=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/x-extension-xht=zen.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-draw.desktop;gimp.desktop;
