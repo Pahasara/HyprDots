@@ -82,28 +82,26 @@ for entry in "${ICON_GROUPS[@]}"; do
         icons["$class"]="$icon"
     done
 done
-
 HYPR_SOCK="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
-
 get_icon() {
     local full_class="${1,,}"
     
     # 1. OPTIMIZATION: Get the last part of the dot-notation (e.g., 'ark' from 'org.kde.ark')
     # This ensures specific apps beat generic desktop environment names.
     local app_name="${full_class##*.}"
-
+    
     # 2. Fast: O(1) Exact Match on the specific app name
     if [[ -n "${icons[$app_name]}" ]]; then
         echo "${icons[$app_name]}"
         return
     fi
-
+    
     # 3. Fast: O(1) Exact Match on the full string (in case it's not dot-notation)
     if [[ -n "${icons[$full_class]}" ]]; then
         echo "${icons[$full_class]}"
         return
     fi
-
+    
     # 4. Fallback: O(n) Partial Match (for cases like "jetbrains-rider")
     for key in "${!icons[@]}"; do
         if [[ "$full_class" == *"$key"* ]]; then
@@ -111,29 +109,55 @@ get_icon() {
             return
         fi
     done
-
+    
     echo "$DEFAULT_ICON"
 }
-
 update_output() {
     local active_window
     active_window=$(hyprctl activewindow -j 2>/dev/null)
     
     local class=$(echo "$active_window" | jq -r '.class // empty')
     local title=$(echo "$active_window" | jq -r '.title // empty')
-
+    
     if [[ -z "$class" || "$class" == "null" ]]; then
         echo ""
         return
     fi
-
-    title="${title% — *}"
-    title="${title% - *}"
+    
+    # Strategy: Remove app name suffixes while preserving dashes inside parentheses
+    # We process in order: first handle patterns with closing parens, then simple cases
+    
+    # 1. Remove " - AppName - Version" after closing paren: "Title (2007 - 2013) - App - v1.0" → "Title (2007 - 2013)"
+    title=$(echo "$title" | sed -E 's/(\)) - [^-]+ - [^-]+$/\1/')
+    
+    # 2. Remove " - AppName" after closing paren: "Title (2007 - 2013) - Dolphin" → "Title (2007 - 2013)"
+    title=$(echo "$title" | sed -E 's/(\)) - [^-]+$/\1/')
+    
+    # 3. For titles WITHOUT parentheses, remove the last " - AppName" only
+    # This handles "Pictures - Dolphin" → "Pictures"
+    # But won't affect titles that already had their suffix removed above
+    if [[ "$title" != *")"* ]]; then
+        title=$(echo "$title" | sed -E 's/ - [^-]+$//')
+    fi
+    
+    # Also handle em-dash (—) variants
+    title=$(echo "$title" | sed -E 's/(\)) — [^—]+ — [^—]+$/\1/')
+    title=$(echo "$title" | sed -E 's/(\)) — [^—]+$/\1/')
+    if [[ "$title" != *")"* ]]; then
+        title=$(echo "$title" | sed -E 's/ — [^—]+$//')
+    fi
+    
+    # Truncate after cleaning
     (( ${#title} > MAX_LENGTH )) && title="${title:0:MAX_LENGTH}…"
+    
+    # Escape special characters for Pango markup
+    title="${title//&/&amp;}"
+    title="${title//</&lt;}"
+    title="${title//>/&gt;}"
+    title="${title//\"/&quot;}"
     
     echo "<span size='large'>$(get_icon "$class")</span>  $title"
 }
-
 # --- MAIN ---
 update_output
 socat -U - UNIX-CONNECT:"$HYPR_SOCK" | while read -r line; do
