@@ -1,24 +1,15 @@
 #!/bin/bash
 
-## Media info script with runtime filtering
-## Supports:
-## - max_length=NUMBER
-## - --no-browser (disable Firefox / browser players)
-## Author: Pahasara Dewnith (https://github.com/Pahasara)
-
-default_max_length=32
+Gefault_max_length=32
 DISABLE_BROWSER=0
 
-# Preferred players (order matters)
 PLAYERS=("spotify" "Lollypop" "firefox")
 
-# Icons
 ICON_SPOTIFY=""
 ICON_LOLLYPOP=""
 ICON_FIREFOX=""
 ICON_GENERIC=""
 
-# Argument parsing
 for arg in "$@"; do
     case "$arg" in
         max_length=*)
@@ -37,8 +28,9 @@ trim_info() {
     local max="$2"
 
     if (( ${#info} > max )); then
-        info="${info:0:max-1}"
-        info="$(sed 's/ ✦ *$//; s/✦ *$//' <<< "$info")…"
+        local cut_point=$((max - 3))
+        info="${info:0:cut_point}"
+        info="$(sed 's/ ✦ *$//; s/✦ *$//; s/[[:space:]]*$//' <<< "$info")…"
     fi
     echo "$info"
 }
@@ -59,20 +51,18 @@ is_browser_player() {
 
 output=""
 
-# Preferred players pass
 for player in "${PLAYERS[@]}"; do
     if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
         continue
     fi
 
     if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-        info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')"
+        info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
         output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
         break
     fi
 done
 
-# Fallback: any active player
 if [[ -z "$output" ]]; then
     while read -r player; do
         if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
@@ -80,7 +70,7 @@ if [[ -z "$output" ]]; then
         fi
 
         if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-            info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}} ')"
+            info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
             output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
             break
         fi
