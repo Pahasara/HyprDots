@@ -1,17 +1,20 @@
 #!/bin/sh
 
-dotnet_v=$(dotnet --version)
-# gcc_v=$(gcc -dumpversion 2>/dev/null)
+CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/fastfetch/dev-info"
+
+# 1. check if cache exists. If yes, print and exit immediately.
+if [ -f "$CACHE_FILE" ]; then
+    cat "$CACHE_FILE"
+    exit 0
+fi
+
+# 2. If no cache, run the heavy commands (only happens once)
+dotnet_v=$(dotnet --version 2>/dev/null || echo "N/A")
 node_v=$(node --version 2>/dev/null | sed 's/v//')
-# java_v=$(java -version 2>&1 | awk -F'["_]' 'NR==1{print $2}')
-# python_v=$(python --version 2>&1 | awk '{print $2}')
-# rust_v=$(rustc --version 2>/dev/null | awk '{print $2}')
 
-printf "\e[0m.NET\e[0m %s" "$dotnet_v"
-# printf " / \e[34m\e[0m %s" "$gcc_v"
-printf " / \e[33m\e[0m %s" "$node_v"
-# printf " / \e[31m\e[0m %s" "$java_v"
-# printf " / \e[32m\e[0m %s" "$python_v"
-# printf " / \e[38;5;208m\e[0m %s" "$rust_v"
+# Build the string
+OUTPUT=$(printf "\e[0m.NET\e[0m %s / \e[33m\e[0m %s\e[0m" "$dotnet_v" "$node_v")
 
-printf "\e[0m"
+# 3. Save to cache and print
+echo "$OUTPUT" > "$CACHE_FILE"
+echo "$OUTPUT"

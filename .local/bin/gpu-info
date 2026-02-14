@@ -1,0 +1,16 @@
+#!/bin/sh
+
+CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/fastfetch/gpu-info"
+
+if [ -f "$CACHE_FILE" ]; then
+    cat "$CACHE_FILE"
+    exit 0
+fi
+
+mesa_v=$(pacman -Qi mesa 2>/dev/null | awk -F': ' '/^Version/ {print $2}' | cut -d: -f2)
+vulkan_v=$(vulkaninfo 2>/dev/null | awk '/apiVersion/{print $3; exit}')
+
+OUTPUT=$(printf 'Mesa %s (Vulkan %s)' "$mesa_v" "$vulkan_v")
+
+echo "$OUTPUT" > "$CACHE_FILE"
+echo "$OUTPUT"
