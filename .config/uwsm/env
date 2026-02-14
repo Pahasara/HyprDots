@@ -5,12 +5,6 @@
 # ─────────────────────────────────────────────
 
 # ─────────────────────────────────────────────
-# Cursor Configuration
-# ─────────────────────────────────────────────
-export XCURSOR_THEME=macOS
-export XCURSOR_SIZE=28
-
-# ─────────────────────────────────────────────
 # Toolkit & Theme Integration
 # ─────────────────────────────────────────────
 export GDK_BACKEND=wayland
@@ -26,6 +20,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 # ─────────────────────────────────────────────
 export PROTON_ENABLE_WAYLAND=1
 export PROTON_USE_NTSYNC=1
+export PROTON_USE_WOW64=1
 export DXVK_ASYNC=1
 
 export SDL_VIDEO_DRIVER=wayland

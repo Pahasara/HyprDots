@@ -15,6 +15,8 @@ export XDG_MENU_PREFIX=arch-
 # ─────────────────────────────────────────────
 # Cursor Configuration
 # ─────────────────────────────────────────────
+export XCURSOR_THEME=macOS
+export XCURSOR_SIZE=28
 export HYPRCURSOR_THEME=macOS-hyprcursor
 export HYPRCURSOR_SIZE=28
 
