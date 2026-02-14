@@ -49,9 +49,9 @@ set notification-bg "#161616" #0B
 set notification-fg "#DFDFDF" #00
 
 set recolor "true"
-set recolor-lightcolor "#181818" #00
-set recolor-darkcolor "#FCFCFC" #06
-set recolor-reverse-video "true"
+set recolor-lightcolor "#080808" #00
+set recolor-darkcolor "#FDFDFD" #06
+set recolor-reverse-video "false"
 set recolor-keephue "true"
 
 set render-loading "false"

@@ -9,7 +9,10 @@
         }
     },
     "display": {
-        "separator": " "
+        "separator": " ",
+        "size": {
+            "binaryPrefix": "iec"
+        }
     },
     "modules": [
         // "break",
@@ -53,7 +56,7 @@
             "type": "command",
             "key": "󰦱 ",
             "keyColor": "38",
-            "text": "printf 'Mesa %s (Vulkan %s)\\n' \"$(pacman -Qi mesa | awk -F': ' '/^Version/ {print $2}' | cut -d: -f2)\" \"$(vulkaninfo | awk '/apiVersion/{print $3; exit}')\""
+            "text": "$SCRIPT_DIR/gpu-info"
         },
         {
             "type": "command",
