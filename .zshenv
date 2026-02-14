@@ -5,22 +5,20 @@ export LANG="en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export DIFFPROG="kompare"
-export BROWSER="zen-browser"
+export BROWSER="firefox"
 
 # ──────────────────────────────────────────────────────────────
 # DIRECTORIES & PATHS
 # ──────────────────────────────────────────────────────────────
-export SCRIPT_DIR="$HOME/.local/bin"
 export WALL_DIR="$HOME/Pictures/Wallpapers"
 export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/shader_cache"
-export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
 export GOPATH="$HOME/.go"
 
-export DOTNET_ROOT="/usr/share/dotnet"
-export DOTNET_TOOLS_PATH="$HOME/.dotnet/tools"
+export SCRIPT_DIR="$HOME/.local/bin"
+export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 # PATH Setup
-export PATH="$JETBRAINS:$SCRIPT_DIR:$DOTNET_ROOT:$DOTNET_TOOLS_PATH:$PATH"
+export PATH="$JETBRAINS:$SCRIPT_DIR:$PATH"
 
 # ──────────────────────────────────────────────────────────────
 # BUILD & COMPRESSION OPTIMIZATIONS
@@ -55,10 +53,14 @@ export TLDR_COLOR_EXAMPLE="red"
 export TLDR_COLOR_COMMAND="green"
 
 # ──────────────────────────────────────────────────────────────
-# TELEMETRY & DEBUGGING FLAGS
+# TELEMETRY
 # ──────────────────────────────────────────────────────────────
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT=1
 export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1
+
+# ──────────────────────────────────────────────────────────────
+# DEBUGGING FLAGS
+# ──────────────────────────────────────────────────────────────
 export ANV_DEBUG="video-decode,video-encode"
 

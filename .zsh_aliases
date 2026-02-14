@@ -69,6 +69,7 @@ alias sctlr="systemctl restart"
 # 🧪 Languages & Tools
 alias dr="dotnet run"
 alias dw="dotnet watch"
+alias dt="dotnet test"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 alias cl="clang -std=c23 -Wall"
@@ -81,9 +82,16 @@ alias py="python"
 alias ac="aria2c"
 alias y="yazi"
 alias mg="mega-get"
-alias yd="yt-dlp -f 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/bv*+ba/b' --embed-thumbnail --embed-metadata"
-alias yd720="yt-dlp -f 'bv[ext=mp4][height=720]+ba[ext=m4a]/b[ext=mp4][height<=720]' --embed-thumbnail --embed-metadata"
 alias ff="clear && fastfetch"
+
+# yt-dlp Aliases
+alias yd='yt-dlp -f "bv*[vcodec^=av01][height<=1080]+ba[acodec=opus]/bv*[vcodec^=vp9][height<=1080]+ba[acodec=opus]/bv*[height<=1080]+ba/b" --embed-thumbnail --embed-metadata'
+alias yd720='yt-dlp -f "bv*[vcodec^=av01][height<=720]+ba[acodec=opus]/bv*[vcodec^=vp9][height<=720]+ba[acodec=opus]/bv*[height<=720]+ba/b" --embed-thumbnail --embed-metadata'
+alias yd1440='yt-dlp -f "bv*[vcodec^=av01][height<=1440]+ba[acodec=opus]/bv*[vcodec^=vp9][height<=1440]+ba[acodec=opus]/bv*[height<=1440]+ba/b" --embed-thumbnail --embed-metadata'
+alias yd4k='yt-dlp -f "bv*[vcodec^=av01][height<=2160]+ba[acodec=opus]/bv*[vcodec^=vp9][height<=2160]+ba[acodec=opus]/bv*[height<=2160]+ba/b" --embed-thumbnail --embed-metadata'
+alias ydtv='yt-dlp -f "bv*[vcodec^=hev][height<=1080]+ba[acodec=opus]/bv*[vcodec^=hev][height<=1080]+ba[acodec^=mp4a]/bv*[vcodec^=avc][height<=1080]+ba/b" --merge-output-format mkv --embed-thumbnail --embed-metadata --embed-subs'
+alias ydtv720='yt-dlp -f "bv*[vcodec^=hev][height<=720]+ba[acodec=opus]/bv*[vcodec^=hev][height<=720]+ba[acodec^=mp4a]/bv*[vcodec^=avc][height<=720]+ba/b" --merge-output-format mkv --embed-thumbnail --embed-metadata --embed-subs'
+alias ydtv4k='yt-dlp -f "bv*[vcodec^=hev][height<=2160]+ba[acodec=opus]/bv*[vcodec^=hev][height<=2160]+ba[acodec^=mp4a]/bv*[vcodec^=avc][height<=2160]+ba/b" --merge-output-format mkv --embed-thumbnail --embed-metadata --embed-subs'
 
 # 🧃 Custom Tools
 alias zt="./.local/opt/ztrack/ZTrack"
