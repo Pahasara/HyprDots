@@ -53,7 +53,7 @@ zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept
 # ──────────────────────────────────────────────────────────────
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c100,)"
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # ──────────────────────────────────────────────────────────────
@@ -115,4 +115,10 @@ eval "$(zoxide init --cmd cd zsh)"
     fi
     touch "$marker"
 }
+
+# ──────────────────────────────────────────────────────────────
+# CACHE CLEANUP
+# ──────────────────────────────────────────────────────────────
+# Clear fastfetch cache on login so it updates once per session
+rm -f ~/.cache/fastfetch/dev-info ~/.cache/fastfetch/gpu-info
 
