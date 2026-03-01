@@ -1,7 +1,5 @@
 #!/bin/sh
-
 CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/fastfetch/gpu-info"
-
 if [ -f "$CACHE_FILE" ]; then
     cat "$CACHE_FILE"
     exit 0
@@ -9,8 +7,8 @@ fi
 
 mesa_v=$(pacman -Qi mesa 2>/dev/null | awk -F': ' '/^Version/ {print $2}' | cut -d: -f2)
 vulkan_v=$(vulkaninfo 2>/dev/null | awk '/apiVersion/{print $3; exit}')
+driver=$(lspci -k 2>/dev/null | awk '/VGA|3D|Display/{found=1} found && /Kernel driver in use/{print $NF; exit}')
 
-OUTPUT=$(printf 'Mesa %s (Vulkan %s)' "$mesa_v" "$vulkan_v")
-
+OUTPUT=$(printf 'Mesa %s (Vulkan %s) [drv: \033[31m%s\033[0m]' "$mesa_v" "$vulkan_v" "$driver")
 echo "$OUTPUT" > "$CACHE_FILE"
 echo "$OUTPUT"
