@@ -118,43 +118,47 @@ update_output() {
     
     local class=$(echo "$active_window" | jq -r '.class // empty')
     local title=$(echo "$active_window" | jq -r '.title // empty')
-    
+
     if [[ -z "$class" || "$class" == "null" ]]; then
         echo ""
         return
     fi
     
-    # Strategy: Remove app name suffixes while preserving dashes inside parentheses
-    # We process in order: first handle patterns with closing parens, then simple cases
-    
-    # 1. Remove " - AppName - Version" after closing paren: "Title (2007 - 2013) - App - v1.0" → "Title (2007 - 2013)"
-    title=$(echo "$title" | sed -E 's/(\)) - [^-]+ - [^-]+$/\1/')
-    
-    # 2. Remove " - AppName" after closing paren: "Title (2007 - 2013) - Dolphin" → "Title (2007 - 2013)"
-    title=$(echo "$title" | sed -E 's/(\)) - [^-]+$/\1/')
-    
-    # 3. For titles WITHOUT parentheses, remove the last " - AppName" only
-    # This handles "Pictures - Dolphin" → "Pictures"
-    # But won't affect titles that already had their suffix removed above
-    if [[ "$title" != *")"* ]]; then
-        title=$(echo "$title" | sed -E 's/ - [^-]+$//')
+    # Special case: Override Lollypop's title
+    if [[ "${class,,}" == *"lollypop"* ]]; then
+        title="Lollypop"
+    else
+        # Strategy: Remove app name suffixes while preserving dashes inside parentheses
+        # We process in order: first handle patterns with closing parens, then simple cases
+        
+        # 1. Remove " - AppName - Version" after closing paren: "Title (2007 - 2013) - App - v1.0" → "Title (2007 - 2013)"
+        title=$(echo "$title" | sed -E 's/(\)) - [^-]+ - [^-]+$/\1/')
+        
+        # 2. Remove " - AppName" after closing paren: "Title (2007 - 2013) - Dolphin" → "Title (2007 - 2013)"
+        title=$(echo "$title" | sed -E 's/(\)) - [^-]+$/\1/')
+        
+        # 3. For titles WITHOUT parentheses, remove the last " - AppName" only
+        # This handles "Pictures - Dolphin" → "Pictures"
+        # But won't affect titles that already had their suffix removed above
+        if [[ "$title" != *")"* ]]; then
+            title=$(echo "$title" | sed -E 's/ - [^-]+$//')
+        fi
+        
+        # Also handle em-dash (—) variants
+        title=$(echo "$title" | sed -E 's/(\)) — [^—]+ — [^—]+$/\1/')
+        title=$(echo "$title" | sed -E 's/(\)) — [^—]+$/\1/')
+        if [[ "$title" != *")"* ]]; then
+            title=$(echo "$title" | sed -E 's/ — [^—]+$//')
+        fi
+        
+        # Truncate after cleaning
+        (( ${#title} > MAX_LENGTH )) && title="${title:0:MAX_LENGTH}…"
     fi
-    
-    # Also handle em-dash (—) variants
-    title=$(echo "$title" | sed -E 's/(\)) — [^—]+ — [^—]+$/\1/')
-    title=$(echo "$title" | sed -E 's/(\)) — [^—]+$/\1/')
-    if [[ "$title" != *")"* ]]; then
-        title=$(echo "$title" | sed -E 's/ — [^—]+$//')
-    fi
-    
-    # Truncate after cleaning
-    (( ${#title} > MAX_LENGTH )) && title="${title:0:MAX_LENGTH}…"
     
     # Escape special characters for Pango markup
     title="${title//&/&amp;}"
     title="${title//</&lt;}"
     title="${title//>/&gt;}"
-    title="${title//\"/&quot;}"
     
     echo "<span size='large'>$(get_icon "$class")</span>  $title"
 }
