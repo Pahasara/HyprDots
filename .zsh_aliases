@@ -13,12 +13,12 @@ alias srcz="source ~/.zshrc && dunstify 'Arch Linux' 'Shell config reloaded!' -a
 alias se="sudoedit"
 alias vi="nvim"
 alias vim="nvim"
-alias va="vim ~/.zsh_aliases"
-alias vz="vim ~/.zshrc"
-alias ve="vim ~/.zshenv"
-alias vl="vim ~/.zshrc.local"
-alias vk="vim ~/.config/kitty/kitty.conf"
-alias vs="vim ~/.config/starship.toml"
+alias va="vi ~/.zsh_aliases"
+alias vz="vi ~/.zshrc"
+alias ve="vi ~/.zshenv"
+alias vl="vi ~/.zshrc.local"
+alias vk="vi ~/.config/kitty/kitty.conf"
+alias vs="vi ~/.config/starship.toml"
 
 # 🖼️ Wallpaper Switching
 alias wall="swww img"
@@ -46,9 +46,7 @@ alias ns="dunstify 'Arch Linux' 'DAMN! You have not riced me since last month. D
 alias rice="dunstify 'Arch Linux' 'Let’s rice together today, senpai~ 🌸 Don’t leave me looking basic!' -a System -u low"
 
 # 📦 Package Management
-alias update="yay && dunstify 'Arch Linux' 'System updated successfully ✨' -a System -u low"
-alias clean="yay -Rns $(pacman -Qtdq) && dunstify 'Arch Linux' 'Removed unused packages 🧹' -a System -u low"
-alias pm="pacman"
+alias clean="sudo pacman -Rns $(pacman -Qtdq) && dunstify 'Arch Linux' 'Removed unused packages 🧹' -a System -u low"
 
 # 🗑️ Cleanup
 alias tp="trash-put"
@@ -100,6 +98,6 @@ alias ztrack="./.local/opt/ztrack/ZTrack"
 
 # Custom Utitlies
 alias cat="bat --style plain"
-alias less="bat --style plain"
+alias less="cat"
 alias pacclean="paccache -rv && paccache -rvuk0"
 

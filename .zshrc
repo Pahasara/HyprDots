@@ -116,9 +116,3 @@ eval "$(zoxide init --cmd cd zsh)"
     touch "$marker"
 }
 
-# ──────────────────────────────────────────────────────────────
-# CACHE CLEANUP
-# ──────────────────────────────────────────────────────────────
-# Clear fastfetch cache on login so it updates once per session
-rm -f ~/.cache/fastfetch/dev-info ~/.cache/fastfetch/gpu-info
-
