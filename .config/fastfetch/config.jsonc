@@ -3,9 +3,9 @@
     "logo": {
         "source": "~/Pictures/Assets/fetch.png",
         "padding": {
-            "top": 1,
+            "top": 2,
             "left": 2,
-            "right": 3
+            "right": 1
         }
     },
     "display": {

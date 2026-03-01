@@ -47,7 +47,7 @@ x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/gitkraken=GitKraken.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
-x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
 x-scheme-handler/postman=Postman.desktop
 
 [Removed Associations]
