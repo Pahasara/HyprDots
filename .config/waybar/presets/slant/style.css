@@ -16,52 +16,50 @@ window#waybar {
 }
 
 #workspaces {
-  min-width: 185px;
+  min-width: 190px;
 }
 
 #workspaces button {
   padding: 0px;
-  margin: 8px 10px 8px 0px;
-  min-height: 5px;
-  min-width: 18px;
-  border-radius: 15px;
-  border: 0px;
-  transition: all 0.3s ease-in-out;
+  margin: 5px 2px;
+  min-width: 24px;
+  transition: all 0.12s cubic-bezier(0.55, -0.68, 0.48, 1.68);
   opacity: 0.9;
   color: @fg-persist;
-  background-color: @fg-persist;
+  background-color: transparent;
 }
 
-#workspaces button:hover {
-  color: @foreground;
-  background: @foreground;
-  border-radius: 15px;
-  opacity: 0.7;
+#workspaces button label {
+  font-size: 20px;
 }
 
 #workspaces button.active {
   color: @fg-blink;
-  background: @fg-blink;
-  min-width: 34px;
-  transition: all 0.3s ease-in-out;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #workspaces button.occupied {
   color: @foreground;
-  background-color: @fg-persist;
 }
 
 #workspaces button.empty {
   color: @fg-persist;
-  background-color: @fg-persist;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 #workspaces button.urgent {
   color: @warning;
-  background-color: @warning;
-  animation: workspace_urgent 1s ease-in-out infinite;
+  opacity: 1;
+  transition: all 0.15s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  animation-name: blink-ws;
+  animation-duration: 1.2s;
+  animation-iteration-count: 2;
+}
+
+@keyframes blink-ws {
+  to {
+    color: transparent;
+  }
 }
 
 #mode {

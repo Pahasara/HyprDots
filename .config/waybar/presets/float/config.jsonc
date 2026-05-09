@@ -57,10 +57,10 @@
             "9": [],
             "10": []
         },
-        "format": "<small>{icon}</small>",
         "format-icons": {
-            // "active": "",
-            "default": "",
+            "active": "◉",
+            "default": "",
+            "empty": ""
         }
     },
     "hyprland/window": {
