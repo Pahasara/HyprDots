@@ -17,6 +17,8 @@ export GOPATH="$HOME/.go"
 export SCRIPT_DIR="$HOME/.local/bin"
 export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
 
+export XDG_BIN_HOME="$SCRIPT_DIR"
+
 # PATH Setup
 export PATH="$JETBRAINS:$SCRIPT_DIR:$PATH"
 

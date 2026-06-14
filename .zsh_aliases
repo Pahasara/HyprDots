@@ -66,8 +66,10 @@ alias sctlr="systemctl restart"
 
 # 🧪 Languages & Tools
 alias dr="dotnet run"
+alias db="dotnet build"
 alias dw="dotnet watch"
 alias dt="dotnet test"
+alias dap="dotnet add package"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 alias cl="clang -std=c23 -Wall"
