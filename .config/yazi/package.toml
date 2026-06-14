@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "90a1652"
-hash = "7a83bfab51d1d2ba6558cc56bd52539a"
+rev = "a6d30a1"
+hash = "7d4dd1afcb7ecbd3609c29a82d6dbc5c"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "03cdd4b"
-hash = "3996fc74044bc44144b323686f887e1"
+rev = "598cdb6"
+hash = "7b625412411be411153886894d9acaf"
 
 [[plugin.deps]]
 use = "Ape/simple-status"
