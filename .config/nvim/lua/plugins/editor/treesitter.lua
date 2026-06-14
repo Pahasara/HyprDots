@@ -1,6 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  event = { 'BufReadPre', 'BufNewFile' },
+  lazy = false,
   build = ':TSUpdate',
   dependencies = {
     'windwp/nvim-ts-autotag',
@@ -9,37 +9,29 @@ return {
     -- import nvim-treesitter plugin
     local treesitter = require 'nvim-treesitter.configs'
 
-    -- configure treesitter
-    treesitter.setup { -- enable syntax highlighting
+    -- configure treesitter (following nvim-treesitter recommended options)
+    treesitter.setup {
+      ensure_installed = {
+        'bash', 'c', 'c_sharp', 'cmake', 'cpp', 'css', 'html', 'java', 'javascript', 'lua', 'make', 'markdown', 'python', 'toml', 'typescript', 'tsx',
+      },
+      sync_install = false,
+      auto_install = true,
+
       highlight = {
         enable = true,
+        disable = { 'markdown' }, -- keep markdown disabled if it caused issues
+        additional_vim_regex_highlighting = false,
       },
-      -- enable indentation
-      indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
+
+      indent = {
+        enable = true,
+        disable = { 'c', 'cpp' },
+      },
+
       autotag = {
         enable = true,
       },
-      -- ensure these language parsers are installed
-      ensure_installed = {
-        'bash',
-        'c',
-        'c_sharp',
-        'cmake',
-        'cpp',
-        'css',
-        'html',
-        'hyprlang',
-        'java',
-        'javascript',
-        'lua',
-        'make',
-        'markdown',
-        'python',
-        'toml',
-        'typescript',
-        'tsx',
-      },
+
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -50,6 +42,12 @@ return {
         },
       },
     }
+    -- Map custom filetypes to existing parsers (hyprland configs are Lua)
+    pcall(function()
+      if vim.treesitter and vim.treesitter.language then
+        vim.treesitter.language.register('lua', { 'hyprland' })
+      end
+    end)
   end,
 }
 

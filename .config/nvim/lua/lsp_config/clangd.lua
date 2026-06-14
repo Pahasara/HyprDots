@@ -1,4 +1,5 @@
 return {
+  root_markers = { 'compile_commands.json', '.clangd', '.git' },
   cmd = { 'clangd', '--background-index', '--clang-tidy', '--cross-file-rename' },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   capabilities = {

@@ -32,6 +32,7 @@ return {
         'jdtls',
         'lua_ls',
         'ts_ls',
+        'jsonls',
       },
       automatic_installation = true,
     }
@@ -48,6 +49,7 @@ return {
 
         -- list of debuggers for mason to install
         'codelldb', -- c++ debugger
+
         -- list of linters for mason to install
         'eslint-lsp', -- js/ts linter
         -- 'cpplint', -- c++ linter
