@@ -23,6 +23,7 @@ ICON_GROUPS=(
     "postman|"
     "pgadmin|"
     "github|"
+    "java|"
 
 # Media / Audio / Video
     "mpv|"
@@ -53,6 +54,9 @@ ICON_GROUPS=(
 # Gaming
     "steam|󰓓"
     "lutris|"
+    "skmedix|󰫃"
+    "minecraft|󰍳"
+
 
 # System / Utilities
     "ark|"

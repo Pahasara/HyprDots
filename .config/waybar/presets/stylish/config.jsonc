@@ -12,8 +12,8 @@
     //##################
     "modules-left": [
         "idle_inhibitor",
-        "custom/active_window",
-        "custom/update-status"
+        "custom/update",
+        "custom/active_window"
         // "custom/storage",
         // "cpu",
         // "memory",
@@ -269,7 +269,7 @@
     "custom/update": {
         "exec": "~/.local/bin/arch-update-status",
         "interval": 21600,
-        "on-click": "~/.local/bin/arch-update-status",
+        "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
     "custom/separator": {

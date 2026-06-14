@@ -154,6 +154,13 @@ window#waybar {
   color: @foreground;
 }
 
+#custom-update {
+  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  color: @fg-alt;
+}
+
 #idle_inhibitor {
   font-size: 21px;
   font-weight: 100;
