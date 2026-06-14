@@ -2,7 +2,7 @@
 //  Modified: https://github.com/pahasara/hyprdots
 
 configuration {
-    font: "Ubuntu Nerd Font 13";
+    font: "Ubuntu Nerd Font 12";
 }
 
 @theme "theme"

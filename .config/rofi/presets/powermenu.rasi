@@ -10,7 +10,7 @@ configuration {
 @theme "theme"
 
 * {
-    font: "Ubuntu Nerd Font 28";
+    font: "Ubuntu Nerd Font 24";
 
     background-color: @bg;
     text-color: @main-fg;
@@ -25,7 +25,7 @@ window {
     location: east;
     y-offset: 0;
     x-offset: -3;
-    width: 64;
+    width: 56;
     border-radius: 18px;
 
     border: 2px;

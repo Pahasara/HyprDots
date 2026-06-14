@@ -14,7 +14,7 @@ configuration {
 @theme "azure"
 
 * {
-    font: "Ubuntu Nerd Font 14";
+    font: "Ubuntu Nerd Font 13.5";
 
     background-color:   transparent;
     text-color:         @main-fg;
@@ -26,7 +26,7 @@ configuration {
 
 window {
     location:       center;
-    width:          290px;
+    width:          280px;
     border-radius:  20px;
 
     border: 2px;
