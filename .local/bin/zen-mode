@@ -4,18 +4,19 @@
 set -euo pipefail
 
 # Configuration
-HYPR_CONFIG="$HOME/.config/hypr/hyprland.conf"
+HYPR_CONFIG="$HOME/.config/hypr/hyprland.lua"
 WAYMOD_SCRIPT="${SCRIPT_DIR:+$SCRIPT_DIR/waymod}"
 WAYMOD_SCRIPT="${WAYMOD_SCRIPT:-$HOME/.local/bin/waymod}"
 
-# Check if zen mode is currently active
+# Check if zen mode is currently active (line is not commented out)
 is_zen_active() {
-    grep -q "^source=zen\.conf" "$HYPR_CONFIG"
+    grep -q "^require(\"zen\")" "$HYPR_CONFIG"
 }
 
 # Activate zen mode
 activate_zen() {
-    sed -i 's/^#source=zen\.conf$/source=zen.conf/' "$HYPR_CONFIG"
+    # Removes the leading '-- ' from the zen require line
+    sed -i 's/^--[[:space:]]*require("zen")/require("zen")/' "$HYPR_CONFIG"
     echo "Hyprland zen: ON"
     
     if [[ -x "$WAYMOD_SCRIPT" ]]; then
@@ -26,7 +27,8 @@ activate_zen() {
 
 # Deactivate zen mode
 deactivate_zen() {
-    sed -i 's/^source=zen\.conf$/#source=zen.conf/' "$HYPR_CONFIG"
+    # Adds the leading '-- ' to the zen require line
+    sed -i 's/^require("zen")/-- require("zen")/' "$HYPR_CONFIG"
     echo "Hyprland zen: OFF"
     
     if [[ -x "$WAYMOD_SCRIPT" ]]; then

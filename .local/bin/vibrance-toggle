@@ -1,14 +1,16 @@
 #!/bin/bash
-CONFIG_FILE="$HOME/.config/hypr/general.conf"
+# Vibrance Toggler for Hyprland
+set -euo pipefail
 
-# Check if the line is currently uncommented (active)
-if grep -q "^[[:space:]]*screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag" "$CONFIG_FILE"; then
-    # It's active, comment it out
-    sed -i 's|^\([[:space:]]*\)\(screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag.*\)$|\1# \2|' "$CONFIG_FILE"
-    echo "Screen shader disabled"
+CONFIG_FILE="$HOME/.config/hypr/general.lua"
+
+# Check if the line is currently active (not starting with --)
+if grep -q "^[[:space:]]*screen_shader[[:space:]]*=[[:space:]]*\"vibrance\.frag\"" "$CONFIG_FILE"; then
+    # It's active, comment it out with Lua syntax --
+    sed -i 's|^\([[:space:]]*\)\(screen_shader[[:space:]]*=[[:space:]]*\"vibrance\.frag\".*\)$|\1-- \2|' "$CONFIG_FILE"
+    echo "Vibrance: OFF"
 else
     # It's commented, uncomment it
-    sed -i 's|^\([[:space:]]*\)#[[:space:]]*\(screen_shader[[:space:]]*=[[:space:]]*vibrance\.frag.*\)$|\1\2|' "$CONFIG_FILE"
-    echo "Screen shader enabled"
+    sed -i 's|^\([[:space:]]*\)--[[:space:]]*\(screen_shader[[:space:]]*=[[:space:]]*\"vibrance\.frag\".*\)$|\1\2|' "$CONFIG_FILE"
+    echo "Vibrance: ON"
 fi
-
