@@ -10,6 +10,7 @@
 -- ──────────────────────────────────────────────────────────────
 hl.window_rule({ match = { class = "dota.*|reverse.*|underlords" }, content = "game" })
 hl.window_rule({ match = { class = "steam_app_359870|ffx.*" }, fullscreen = true })
+hl.window_rule({ match = { class = "Arcane.App" }, float = true, center = true })
 -- hl.window_rule({ match = { class = "reverse.*" }, fullscreen = true })
 -- hl.window_rule({ match = { class = "reverse.*" }, workspace = 4 })
 

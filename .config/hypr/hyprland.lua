@@ -1,7 +1,7 @@
 -- ══════════════════════════════════════════════════════════════
 --                    HYPRLAND CONFIG (Lua)
---              Migrated from hyprlang → Hyprland v0.55
---                   github.com/pahasara/HyprDots
+--            Migrated from hyprlang → Hyprland v0.55
+--                 github.com/pahasara/HyprDots
 -- ══════════════════════════════════════════════════════════════
 --
 -- Files are loaded in separate scopes; errors in one won't

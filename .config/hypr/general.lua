@@ -44,10 +44,10 @@ hl.config({
 
     shadow = {
       enabled = true,
-      range = 150,
+      range = 100,
       render_power = 4,
-      offset = { 0, 12 },
-      color = "rgba(1a1a1aaf)",
+      offset = { 0, 4 },
+      color = "rgba(1a1a1adf)",
       color_inactive = "rgba(1a1a1a88)",
       scale = 0.98,
     },
@@ -132,7 +132,7 @@ hl.config({
     cm_enabled = true,
     cm_sdr_eotf = "srgb",
     non_shader_cm = 1,
-    new_render_scheduling = true, -- Experimental triple buffering
+    new_render_scheduling = false, -- Experimental triple buffering
   },
 })
 

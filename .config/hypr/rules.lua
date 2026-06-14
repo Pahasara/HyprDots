@@ -27,7 +27,7 @@ hl.layer_rule({ name = "screen-select-no-anim", match = { namespace = "selection
 -- ──────────────────────────────────────────────────────────────
 hl.window_rule({
   name = "ws-browsing",
-  match = { class = ".*(zen|firefox|[Bb]rowser).*" },
+  match = { class = ".*(firefox|[Bb]rowser).*" },
   workspace = 2,
 })
 
@@ -39,13 +39,13 @@ hl.window_rule({
 
 hl.window_rule({
   name = "ws-gaming-entertainment",
-  match = { class = ".*(steam|steam_app|cs2|dota2|Lutris|spotify|Minecraft).*" },
+  match = { class = ".*(steam|steam_app|cs2|dota2|Lutris|spotify).*" },
   workspace = 4,
 })
 
 hl.window_rule({
-  name = "ws-proton-games",
-  match = { xdg_tag = "proton-game" },
+  name = "ws-games",
+  match = { content = "game" },
   workspace = 4,
 })
 
@@ -78,7 +78,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "float-media-apps",
-  match = { class = ".*(zen|firefox|mpv|vlc|imv|java|discord|Lutris|Lollypop|pupgui2).*" },
+  match = { class = ".*(zen|firefox|mpv|vlc|imv|java|discord|Lutris|Lollypop|Proton).*" },
   float = true,
 })
 
@@ -207,7 +207,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "size-terminal",
-  match = { title = ".*(kitty|ProtonUp-Qt -).*" },
+  match = { title = ".*(kitty).*" },
   size = { "monitor_w*0.48", "monitor_h*0.56" },
 })
 
@@ -225,7 +225,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "size-audio",
-  match = { class = ".*easyeffects.*" },
+  match = { class = ".*easyeffects.*|Proton" },
   size = { "monitor_w*0.78", "monitor_h*0.85" },
 })
 
@@ -447,6 +447,14 @@ hl.window_rule({
     title = "negative:.*(Launcher|Options|Setup|Working).*",
   },
   fullscreen = true,
+})
+
+hl.window_rule({
+  name = "steam-hide-explorer",
+  match = { class = "explorer.exe" },
+  content = "none",
+  fullscreen = false,
+  no_focus = true,
 })
 
 hl.window_rule({
