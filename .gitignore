@@ -1,9 +1,10 @@
 .config/nvim/lazy-lock.json
 sync_dots.sh
-.config/hypr/hyprland.conf
-.config/hypr/local.conf
+.config/hypr/local.lua
 .local/bin/timecanvas
+.config/yazi/**/*.png
 .config/systemd/user/default.target.wants
+.config/systemd/user/sockets.target.wants
 .config/systemd/user/graphical-session.target.wants
 .config/systemd/user/timers.target.wants
 
