@@ -10,6 +10,9 @@
   "workbench.productIconTheme": "fluent-icons",
   "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
   "workbench.editor.empty.hint": "hidden",
+  "workbench.view.showQuietly": {
+    "workbench.panel.output": true,
+  },
 
   // Editor - Core Settings
   "editor.fontFamily": "JetBrainsMono Nerd Font Mono",

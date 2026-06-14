@@ -52,6 +52,7 @@ x-scheme-handler/jetbrains=jetbrainsd.desktop
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
+x-scheme-handler/discord-831593107883032657=discord-831593107883032657.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-draw.desktop;gimp.desktop;
