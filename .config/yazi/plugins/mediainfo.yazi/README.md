@@ -1,5 +1,14 @@
 # mediainfo.yazi (fork)
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 <!--toc:start-->
 
 - [mediainfo.yazi (fork)](#mediainfoyazi-fork)
@@ -13,7 +22,7 @@ This is a Yazi plugin for previewing media files. The preview shows thumbnail
 using `ffmpeg` if available and media metadata using `mediainfo`.
 
 > [!IMPORTANT]
-> Minimum version: yazi v26.1.22.
+> yazi v26.5.6 and <= v26.9.1
 > Check it via command `yazi --debug`
 
 ## Preview

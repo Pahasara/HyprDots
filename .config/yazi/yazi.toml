@@ -67,6 +67,9 @@ download = [
 	{ run = "ya emit download --open %S", desc = "Download and open" },
 	{ run = "ya emit download %S",        desc = "Download" },
 ]
+libreoffice = [
+    { run = 'libreoffice "%s"', orphan = false, desc = "Open in LibreOffice" }
+]
 
 [open]
 rules = [
@@ -85,6 +88,16 @@ rules = [
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
 	# Empty file
 	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
+    # Office Documents
+    { mime = "*application/vnd.openxmlformats-officedocument.wordprocessingml.document", use = "libreoffice" },
+    { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", use = "libreoffice" },
+    { url = "*.xlsx", use = "libreoffice" },
+    { url = "*.doc",  use = "libreoffice" },
+    { url = "*.ppt",  use = "libreoffice" },
+    { url = "*.xls",  use = "libreoffice" },
+    { url = "*.odt",  use = "libreoffice" },
+    { url = "*.odp",  use = "libreoffice" },
+    { url = "*.ods",  use = "libreoffice" },
 	# Fallback
 	{ url = "*", use = [ "open", "reveal" ] },
 ]

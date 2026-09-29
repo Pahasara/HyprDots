@@ -1,5 +1,3 @@
---- @since 26.1.22
-
 local const = require(".const")
 
 local M = {}

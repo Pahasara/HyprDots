@@ -1,33 +1,15 @@
---- @since 26.1.22
+--- @since 26.5.6
 
 local M = {}
-local using_new_height_api = ui.lines ~= nil
-local const
-local utils
-local adobe
-local audio
-local image
-local video
-local none_media_preview
 
-const = require(".const")
-utils = require(".utils")
+local const = require(".const")
+local utils = require(".utils")
 
-if using_new_height_api then
-	ya.dbg("mediainfo", "Using yazi version >= 26.5.6")
-	adobe = require(".adobe-stable")
-	audio = require(".audio-stable")
-	image = require(".image-stable")
-	video = require(".video-stable")
-	none_media_preview = require(".none-media-preview-stable")
-else
-	ya.dbg("mediainfo", "Using yazi version <= 26.1.22")
-	adobe = require(".adobe-old")
-	audio = require(".audio-old")
-	image = require(".image-old")
-	video = require(".video-old")
-	none_media_preview = require(".none-media-preview-old")
-end
+local adobe = require(".adobe")
+local audio = require(".audio")
+local image = require(".image")
+local video = require(".video")
+local none_media_preview = require(".none-media-preview")
 
 function M:peek(job)
 	-- debounce peek
