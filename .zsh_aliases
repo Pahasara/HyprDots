@@ -69,6 +69,7 @@ alias dr="dotnet run"
 alias db="dotnet build"
 alias dw="dotnet watch"
 alias dt="dotnet test"
+alias dc="dotnet clean"
 alias dap="dotnet add package"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
@@ -95,9 +96,7 @@ alias ydtv720='yt-dlp -f "bv*[vcodec^=hev][height<=720]+ba[acodec=opus]/bv*[vcod
 alias ydtv4k='yt-dlp -f "bv*[vcodec^=hev][height<=2160]+ba[acodec=opus]/bv*[vcodec^=hev][height<=2160]+ba[acodec^=mp4a]/bv*[vcodec^=avc][height<=2160]+ba/b" --merge-output-format mkv --embed-thumbnail --embed-metadata --embed-subs'
 
 # 🧃 Custom Tools
-alias zt="./.local/opt/ztrack/ZTrack"
-alias zero="./.local/opt/zero/Zero.CLI"
-alias ztrack="./.local/opt/ztrack/ZTrack"
+alias z="./.local/opt/ztrack/ZTrack"
 
 # Custom Utitlies
 alias cat="bat --style plain"

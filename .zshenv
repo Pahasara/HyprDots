@@ -16,46 +16,43 @@ export GOPATH="$HOME/.go"
 
 export SCRIPT_DIR="$HOME/.local/bin"
 export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
-
 export XDG_BIN_HOME="$SCRIPT_DIR"
 
-# PATH Setup
-export PATH="$JETBRAINS:$SCRIPT_DIR:$PATH"
+# Ensure PATH includes ccache and custom scripts
+export PATH="/usr/lib/ccache/bin:$JETBRAINS:$SCRIPT_DIR:$PATH"
+export CCACHE_PATH="/usr/bin"
 
 # ──────────────────────────────────────────────────────────────
-# BUILD & COMPRESSION OPTIMIZATIONS
+# BUILD & PARALLELIZATION OPTIMIZATIONS
 # ──────────────────────────────────────────────────────────────
-# Build Tools
+# Dynamically scale parallel builds to N threads
 NPROC="$(nproc)"
 export MAKEFLAGS="-j$NPROC"
 export CMAKE_BUILD_PARALLEL_LEVEL="$NPROC"
 export NINJA_NUM_CORES="$NPROC"
 
-# Compiler Flags
-export CFLAGS="-O3 -march=native -pipe"
-export CXXFLAGS="$CFLAGS"
+# Global Compression Settings
+export ZSTD_CLEVEL=6
+export ZSTD_NBTHREADS="0"
+export XZ_DEFAULTS="-T0"
+export GZIP="-9"
 
-# Compression Tools
-export ZSTD_CLEVEL=12
-export ZSTD_NBTHREADS="$NPROC"
-export XZ_DEFAULTS="-T$NPROC"
-export GZIP=-9
+# GCC Diagnostics Color Support
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # ──────────────────────────────────────────────────────────────
 # MAN PAGER CONFIGURATION
 # ──────────────────────────────────────────────────────────────
 export BAT_THEME="tokyonight_night"
 export MANROFFOPT="-c"
-# Pipe `man` output through bat for highlighting
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -l man'"
-# TLDR color customization
 export TLDR_COLOR_NAME="magenta"
 export TLDR_COLOR_DESCRIPTION="blue"
 export TLDR_COLOR_EXAMPLE="red"
 export TLDR_COLOR_COMMAND="green"
 
 # ──────────────────────────────────────────────────────────────
-# TELEMETRY
+# TELEMETRY & DEBUG
 # ──────────────────────────────────────────────────────────────
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT=1
@@ -63,8 +60,4 @@ export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1
 export TURBO_TELEMETRY_DISABLED=1
 export DO_NOT_TRACK=1
 
-# ──────────────────────────────────────────────────────────────
-# DEBUGGING FLAGS
-# ──────────────────────────────────────────────────────────────
 export ANV_DEBUG="video-decode,video-encode"
-
