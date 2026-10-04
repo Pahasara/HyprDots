@@ -1,42 +1,45 @@
 # github.com/pahasara/HyprDots
 
 # ─────────────────────────────────────────────
-# Toolkit & Theme Integration
+# Toolkit backends
 # ─────────────────────────────────────────────
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export SDL_VIDEO_DRIVER=wayland
+export SDL_AUDIO_DRIVER=pipewire
 
 export QSG_RHI_BACKEND=vulkan
 export GSK_RENDERER=vulkan
 
+# ─────────────────────────────────────────────
+# Proton / Wine
+# ─────────────────────────────────────────────
+export PROTON_USE_WAYLAND=1
+export PROTON_USE_SDL=1
+export PROTON_USE_WOW64=1
+export PROTON_DXVK_D3D8=1
+export PROTON_FORCE_LARGE_ADDRESS_AWARE=1
+export PROTON_XESS_UPGRADE=1
+export DXVK_HUD=compiler
+
+# Wine fullscreen hack options
+export WINE_FULLSCREEN_FSR=1
+export WINE_FULLSCREEN_FSR_STRENGTH=2
+export WINE_FULLSCREEN_INTEGER_SCALING=1
+
+# ─────────────────────────────────────────────
+# Theme
+# ─────────────────────────────────────────────
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 # ─────────────────────────────────────────────
-# PROTON & SDL Configuration
-# ─────────────────────────────────────────────
-export PROTON_USE_WAYLAND=1
-export PROTON_USE_NTSYNC=1
-export PROTON_USE_SDL=1
-export PROTON_USE_WOW64=1
-
-export DXVK_HUD=compiler
-export WINE_FULLSCREEN_FSR=1
-export WINE_FULLSCREEN_FSR_STRENGTH=2
-export PROTON_FSR4_UPGRADE=1
-export PROTON_XESS_UPGRADE=1
-
-export SDL_VIDEO_DRIVER=wayland
-export SDL_AUDIO_DRIVER=pipewire
-
-# ─────────────────────────────────────────────
-# Scaling & Display Settings
+# Scaling
 # ─────────────────────────────────────────────
 export GDK_SCALE=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1
-export WINE_FULLSCREEN_INTEGER_SCALING=1
-export AVALONIA_SCREEN_SCALE_FACTORS=eDP-1=1.25
+export AVALONIA_SCREEN_SCALE_FACTORS=eDP-1=1.2
 
 # vim: set ft=sh :
