@@ -6,6 +6,7 @@
     origin = bottom-right           # Notification placement
     offset = (12, 10)                 # Offset from screen edge
     layer = top
+    fullscreen = delay
 
     # Notification Size and Dimensions
     width = (0, 500)                # Min and max width
@@ -122,21 +123,25 @@
     default_icon = "gamemode"
     max_icon_size = 72
     timeout = 5
+    fullscreen = show
 
 [mic_low]
     appname = "Mic"
     msg_urgency = "low"
     max_icon_size = 72
     default_icon = "mic-off"
+    fullscreen = show
 
 [mic_high]
     appname = "Mic"
     msg_urgency = "normal"
     max_icon_size = 72
     default_icon = "mic-on"
+    fullscreen = show
 
 [volume]
     appname = "Volume"
     max_icon_size = 72
+    fullscreen = show
 
 # vim:ft=dosini

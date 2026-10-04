@@ -22,9 +22,12 @@ text/x-cmake=org.kde.kate.desktop;nvim.desktop;okularApplication_txt.desktop;org
 text/x-csrc=org.kde.kate.desktop;nvim.desktop;okularApplication_txt.desktop;libreoffice-writer.desktop;org.kde.kwrite.desktop;
 text/x-maven+xml=org.kde.kate.desktop;nvim.desktop;zen.desktop;code.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;
 text/x-python=org.kde.kate.desktop;code.desktop;nvim.desktop;okularApplication_txt.desktop;org.kde.kwrite.desktop;libreoffice-writer.desktop;
+video/matroska=mpv.desktop;org.kde.kdenlive.desktop;
+video/mp4=mpv.desktop;org.kde.kdenlive.desktop;
 x-scheme-handler/chrome=firefox.desktop;zen.desktop;
 x-scheme-handler/http=firefox.desktop;zen.desktop;
 x-scheme-handler/https=firefox.desktop;zen.desktop;
+x-scheme-handler/unityhub=unityhub.desktop;
 
 [Default Applications]
 application/json=zen.desktop;
@@ -50,6 +53,8 @@ text/x-cmake=org.kde.kate.desktop;
 text/x-csrc=org.kde.kate.desktop;
 text/x-maven+xml=org.kde.kate.desktop;
 text/x-python=org.kde.kate.desktop;
+video/matroska=mpv.desktop;
+video/mp4=mpv.desktop;
 x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/discord-831593107883032657=discord-831593107883032657.desktop
 x-scheme-handler/gitkraken=GitKraken.desktop
@@ -59,6 +64,7 @@ x-scheme-handler/jetbrains=jetbrainsd.desktop
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
+x-scheme-handler/unityhub=unityhub.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-draw.desktop;gimp.desktop;
