@@ -35,6 +35,7 @@ ICON_GROUPS=(
     "easyeffects|󰟌"
 
 # Graphics / Images
+    "unity|"
     "imv nomacs|"
     "gimp|"
 
@@ -54,6 +55,7 @@ ICON_GROUPS=(
 # Gaming
     "steam|󰓓"
     "lutris|"
+    "heroic|󱢾"
     "skmedix|󰫃"
     "minecraft|󰍳"
 
