@@ -10,12 +10,12 @@ WAYBAR_SCRIPT="$HOME/.config/waybar/waybar.sh"
 STATE_FILE="$HOME/.cache/waybar/current_preset"
 
 # Define valid presets
-VALID_PRESETS=("top" "top-modern" "top-roman" "stylish" "bottom" "float" "dock" "slant" "side")
+VALID_PRESETS=("top" "top-modern" "top-roman" "top-rule" "stylish" "bottom" "float" "dock" "slant" "side")
 
 # Check if the given preset is valid
 if [[ ! " ${VALID_PRESETS[*]} " =~ " $1 " ]]; then
     echo "Invalid preset: $1"
-    echo "Usage: $0 {top|top-modern|top-roman|stylish|bottom|float|dock|slant|side} [theme]"
+    echo "Usage: $0 {top|top-modern|top-roman|top-rule|stylish|bottom|float|dock|slant|side} [theme]"
     exit 1
 fi
 
