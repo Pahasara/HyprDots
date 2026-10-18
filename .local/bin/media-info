@@ -2,6 +2,12 @@
 
 default_max_length=32
 DISABLE_BROWSER=0
+SHOW_PAUSED=0
+USE_FALLBACK=0
+
+FALLBACK_TEXT="Too quiet..."
+ICON_PAUSED="$(printf '\xef\x81\x8c')"   # nf-fa-pause
+ICON_IDLE="$(printf '\xef\x80\x81')"     # nf-fa-music
 
 PLAYERS=("spotify" "Lollypop" "firefox")
 
@@ -17,6 +23,12 @@ for arg in "$@"; do
             ;;
         --no-browser)
             DISABLE_BROWSER=1
+            ;;
+        --show-paused)
+            SHOW_PAUSED=1
+            ;;
+        --fallback)
+            USE_FALLBACK=1
             ;;
     esac
 done
@@ -50,31 +62,42 @@ is_browser_player() {
 }
 
 output=""
+paused=""
 
-for player in "${PLAYERS[@]}"; do
+# "<icon>  title ✦ artist " for one player
+format_player() {
+    local player="$1" icon="$2" info
+    info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}' 2>/dev/null)"
+    echo "${icon}  $(trim_info "$info" "$max_length") "
+}
+
+# Preferred players first, then everything else playerctl knows about
+mapfile -t other_players < <(playerctl --list-players 2>/dev/null)
+
+for player in "${PLAYERS[@]}" "${other_players[@]}"; do
     if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
         continue
     fi
 
-    if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-        info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
-        output="$(detect_icon "$player")  $(trim_info "$info" "$max_length") "
-        break
-    fi
+    case "$(playerctl --player="$player" status 2>/dev/null)" in
+        Playing)
+            output="$(format_player "$player" "$(detect_icon "$player")")"
+            break
+            ;;
+        Paused)
+            if (( SHOW_PAUSED )) && [[ -z "$paused" ]]; then
+                paused="$(format_player "$player" "$ICON_PAUSED")"
+            fi
+            ;;
+    esac
 done
 
-if [[ -z "$output" ]]; then
-    while read -r player; do
-        if (( DISABLE_BROWSER )) && is_browser_player "$player"; then
-            continue
-        fi
-
-        if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
-            info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
-            output="$(detect_icon "$player")  $(trim_info "$info" "$max_length") "
-            break
-        fi
-    done < <(playerctl --list-players 2>/dev/null)
+if [[ -n "$output" ]]; then
+    echo "$output"
+elif [[ -n "$paused" ]]; then
+    echo "$paused"
+elif (( USE_FALLBACK )); then
+    echo "${ICON_IDLE}  ${FALLBACK_TEXT} "
+else
+    echo ""
 fi
-
-echo "$output"
