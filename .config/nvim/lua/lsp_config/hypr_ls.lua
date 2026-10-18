@@ -1,7 +1,8 @@
 return {
   root_markers = { 'hyprland.lua', 'hyprland.conf', '.git' },
   cmd = { 'hyprls' },
-  filetypes = { 'hyprland', 'hyprlang' },
+  -- hyprls only understands hyprlang (.conf). Lua configs ('hyprland' ft) go to lua_ls.
+  filetypes = { 'hyprlang' },
   single_file_support = true,
   settings = {
     hyprls = {

@@ -4,7 +4,6 @@ return {
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     { 'antosha417/nvim-lsp-file-operations', config = true },
-    { 'folke/neodev.nvim', opts = {} },
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
   },
@@ -31,8 +30,8 @@ return {
         keymap.set('n', 'K', vim.lsp.buf.hover, vim.tbl_extend('keep', opts, { desc = 'Show Documentation for what is under cursor' }))
         keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('keep', opts, { desc = 'See available code actions' }))
         keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('keep', opts, { desc = 'Smart Rename' }))
-        keymap.set('n', '<leader>lr', ':lsp restart<CR>', { desc = 'Restart LSP' })
-        keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = 'View LSP Info' })
+        keymap.set('n', '<leader>lr', '<cmd>lsp restart<CR>', { desc = 'Restart LSP' })
+        keymap.set('n', '<leader>li', '<cmd>checkhealth vim.lsp<CR>', { desc = 'View LSP Info' })
         keymap.set('n', '<leader>lf', vim.lsp.buf.format, vim.tbl_extend('keep', opts, { desc = 'Format document' }))
       end,
     })
@@ -49,42 +48,24 @@ return {
       update_in_insert = true,
     }
 
-    -- Configure Lua LSP
-    local lua_config = require 'lsp_config.lua_ls'
-    vim.lsp.config('lua_ls', vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-    }, lua_config or {}))
-
-    -- Configure Clang LSP
-    local clangd_config = require 'lsp_config.clangd'
-    vim.lsp.config('clangd', vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-    }, clangd_config or {}))
-
-    -- Configure Python LSP
-    local py_config = require 'lsp_config.basedpyright'
-    vim.lsp.config('basedpyright', vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-    }, py_config or {}))
-
-    -- Configure Java LSP
-    local jdtls_config = require 'lsp_config.jdtls'
-    vim.lsp.config('jdtls', vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-    }, jdtls_config or {}))
-
-    -- Configure Hyprland LSP
-    local hypr_ls_config = require 'lsp_config.hypr_ls'
-    vim.lsp.config('hyprls', vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-    }, hypr_ls_config or {}))
-
-    -- Global capabilities for all servers
+    -- Global capabilities for all servers (also covers mason auto-enabled ones)
     vim.lsp.config('*', {
       capabilities = capabilities,
     })
 
-    -- Enable configured LSP servers
+    local function setup(name, module)
+      local ok, cfg = pcall(require, module)
+      vim.lsp.config(name, ok and cfg or {})
+    end
+
+    setup('lua_ls', 'lsp_config.lua_ls')
+    setup('clangd', 'lsp_config.clangd')
+    setup('basedpyright', 'lsp_config.basedpyright')
+    setup('jdtls', 'lsp_config.jdtls')
+    setup('hyprls', 'lsp_config.hypr_ls')
+
+    -- hyprls is not installed via mason, so enable explicitly.
+    -- Other servers installed via mason are auto-enabled by mason-lspconfig.
     vim.lsp.enable { 'lua_ls', 'clangd', 'basedpyright', 'jdtls', 'hyprls' }
   end,
 }

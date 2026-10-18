@@ -34,7 +34,9 @@ return {
         'ts_ls',
         'jsonls',
       },
-      automatic_installation = true,
+      automatic_enable = {
+        exclude = { 'stylua' },
+      },
     }
 
     mason_tool_installer.setup {

@@ -1,4 +1,5 @@
 return {
+  filetypes = { 'lua', 'hyprland' },
   root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
   single_file_support = true,
   settings = {
