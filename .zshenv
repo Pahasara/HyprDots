@@ -15,6 +15,9 @@ export SHADER_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/shader_cache"
 export GOPATH="$HOME/.go"
 
 export SCRIPT_DIR="$HOME/.local/bin"
+export STEAM_DIR="$HOME/.steam/steam"
+export PROTONPATH="$STEAM_DIR/compatibilitytools.d/Proton-GE Latest"
+export WINEPREFIX="$HOME/.umu/prefixes/.default"
 export JETBRAINS="$HOME/.local/share/JetBrains/Toolbox/scripts"
 export XDG_BIN_HOME="$SCRIPT_DIR"
 

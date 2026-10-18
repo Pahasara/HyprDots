@@ -5,9 +5,9 @@
 # ─────────────────────────────────────────────
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
-export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export SDL_VIDEO_DRIVER=wayland
 export SDL_AUDIO_DRIVER=pipewire
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
 export QSG_RHI_BACKEND=vulkan
 export GSK_RENDERER=vulkan
@@ -16,14 +16,16 @@ export GSK_RENDERER=vulkan
 # Proton / Wine
 # ─────────────────────────────────────────────
 export PROTON_USE_WAYLAND=1
-export PROTON_USE_SDL=1
+export PROTON_USE_PIPEWIRE=1
 export PROTON_USE_WOW64=1
 export PROTON_DXVK_D3D8=1
+export PROTON_USE_NTSYNC=1
 export PROTON_FORCE_LARGE_ADDRESS_AWARE=1
-export PROTON_XESS_UPGRADE=1
+export PROTON_WM_DECORATIONS=0
+export DXVK_FRAME_RATE=30
 export DXVK_HUD=compiler
 
-# Wine fullscreen hack options
+# Wine fullscreen hacks
 export WINE_FULLSCREEN_FSR=1
 export WINE_FULLSCREEN_FSR_STRENGTH=2
 export WINE_FULLSCREEN_INTEGER_SCALING=1

@@ -16,4 +16,9 @@ export XCURSOR_SIZE=28
 export HYPRCURSOR_THEME=macOS-hyprcursor
 export HYPRCURSOR_SIZE=28
 
+# ─────────────────────────────────────────────
+# Blur for GTK Apps
+# ─────────────────────────────────────────────
+export GDK_WAYLAND_DISABLE=ext_background_effect_manager_v1
+
 # vim: set ft=sh :
