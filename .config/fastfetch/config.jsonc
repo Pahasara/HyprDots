@@ -4,8 +4,8 @@
         "source": "~/Pictures/Assets/fetch.png",
         "padding": {
             "top": 2,
-            "left": 2,
-            "right": 1
+            "left": 1,
+            "right": 2
         }
     },
     "display": {
@@ -15,18 +15,22 @@
         }
     },
     "modules": [
-        // "break",
         "break",
         "break",
+        // {
+        //     "type": "title",
+        //     "key": " ",
+        //     "keyColor": "36"
+        // },
         {
-            "type": "title",
-            "keyWidth": 10
+            "type": "command",
+            "key": " ",
+            "text": "d=$(( ($(date +%s) - $(stat -c %W /)) / 86400 )); u=$(cut -d. -f1 /proc/uptime); h=$(( (u % 86400) / 3600 )); m=$(( (u % 3600) / 60 )); printf \"\\033[1;36m%s\\033[0m@\\033[1;36m%s\\033[0m \\033[37m[%d-%d:%02d]\\033[0m\\n\" \"$(whoami)\" \"$(uname -n)\" \"$d\" \"$h\" \"$m\""
         },
         {
             "type": "custom",
             "format": "\u001b[31m-----------"
         },
-        // "break",
         {
             "type": "os",
             "key": " ",
@@ -42,18 +46,11 @@
             "key": " ",
             "keyColor": "31"
         },
-        // {
-        //     "type": "command",
-        //     "key": "󰏖 ",
-        //     "keyColor": "31",
-        //     "text": "$SCRIPT_DIR/pkg-cache-info"
-        // },
         {
             "type": "shell",
             "key": " ",
             "keyColor": "32"
         },
-        // "break",
         {
             "type": "custom",
             "format": "\u001b[32m------------------------"
@@ -78,21 +75,20 @@
         // {
         //     "type": "uptime",
         //     "key": " ",
-        //     "keyColor": "34", 
+        //     "keyColor": "34"
         // },
-        {
-            "type": "command",
-            "key": "󱦟 ",
-            "keyColor": "37",
-            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
-        },
+        // {
+        //     "type": "command",
+        //     "key": "󱦟 ",
+        //     "keyColor": "37",
+        //     "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        // },
         {
             "type": "command",
             "key": " ",
             "keyColor": "93",
             "text": "$SCRIPT_DIR/shader-info"
         },
-        // "break",
         {
             "type": "custom",
             "format": "\u001b[32m------------------------"
@@ -117,14 +113,13 @@
             "key": " ",
             "keyColor": "33"
         },
-        // "break",
         {
             "type": "custom",
             "format": "\u001b[31m────────────"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
         }
-        // {
-        //     "type": "custom",
-        //     "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
-        // }
     ]
 }
