@@ -1,6 +1,11 @@
 #!/bin/bash
+# HyprDots installer: installs packages, syncs this repo's dotfiles into $HOME,
+# configures GTK/cursors/zsh and enables the user services.
+# Run it from the repository root:  ./install.sh
 
-# Color definitions
+readonly VERSION="3.0"
+
+# ── Colors & logging ─────────────────────────────────────────────────────────
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
@@ -9,104 +14,130 @@ CYAN='\033[0;36m'
 MAGENTA='\033[0;35m'
 NC='\033[0m'
 
-# Logging functions
-log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+log_info()    { echo -e "${GREEN}[INFO]${NC} $1"; }
 log_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
-log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
-log_step() { echo -e "${BLUE}[STEP]${NC} $1"; }
+log_error()   { echo -e "${RED}[ERROR]${NC} $1"; }
+log_step()    { echo -e "${BLUE}[STEP]${NC} $1"; }
 log_success() { echo -e "${CYAN}[SUCCESS]${NC} $1"; }
-log_prompt() { echo -e "${MAGENTA}[PROMPT]${NC} $1"; }
+log_prompt()  { echo -e "${MAGENTA}[PROMPT]${NC} $1"; }
 
-# Package lists
+# confirm "question": returns 0 only when the user answers y/Y
+confirm() {
+    local answer
+    read -rp "$1 (y/n): " answer
+    [[ $answer == [yY] ]]
+}
+
+# ── Packages ─────────────────────────────────────────────────────────────────
+# Core packages (official repos)
 PACMAN_PACKAGES=(
-    "hyprland" "waybar" "dunst" "hypridle" "hyprlock"
-    "sddm" "polkit-gnome" "xdg-desktop-portal-hyprland"
-    "xdg-desktop-portal-gtk" "pipewire" "pipewire-pulse" "pipewire-alsa"
-    "qt5-wayland" "qt6-wayland" "wireplumber" "uwsm"
-    "kitty" "zsh" "starship" "fzf" "eza" "fastfetch" "lolcat"
-    "7zip" "aria2" "cliphist" "grim" "slurp" "brightnessctl"
-    "udiskie" "unzip" "mediainfo" "kompare" "pacman-contrib"
-    "kde-cli-tools" "kdegraphics-thumbnailers" "qt5ct"
-    "ripgrep" "kvantum" "bluez" "bluez-utils"
-    "mpv" "ffmpegthumbs" "imagemagick" "imv" "speech-dispatcher"
-    "noto-fonts" "noto-fonts-cjk" "noto-fonts-emoji"
-    "ttf-cascadia-mono-nerd" "ttf-jetbrains-mono-nerd" "ttf-hack-nerd"
-    "ttf-ubuntu-nerd" "ttf-dejavu-nerd" "woff2-font-awesome"
-    "dolphin" "qbittorrent" "zathura" "zathura-cb" "zathura-pdf-mupdf"
-    "neovim" "swww" "socat" "yazi" "zoxide"
+    # Session: compositor, bar, notifications, launcher, idle/lock, wallpaper daemon, login manager
+    hyprland hypridle hyprlock hyprpicker waybar dunst rofi rofi-calc rofi-emoji awww sddm uwsm
+    # Auth agent, keyring, portals (screen sharing, file pickers)
+    polkit-kde-agent gnome-keyring xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+    # Audio + Bluetooth
+    pipewire pipewire-pulse pipewire-alsa wireplumber gst-plugin-pipewire alsa-utils bluez bluez-utils
+    # Theming: GTK (adw-gtk-theme, nwg-look) and Qt (kvantum, qt5ct, qt6ct-kde from AUR)
+    qt5-wayland qt6-wayland qt5ct kvantum adw-gtk-theme nwg-look
+    # Dolphin helpers: thumbnails and KDE open/mime tools
+    kde-cli-tools kdegraphics-thumbnailers ffmpegthumbs
+    # Terminal and CLI tools
+    kitty zsh starship fzf eza zoxide bat fastfetch lolcat btop ripgrep jq tldr trash-cli tree git wget rsync
+    # Archives and downloads
+    7zip zip unzip unrar aria2
+    # Wayland helpers: clipboard, screenshots, typing (rofi-emoji), brightness, automount
+    cliphist grim slurp wtype brightnessctl udiskie
+    # Neovim and what its config needs (treesitter parsers, mason LSP servers, waybar window_title.py)
+    neovim tree-sitter-cli nodejs npm python
+    # Needed by ~/.local/bin/upgrade (rich UI, paccache) and the file manager
+    python-rich pacman-contrib yazi
+    # Apps
+    dolphin gwenview imv mpv yt-dlp mediainfo imagemagick zathura zathura-pdf-mupdf qbittorrent firefox kompare speech-dispatcher
+    # Fonts (nerd fonts for the terminal/bar, font-awesome for waybar icons)
+    noto-fonts noto-fonts-cjk noto-fonts-emoji
+    ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd ttf-hack-nerd ttf-ubuntu-nerd ttf-dejavu-nerd woff2-font-awesome
+    # Firewall helper (~/.local/bin/firewall)
+    ufw
 )
 
+# Core AUR packages (yay also installs from the official repos, so this list is safe either way)
 AUR_PACKAGES=(
-    "ianny" "qt6ct-kde" "rofi-calc-git" "rofi-emoji-git"
-    "apple-fonts" "nomacs" "zen-browser-bin" "waypaper"
-    "kvantum-theme-whitesur-git"
-    "whitesur-gtk-theme"
-    "whitesur-icon-theme"
+    ianny qt6ct-kde apple-fonts waypaper
 )
 
-# User services that are enabled by default
-ENABLED_USER_SERVICES=(
-    "battery-monitor.service"
-    "headphone-monitor.service"
-    "mic-led-monitor.service"
-    "swww-daemon.service"
-    "udiskie-automount.service"
+# Optional groups, each asked about separately
+DEV_PACKAGES=(dotnet-sdk aspnet-runtime github-cli pnpm)
+GAMING_PACKAGES=(steam gamemode mangohud)
+GAMING_AUR_PACKAGES=(umu-launcher protonplus faugus-launcher)
+
+# ── Dotfiles ─────────────────────────────────────────────────────────────────
+# Config dirs fully owned by this repo: files not in the repo are REMOVED on install,
+# so renamed or deleted scripts/modules (old mpv scripts, old hypr lua files) can't linger.
+# Everything is backed up first.
+MANAGED_CONFIGS=(hypr mpv waybar rofi)
+
+# ── GTK look (edit here, then re-run configure_gtk_themes) ───────────────────
+GTK_THEME="adw-gtk3-dark"
+ICON_THEME="breeze-dark"
+CURSOR_THEME="macOS"
+CURSOR_SIZE=28
+GTK_FONT="Sans 11"
+
+# ── User services ────────────────────────────────────────────────────────────
+ENABLED_USER_UNITS=(
+    battery-monitor.service
+    headphone-monitor.service
+    mic-led-monitor.service
+    awww-daemon.service
+    udiskie-automount.service
+    clipboard-history.service
+    hypridle.service
+    polkit-authentication.service
+    waybar.service
+    wayland-env.service
+    battery-warning.timer
+    wallpaper-rotate.timer
+)
+OPTIONAL_USER_UNITS=(
+    shader-cleaner.service
+    steam.service
 )
 
-ENABLED_GRAPHICAL_SERVICES=(
-    "clipboard-history.service"
-    "hypridle.service"
-    "polkit-authentication.service"
-    "waybar.service"
-    "wayland-env.service"
-)
-
-ENABLED_TIMERS=(
-    "battery-warning.timer"
-    "wallpaper-rotate.timer"
-)
-
+# ── Checks ───────────────────────────────────────────────────────────────────
 check_permissions() {
     [[ $EUID -eq 0 ]] && { log_error "Don't run this as root."; exit 1; }
 }
 
 check_system() {
     command -v pacman &>/dev/null || { log_error "Not an Arch-based distro."; exit 1; }
+    [[ -d .config ]] || { log_error "Run this from the HyprDots repo root (no .config here)."; exit 1; }
     log_info "System check passed."
 }
 
+# ── Packages ─────────────────────────────────────────────────────────────────
 update_system() {
     log_step "Updating system packages"
     sudo pacman -Syu --noconfirm || log_warning "Update had warnings, continuing..."
 }
 
-backup_configs() {
-    local backup_dir="$HOME/hyprdots_backup_$(date +%Y%m%d_%H%M%S)"
-    log_step "Backing up configs to $backup_dir"
-    mkdir -p "$backup_dir"
-    local items=(
-        ".config/hypr" ".config/waybar" ".config/dunst" ".config/rofi"
-        ".config/kitty" ".config/yazi" ".config/neovim" ".config/mpv"
-        ".config/gtk-3.0" ".config/gtk-4.0" ".config/qt5ct" ".config/qt6ct"
-        ".config/Kvantum" ".config/systemd"
-        ".zshrc" ".zshenv" ".gtkrc-2.0"
-    )
-    for item in "${items[@]}"; do
-        [[ -e "$HOME/$item" ]] && cp -r "$HOME/$item" "$backup_dir/$item" && log_info "Backed up $item"
-    done
-    log_success "Backup complete at $backup_dir"
-}
-
-install_pacman_packages() {
-    log_step "Installing official repo packages"
-    local to_install=()
-    for pkg in "${PACMAN_PACKAGES[@]}"; do
+# install_packages <pacman|yay> <package...>: installs only what is missing
+install_packages() {
+    local manager=$1; shift
+    local pkg to_install=()
+    for pkg in "$@"; do
         pacman -Q "$pkg" &>/dev/null || to_install+=("$pkg")
     done
-    [[ ${#to_install[@]} -eq 0 ]] && log_info "All packages already installed." && return
-    sudo pacman -S --needed --noconfirm "${to_install[@]}" || {
-        log_error "Failed to install some packages."
-        read -p "Continue anyway? (y/n): " c && [[ $c != [yY] ]] && exit 1
+    if [[ ${#to_install[@]} -eq 0 ]]; then
+        log_info "Nothing to install, all packages are present."
+        return
+    fi
+
+    log_info "Installing ${#to_install[@]} package(s): ${to_install[*]}"
+    local cmd=(sudo pacman -S --needed --noconfirm)
+    [[ $manager == yay ]] && cmd=(yay -S --needed --noconfirm)
+    "${cmd[@]}" "${to_install[@]}" || {
+        log_error "Some packages failed to install."
+        confirm "Continue anyway?" || exit 1
     }
 }
 
@@ -123,94 +154,118 @@ install_yay() {
     log_success "Yay installed."
 }
 
-install_aur_packages() {
-    log_step "Installing AUR packages"
-    local to_install=()
-    for pkg in "${AUR_PACKAGES[@]}"; do
-        yay -Q "$pkg" &>/dev/null || to_install+=("$pkg")
-    \
+install_optional_groups() {
+    log_step "Optional package groups"
+
+    if confirm "Install dev tools (${DEV_PACKAGES[*]})?"; then
+        install_packages pacman "${DEV_PACKAGES[@]}"
+    fi
+
+    if confirm "Install gaming stack (${GAMING_PACKAGES[*]} ${GAMING_AUR_PACKAGES[*]})?"; then
+        grep -q '^\[multilib\]' /etc/pacman.conf ||
+            log_warning "multilib is not enabled in /etc/pacman.conf, Steam needs it."
+        install_packages pacman "${GAMING_PACKAGES[@]}"
+        install_packages yay "${GAMING_AUR_PACKAGES[@]}"
+    fi
+}
+
+# ── Dotfiles ─────────────────────────────────────────────────────────────────
+backup_configs() {
+    local backup_dir
+    backup_dir="$HOME/hyprdots_backup_$(date +%Y%m%d_%H%M%S)"
+    log_step "Backing up existing configs to $backup_dir"
+    mkdir -p "$backup_dir"
+
+    # Back up whatever this repo is about to touch: every top-level .config entry,
+    # every script in .local/bin, the shell dotfiles and the GTK files we generate.
+    local item
+    for item in .config/* .local/bin/* .zshrc .zshenv .zsh_aliases .gtkrc-2.0 .config/gtk-3.0 .config/gtk-4.0; do
+        [[ -e "$HOME/$item" ]] || continue
+        mkdir -p "$backup_dir/$(dirname "$item")"
+        cp -a "$HOME/$item" "$backup_dir/$item" && log_info "Backed up $item"
     done
-    [[ ${#to_install[@]} -eq 0 ]] && log_info "All AUR packages installed." && return
-    yay -S --needed --noconfirm "${to_install[@]}" || {
-        log_warning "Some AUR packages may have failed."
-        read -p "Continue anyway? (y/n): " c && [[ $c != [yY] ]] && exit 1
-    }
+    log_success "Backup complete at $backup_dir"
 }
 
 install_dotfiles() {
     log_step "Installing HyprDots configs"
     mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.local/share" "$HOME/Pictures/Wallpapers"
 
-    # Copy config files
-    [[ -d ".config" ]] && cp -r .config/* "$HOME/.config/" && log_info "Copied .config files"
-    [[ -d ".local" ]] && cp -r .local/* "$HOME/.local/" && log_info "Copied .local files"
-    [[ -d ".walls" ]] && cp -r .walls/* "$HOME/Pictures/Wallpapers/" 2>/dev/null && log_info "Copied wallpapers"
-    
-    # Copy zsh files
-    [[ -f ".zshrc" ]] && cp .zshrc "$HOME/.zshrc" || log_warning "Could not copy .zshrc"
-    [[ -f ".zshenv" ]] && cp .zshenv "$HOME/.zshenv" || log_warning "Could not copy .zshenv"
-    [[ -f ".zsh_aliases" ]] && cp .zsh_aliases "$HOME/.zsh_aliases" || log_warning "Could not copy .zsh_aliases"
-    
-    # Ensure proper permissions for executables
+    # .config: one rsync per app dir; managed dirs also drop files the repo no longer has
+    local dir name flags
+    for dir in .config/*/; do
+        name=$(basename "$dir")
+        flags=(-a)
+        [[ " ${MANAGED_CONFIGS[*]} " == *" $name "* ]] && flags+=(--delete)
+        mkdir -p "$HOME/.config/$name"
+        rsync "${flags[@]}" "$dir" "$HOME/.config/$name/" &&
+            log_info "Synced .config/$name${flags[1]:+ (stale files removed)}" ||
+            log_warning "Failed to sync .config/$name"
+    done
+    find .config -maxdepth 1 -type f -exec cp {} "$HOME/.config/" \;   # loose files in .config
+
+    [[ -d .local ]] && rsync -a .local/ "$HOME/.local/" && log_info "Synced .local"
+    [[ -d .walls ]] && rsync -a .walls/ "$HOME/Pictures/Wallpapers/" && log_info "Synced wallpapers"
+
+    # Shell dotfiles
+    local file
+    for file in .zshrc .zshenv .zsh_aliases; do
+        [[ -f $file ]] && cp "$file" "$HOME/$file" || log_warning "Could not copy $file"
+    done
+
+    # Scripts must be executable
     find "$HOME/.local/bin" -type f -exec chmod +x {} \; 2>/dev/null
 
     log_success "Config files installed."
 }
 
+# ── Shell ────────────────────────────────────────────────────────────────────
 install_zinit() {
     log_step "Setting up Zsh + Zinit"
     command -v zsh &>/dev/null || { log_error "Zsh not installed."; exit 1; }
-    
-    local ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-    
-    # Check for existing OMZ (and remove it if found for a clean start)
-    # if [[ -d "$HOME/.oh-my-zsh" ]]; then
-    #     log_warning "Found Oh My Zsh installation. Removing it for Zinit migration."
-    #     rm -rf "$HOME/.oh-my-zsh"
-    # fi
 
-    # Install Zinit if not present
+    local ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
     if [[ ! -d "$ZINIT_HOME" ]]; then
         log_info "Installing Zinit..."
         mkdir -p "$(dirname "$ZINIT_HOME")"
         git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" || { log_error "Zinit install failed."; exit 1; }
     fi
-    
-    # Zinit handles plugin installation when zshrc is sourced, we only need to install the base manager.
-    log_info "Zinit manager installed. Plugins will be installed when Zsh is first run."
+    # Zinit installs the plugins itself the first time zsh starts with the new .zshrc
+    log_info "Zinit manager ready. Plugins install on first zsh start."
 
-    # Change default shell
     if [[ "$SHELL" != *"zsh"* ]]; then
         log_info "Changing default shell to zsh..."
-        chsh -s "$(which zsh)" || log_warning "Failed to set zsh as default shell"
+        chsh -s "$(command -v zsh)" || log_warning "Failed to set zsh as default shell"
     fi
-    
+
     log_success "Zsh and Zinit configured."
 }
 
-
+# ── Look & feel ──────────────────────────────────────────────────────────────
 configure_gtk_themes() {
-    log_step "Configuring GTK themes"
-    
-    # Wait for AUR packages to be properly installed
-    sleep 2
-    
-    # Set GTK theme via gsettings
+    log_step "Configuring GTK ($GTK_THEME, icons: $ICON_THEME, cursor: $CURSOR_THEME)"
+
     if command -v gsettings &>/dev/null; then
-        gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark" 2>/dev/null || log_warning "Could not set GTK theme via gsettings"
-        gsettings set org.gnome.desktop.interface icon-theme "WhiteSur-dark" 2>/dev/null || log_warning "Could not set icon theme via gsettings"
-        gsettings set org.gnome.desktop.interface cursor-theme "macOS" 2>/dev/null || log_warning "Could not set cursor theme via gsettings"
+        gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" 2>/dev/null || log_warning "Could not set GTK theme via gsettings"
+        gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME" 2>/dev/null || log_warning "Could not set icon theme via gsettings"
+        gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME" 2>/dev/null || log_warning "Could not set cursor theme via gsettings"
+        gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" 2>/dev/null   # dark libadwaita/GTK4 apps
     fi
-    
-    # Create GTK-3.0 config
-    mkdir -p "$HOME/.config/gtk-3.0"
+
+    # GTK 3 and 4 share the same core settings
+    local core_settings="gtk-theme-name=$GTK_THEME
+gtk-icon-theme-name=$ICON_THEME
+gtk-font-name=$GTK_FONT
+gtk-cursor-theme-name=$CURSOR_THEME
+gtk-cursor-theme-size=$CURSOR_SIZE
+gtk-application-prefer-dark-theme=1"
+
+    mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
+
     cat > "$HOME/.config/gtk-3.0/settings.ini" << EOF
 [Settings]
-gtk-theme-name=WhiteSur-Dark
-gtk-icon-theme-name=WhiteSur-dark
-gtk-font-name=Sans 11
-gtk-cursor-theme-name=macOS
-gtk-cursor-theme-size=28
+$core_settings
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=0
@@ -221,39 +276,21 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle=hintslight
 gtk-xft-rgba=rgb
-gtk-application-prefer-dark-theme=1
 gtk-decoration-layout=appmenu:none
 EOF
 
-    # Create GTK-4.0 config
-    mkdir -p "$HOME/.config/gtk-4.0"
-
-    # Check if WhiteSur theme symlinks exist and preserve them
-    local gtk4_theme_dir="/usr/share/themes/WhiteSur-Dark/gtk-4.0"
-    if [[ -d "$gtk4_theme_dir" ]]; then
-        # Create symlinks if they don't exist
-        [[ ! -L "$HOME/.config/gtk-4.0/gtk.css" ]] && ln -sf "$gtk4_theme_dir/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
-        [[ ! -L "$HOME/.config/gtk-4.0/gtk-dark.css" ]] && ln -sf "$gtk4_theme_dir/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
-        log_info "GTK-4.0 theme symlinks preserved/created"
-    fi
-
     cat > "$HOME/.config/gtk-4.0/settings.ini" << EOF
 [Settings]
-gtk-theme-name=WhiteSur-Dark
-gtk-icon-theme-name=WhiteSur-dark
-gtk-font-name=Sans 11
-gtk-cursor-theme-name=macOS
-gtk-cursor-theme-size=28
-gtk-application-prefer-dark-theme=1
+$core_settings
 EOF
 
-    # Create GTK-2.0 config
+    # GTK 2 needs quoted strings
     cat > "$HOME/.gtkrc-2.0" << EOF
-gtk-theme-name="WhiteSur-Dark"
-gtk-icon-theme-name="WhiteSur-dark"
-gtk-font-name="Sans 11"
-gtk-cursor-theme-name="macOS"
-gtk-cursor-theme-size=28
+gtk-theme-name="$GTK_THEME"
+gtk-icon-theme-name="$ICON_THEME"
+gtk-font-name="$GTK_FONT"
+gtk-cursor-theme-name="$CURSOR_THEME"
+gtk-cursor-theme-size=$CURSOR_SIZE
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=0
@@ -266,122 +303,85 @@ gtk-xft-hintstyle="hintslight"
 gtk-xft-rgba="rgb"
 EOF
 
-    log_success "GTK themes configured."
+    log_success "GTK configured."
 }
 
 install_cursors() {
     log_step "Installing macOS cursor themes (Hyprcursor + XCursor)"
-    mkdir -p "$HOME/.local/share/icons"
+    local icons="$HOME/.local/share/icons"
+    local base="https://github.com/Pahasara/apple_hyprcursor/releases/latest/download"
+    mkdir -p "$icons"
 
-    local HCUR_URL="https://github.com/Pahasara/apple_hyprcursor/releases/latest/download/macOS-hyprcursor.tar.xz"
-    local XCUR_URL="https://github.com/Pahasara/apple_hyprcursor/releases/latest/download/macOS.tar.xz"
+    # install_cursor <label> <installed dir name> <archive name>: skips the download if already present
+    install_cursor() {
+        local label=$1 dirname=$2 archive=$3
+        if [[ -d "$icons/$dirname" ]]; then
+            log_info "$label already installed, skipping download."
+            return
+        fi
+        log_info "Downloading $label..."
+        curl -L --fail --retry 3 --output "$icons/$archive" "$base/$archive" || { log_error "Failed to download $label."; exit 1; }
+        tar -xf "$icons/$archive" -C "$icons" && rm "$icons/$archive" && log_info "Installed $label"
+    }
 
-    local HCUR_FILE="$HOME/.local/share/icons/macOS-hyprcursor.tar.xz"
-    local XCUR_FILE="$HOME/.local/share/icons/macOS.tar.xz"
-
-    log_info "Downloading Hyprcursor..."
-    curl -L --fail --output "$HCUR_FILE" "$HCUR_URL" || { log_error "Failed to download Hyprcursor."; exit 1; }
-
-    log_info "Downloading XCursor..."
-    curl -L --fail --output "$XCUR_FILE" "$XCUR_URL" || { log_error "Failed to download XCursor."; exit 1; }
-
-    log_info "Extracting cursors..."
-    tar -xf "$HCUR_FILE" -C "$HOME/.local/share/icons" && rm "$HCUR_FILE" && log_info "Installed macOS Hyprcursor"
-    tar -xf "$XCUR_FILE" -C "$HOME/.local/share/icons" && rm "$XCUR_FILE" && log_info "Installed macOS XCursor"
+    install_cursor "Hyprcursor" "macOS-hyprcursor" "macOS-hyprcursor.tar.xz"
+    install_cursor "XCursor" "macOS" "macOS.tar.xz"
 
     log_success "Cursor themes installation complete."
 }
 
+# ── Services ─────────────────────────────────────────────────────────────────
 configure_user_services() {
     log_step "Configuring user services"
-    
-    # Create systemd user directories
-    mkdir -p "$HOME/.config/systemd/user/default.target.wants"
-    mkdir -p "$HOME/.config/systemd/user/graphical-session.target.wants"
-    mkdir -p "$HOME/.config/systemd/user/timers.target.wants"
-    
-    log_prompt "The following user services are available:"
-    echo "  - battery-monitor.service (battery monitoring)"
-    echo "  - headphone-monitor.service (headphone plugging detection)"
-    echo "  - mic-led-monitor.service (microphone LED indicator)"
-    echo "  - swww-daemon.service (wallpaper daemon)"
-    echo "  - udiskie-automount.service (auto-mounting)"
-    echo "  - clipboard-history.service (clipboard management)"
-    echo "  - polkit-authentication.service (authentication agent)"
-    echo "  - wayland-env.service (environment variables)"
-    echo "  - battery-warning.timer (battery warning timer)"
-    echo "  - wallpaper-rotate.timer (wallpaper rotate timer)"
-    echo "  - shader-cleaner.service (not enabled by default)"
+
+    # Pick up the unit files we just copied before checking or enabling anything
+    systemctl --user daemon-reload
+
+    log_prompt "Enabled by default:"
+    printf '  - %s\n' "${ENABLED_USER_UNITS[@]}"
+    log_prompt "Available but NOT enabled by default:"
+    printf '  - %s\n' "${OPTIONAL_USER_UNITS[@]}"
     echo
-    
-    read -p "Enable default services automatically? (y/n): " auto_enable
-    
-    if [[ $auto_enable == [yY] ]]; then
-        # Enable default.target services
-        for service in "${ENABLED_USER_SERVICES[@]}"; do
-            if [[ -f "$HOME/.config/systemd/user/$service" ]]; then
-                systemctl --user enable "$service" 2>/dev/null && log_info "Enabled $service"
+
+    if confirm "Enable the default units now?"; then
+        local unit
+        for unit in "${ENABLED_USER_UNITS[@]}"; do
+            if ! systemctl --user cat "$unit" &>/dev/null; then
+                log_warning "Unit not found, skipped: $unit"
+                continue
             fi
-        done
-        
-        # Enable graphical-session.target services
-        for service in "${ENABLED_GRAPHICAL_SERVICES[@]}"; do
-            if [[ -f "$HOME/.config/systemd/user/$service" ]] || [[ -f "/usr/lib/systemd/user/$service" ]]; then
-                systemctl --user enable "$service" 2>/dev/null && log_info "Enabled $service for graphical session"
-            fi
-        done
-        
-        # Enable timers
-        for timer in "${ENABLED_TIMERS[@]}"; do
-            if [[ -f "$HOME/.config/systemd/user/$timer" ]]; then
-                systemctl --user enable "$timer" 2>/dev/null && log_info "Enabled $timer"
-            fi
+            systemctl --user enable "$unit" &>/dev/null && log_info "Enabled $unit" || log_warning "Could not enable $unit"
         done
     else
-        log_info "You can manually enable services later using:"
-        log_info "systemctl --user enable <service-name>"
+        log_info "Enable them later with: systemctl --user enable <unit>"
     fi
-    
-    # Reload systemd user daemon
-    systemctl --user daemon-reload
-    
+
     log_success "User services configured."
 }
 
 configure_services() {
     log_step "Enabling system services"
-    
-    # Enable pipewire services
+
     systemctl --user enable --now pipewire.service pipewire-pulse.service wireplumber.service 2>/dev/null
-    
-    # Enable SDDM
+
     sudo systemctl enable sddm.service
-    
-    # Enable Bluetooth if packages are installed
+
     if pacman -Q bluez bluez-utils &>/dev/null; then
         sudo systemctl enable bluetooth.service
         log_info "Bluetooth service enabled"
     fi
-    
+
     log_success "System services configured."
 }
 
 final_setup() {
     log_step "Performing final setup tasks"
-    
-    # Update font cache
-    fc-cache -fv &>/dev/null
-    
-    # Update GTK icon cache
+    fc-cache -f &>/dev/null
     gtk-update-icon-cache -f -t "$HOME/.local/share/icons" 2>/dev/null || true
-    
-    # Set executable permissions for scripts
-    find "$HOME/.config/hypr/scripts" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
-    find "$HOME/.local/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
-    
     log_success "Final setup completed."
 }
 
+# ── Main ─────────────────────────────────────────────────────────────────────
 main() {
     clear
     echo -e "${GREEN}"
@@ -392,21 +392,21 @@ main() {
  |     |    |    |       |    \_ |_____/ |_____|    |    ______|
 
 EOF
-    echo -e "${NC}${CYAN}HyprDots Installation Script v2.1${NC}"
+    echo -e "${NC}${CYAN}HyprDots Installation Script v${VERSION}${NC}"
     echo -e "This will install and configure your Hyprland compositor with smart configurations."
     echo
-    
+
     check_permissions
     check_system
-    
-    read -p "Start installation? (y/n): " c
-    [[ $c != [yY] ]] && exit 0
-    
+
+    confirm "Start installation?" || exit 0
+
     update_system
     backup_configs
-    install_pacman_packages
+    install_packages pacman "${PACMAN_PACKAGES[@]}"
     install_yay
-    install_aur_packages
+    install_packages yay "${AUR_PACKAGES[@]}"
+    install_optional_groups
     install_dotfiles
     configure_gtk_themes
     install_cursors
@@ -414,21 +414,21 @@ EOF
     configure_user_services
     configure_services
     final_setup
-    
+
     echo
     log_success "HyprDots installation complete!"
     log_info "Changes made:"
     log_info "  ✓ Installed all packages"
-    log_info "  ✓ Configured GTK themes"
+    log_info "  ✓ Synced configs (old files in managed dirs removed, backup kept)"
+    log_info "  ✓ Configured GTK theme and cursors"
     log_info "  ✓ Set up user services"
-    log_info "  ✓ Applied proper file permissions"
     log_info "  ✓ Updated font and icon caches"
     echo
     log_warning "Please reboot to apply all changes and start the desktop environment."
     log_info "After reboot, you may need to select 'Hyprland (uwsm)' from your display manager."
-    
-    read -p "Reboot now? (y/n): " r
-    [[ $r == [yY] ]] && sudo reboot
+
+    confirm "Reboot now?" && sudo reboot
 }
 
-main "$@"
+# Only run when executed, not when sourced (lets the functions be tested)
+[[ "${BASH_SOURCE[0]}" == "$0" ]] && main "$@"
