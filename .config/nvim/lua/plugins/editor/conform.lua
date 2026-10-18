@@ -17,15 +17,14 @@ return {
         python = { 'isort', 'black' },
       },
       format_on_save = {
-        lsp_fallback = true,
-        async = false,
+        lsp_format = 'fallback',
         timeout_ms = 1000,
       },
     }
 
     vim.keymap.set({ 'n', 'v' }, '<leader>pp', function()
       conform.format {
-        lsp_fallback = true,
+        lsp_format = 'fallback',
         async = false,
         timeout_ms = 1000,
       }
