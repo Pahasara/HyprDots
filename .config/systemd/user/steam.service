@@ -1,0 +1,14 @@
+[Unit]
+Description=Steam Client
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Environment=STEAM_RUNTIME=0
+Environment=SDL_VIDEO_DRIVER=wayland,x11
+ExecStart=/usr/bin/steam -silent -compat-force-slr off
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
