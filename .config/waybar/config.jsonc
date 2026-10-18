@@ -3,25 +3,36 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    "reload_style_on_change": true,
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
-    "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 10,
+    "spacing": 15,
+    "reload_style_on_change": true,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "group/left",
+        "idle_inhibitor",
+        "hyprland/workspaces"
+        // "custom/storage",
+        // "cpu",
+        // "memory",
     ],
     "modules-center": [
-        "group/center",
+        "clock#date",
+        "clock#time"
+        // "hyprland/window"
+        // "custom/weather"
     ],
     "modules-right": [
-        "group/right",
+        "custom/song",
+        "tray",
+        "gamemode",
+        // "custom/update",
+        "network",
+        "pulseaudio",
+        // "wireplumber",
+        // "pulseaudio#microphone",
+        "battery"
     ],
     //################
     //### MODULES  ###
@@ -43,50 +54,14 @@
             "9": [],
             "10": []
         },
+        // "format": "<small>{icon}</small>",
         "format-icons": {
-            "active": "◉",
-            "default": "",
-            "empty": ""
+            // "active": "",
+            // "default": "",
         }
     },
     "hyprland/window": {
         "max-length": 40,
-        "tooltip": false
-    },
-    "group/left": {
-        "orientation": "inherit",
-        "modules": [
-            "idle_inhibitor",
-            "hyprland/workspaces"
-        ]
-    },
-    "group/right": {
-        "orientation": "inherit",
-        "modules": [
-            "custom/song",
-            "tray",
-            "network",
-            "pulseaudio",
-            "battery"
-        ]
-    },
-    "group/center": {
-        "orientation": "inherit",
-        "modules": [
-            "custom/date-jp",
-            "custom/time-jp"
-        ]
-    },
-    "custom/date-jp": {
-        "exec": "LANG=ja_JP.UTF-8 date '+%a %m月%d日'",
-        "interval": 3600,
-        "format": "{}",
-        "tooltip": false
-    },
-    "custom/time-jp": {
-        "exec": "LANG=ja_JP.UTF-8 date '+%I:%M %p'",
-        "interval": 1,
-        "format": "{}",
         "tooltip": false
     },
     "clock#time": {
@@ -94,7 +69,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "clock#date": {
-        "format": "{:%a %d %b}",
+        "format": "{:%a <big>%d</big> %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -104,25 +79,30 @@
             "warning": 25,
             "critical": 15
         },
-        "format": "<big>{icon}</big>",
-        "format-charging": "<big>󰂄</big>",
-        "format-not-charging": "<big>󱟢</big>",
+        "format": "<small>{capacity}% </small><big>{icon}</big>",
+        "format-charging": "<small>{capacity}% </small><big>󰂄</big>",
+        "format-not-charging": "<small>{capacity}% </small><big>󱟢</big>",
         "format-icons": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰁹"
         ],
         "tooltip-format": "Battery level: {capacity}%\nRemaining time: {time}"
     },
     "network": {
         // "interface": "*",
         "format": " ",
-        "format-wifi": "{icon}",
+        "format-wifi": "<big>{icon}</big> ",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
-        "format-disconnected": " ",
+        "format-disconnected": "<big></big> ",
         "format-icons": [
             "󰤯",
             "󰤟",
@@ -168,8 +148,31 @@
         "tooltip": true,
         "on-click": "blueman-manager",
     },
+    "wireplumber": {
+        "format": "{icon}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "<big> </big>",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "🎧 ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": [
+                "",
+                " ",
+                " "
+            ],
+        },
+        "tooltip-format": "Volume: {volume}%",
+        "on-click": "easyeffects"
+    },
     "pulseaudio": {
-        "format": "{format_source}{icon}",
+        "format": "{format_source}{icon} ",
         "format-bluetooth": "{icon} 󰂰 {volume}%",
         "format-muted": " ",
         "format-source": "<big></big>  ",
@@ -217,7 +220,7 @@
         "on-click-right": "kitty --title btop sh -c 'btop'"
     },
     "custom/storage": {
-        "interval": 300,
+        "interval": 30,
         "format": " {}",
         "format-alt": "{percentage}%  ",
         "return-type": "json",
@@ -225,11 +228,12 @@
     },
     "custom/song": {
         "interval": 2,
-        "exec": "~/.local/bin/media-info max_length=24",
+        "exec": "~/.local/bin/media-info max_length=20",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
         "on-click-middle": "~/.local/bin/player toggle_play",
-        "escape": true
+        "escape": true,
+        "tooltip": false
     },
     "backlight": {
         "format": "󰃟 ",
@@ -257,13 +261,20 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "<big> </big>", //{icon}
+        "format": "", // {icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
+        "on-click-right": "rofi -show powermenu -modi powermenu:~/.local/bin/rofi-powermenu -config ~/.config/rofi/presets/powermenu.rasi",
         "timeout": 60.0,
         "tooltip": false
+    },
+    "custom/clipboard": {
+        "format": " ",
+        "on-click": "cliphist list | rofi -dmenu -display-columns 2 -config ~/.config/rofi/presets/clipboard.rasi | cliphist decode | wl-copy",
+        "on-click-right": "pkill rofi",
+        "tooltip-format": "Clipboard"
     },
     "custom/notification": {
         "format": "",
@@ -277,12 +288,23 @@
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
-    "tray": {
+    "custom/separator": {
+        "format": " ",
+    },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "<U+F7B3>",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
         "icon-size": 19,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
+    "tray": {
+        "icon-size": 21,
         "spacing": 12
     },
-    "custom/seperator": {
-        "format": "|",
-        "tooltip": false
-    }
 }

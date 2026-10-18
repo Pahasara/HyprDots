@@ -1,108 +1,64 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/fluent.css");
+@import url("themes/azure.css");
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 14.75px;
+  font-family: "Neuropolitical";
+  font-size: 13px;
   font-weight: bold;
 }
 
 window#waybar {
-  background: @transparent;
+  color: @fg-module;
+  background: @background;
 }
 
 #workspaces {
-  min-width: 190px;
+  min-width: 150px;
+  background: @bg-module;
+  border-radius: 15px;
 }
 
 #workspaces button {
-  padding: 0px;
-  margin: 5px 2px;
-  min-width: 24px;
-  transition: all 0.12s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-  opacity: 0.9;
-  color: @fg-persist;
-  background-color: transparent;
-}
-
-#workspaces button label {
-  font-size: 20px;
-}
-
-#workspaces button.active {
   color: @fg-blink;
-  opacity: 0.9;
+  border-radius: 15px;
+  box-shadow: none;
+  margin: 2px 0;
+  padding: 0 8px;
+  transition: ease-in-out;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
-
-#workspaces button.occupied {
-  color: @foreground;
+#workspaces button:hover {
+  color: @hover-fg;
+  background: @hover-bg;
+  text-shadow: none;
+}
+#workspaces button.active {
+  color: #000;
+  background: @active;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  margin: 2px;
+  padding: 0 8px;
+  opacity: 0.9;
 }
 
 #workspaces button.empty {
-  color: @fg-persist;
   opacity: 0.5;
 }
 
 #workspaces button.urgent {
-  color: @warning;
-  opacity: 1;
-  transition: all 0.15s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-  animation-name: blink-ws;
-  animation-duration: 1.2s;
-  animation-iteration-count: 2;
+  color: #000;
+  background-color: @warning;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  animation: workspace_urgent 1s ease-in-out infinite;
+  margin: 2px;
+  padding: 0 6px;
 }
 
-@keyframes blink-ws {
-  to {
-    color: transparent;
-  }
-}
-
-#center {
-  background-color: @background;
-  border: 0px solid @border-module;
-  color: @fg-module;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
-}
-
-#clock,
-#custom-date-jp,
-#custom-time-jp,
-#pulseaudio,
-#battery {
-  padding: 0px 10px 5px 10px;
-}
-
-#workspaces {
-  text-shadow: none;
-}
-
-#idle_inhibitor,
-#workspaces {
-  border-radius: 14px 4px 15px 6px;
-}
-
-#right,
-#left {
-  background-color: @background;
-  color: @fg-module;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
-}
-
-#center {
-  padding-left: 40px;
-  padding-right: 40px;
-  border-radius: 0px 0px 45px 45px;
-}
-
-#left {
-  padding-right: 20px;
-  border-radius: 0px 2px 45px 0px;
-}
-#right {
-  padding-left: 20px;
-  border-radius: 2px 0px 0px 45px;
+#tray {
+  background-color: @bg-tray;
 }
 
 #battery icon {
@@ -146,28 +102,55 @@ window#waybar {
   animation-direction: alternate;
 }
 
-#network {
-  font-size: 16.75px;
-  padding: 0px 13px 5px 13px;
-}
-
-#network.disconnected {
-}
-
-#idle_inhibitor {
-  font-size: 16px;
-  padding: 0px 10px 0px 8px;
-}
-
+#custom-storage,
+#window,
 #clock.date,
-#custom-date-jp {
+#memory,
+#cpu {
   color: @fg-alt;
 }
 
-#clock.time,
-#custom-time-jp {
-  font-size: 15px;
+#clock.date {
+  font-size: 14px;
+}
+
+#clock.time {
+  font-size: 16px;
   font-weight: 900;
+}
+
+#wireplumber,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray,
+#pulseaudio,
+#network {
+  font-size: 15px;
+  font-family: "JetBrainsMono Nerd Font";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#gamemode.running {
+  color: @foreground;
+}
+
+#custom-song {
+  font-family: "Neuropolitical";
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  padding-right: 10px;
+  color: @foreground;
+}
+
+#idle_inhibitor {
+  font-size: 21px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding-left: 9px;
+  padding-right: 10px;
 }
 
 #idle_inhibitor.activated {
@@ -178,26 +161,9 @@ window#waybar {
   color: @active;
 }
 
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-seperator {
-  color: @separator;
-}
-
-#tray {
-  padding-bottom: 5px;
-}
-
-#custom-song {
-  font-family: "CaskaydiaMono NerdFont";
-  font-style: italic;
-  font-weight: 900;
-  padding-right: 12px;
+.modules-right {
+  border-radius: 13px;
   padding-left: 10px;
-  padding-bottom: 5px;
-  color: @foreground;
+  padding-right: 3px;
+  margin: 5px;
 }

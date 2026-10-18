@@ -308,7 +308,7 @@
     },
     "custom/active_window": {
         "format": "{}",
-        "exec": "~/.config/waybar/modules/active-window.sh max_length=50",
+        "exec": "python ~/.config/waybar/modules/window_title.py max_length=50",
         "return-type": "",
         "tooltip": false
     }
