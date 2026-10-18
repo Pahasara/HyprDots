@@ -1,0 +1,69 @@
+#!/bin/bash
+# lock-location: a rotating fictional "place" for the lock screen.
+# Fantasy and dark-fantasy realms plus cybersecurity / IT places.
+# It never uses real locations or timezones: the clock is only used to pick
+# the next place, so it reveals nothing about where you are.
+#
+# Usage: lock-location [theme ...]     e.g. lock-location cyber dota
+set -u
+
+STEP_MIN=5        # change place every N minutes
+SHOW_MOOD=1       # 1 = add a one-word time-of-day tag from your own clock ("Vesper", "Nox")
+THEMES="warcraft dota amalur dragonage darkfantasy cyber"   # delete a theme to drop it
+
+(( $# > 0 )) && THEMES="$*"
+
+declare -A ICON=(
+    [warcraft]="$(printf '\xef\x84\xb2')"   # nf-fa-shield
+    [dota]="$(printf '\xef\x83\xa7')"   # nf-fa-bolt
+    [amalur]="$(printf '\xef\x86\xbb')"   # nf-fa-tree
+    [dragonage]="$(printf '\xef\x81\xad')"   # nf-fa-fire
+    [darkfantasy]="$(printf '\xef\x86\x86')"   # nf-fa-moon-o
+    [cyber]="$(printf '\xef\x84\xa0')"   # nf-fa-terminal
+)
+
+# ── Places ──────────────────────────────────────────────────────
+PLACES_warcraft=("Stormwind" "Orgrimmar" "Dalaran" "Ironforge" "Silvermoon" "Undercity" "Karazhan" "Icecrown Citadel" "Zul'Gurub" "Blackrock Mountain" "Naxxramas" "Ulduar" "Mount Hyjal" "Lordaeron" "Quel'Thalas" "Northrend" "Darnassus" "Thunder Bluff")
+PLACES_dota=("Radiant Ancient" "Dire Ancient" "Roshan's Pit" "Aghanim's Labyrinth" "Secret Shop" "The Fountain" "Dire Jungle" "Radiant Jungle")
+PLACES_amalur=("Rathir" "Adessa" "Gorhart" "Mel Senshir" "Alabastra" "Dalentarth" "Detyre" "Webwood" "Ettinmere" "Plains of Erathell")
+PLACES_dragonage=("Ostagar" "Denerim" "Redcliffe" "Orzammar" "Lothering" "Kinloch Hold" "Brecilian Forest" "The Deep Roads" "The Fade" "Korcari Wilds" "Fort Drakon" "Haven" "Soldier's Peak")
+PLACES_darkfantasy=("Firelink Shrine" "Anor Londo" "Lordran" "Blighttown" "Yharnam" "The Hunter's Dream" "Leyndell" "Limgrave" "Majula" "Drangleic Castle" "High Wall of Lothric" "Irithyll")
+PLACES_cyber=("/dev/null" "Localhost" "Root Shell" "Kernel Space" "The Firewall" "The Dark Web" "The Mainframe" "Honeypot" "The Sandbox" "The DMZ" "VPN Tunnel" "Packet Storm" "Zero-Day Market" "Tor Exit Node" "Port 443" "Proxy Chain" "The Air Gap" "Bootloader Gate" "Stack Overflow Canyon" "Segfault Swamp")
+
+# ── Build the list from the enabled themes ──────────────────────
+PLACES=()
+ICONS=()
+for theme in $THEMES; do
+    declare -n list="PLACES_$theme" 2>/dev/null || continue
+    for place in "${list[@]}"; do
+        PLACES+=("$place")
+        ICONS+=("${ICON[$theme]}")
+    done
+    unset -n list
+done
+count=${#PLACES[@]}
+(( count > 0 )) || exit 0
+
+# ── Pick one: scrambled but repeatable order, every place before any repeat ──
+gcd() { local a=$1 b=$2 t; while (( b )); do t=$b; b=$(( a % b )); a=$t; done; echo "$a"; }
+mult=7
+while (( $(gcd "$mult" "$count") != 1 )); do mult=$(( mult + 2 )); done
+
+slot=$(( $(date +%s) / 60 / STEP_MIN ))
+idx=$(( (slot * mult) % count ))
+
+out="${ICONS[$idx]}  ${PLACES[$idx]}"
+
+if (( SHOW_MOOD )); then
+    hour="$(date +%-H)"
+    if   (( hour < 5 ));  then mood="Umbra"   # shadow
+    elif (( hour < 8 ));  then mood="Eos"     # dawn
+    elif (( hour < 12 )); then mood="Lux"     # light
+    elif (( hour < 17 )); then mood="Sol"     # sun
+    elif (( hour < 20 )); then mood="Vesper"  # evening
+    else                       mood="Nox"     # night
+    fi
+    out="$out  •  $mood"
+fi
+
+echo "$out"
