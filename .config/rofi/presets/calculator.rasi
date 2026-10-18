@@ -3,14 +3,13 @@
 
 configuration {
     font: "Ubuntu Nerd Font 13";
-    calc-display-format: "{name}";
 }
 
 @theme "theme"
 
 /* Window */
 window {
-    width: 350px;
+    width: 420px;
     border: 2px;
     border-radius: 12px;
     border-color: @main-br;
@@ -19,18 +18,22 @@ window {
 }
 
 mainbox {
-    spacing: 0;
+    spacing: 8px;
+    padding: 0 8px 8px 8px;
     background-color: inherit;
     text-color: @main-fg;
     children: [ textbox-custom, inputbar, message ];
 }
 
+/* Header */
 textbox-custom {
     font: "Ubuntu Nerd Font Bold 11";
     border: 0 0 2px 0;
     border-color: @main-br;
     horizontal-align: 0.5;
+    vertical-align: 0.5;
     padding: 8px 0;
+    margin: 0 -8px 0 -8px;
     expand: false;
     background-color: @main-bg;
     text-color: @main-fg;
@@ -39,9 +42,7 @@ textbox-custom {
 
 /* Input */
 inputbar {
-    margin: 8px 8px 0;
     border-radius: 6px;
-    spacing: inherit;
     background-color: @input-bg;
     text-color: inherit;
     children: [ entry ];
@@ -49,23 +50,28 @@ inputbar {
 
 entry {
     horizontal-align: 1;
-    padding: 6px 12px;
+    vertical-align: 0.5;
+    padding: 8px 12px;
     cursor: text;
+    placeholder: "Type an expression…";
+    placeholder-color: @main-fg;
     background-color: inherit;
     text-color: inherit;
 }
 
 /* Output */
 message {
-    padding: 6px 12px;
+    padding: 0;
+    border-radius: 6px;
     background-color: @main-bg;
     text-color: @main-fg;
 }
 
 textbox {
-    font: "Ubuntu Nerd Font Bold 12";
+    font: "Ubuntu Nerd Font Bold 14";
     horizontal-align: 1;
-    padding: 6px;
+    vertical-align: 0.5;
+    padding: 8px 12px;
     background-color: inherit;
     text-color: @cyan;
 }

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+exec rofi -show calc -modi calc -no-show-match -no-sort \
+  -no-history -terse -hint-result "" -hint-welcome "" \
+  -calc-command "printf %s '{result}' | wl-copy" \
+  -config "$HOME/.config/rofi/presets/calculator.rasi"

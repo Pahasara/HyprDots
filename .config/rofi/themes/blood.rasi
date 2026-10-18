@@ -1,0 +1,26 @@
+// github.com/pahasara/HyprDots
+
+/* Fluent Theme */
+* {
+  bg:         #0104084A; //window
+  main-bg:    #02080F4A; //main
+  main-br:    #FF443389; //windowBorder
+  main-fg:    #DEDEDE;   //main
+  input-bg:   #0000000F; //input
+  input-fg:   #ffffffaa; //input
+  input-br:   #242424;   //inputBorder
+  select-fg:  #FF6655;   //selected
+  select-bg:  #00000048; //selected
+
+  black   : #000000;
+  red     : #FF6655;
+  green   : #9ECE6A;
+  yellow  : #E0AF68;
+  blue    : #7AA2F7;
+  magenta : #9AAECC;
+  grey    : #BCBDBF;
+  cyan    : #4ABAEF;
+
+  accent: @red;
+  urgent: @yellow;
+}
