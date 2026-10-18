@@ -43,14 +43,18 @@ keymap.set('n', '<leader>tn', '<cmd>tabnew %<CR>', { desc = 'Open current buffer
 
 -- Diagnostic keymaps
 keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show Line Diagonstics' })
-keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Goto previous Diagnostic' })
-keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Goto next Diagnostic' })
+keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1, float = true }
+end, { desc = 'Goto previous Diagnostic' })
+keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1, float = true }
+end, { desc = 'Goto next Diagnostic' })
 keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
 keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', { desc = 'Show Buffer Diagnostics' }) -- show  diagnostics for file
 
 -- Information keymaps
-keymap.set('n', '<leader>il', ':LspInfo<CR>', { desc = 'Show LSP Info' })
-keymap.set('n', '<leader>it', ':TSInstallInfo<CR>', { desc = 'Show Treesitter' })
+keymap.set('n', '<leader>il', '<cmd>checkhealth vim.lsp<CR>', { desc = 'Show LSP Info' })
+keymap.set('n', '<leader>it', '<cmd>checkhealth nvim-treesitter<CR>', { desc = 'Show Treesitter' })
 keymap.set('n', '<leader>ii', ':Mason<CR>', { desc = 'Show Mason' })
 keymap.set('n', '<leader>io', ':Lazy<CR>', { desc = 'Show Lazy' })
 

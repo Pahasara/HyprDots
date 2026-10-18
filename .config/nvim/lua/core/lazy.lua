@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
     'git',
     'clone',
@@ -25,6 +25,7 @@ end
 require('lazy').setup(
   vim.list_extend({}, import_all_plugins(vim.fn.stdpath 'config' .. '/lua/plugins')), -- Automatically import everything under plugins
   {
+    rocks = { enabled = false }, -- no plugin needs luarocks
     checker = {
       enabled = true,
       notify = false,

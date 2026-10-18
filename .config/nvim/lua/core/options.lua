@@ -4,6 +4,15 @@
 vim.cmd 'let g:netrw_liststyle = 3'
 local opt = vim.opt -- for conciseness
 
+-- Disable unused remote providers (silences :checkhealth warnings)
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+
+-- Needed by auto-session so filetype/treesitter highlighting survive a restore
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+
 opt.relativenumber = true
 opt.number = true
 
