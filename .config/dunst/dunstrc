@@ -4,7 +4,7 @@
     monitor = 0                     # Primary monitor
     follow = mouse                  # Follow mouse position
     origin = bottom-right           # Notification placement
-    offset = (12, 10)                 # Offset from screen edge
+    offset = (12, 10)               # Offset from screen edge
     layer = top
     fullscreen = delay
 
@@ -17,7 +17,7 @@
     progress_bar_corner_radius = 4  # Progress bar corner roundness
 
     # Visual Appearance
-    corner_radius = 12               # Notification corner roundness
+    corner_radius = 15               # Notification corner roundness
     separator_height = 2             # Separator line thickness
     separator_color = "#11111B"      # Separator color
     padding = 15                     # Internal padding
@@ -67,7 +67,7 @@
     background = "#020A0F8F"
     foreground = "#F5F5F5"
     highlight = "#64B5F6"
-    frame_color = "#00BBEE98"
+    frame_color = "#2874FF"
     max_icon_size = 96
     timeout = 7
 
@@ -76,7 +76,7 @@
     background = "#12131596"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
-    frame_color = "#00BBEEBA"
+    frame_color = "#17A5FF"
     max_icon_size = 72
     timeout = 20
 
@@ -85,7 +85,7 @@
     background = "#1213149D"
     foreground = "#FFBB44"
     highlight = "#FF6633EE"
-    frame_color = "#FF66336F"
+    frame_color = "#FF7733"
     max_icon_size = 96
     timeout = 1000
 
