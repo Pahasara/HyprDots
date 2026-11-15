@@ -5,8 +5,8 @@ hash = "88ff9c34996a06d1e49eedfe50fd33b3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "9166202"
-hash = "f281261ff04ad7ec867c3f802a50835f"
+rev = "1ef5fe0"
+hash = "17ebde15c4349f90aedbc45984b98db2"
 
 [[plugin.deps]]
 use = "Ape/simple-status"

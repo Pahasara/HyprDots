@@ -44,8 +44,8 @@ hl.config({
     blur = {
       enabled = true,
       -- variant = T.blur_variant,
-      size = 4,
-      passes = 3,
+      size = 8,
+      passes = 2,
       brightness = 0.8172,
       contrast = 1.0,
       vibrancy = 0.1696,

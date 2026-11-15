@@ -27,7 +27,7 @@ T.ink   = "030A18"
 T.gaps_in  = 5
 T.gaps_out = 25
 T.border   = 2
-T.rounding = 18
+T.rounding = 16
 
 -- ──────────────────────────────────────────────────────────────
 -- BORDERS

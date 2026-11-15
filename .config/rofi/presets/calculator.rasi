@@ -11,7 +11,7 @@ configuration {
 window {
     width: 420px;
     border: 2px;
-    border-radius: 12px;
+    border-radius: 16px;
     border-color: @main-br;
     background-color: @main-bg;
     children: [ mainbox ];

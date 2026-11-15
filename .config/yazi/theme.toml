@@ -38,12 +38,18 @@ border_style  = { fg = "darkgray" }
 # : Tabs {{{
 
 [tabs]
+# Active tab: black text on a solid green pill
 active   = { fg = "black", bg = "green", bold = true }
+# Inactive tab: green text on #020202 (same color kitty treats as transparent)
 inactive = { fg = "green", bg = "#020202" }
 
-# Separator
+# Separators
+# Rounded caps (U+E0B6 left, U+E0B4 right); Yazi colors them with the tab's bg,
+# so active = green caps and inactive = #020202 caps
 sep_inner = { open = "", close = "" }
-sep_outer = { open = "", close = "" }
+# Outer separators removed: they drew a second, unstyled cap next to the inner
+# one, which caused the doubled right corner
+sep_outer = { open = "", close = "" }
 
 # : }}}
 

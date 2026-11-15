@@ -25,8 +25,6 @@ end
 -- ──────────────────────────────────────────────────────────────
 -- FLOATING WINDOWS
 -- ──────────────────────────────────────────────────────────────
-rule("float-kitty-ws1", { class = "kitty", workspace = 1 }, { float = true })
-
 rule("float-by-title", { title = ".*(DvNET|float|About|Picture-in-Picture|Open (File|Folder|Document)|Choose Files).*" }, { float = true })
 
 -- stylua: ignore start
@@ -82,7 +80,6 @@ local sizes = {
   { "discord",   { class = any({ "discord" }) },                            0.72, 0.83 },
   { "mid-apps",  { class = any({ "Lollypop", "okular", "MissionCenter" }) }, 0.64, 0.75 },
   { "kde-gnome", { class = any({ "gnome", "kde" }), title = "negative:.*(Dolphin|About).*" }, 0.64, 0.75 },
-  { "terminal",  { title = "kitty" },                                       0.48, 0.56 },
   { "imv",       { class = "imv" },                                         0.65, 0.65 },
   { "zathura",   { class = ".*zathura" },                                   0.72, 0.72 },
   { "easyeffects", { class = ".*easyeffects" },                             0.78, 0.85 },
@@ -101,6 +98,13 @@ end
 -- ══════════════════════════════════════════════════════════════
 --                         PER-APP RULES
 -- ══════════════════════════════════════════════════════════════
+
+-- ──────────────────────────────────────────────────────────────
+-- KITTY
+-- ──────────────────────────────────────────────────────────────
+rule("startup-kitty-ws1", { class = "kitty-startup" }, { workspace = "1" })
+rule("float-kitty-ws1", { class = "kitty.*", workspace = "1" }, { float = true })
+rule("kitty-float-size", { title = "kitty" }, { size = frac(0.48, 0.56) })
 
 -- ──────────────────────────────────────────────────────────────
 -- DOLPHIN
@@ -134,7 +138,7 @@ rule("gimp-quit", { class = "gimp", title = "Quit.*" }, { stay_focused = true })
 -- ──────────────────────────────────────────────────────────────
 rule("jetbrains-splash", { class = "jetbrains.*", title = "splash" }, { float = true, center = true })
 rule("jetbrains-welcome", { class = "jetbrains.*", title = "Welcome.*" }, { float = true, center = true, size = frac(0.42, 0.40) })
-rule("jetbrains-floating", { class = "jetbrains.*", float = true }, { rounding = 7, border_color = "rgba(56585B99)" })
+rule("jetbrains-floating", { class = "jetbrains.*", title = "negative:splash", float = true }, { rounding = 7, border_color = "rgba(56585B99)" })
 rule("jetbrains-confirm", { class = "jetbrains.*", title = "Confirm.*" }, { stay_focused = true })
 
 -- ──────────────────────────────────────────────────────────────

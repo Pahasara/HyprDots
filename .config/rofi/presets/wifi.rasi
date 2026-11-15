@@ -16,13 +16,13 @@ configuration {
 window {
     width: 250px;
     border: 2px;
-    border-radius: 10px;
+    border-radius: 18px;
     border-color: @main-br;
     background-color: @bg;
     children: [ mainbox ];
     location: northeast;
-    y-offset: 6;
-    x-offset: -6;
+    y-offset: 3;
+    x-offset: 4;
 }
 
 mainbox {

@@ -5,13 +5,13 @@
     follow = mouse                  # Follow mouse position
     origin = bottom-right           # Notification placement
     offset = (12, 10)               # Offset from screen edge
-    layer = top
+    layer = overlay
     fullscreen = delay
 
     # Notification Size and Dimensions
     width = (0, 500)                # Min and max width
     progress_bar = true             # Enable progress bars
-    progress_bar_height = 8         # Progress bar height
+    progress_bar_height = 6         # Progress bar height
     progress_bar_min_width = 100    # Minimum progress bar width
     progress_bar_max_width = 300    # Maximum progress bar width
     progress_bar_corner_radius = 4  # Progress bar corner roundness
@@ -64,25 +64,25 @@
 
 # Urgency Levels
 [urgency_low]
-    background = "#020A0F8F"
+    background = "#020A0FAA"
     foreground = "#F5F5F5"
     highlight = "#64B5F6"
-    frame_color = "#2874FF"
+    frame_color = "#2899FF"
     max_icon_size = 96
     timeout = 7
 
 [urgency_normal]
     default_icon = "info"
-    background = "#12131596"
+    background = "#121315CC"
     foreground = "#FFFFFF"
     highlight = "#DFEFFE"
-    frame_color = "#17A5FF"
+    frame_color = "#17AAFF"
     max_icon_size = 72
     timeout = 20
 
 [urgency_critical]
     default_icon = "caution"
-    background = "#1213149D"
+    background = "#121314EE"
     foreground = "#FFBB44"
     highlight = "#FF6633EE"
     frame_color = "#FF7733"
@@ -95,10 +95,11 @@
     script = ~/.local/bin/sound-alert
 
 [system]
-    appname = "System"
+    appname = "system"
     max_icon_size = 72
     default_icon = "arch"
     timeout = 5
+    fullscreen = show
 
 [warning]
     appname = "warning"
@@ -126,21 +127,21 @@
     fullscreen = show
 
 [mic_low]
-    appname = "Mic"
+    appname = "mic"
     msg_urgency = "low"
     max_icon_size = 72
     default_icon = "mic-off"
     fullscreen = show
 
 [mic_high]
-    appname = "Mic"
+    appname = "mic"
     msg_urgency = "normal"
     max_icon_size = 72
     default_icon = "mic-on"
     fullscreen = show
 
 [volume]
-    appname = "Volume"
+    appname = "volume"
     max_icon_size = 72
     fullscreen = show
 

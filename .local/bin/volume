@@ -70,11 +70,11 @@ case "$1" in
         volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')
         if [[ "$mute" == "yes" ]]; then
             dunstify -t $TIME \
-                     -a "Volume" -u low -I "$icon_path/mute.png" \
+                     -a "volume" -u low -I "$icon_path/mute.png" \
                      -h string:x-dunst-stack-tag:$msgTag "Muted"
         else
             dunstify -t $TIME \
-                     -a "Volume" -u normal -I "$(get_volume_icon $volume)" \
+                     -a "volume" -u normal -I "$(get_volume_icon $volume)" \
                      -h string:x-dunst-stack-tag:$msgTag "Unmuted"
         fi
         exit 0
@@ -87,15 +87,15 @@ case "$1" in
         if [[ "$mic_mute" == "yes" ]]; then
             control_mic_led 1  # Turn LED on when muted
             # Uncomment below lines to enable notification
-            # dunstify -t $TIME \
-            #          -a "Mic" -u low \
-            #          -h string:x-dunst-stack-tag:$msgTag "Muted"
+            dunstify -t $TIME \
+                     -a "mic" -u low -I "$icon_path/mic-off.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Muted"
         else
             control_mic_led 0  # Turn LED off when unmuted
             # Uncomment below lines to enable notification
-            # dunstify -t $TIME \
-            #          -a "Mic" -u normal \
-            #          -h string:x-dunst-stack-tag:$msgTag "Unmuted"
+            dunstify -t $TIME \
+                     -a "mic" -u normal -I "$icon_path/mic-on.png" \
+                     -h string:x-dunst-stack-tag:$msgTag "Unmuted"
         fi
         exit 0
         ;;
@@ -115,8 +115,8 @@ mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "yes" || ec
 
 if [[ "$mute" != "yes" ]]; then
     dunstify -t $TIME \
-             -a "Volume" -u low -i "$(get_volume_icon $volume)" \
+             -a "volume" -u low -i "$(get_volume_icon $volume)" \
              -h string:x-dunst-stack-tag:$msgTag \
              -h int:value:"$volume" \
-             "Volume: $volume%"
+             "volume: $volume%"
 fi

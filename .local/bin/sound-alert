@@ -17,13 +17,13 @@
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 if [[ "$1" -eq "" ]]; then
-    pw-play --volume=0.6 ~/.local/share/sounds/notification.wav
+    pw-play --volume=0.3 ~/.local/share/sounds/notification.wav
 elif [[ "$1" == "--startup" ]]; then
     pw-play --volume=0.1 ~/.local/share/sounds/startup.wav
 elif [[ "$1" == "--plugged" ]]; then
-    pw-play --volume=0.3 ~/.local/share/sounds/plugged.wav
+    pw-play --volume=0.2 ~/.local/share/sounds/plugged.wav
 elif [[ "$1" == "--unplugged" ]]; then
-    pw-play --volume=0.6 ~/.local/share/sounds/unplugged.wav
+    pw-play --volume=0.4 ~/.local/share/sounds/unplugged.wav
 elif [[ "$1" == "--error" ]]; then
     pw-play --volume=0.8 ~/.local/share/sounds/unplugged.wav
 fi

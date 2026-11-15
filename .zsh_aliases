@@ -41,9 +41,9 @@ alias l='eza -F --icons --color=always --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
 # 🧼 Arch Linux Waifu Notifiers
-alias hi="dunstify 'Arch Linux' 'Welcome back, baka~ 😤 You better have some dotfiles to show me!' -a System -u normal"
-alias ns="dunstify 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' -a System -u normal"
-alias rice="dunstify 'Arch Linux' 'Let’s rice together today, senpai~ 🌸 Don’t leave me looking basic!' -a System -u low"
+alias hi="dunstify 'Arch Linux' 'Welcome back, baka~ 😤 You better have some dotfiles to show me!' -a system -u normal"
+alias ns="dunstify 'Arch Linux' 'DAMN! You have not riced me since last month. Did u forget ur loving arch wifey..?' -a system -u normal"
+alias rice="dunstify 'Arch Linux' 'Let’s rice together today, senpai~ 🌸 Don’t leave me looking basic!' -a system -u low"
 
 # 📦 Package Management
 alias clean="sudo pacman -Rns $(pacman -Qtdq) && dunstify 'Arch Linux' 'Removed unused packages 🧹' -a System -u low"
@@ -70,7 +70,9 @@ alias db="dotnet build"
 alias dw="dotnet watch"
 alias dt="dotnet test"
 alias dc="dotnet clean"
+alias dp="dotnet publish"
 alias dap="dotnet add package"
+alias dpu="dotnet package update"
 alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 alias cl="clang -std=c23 -Wall"
@@ -96,7 +98,7 @@ alias ydtv720='yt-dlp -f "bv*[vcodec^=hev][height<=720]+ba[acodec=opus]/bv*[vcod
 alias ydtv4k='yt-dlp -f "bv*[vcodec^=hev][height<=2160]+ba[acodec=opus]/bv*[vcodec^=hev][height<=2160]+ba[acodec^=mp4a]/bv*[vcodec^=avc][height<=2160]+ba/b" --merge-output-format mkv --embed-thumbnail --embed-metadata --embed-subs'
 
 # 🧃 Custom Tools
-alias z="./.local/opt/ztrack/ZTrack"
+alias z="$HOME/.local/opt/ztrack/ZTrack"
 
 # Custom Utitlies
 alias cat="bat --style plain"

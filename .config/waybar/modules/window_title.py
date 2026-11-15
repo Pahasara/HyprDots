@@ -87,12 +87,17 @@ ICON_GROUPS = {
 
     # Notes / Productivity
     "": ("obsidian",),
-    "": ("timecanvas",),
     "󰨖": ("gnomesubtitles",),
 
     # Based on DE
     "": ("kde",),
     "": ("gnome",),
+
+    # Local
+    "": ("timecanvas",),
+    "󱙝": ("spectre",),
+    "": ("arcane",),
+    "": ("slc" , "electron",),
 }
 
 # Explicit priority: earlier entries win.

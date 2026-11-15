@@ -44,4 +44,10 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY=1
 export AVALONIA_SCREEN_SCALE_FACTORS=eDP-1=1.2
 
+# ─────────────────────────────────────────────
+# Fonts
+# ─────────────────────────────────────────────
+# Darken thin strokes in CFF/OTF fonts and the autohinter
+export FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
+
 # vim: set ft=sh :

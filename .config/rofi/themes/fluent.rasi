@@ -4,7 +4,7 @@
 * {
   bg:         #0104084A; //window
   main-bg:    #02080F4A; //main
-  main-br:    #00BBEE88; //windowBorder
+  main-br:    #34B7F0CC; //windowBorder
   main-fg:    #DEDEDE;   //main
   input-bg:   #0000000F; //input
   input-fg:   #ffffffaa; //input

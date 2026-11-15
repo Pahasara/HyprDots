@@ -57,11 +57,11 @@ check_headphones() {
     if [[ -n "$last_hp_state" && "$curr_hp" != "$last_hp_state" ]]; then
         if [[ "$curr_hp" == "connected" ]]; then
             DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$UID/bus" \
-            dunstify -u low -i "$ICON_HP_CON" -r 9992 "Audio" "Headphones Connected"
+            dunstify -a "system" -u low -i "$ICON_HP_CON" -r 9992 "Audio" "Headphones Connected"
             [[ -x "$SOUND_CMD" ]] && $SOUND_CMD --plugged &>/dev/null &
         else
             DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$UID/bus" \
-            dunstify -u low -i "$ICON_HP_DIS" -r 9992 "Audio" "Headphones Disconnected"
+            dunstify -a "system" -u low -i "$ICON_HP_DIS" -r 9992 "Audio" "Headphones Disconnected"
             [[ -x "$SOUND_CMD" ]] && $SOUND_CMD --unplugged &>/dev/null &
         fi
     fi
